@@ -150,6 +150,12 @@ export default function RuneDetail() {
                   </div>
                 </div>
               </div>
+
+              <div className="pt-3 border-t border-border/30">
+                <Link href="/cosmology" className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-muted-foreground hover:text-amber-400 transition-colors">
+                  <span className="text-amber-500">𓂝</span> Cosmological Sources →
+                </Link>
+              </div>
             </CardContent>
           </Card>
 

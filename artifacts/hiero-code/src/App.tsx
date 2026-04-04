@@ -16,6 +16,7 @@ import Numerology from "@/pages/numerology";
 import Glyphs from "@/pages/glyphs";
 import Framework from "@/pages/framework";
 import Emotions from "@/pages/emotions";
+import Cosmology from "@/pages/cosmology";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -41,6 +42,7 @@ function Router() {
         <Route path="/glyphs" component={Glyphs} />
         <Route path="/framework" component={Framework} />
         <Route path="/emotions" component={Emotions} />
+        <Route path="/cosmology" component={Cosmology} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

@@ -1,8 +1,9 @@
 import { useGetStats } from "@workspace/api-client-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Activity, Code, Layers, Library, Sparkles, Scale, History } from "lucide-react";
+import { Activity, Code, Layers, Library, Sparkles, Scale, History, Orbit } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Progress } from "@/components/ui/progress";
+import { Link } from "wouter";
 
 export default function Dashboard() {
   const { data: stats, isLoading, error } = useGetStats();
@@ -132,6 +133,36 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Cosmology Reference */}
+        <Link href="/cosmology">
+          <Card className="border-amber-500/30 bg-gradient-to-br from-amber-950/20 via-card to-blue-950/20 hover:border-amber-500/60 transition-colors cursor-pointer group">
+            <CardHeader className="pb-3">
+              <div className="flex items-center gap-2">
+                <Orbit className="w-4 h-4 text-amber-400 group-hover:animate-spin" />
+                <CardTitle className="text-base font-serif text-amber-300">Cosmological Sources</CardTitle>
+              </div>
+              <CardDescription className="font-mono text-xs">The philosophical traditions underlying Hiero-Code</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 gap-2 text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                {[
+                  { glyph: "𓂝", label: "Àṣẹ — Yorùbá Life-Force" },
+                  { glyph: "𓃑", label: "42 Laws of Maat" },
+                  { glyph: "𓅃", label: "Book of the Dead" },
+                  { glyph: "🌺", label: "Teotl / Nahua" },
+                  { glyph: "☯", label: "The Dao / Wu-Wei" },
+                  { glyph: "𓇼", label: "Trees of Life" },
+                ].map(item => (
+                  <div key={item.label} className="flex items-center gap-1.5 text-amber-500/70 group-hover:text-amber-400 transition-colors">
+                    <span className="text-sm">{item.glyph}</span>
+                    <span>{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
 
         {/* Recent Activity */}
         <Card className="border-border bg-card">
