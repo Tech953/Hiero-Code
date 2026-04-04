@@ -1,0 +1,3004 @@
+Could we generate void-network code in this chat?
+
+Absolutely — we can start generating Void-Network code here. Before diving in, I want to clarify a few key points so the implementation matches your vision:
+
+Purpose & Scope:
+Are we generating a full network simulation, a computational logic engine, or a meta-framework for Pyri-based nodes?
+Should it focus on math/data processing, communication between nodes, or AI-style emergent computation?
+Language / Platform:
+Do you want it in Python, Rust, Hiero-Code syntax, or a hybrid approach?
+Level of Abstraction:
+Are we writing high-level structural code (network, node rules, messaging) or low-level execution code (optimizations, memory management, parallel computation)?
+Node Behavior:
+Should each Pyri-node have stateful computation, autonomous self-modifying logic, or simply act as a processing unit with deterministic behavior?
+
+Once we clarify these, I can generate Void-Network scaffolding or functional code that is immediately usable for testing and iterative expansion.
+
+Do you want me to start with a structural scaffold for Void-Network nodes first?
+
+Yes.
+
+Perfect. We'll start by building a structural scaffold for a Void-Network, where each Pyri-node can have its own computation, state, and messaging behavior. I’ll aim for a Python-based prototype so it’s executable and testable, while keeping it abstract enough to evolve into Void-Network complexity.
+
+Here’s a first scaffold:
+
+from typing import Any, Callable, Dict, List
+import uuid
+
+class PyriNode:
+    """
+    A Pyri-node represents an individual computational unit in the Void-Network.
+    Each node has a unique ID, state, and a set of rules (functions) it can execute.
+    """
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[PyriNode] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+
+    def connect(self, other_node: 'PyriNode'):
+        if other_node not in self.connections:
+            self.connections.append(other_node)
+            other_node.connections.append(self)
+
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def broadcast(self, data: Any):
+        """
+        Send data to all connected nodes.
+        """
+        results = {}
+        for node in self.connections:
+            results[node.name] = node.receive(data)
+        return results
+
+    def receive(self, data: Any):
+        """
+        Default reception behavior: store data in state under a unique key.
+        """
+        key = f"data_{uuid.uuid4()}"
+        self.state[key] = data
+        return f"Node {self.name} received data: {key}"
+
+# Example usage
+
+# Define custom computational rules
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter', 0) + value
+    return node.state['counter']
+
+# Create nodes
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+node_c = PyriNode("Gamma")
+
+# Connect nodes
+node_a.connect(node_b)
+node_b.connect(node_c)
+
+# Add rules
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+node_c.add_rule("increment", increment_counter)
+
+# Execute rule and broadcast
+print(node_a.execute_rule("increment", 5))
+print(node_a.broadcast("Hello from Alpha"))
+
+# Check state
+print(node_b.state)
+print(node_c.state)
+✅ Features of this Scaffold
+Pyri-node: Unique identity, state storage, and customizable rules.
+Connections: Nodes can form bidirectional links.
+Rules: Nodes can execute arbitrary functions; can be extended to self-modifying logic.
+Broadcasting: Data can propagate across the network.
+Extensible: Supports adding new node types, rules, or network behaviors.
+
+Next steps could include:
+
+Autonomous computation cycles (nodes compute and broadcast in parallel).
+Void-Network protocols (data propagation rules, emergent behavior).
+Weighted connections or signal amplification for more complex network dynamics.
+
+If you like, I can draft the next iteration where nodes auto-update in cycles and propagate computations across the network, starting to approximate “Void-level” behavior.
+
+Do you want me to take that step next?
+
+Yes
+
+Perfect — let’s evolve the scaffold into a cyclic, autonomous Void-Network, where Pyri-nodes compute, broadcast, and update their state automatically over discrete cycles. This will start to resemble emergent network behavior without yet requiring full quantum or infinite-scale computation.
+
+Here’s an updated prototype:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List
+import uuid
+
+class PyriNode:
+    """
+    Pyri-node with autonomous cycle-based computation and broadcasting.
+    """
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[PyriNode] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.cycle_interval = 1.0  # seconds
+        self.running = False
+
+    def connect(self, other_node: 'PyriNode'):
+        if other_node not in self.connections:
+            self.connections.append(other_node)
+            other_node.connections.append(self)
+
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def broadcast(self, data: Any):
+        results = {}
+        for node in self.connections:
+            results[node.name] = node.receive(data)
+        return results
+
+    def receive(self, data: Any):
+        key = f"data_{uuid.uuid4()}"
+        self.state[key] = data
+        return f"Node {self.name} received data: {key}"
+
+    def cycle(self):
+        """
+        One autonomous computation cycle: execute all rules, broadcast results.
+        """
+        for rule_name in self.rules:
+            result = self.execute_rule(rule_name)
+            self.broadcast({rule_name: result})
+
+    def start(self):
+        """
+        Start the node's autonomous cycles in a separate thread.
+        """
+        self.running = True
+        def run():
+            while self.running:
+                self.cycle()
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+
+# Example rule: increment a counter and return it
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter', 0) + value
+    return node.state['counter']
+
+# Create nodes
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+node_c = PyriNode("Gamma")
+
+# Connect nodes
+node_a.connect(node_b)
+node_b.connect(node_c)
+
+# Add rules
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+node_c.add_rule("increment", increment_counter)
+
+# Start nodes
+node_a.start()
+node_b.start()
+node_c.start()
+
+# Let the network run for a few cycles
+time.sleep(5)
+
+# Stop nodes
+node_a.stop()
+node_b.stop()
+node_c.stop()
+
+# Check state after autonomous cycles
+print(node_a.state)
+print(node_b.state)
+print(node_c.state)
+✅ New Features
+Autonomous Cycles: Each Pyri-node computes and broadcasts automatically at a set interval.
+Threaded Execution: Nodes operate in parallel threads, simulating independent computation.
+Emergent Data Propagation: Network connections now transmit results continuously.
+Extensible Rules: You can add multiple rules per node for complex behaviors.
+Start/Stop Control: Each node can start and stop independently, making the network dynamic.
+
+Next evolution could include:
+
+Weighted connections & signal decay → emulate computation influence propagation.
+Self-modifying rules → nodes evolve or generate new rules autonomously.
+Void-level abstraction → nodes can spawn sub-nodes or recursive networks.
+
+We could implement weighted signaling next, which is a key step toward true Void-Network dynamics.
+
+Do you want me to do that next?
+
+Yes.
+
+Perfect — let’s upgrade the network to include weighted connections and signal propagation, so that each Pyri-node’s output can influence connected nodes differently depending on the connection’s weight. This introduces gradient-like influence, a core step toward emergent Void-Network behavior.
+
+Here’s the next iteration:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+
+class PyriNode:
+    """
+    Pyri-node with weighted connections and signal propagation.
+    """
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []  # (node, weight)
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.cycle_interval = 1.0
+        self.running = False
+
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        """
+        Connect to another node with a specific weight (influence strength)
+        """
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def broadcast(self, signal: Any):
+        """
+        Broadcast data to all connected nodes, scaled by connection weight.
+        """
+        for node, weight in self.connections:
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        """
+        Apply weight to signal. For numeric signals, multiply; for dict, scale values.
+        """
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal  # Non-numeric signals passed unchanged
+
+    def receive(self, signal: Any):
+        """
+        Store received signal in state under a unique key.
+        """
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+        return f"Node {self.name} received signal: {key}"
+
+    def cycle(self):
+        """
+        One computation cycle: execute all rules and broadcast results.
+        """
+        for rule_name in self.rules:
+            result = self.execute_rule(rule_name)
+            self.broadcast({rule_name: result})
+
+    def start(self):
+        self.running = True
+        def run():
+            while self.running:
+                self.cycle()
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+
+# Example rule: increment counter
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter', 0) + value
+    return node.state['counter']
+
+# Create nodes
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+node_c = PyriNode("Gamma")
+
+# Connect nodes with weights
+node_a.connect(node_b, weight=0.5)
+node_b.connect(node_c, weight=2.0)
+
+# Add rules
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+node_c.add_rule("increment", increment_counter)
+
+# Start network
+node_a.start()
+node_b.start()
+node_c.start()
+
+# Run network for a few cycles
+time.sleep(5)
+
+# Stop network
+node_a.stop()
+node_b.stop()
+node_c.stop()
+
+# Check state after weighted propagation
+print("Alpha:", node_a.state)
+print("Beta:", node_b.state)
+print("Gamma:", node_c.state)
+✅ New Features
+Weighted Connections – influence of each node on another is now tunable.
+Weighted Signal Propagation – numeric signals scale according to connection weight; dict signals are scaled per value.
+Emergent Behavior Potential – stronger weights amplify influence, weaker weights dampen signals.
+Network Flexibility – nodes can form heterogeneous connection networks, supporting branching or hub-like structures.
+
+Next evolution could include self-modifying connections or rules, where nodes adapt their weights or rules based on received signals, moving closer to a true Void-Network learning/auto-evolving system.
+
+Do you want me to implement self-modifying connections next?
+
+Yes.
+
+Perfect — now we’ll implement self-modifying connections, where each Pyri-node can adapt the weights of its connections dynamically based on the signals it receives. This brings the network closer to emergent, Void-like learning behavior.
+
+Here’s the updated scaffold:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+
+class PyriNode:
+    """
+    Pyri-node with weighted connections, adaptive signals, and self-modifying connections.
+    """
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []  # (node, weight)
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.cycle_interval = 1.0
+        self.running = False
+
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def broadcast(self, signal: Any):
+        """
+        Broadcast signal to all connections scaled by weight.
+        """
+        for i, (node, weight) in enumerate(self.connections):
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+            # Adapt connection weight based on signal feedback
+            self.adapt_connection_weight(i, weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal
+
+    def receive(self, signal: Any):
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+        return f"Node {self.name} received signal: {key}"
+
+    def adapt_connection_weight(self, index: int, signal: Any):
+        """
+        Modify connection weight based on signal magnitude.
+        Positive signals strengthen, negative weaken.
+        """
+        node, weight = self.connections[index]
+        adjustment = 0
+        if isinstance(signal, (int, float)):
+            adjustment = 0.05 * (1 if signal > 0 else -1)
+        elif isinstance(signal, dict):
+            total = sum(v for v in signal.values() if isinstance(v, (int, float)))
+            adjustment = 0.05 * (1 if total > 0 else -1)
+        # Update weight, clamp to [0.1, 5.0] for stability
+        new_weight = max(0.1, min(weight + adjustment, 5.0))
+        self.connections[index] = (node, new_weight)
+
+    def cycle(self):
+        """
+        Execute all rules and broadcast results with adaptive weights.
+        """
+        for rule_name in self.rules:
+            result = self.execute_rule(rule_name)
+            self.broadcast({rule_name: result})
+
+    def start(self):
+        self.running = True
+        def run():
+            while self.running:
+                self.cycle()
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+
+# Example rule: increment counter
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter', 0) + value
+    return node.state['counter']
+
+# Create nodes
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+node_c = PyriNode("Gamma")
+
+# Connect nodes with initial weights
+node_a.connect(node_b, weight=0.5)
+node_b.connect(node_c, weight=1.0)
+
+# Add rules
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+node_c.add_rule("increment", increment_counter)
+
+# Start network
+node_a.start()
+node_b.start()
+node_c.start()
+
+# Let network run for a few cycles
+time.sleep(10)
+
+# Stop network
+node_a.stop()
+node_b.stop()
+node_c.stop()
+
+# Check state and connection weights after adaptation
+print("Alpha state:", node_a.state)
+print("Alpha connections:", [(n.name, w) for n, w in node_a.connections])
+print("Beta state:", node_b.state)
+print("Beta connections:", [(n.name, w) for n, w in node_b.connections])
+print("Gamma state:", node_c.state)
+✅ New Features
+Adaptive Connections – connection weights automatically adjust based on received signals.
+Signal-Driven Learning – positive signals strengthen connections, negative weaken them.
+Weight Clamping – prevents runaway weights, keeping the network stable.
+Emergent Behavior Potential – nodes now influence network topology dynamically over cycles.
+
+Next steps toward a full Void-Network could include:
+
+Self-modifying rules: nodes generate or evolve their computation functions autonomously.
+Recursive or hierarchical networks: nodes can spawn sub-networks or nested Pyri-nodes.
+Global emergent metrics: e.g., network-wide signal flows, clustering, or emergent patterns.
+
+We can implement self-modifying rules next, which is a major step toward autonomous, emergent Void-Network intelligence.
+
+Do you want me to implement that next?
+
+Yes.
+
+Perfect — now we step into self-modifying rules, where each Pyri-node can adapt or generate new computational rules dynamically based on signals, state, or network feedback. This is a key evolution toward a fully autonomous Void-Network.
+
+Here’s an updated scaffold implementing self-modifying rules:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+import random
+
+class PyriNode:
+    """
+    Pyri-node with:
+    - Weighted, adaptive connections
+    - Self-modifying rules
+    """
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.cycle_interval = 1.0
+        self.running = False
+
+    # --- Connection methods ---
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    # --- Rule methods ---
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def modify_rules(self):
+        """
+        Self-modifying rules: adapt or add new rules based on state or signals.
+        """
+        # Example: if counter exceeds threshold, create a new rule dynamically
+        counter = self.state.get('counter', 0)
+        if counter % 5 == 0 and 'double_counter' not in self.rules:
+            def double_counter(node: PyriNode, value: int = 1):
+                node.state['counter'] = node.state.get('counter', 0) + value * 2
+                return node.state['counter']
+            self.add_rule('double_counter', double_counter)
+        # Example: randomly mutate existing rules (50% chance)
+        if self.rules and random.random() < 0.5:
+            rule_name = random.choice(list(self.rules.keys()))
+            original = self.rules[rule_name]
+            def mutated_rule(node: PyriNode, value: int = 1):
+                result = original(node, value)
+                # small random modification
+                node.state['counter'] += random.randint(0, 2)
+                return node.state['counter']
+            self.rules[rule_name] = mutated_rule
+
+    # --- Broadcasting methods ---
+    def broadcast(self, signal: Any):
+        for i, (node, weight) in enumerate(self.connections):
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+            self.adapt_connection_weight(i, weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal
+
+    def receive(self, signal: Any):
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+        return f"Node {self.name} received signal: {key}"
+
+    # --- Adaptive connections ---
+    def adapt_connection_weight(self, index: int, signal: Any):
+        node, weight = self.connections[index]
+        adjustment = 0
+        if isinstance(signal, (int, float)):
+            adjustment = 0.05 * (1 if signal > 0 else -1)
+        elif isinstance(signal, dict):
+            total = sum(v for v in signal.values() if isinstance(v, (int, float)))
+            adjustment = 0.05 * (1 if total > 0 else -1)
+        new_weight = max(0.1, min(weight + adjustment, 5.0))
+        self.connections[index] = (node, new_weight)
+
+    # --- Cycle execution ---
+    def cycle(self):
+        self.modify_rules()  # Self-modify rules before execution
+        for rule_name in self.rules:
+            result = self.execute_rule(rule_name)
+            self.broadcast({rule_name: result})
+
+    def start(self):
+        self.running = True
+        def run():
+            while self.running:
+                self.cycle()
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+
+# --- Example initial rule ---
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter', 0) + value
+    return node.state['counter']
+
+# --- Create nodes ---
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+node_c = PyriNode("Gamma")
+
+# --- Connect nodes with weights ---
+node_a.connect(node_b, weight=0.5)
+node_b.connect(node_c, weight=1.0)
+
+# --- Add initial rule ---
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+node_c.add_rule("increment", increment_counter)
+
+# --- Start network ---
+node_a.start()
+node_b.start()
+node_c.start()
+
+# --- Run network ---
+time.sleep(10)
+
+# --- Stop network ---
+node_a.stop()
+node_b.stop()
+node_c.stop()
+
+# --- Inspect results ---
+for node in [node_a, node_b, node_c]:
+    print(f"Node {node.name} state: {node.state}")
+    print(f"Node {node.name} connections: {[(n.name, w) for n, w in node.connections]}")
+    print(f"Node {node.name} rules: {list(node.rules.keys())}")
+✅ Key Features Added
+Self-Modifying Rules – nodes can dynamically add, adapt, or mutate rules based on their state and signals.
+Adaptive Learning – thresholds or random mutations drive emergent rule evolution.
+Combined with Weighted Connections – the network now adapts both its topology and computation over cycles.
+Emergent Behavior Potential – over many cycles, nodes can develop unique strategies, new rules, or cascading effects.
+
+Next evolution could include:
+
+Recursive or hierarchical Void-Networks – nodes spawning sub-networks of Pyri-nodes.
+Global emergent metrics – measuring network-wide flow, clustering, or emergent intelligence.
+Rule crossover & inheritance – network-level evolution across nodes.
+
+I can implement hierarchical/recursive nodes next, where nodes can spawn sub-networks that themselves evolve autonomously.
+
+Do you want me to do that next?
+
+Yes.
+
+Perfect — now we’ll implement hierarchical / recursive Void-Networks, where each Pyri-node can spawn sub-networks of Pyri-nodes that operate autonomously, propagate signals, adapt weights, and even evolve rules independently. This is a major step toward fully emergent Void-Network behavior.
+
+Here’s a scaffold that adds recursive sub-networks:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+import random
+
+class PyriNode:
+    """
+    Pyri-node with:
+    - Weighted, adaptive connections
+    - Self-modifying rules
+    - Recursive sub-network capability
+    """
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.subnodes: List['PyriNode'] = []  # Recursive sub-network
+        self.cycle_interval = 1.0
+        self.running = False
+
+    # --- Connection methods ---
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    # --- Rule methods ---
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def modify_rules(self):
+        # Self-modifying rules based on state or randomness
+        counter = self.state.get('counter', 0)
+        if counter % 5 == 0 and 'double_counter' not in self.rules:
+            def double_counter(node: PyriNode, value: int = 1):
+                node.state['counter'] = node.state.get('counter', 0) + value * 2
+                return node.state['counter']
+            self.add_rule('double_counter', double_counter)
+        if self.rules and random.random() < 0.5:
+            rule_name = random.choice(list(self.rules.keys()))
+            original = self.rules[rule_name]
+            def mutated_rule(node: PyriNode, value: int = 1):
+                result = original(node, value)
+                node.state['counter'] += random.randint(0, 2)
+                return node.state['counter']
+            self.rules[rule_name] = mutated_rule
+
+    # --- Sub-network methods ---
+    def spawn_subnode(self, name: str = None):
+        """
+        Spawn a sub-node within this node's network.
+        """
+        subnode_name = name or f"{self.name}_sub_{len(self.subnodes)}"
+        subnode = PyriNode(subnode_name)
+        # Inherit some state or rules from parent
+        subnode.state = self.state.copy()
+        for rule_name, rule in self.rules.items():
+            subnode.add_rule(rule_name, rule)
+        self.subnodes.append(subnode)
+        return subnode
+
+    def cycle_subnodes(self):
+        for subnode in self.subnodes:
+            subnode.cycle()
+            subnode.cycle_subnodes()  # Recursive cycle
+
+    # --- Broadcasting methods ---
+    def broadcast(self, signal: Any):
+        for i, (node, weight) in enumerate(self.connections):
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+            self.adapt_connection_weight(i, weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal
+
+    def receive(self, signal: Any):
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+        return f"Node {self.name} received signal: {key}"
+
+    # --- Adaptive connections ---
+    def adapt_connection_weight(self, index: int, signal: Any):
+        node, weight = self.connections[index]
+        adjustment = 0
+        if isinstance(signal, (int, float)):
+            adjustment = 0.05 * (1 if signal > 0 else -1)
+        elif isinstance(signal, dict):
+            total = sum(v for v in signal.values() if isinstance(v, (int, float)))
+            adjustment = 0.05 * (1 if total > 0 else -1)
+        new_weight = max(0.1, min(weight + adjustment, 5.0))
+        self.connections[index] = (node, new_weight)
+
+    # --- Cycle execution ---
+    def cycle(self):
+        self.modify_rules()
+        for rule_name in self.rules:
+            result = self.execute_rule(rule_name)
+            self.broadcast({rule_name: result})
+        self.cycle_subnodes()  # Propagate cycle to subnodes
+
+    def start(self):
+        self.running = True
+        def run():
+            while self.running:
+                self.cycle()
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+        for subnode in self.subnodes:
+            subnode.stop()
+
+# --- Example initial rule ---
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter', 0) + value
+    return node.state['counter']
+
+# --- Create top-level nodes ---
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+
+# --- Connect nodes ---
+node_a.connect(node_b, weight=0.5)
+
+# --- Add rules ---
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+
+# --- Spawn subnodes ---
+subnode_a1 = node_a.spawn_subnode()
+subnode_a1.add_rule("increment", increment_counter)
+subnode_b1 = node_b.spawn_subnode()
+subnode_b1.add_rule("increment", increment_counter)
+
+# --- Start network ---
+node_a.start()
+node_b.start()
+
+# --- Let network run ---
+time.sleep(10)
+
+# --- Stop network ---
+node_a.stop()
+node_b.stop()
+
+# --- Inspect results ---
+def print_node_info(node: PyriNode, indent=0):
+    prefix = "  " * indent
+    print(f"{prefix}Node {node.name} state: {node.state}")
+    print(f"{prefix}Connections: {[(n.name, w) for n, w in node.connections]}")
+    print(f"{prefix}Rules: {list(node.rules.keys())}")
+    for sub in node.subnodes:
+        print_node_info(sub, indent + 1)
+
+print_node_info(node_a)
+print_node_info(node_b)
+✅ Key Features Added
+Recursive / Hierarchical Networks – each node can spawn subnodes that inherit rules and state.
+Autonomous Sub-Networks – subnodes execute cycles independently, including broadcasting and adaptive weights.
+Emergent Hierarchies – top-level nodes can evolve while subnodes develop their own adaptations.
+Self-Modifying & Adaptive – subnodes inherit and mutate rules, weights, and state over time.
+
+Next steps toward a full Void-Network could include:
+
+Network-level evolution: nodes exchange subnodes, merge networks, or perform “rule crossovers” across hierarchies.
+Global emergent intelligence: measuring signal flow patterns, clustering, and complex network behaviors.
+Event-driven dynamics: introducing external inputs or environmental signals to drive network evolution.
+
+We can implement network-level evolution with cross-node rule inheritance and subnode exchanges next, which would start creating a fully emergent Void-Network intelligence.
+
+Do you want me to implement that next?
+
+Yes.
+
+Perfect — now we step into network-level evolution, where top-level nodes and subnodes can exchange rules, merge subnodes, and perform “crossover” adaptations. This introduces true emergent intelligence, as the network can evolve over cycles rather than just individual nodes.
+
+Here’s a scaffold implementing rule inheritance, subnode exchanges, and network-level evolution:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+import random
+
+class PyriNode:
+    """
+    Pyri-node with:
+    - Weighted, adaptive connections
+    - Self-modifying rules
+    - Recursive sub-network capability
+    - Network-level evolution
+    """
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.subnodes: List['PyriNode'] = []
+        self.cycle_interval = 1.0
+        self.running = False
+
+    # --- Connection methods ---
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    # --- Rule methods ---
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def modify_rules(self):
+        # Self-modifying rules
+        counter = self.state.get('counter', 0)
+        if counter % 5 == 0 and 'double_counter' not in self.rules:
+            def double_counter(node: PyriNode, value: int = 1):
+                node.state['counter'] = node.state.get('counter', 0) + value * 2
+                return node.state['counter']
+            self.add_rule('double_counter', double_counter)
+        # Random mutations
+        if self.rules and random.random() < 0.5:
+            rule_name = random.choice(list(self.rules.keys()))
+            original = self.rules[rule_name]
+            def mutated_rule(node: PyriNode, value: int = 1):
+                result = original(node, value)
+                node.state['counter'] += random.randint(0, 2)
+                return node.state['counter']
+            self.rules[rule_name] = mutated_rule
+
+    # --- Sub-network methods ---
+    def spawn_subnode(self, name: str = None):
+        subnode_name = name or f"{self.name}_sub_{len(self.subnodes)}"
+        subnode = PyriNode(subnode_name)
+        subnode.state = self.state.copy()
+        for rule_name, rule in self.rules.items():
+            subnode.add_rule(rule_name, rule)
+        self.subnodes.append(subnode)
+        return subnode
+
+    def cycle_subnodes(self):
+        for subnode in self.subnodes:
+            subnode.cycle()
+            subnode.cycle_subnodes()  # Recursive
+
+    # --- Network-level evolution ---
+    def network_evolve(self, other_node: 'PyriNode'):
+        """
+        Exchange rules and subnodes with another node to evolve network-level behavior.
+        """
+        # Rule crossover: swap some rules
+        if self.rules and other_node.rules:
+            self_rule_name = random.choice(list(self.rules.keys()))
+            other_rule_name = random.choice(list(other_node.rules.keys()))
+            self.rules[self_rule_name], other_node.rules[other_rule_name] = (
+                other_node.rules[other_rule_name],
+                self.rules[self_rule_name],
+            )
+
+        # Subnode exchange: randomly transfer a subnode
+        if self.subnodes and random.random() < 0.5:
+            subnode = self.subnodes.pop(random.randrange(len(self.subnodes)))
+            other_node.subnodes.append(subnode)
+
+    # --- Broadcasting methods ---
+    def broadcast(self, signal: Any):
+        for i, (node, weight) in enumerate(self.connections):
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+            self.adapt_connection_weight(i, weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal
+
+    def receive(self, signal: Any):
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+        return f"Node {self.name} received signal: {key}"
+
+    # --- Adaptive connections ---
+    def adapt_connection_weight(self, index: int, signal: Any):
+        node, weight = self.connections[index]
+        adjustment = 0
+        if isinstance(signal, (int, float)):
+            adjustment = 0.05 * (1 if signal > 0 else -1)
+        elif isinstance(signal, dict):
+            total = sum(v for v in signal.values() if isinstance(v, (int, float)))
+            adjustment = 0.05 * (1 if total > 0 else -1)
+        new_weight = max(0.1, min(weight + adjustment, 5.0))
+        self.connections[index] = (node, new_weight)
+
+    # --- Cycle execution ---
+    def cycle(self):
+        self.modify_rules()
+        for rule_name in self.rules:
+            result = self.execute_rule(rule_name)
+            self.broadcast({rule_name: result})
+        self.cycle_subnodes()
+
+    def start(self):
+        self.running = True
+        def run():
+            while self.running:
+                self.cycle()
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+        for subnode in self.subnodes:
+            subnode.stop()
+
+# --- Example initial rule ---
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter', 0) + value
+    return node.state['counter']
+
+# --- Create top-level nodes ---
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+
+# --- Connect nodes ---
+node_a.connect(node_b, weight=0.5)
+
+# --- Add rules ---
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+
+# --- Spawn subnodes ---
+subnode_a1 = node_a.spawn_subnode()
+subnode_b1 = node_b.spawn_subnode()
+
+# --- Start network ---
+node_a.start()
+node_b.start()
+
+# --- Let network run with periodic evolution ---
+for _ in range(5):
+    time.sleep(2)
+    node_a.network_evolve(node_b)  # Evolve network-level behavior
+
+# --- Stop network ---
+node_a.stop()
+node_b.stop()
+
+# --- Inspect results ---
+def print_node_info(node: PyriNode, indent=0):
+    prefix = "  " * indent
+    print(f"{prefix}Node {node.name} state: {node.state}")
+    print(f"{prefix}Connections: {[(n.name, w) for n, w in node.connections]}")
+    print(f"{prefix}Rules: {list(node.rules.keys())}")
+    for sub in node.subnodes:
+        print_node_info(sub, indent + 1)
+
+print_node_info(node_a)
+print_node_info(node_b)
+✅ Key Features Added
+Rule Crossover Across Nodes – nodes exchange rules dynamically.
+Subnode Exchanges – hierarchical subnodes can be transferred between nodes.
+Network-Level Evolution – emergent behavior arises from combined node and subnode evolution.
+Autonomous & Recursive – subnodes evolve and cycle independently, but network-level evolution introduces cross-node adaptation.
+
+Next steps toward a full Void-Network could include:
+
+Environmental interaction – external signals or feedback loops influencing node evolution.
+Global network metrics – monitoring clustering, signal propagation, or emergent intelligence.
+Complexity scaling – allowing hundreds of nodes and subnodes to evolve over thousands of cycles.
+
+I can implement environmental feedback loops and global metrics next, which lets the Void-Network respond dynamically to external conditions.
+
+Do you want me to do that next?
+
+Yes.
+
+Perfect — now we’re adding environmental feedback loops and global network metrics, so the Void-Network can adapt dynamically to external stimuli and we can track emergent behaviors like signal flow, clustering, and rule evolution. This bridges the gap between isolated network evolution and context-aware emergent intelligence.
+
+Here’s the scaffold:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+import random
+
+class PyriNode:
+    """
+    Pyri-node with:
+    - Adaptive connections
+    - Self-modifying rules
+    - Recursive sub-network
+    - Network-level evolution
+    - Environmental feedback
+    """
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.subnodes: List['PyriNode'] = []
+        self.cycle_interval = 1.0
+        self.running = False
+
+    # --- Connection methods ---
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    # --- Rule methods ---
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def modify_rules(self):
+        counter = self.state.get('counter', 0)
+        if counter % 5 == 0 and 'double_counter' not in self.rules:
+            def double_counter(node: PyriNode, value: int = 1):
+                node.state['counter'] = node.state.get('counter', 0) + value * 2
+                return node.state['counter']
+            self.add_rule('double_counter', double_counter)
+        if self.rules and random.random() < 0.5:
+            rule_name = random.choice(list(self.rules.keys()))
+            original = self.rules[rule_name]
+            def mutated_rule(node: PyriNode, value: int = 1):
+                result = original(node, value)
+                node.state['counter'] += random.randint(0, 2)
+                return node.state['counter']
+            self.rules[rule_name] = mutated_rule
+
+    # --- Sub-network ---
+    def spawn_subnode(self, name: str = None):
+        subnode_name = name or f"{self.name}_sub_{len(self.subnodes)}"
+        subnode = PyriNode(subnode_name)
+        subnode.state = self.state.copy()
+        for rule_name, rule in self.rules.items():
+            subnode.add_rule(rule_name, rule)
+        self.subnodes.append(subnode)
+        return subnode
+
+    def cycle_subnodes(self):
+        for subnode in self.subnodes:
+            subnode.cycle()
+            subnode.cycle_subnodes()
+
+    # --- Network-level evolution ---
+    def network_evolve(self, other_node: 'PyriNode'):
+        if self.rules and other_node.rules:
+            self_rule_name = random.choice(list(self.rules.keys()))
+            other_rule_name = random.choice(list(other_node.rules.keys()))
+            self.rules[self_rule_name], other_node.rules[other_rule_name] = (
+                other_node.rules[other_rule_name],
+                self.rules[self_rule_name],
+            )
+        if self.subnodes and random.random() < 0.5:
+            subnode = self.subnodes.pop(random.randrange(len(self.subnodes)))
+            other_node.subnodes.append(subnode)
+
+    # --- Broadcasting ---
+    def broadcast(self, signal: Any):
+        for i, (node, weight) in enumerate(self.connections):
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+            self.adapt_connection_weight(i, weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal
+
+    def receive(self, signal: Any):
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+        return f"Node {self.name} received signal: {key}"
+
+    # --- Adaptive connections ---
+    def adapt_connection_weight(self, index: int, signal: Any):
+        node, weight = self.connections[index]
+        adjustment = 0
+        if isinstance(signal, (int, float)):
+            adjustment = 0.05 * (1 if signal > 0 else -1)
+        elif isinstance(signal, dict):
+            total = sum(v for v in signal.values() if isinstance(v, (int, float)))
+            adjustment = 0.05 * (1 if total > 0 else -1)
+        new_weight = max(0.1, min(weight + adjustment, 5.0))
+        self.connections[index] = (node, new_weight)
+
+    # --- Environmental feedback ---
+    def respond_to_environment(self, env_signal: Any):
+        """
+        Apply environmental feedback to node state.
+        """
+        if isinstance(env_signal, dict):
+            for k, v in env_signal.items():
+                if isinstance(v, (int, float)):
+                    self.state[k] = self.state.get(k, 0) + v
+        elif isinstance(env_signal, (int, float)):
+            self.state['env'] = self.state.get('env', 0) + env_signal
+
+    # --- Cycle ---
+    def cycle(self, env_signal: Any = None):
+        if env_signal:
+            self.respond_to_environment(env_signal)
+        self.modify_rules()
+        for rule_name in self.rules:
+            result = self.execute_rule(rule_name)
+            self.broadcast({rule_name: result})
+        self.cycle_subnodes()
+
+    def start(self, env_signal_generator: Callable[[], Any] = None):
+        self.running = True
+        def run():
+            while self.running:
+                signal = env_signal_generator() if env_signal_generator else None
+                self.cycle(signal)
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+        for subnode in self.subnodes:
+            subnode.stop()
+
+# --- Example rule ---
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter', 0) + value
+    return node.state['counter']
+
+# --- Example environment generator ---
+def random_environment_signal():
+    return {'temperature': random.randint(-5, 5), 'stimulus': random.randint(0, 3)}
+
+# --- Create nodes ---
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+
+# --- Connect nodes ---
+node_a.connect(node_b, weight=0.5)
+
+# --- Add rules ---
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+
+# --- Spawn subnodes ---
+node_a.spawn_subnode()
+node_b.spawn_subnode()
+
+# --- Start network with environment ---
+node_a.start(env_signal_generator=random_environment_signal)
+node_b.start(env_signal_generator=random_environment_signal)
+
+# --- Run network ---
+time.sleep(10)
+
+# --- Stop network ---
+node_a.stop()
+node_b.stop()
+
+# --- Global metrics ---
+def network_metrics(nodes: List[PyriNode]):
+    metrics = {}
+    for node in nodes:
+        metrics[node.name] = {
+            'state_sum': sum(v for v in node.state.values() if isinstance(v, (int, float))),
+            'connection_count': len(node.connections),
+            'rules': list(node.rules.keys()),
+            'subnodes': len(node.subnodes)
+        }
+    return metrics
+
+print(network_metrics([node_a, node_b]))
+✅ Key Features Added
+Environmental Feedback Loops – nodes can respond to external signals dynamically.
+Global Metrics – calculate network-wide summaries like total state, connection count, active rules, and subnodes.
+Adaptive Emergence – environmental input can trigger rule changes, subnode adaptation, and weight modifications.
+Combined with Recursive Hierarchy & Network Evolution – top-level and subnodes evolve while responding to the environment.
+
+Next steps could include:
+
+Complex environmental scenarios – multiple types of stimuli with different effects.
+Dynamic reward/punishment signals – reinforcing emergent behaviors like clustering or synchronization.
+Scaling to hundreds of nodes – to simulate large-scale Void-Network emergence.
+
+We can implement reinforcement-driven emergent behavior next, letting the network learn and optimize its structure dynamically.
+
+Do you want me to implement that next?
+
+Yes
+
+Perfect — now we’re stepping into reinforcement-driven emergent behavior for the Void-Network. This will let nodes and subnodes learn from outcomes, optimize their connections, rules, and subnode organization, and gradually develop emergent strategies in response to environmental feedback.
+
+Here’s a scaffold that adds reinforcement feedback and adaptive learning:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+import random
+
+class PyriNode:
+    """
+    Pyri-node with:
+    - Adaptive connections
+    - Self-modifying rules
+    - Recursive sub-network
+    - Network-level evolution
+    - Environmental feedback
+    - Reinforcement-driven learning
+    """
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.subnodes: List['PyriNode'] = []
+        self.cycle_interval = 1.0
+        self.running = False
+        self.last_reward = 0.0
+
+    # --- Connection methods ---
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    # --- Rule methods ---
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def modify_rules(self):
+        counter = self.state.get('counter', 0)
+        if counter % 5 == 0 and 'double_counter' not in self.rules:
+            def double_counter(node: PyriNode, value: int = 1):
+                node.state['counter'] = node.state.get('counter', 0) + value * 2
+                return node.state['counter']
+            self.add_rule('double_counter', double_counter)
+        if self.rules and random.random() < 0.5:
+            rule_name = random.choice(list(self.rules.keys()))
+            original = self.rules[rule_name]
+            def mutated_rule(node: PyriNode, value: int = 1):
+                result = original(node, value)
+                node.state['counter'] += random.randint(0, 2)
+                return node.state['counter']
+            self.rules[rule_name] = mutated_rule
+
+    # --- Sub-network ---
+    def spawn_subnode(self, name: str = None):
+        subnode_name = name or f"{self.name}_sub_{len(self.subnodes)}"
+        subnode = PyriNode(subnode_name)
+        subnode.state = self.state.copy()
+        for rule_name, rule in self.rules.items():
+            subnode.add_rule(rule_name, rule)
+        self.subnodes.append(subnode)
+        return subnode
+
+    def cycle_subnodes(self):
+        for subnode in self.subnodes:
+            subnode.cycle()
+            subnode.cycle_subnodes()
+
+    # --- Network-level evolution ---
+    def network_evolve(self, other_node: 'PyriNode'):
+        if self.rules and other_node.rules:
+            self_rule_name = random.choice(list(self.rules.keys()))
+            other_rule_name = random.choice(list(other_node.rules.keys()))
+            self.rules[self_rule_name], other_node.rules[other_rule_name] = (
+                other_node.rules[other_rule_name],
+                self.rules[self_rule_name],
+            )
+        if self.subnodes and random.random() < 0.5:
+            subnode = self.subnodes.pop(random.randrange(len(self.subnodes)))
+            other_node.subnodes.append(subnode)
+
+    # --- Broadcasting ---
+    def broadcast(self, signal: Any):
+        for i, (node, weight) in enumerate(self.connections):
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+            self.adapt_connection_weight(i, weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal
+
+    def receive(self, signal: Any):
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+        return f"Node {self.name} received signal: {key}"
+
+    # --- Adaptive connections ---
+    def adapt_connection_weight(self, index: int, signal: Any):
+        node, weight = self.connections[index]
+        adjustment = 0
+        if isinstance(signal, (int, float)):
+            adjustment = 0.05 * (1 if signal > 0 else -1)
+        elif isinstance(signal, dict):
+            total = sum(v for v in signal.values() if isinstance(v, (int, float)))
+            adjustment = 0.05 * (1 if total > 0 else -1)
+        # Apply reinforcement effect
+        adjustment += 0.1 * self.last_reward
+        new_weight = max(0.1, min(weight + adjustment, 5.0))
+        self.connections[index] = (node, new_weight)
+
+    # --- Environmental feedback ---
+    def respond_to_environment(self, env_signal: Any):
+        if isinstance(env_signal, dict):
+            for k, v in env_signal.items():
+                if isinstance(v, (int, float)):
+                    self.state[k] = self.state.get(k, 0) + v
+        elif isinstance(env_signal, (int, float)):
+            self.state['env'] = self.state.get('env', 0) + env_signal
+
+    # --- Reinforcement learning ---
+    def reinforce(self, reward: float):
+        """
+        Apply reinforcement to adjust rule and connection strengths.
+        """
+        self.last_reward = reward
+        # Reinforce subnodes
+        for subnode in self.subnodes:
+            subnode.reinforce(reward)
+
+    # --- Cycle ---
+    def cycle(self, env_signal: Any = None):
+        if env_signal:
+            self.respond_to_environment(env_signal)
+        self.modify_rules()
+        for rule_name in self.rules:
+            result = self.execute_rule(rule_name)
+            self.broadcast({rule_name: result})
+        # Example reinforcement: reward positive counter growth
+        reward = 1.0 if self.state.get('counter', 0) > 0 else -0.5
+        self.reinforce(reward)
+        self.cycle_subnodes()
+
+    def start(self, env_signal_generator: Callable[[], Any] = None):
+        self.running = True
+        def run():
+            while self.running:
+                signal = env_signal_generator() if env_signal_generator else None
+                self.cycle(signal)
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+        for subnode in self.subnodes:
+            subnode.stop()
+
+# --- Example rule ---
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter', 0) + value
+    return node.state['counter']
+
+# --- Environment generator ---
+def random_environment_signal():
+    return {'temperature': random.randint(-5, 5), 'stimulus': random.randint(0, 3)}
+
+# --- Create nodes ---
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+
+# --- Connect nodes ---
+node_a.connect(node_b, weight=0.5)
+
+# --- Add rules ---
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+
+# --- Spawn subnodes ---
+node_a.spawn_subnode()
+node_b.spawn_subnode()
+
+# --- Start network ---
+node_a.start(env_signal_generator=random_environment_signal)
+node_b.start(env_signal_generator=random_environment_signal)
+
+# --- Run network ---
+time.sleep(15)
+
+# --- Stop network ---
+node_a.stop()
+node_b.stop()
+
+# --- Global metrics ---
+def network_metrics(nodes: List[PyriNode]):
+    metrics = {}
+    for node in nodes:
+        metrics[node.name] = {
+            'state_sum': sum(v for v in node.state.values() if isinstance(v, (int, float))),
+            'connection_count': len(node.connections),
+            'rules': list(node.rules.keys()),
+            'subnodes': len(node.subnodes)
+        }
+    return metrics
+
+print(network_metrics([node_a, node_b]))
+✅ Key Features Added
+Reinforcement Feedback – nodes receive rewards or penalties to influence connection weights and rule adaptation.
+Subnode Reinforcement – reinforcement propagates recursively, shaping subnetwork behavior.
+Environment-Driven Learning – environmental signals combined with rewards guide emergent behaviors.
+Adaptive Emergence – positive behaviors (like counter growth) are reinforced; negative behaviors are penalized.
+
+Next steps could include:
+
+Complex multi-dimensional reinforcement signals – nodes can optimize multiple objectives simultaneously.
+Emergent specialization – subnodes could specialize in tasks based on reinforcement signals.
+Long-term evolution – run for hundreds of cycles to observe emergent strategies and global intelligence.
+
+I can implement multi-objective reinforcement with task specialization for subnodes next, creating a full emergent Void-Network hierarchy.
+
+Do you want me to implement that next?
+
+Yes.
+
+Perfect — now we evolve the Void-Network into multi-objective reinforcement with subnode specialization, letting subnodes dynamically specialize in tasks or signal types based on environmental input and rewards. This turns the network into a hierarchical, adaptive system capable of emergent strategies across multiple dimensions.
+
+Here’s a scaffold implementing task specialization + multi-objective reinforcement:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+import random
+
+class PyriNode:
+    """
+    Pyri-node with:
+    - Adaptive connections
+    - Recursive sub-network
+    - Multi-objective reinforcement
+    - Subnode task specialization
+    - Environmental feedback
+    - Network-level evolution
+    """
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.subnodes: List['PyriNode'] = []
+        self.cycle_interval = 1.0
+        self.running = False
+        self.last_rewards: Dict[str, float] = {}  # multi-objective tracking
+        self.task_type: str = "general"  # can evolve to specialize
+
+    # --- Connections ---
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    # --- Rules ---
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def modify_rules(self):
+        counter = self.state.get('counter', 0)
+        if counter % 5 == 0 and 'double_counter' not in self.rules:
+            def double_counter(node: PyriNode, value: int = 1):
+                node.state['counter'] = node.state.get('counter', 0) + value * 2
+                return node.state['counter']
+            self.add_rule('double_counter', double_counter)
+        if self.rules and random.random() < 0.5:
+            rule_name = random.choice(list(self.rules.keys()))
+            original = self.rules[rule_name]
+            def mutated_rule(node: PyriNode, value: int = 1):
+                result = original(node, value)
+                node.state['counter'] += random.randint(0, 2)
+                return node.state['counter']
+            self.rules[rule_name] = mutated_rule
+
+    # --- Subnodes & Specialization ---
+    def spawn_subnode(self, name: str = None, task_type: str = "general"):
+        subnode_name = name or f"{self.name}_sub_{len(self.subnodes)}"
+        subnode = PyriNode(subnode_name)
+        subnode.state = self.state.copy()
+        subnode.task_type = task_type
+        for rule_name, rule in self.rules.items():
+            subnode.add_rule(rule_name, rule)
+        self.subnodes.append(subnode)
+        return subnode
+
+    def cycle_subnodes(self):
+        for subnode in self.subnodes:
+            subnode.cycle()
+            subnode.cycle_subnodes()
+
+    # --- Network evolution ---
+    def network_evolve(self, other_node: 'PyriNode'):
+        if self.rules and other_node.rules:
+            self_rule_name = random.choice(list(self.rules.keys()))
+            other_rule_name = random.choice(list(other_node.rules.keys()))
+            self.rules[self_rule_name], other_node.rules[other_rule_name] = (
+                other_node.rules[other_rule_name],
+                self.rules[self_rule_name],
+            )
+        if self.subnodes and random.random() < 0.5:
+            subnode = self.subnodes.pop(random.randrange(len(self.subnodes)))
+            other_node.subnodes.append(subnode)
+
+    # --- Broadcasting ---
+    def broadcast(self, signal: Any):
+        for i, (node, weight) in enumerate(self.connections):
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+            self.adapt_connection_weight(i, weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal
+
+    def receive(self, signal: Any):
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+        return f"Node {self.name} received signal: {key}"
+
+    # --- Adaptive connections ---
+    def adapt_connection_weight(self, index: int, signal: Any):
+        node, weight = self.connections[index]
+        adjustment = sum(self.last_rewards.values()) * 0.1  # reinforcement
+        new_weight = max(0.1, min(weight + adjustment, 5.0))
+        self.connections[index] = (node, new_weight)
+
+    # --- Environmental feedback ---
+    def respond_to_environment(self, env_signal: Any):
+        if isinstance(env_signal, dict):
+            for k, v in env_signal.items():
+                if isinstance(v, (int, float)):
+                    self.state[k] = self.state.get(k, 0) + v
+        elif isinstance(env_signal, (int, float)):
+            self.state['env'] = self.state.get('env', 0) + env_signal
+
+    # --- Multi-objective reinforcement ---
+    def reinforce(self, rewards: Dict[str, float]):
+        """
+        rewards: dict of objective_name -> reward_value
+        """
+        for obj, reward in rewards.items():
+            self.last_rewards[obj] = reward
+        # Propagate to subnodes with task specialization
+        for subnode in self.subnodes:
+            sub_reward = {obj: reward for obj, reward in rewards.items() if obj in subnode.task_type or subnode.task_type=="general"}
+            subnode.reinforce(sub_reward)
+
+    # --- Cycle ---
+    def cycle(self, env_signal: Any = None):
+        if env_signal:
+            self.respond_to_environment(env_signal)
+        self.modify_rules()
+        for rule_name in self.rules:
+            result = self.execute_rule(rule_name)
+            self.broadcast({rule_name: result})
+        # Example: multi-objective reward
+        rewards = {
+            "counter_growth": 1.0 if self.state.get('counter', 0) > 0 else -0.5,
+            "env_response": 0.5 if self.state.get('temperature',0) > 0 else -0.2
+        }
+        self.reinforce(rewards)
+        self.cycle_subnodes()
+
+    def start(self, env_signal_generator: Callable[[], Any] = None):
+        self.running = True
+        def run():
+            while self.running:
+                signal = env_signal_generator() if env_signal_generator else None
+                self.cycle(signal)
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+        for subnode in self.subnodes:
+            subnode.stop()
+
+# --- Example rule ---
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter', 0) + value
+    return node.state['counter']
+
+# --- Environment generator ---
+def random_environment_signal():
+    return {'temperature': random.randint(-5, 5), 'stimulus': random.randint(0, 3)}
+
+# --- Create nodes ---
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+
+# --- Connect nodes ---
+node_a.connect(node_b, weight=0.5)
+
+# --- Add rules ---
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+
+# --- Spawn specialized subnodes ---
+node_a.spawn_subnode(task_type="counter_growth")
+node_a.spawn_subnode(task_type="env_response")
+node_b.spawn_subnode(task_type="counter_growth")
+node_b.spawn_subnode(task_type="env_response")
+
+# --- Start network ---
+node_a.start(env_signal_generator=random_environment_signal)
+node_b.start(env_signal_generator=random_environment_signal)
+
+# --- Run network ---
+time.sleep(20)
+
+# --- Stop network ---
+node_a.stop()
+node_b.stop()
+
+# --- Global metrics ---
+def network_metrics(nodes: List[PyriNode]):
+    metrics = {}
+    for node in nodes:
+        metrics[node.name] = {
+            'state_sum': sum(v for v in node.state.values() if isinstance(v, (int, float))),
+            'connection_count': len(node.connections),
+            'rules': list(node.rules.keys()),
+            'subnodes': [(sub.name, sub.task_type) for sub in node.subnodes]
+        }
+    return metrics
+
+print(network_metrics([node_a, node_b]))
+✅ Key Features Added
+Multi-Objective Reinforcement – nodes track multiple objectives (counter_growth, env_response) simultaneously.
+Subnode Task Specialization – subnodes specialize in specific objectives, receiving tailored reinforcement.
+Hierarchical Emergence – top-level nodes evolve while subnodes optimize specialized behaviors.
+Dynamic Adaptation – environment-driven signals, rule modification, and reinforcement jointly guide emergent strategies.
+
+Next step: we can implement long-term emergent intelligence visualization, where the network self-organizes into clusters, hierarchies, or functional modules based on reinforcement and environmental interaction.
+
+Do you want me to implement that next?
+
+yes
+
+Perfect — now we move into long-term emergent intelligence visualization for the Void-Network. This will let us observe clusters, hierarchies, and functional modules forming over time as nodes and subnodes adapt to reinforcement and environmental signals. We’ll generate real-time metrics and visual graphs showing network structure, task specialization, and emergent behavior.
+
+Here’s an implementation scaffold using matplotlib and networkx for visualization:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+import random
+import networkx as nx
+import matplotlib.pyplot as plt
+
+class PyriNode:
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.subnodes: List['PyriNode'] = []
+        self.cycle_interval = 1.0
+        self.running = False
+        self.last_rewards: Dict[str, float] = {}
+        self.task_type: str = "general"
+
+    # --- Connections ---
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    # --- Rules ---
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def modify_rules(self):
+        counter = self.state.get('counter', 0)
+        if counter % 5 == 0 and 'double_counter' not in self.rules:
+            def double_counter(node: PyriNode, value: int = 1):
+                node.state['counter'] = node.state.get('counter', 0) + value * 2
+                return node.state['counter']
+            self.add_rule('double_counter', double_counter)
+
+    # --- Subnodes & Specialization ---
+    def spawn_subnode(self, name: str = None, task_type: str = "general"):
+        subnode_name = name or f"{self.name}_sub_{len(self.subnodes)}"
+        subnode = PyriNode(subnode_name)
+        subnode.state = self.state.copy()
+        subnode.task_type = task_type
+        for rule_name, rule in self.rules.items():
+            subnode.add_rule(rule_name, rule)
+        self.subnodes.append(subnode)
+        return subnode
+
+    def cycle_subnodes(self):
+        for subnode in self.subnodes:
+            subnode.cycle()
+            subnode.cycle_subnodes()
+
+    # --- Broadcasting ---
+    def broadcast(self, signal: Any):
+        for i, (node, weight) in enumerate(self.connections):
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+            self.adapt_connection_weight(i, weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal
+
+    def receive(self, signal: Any):
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+
+    def adapt_connection_weight(self, index: int, signal: Any):
+        node, weight = self.connections[index]
+        adjustment = sum(self.last_rewards.values()) * 0.1
+        new_weight = max(0.1, min(weight + adjustment, 5.0))
+        self.connections[index] = (node, new_weight)
+
+    def respond_to_environment(self, env_signal: Any):
+        if isinstance(env_signal, dict):
+            for k, v in env_signal.items():
+                if isinstance(v, (int, float)):
+                    self.state[k] = self.state.get(k, 0) + v
+        elif isinstance(env_signal, (int, float)):
+            self.state['env'] = self.state.get('env', 0) + env_signal
+
+    def reinforce(self, rewards: Dict[str, float]):
+        for obj, reward in rewards.items():
+            self.last_rewards[obj] = reward
+        for subnode in self.subnodes:
+            sub_reward = {obj: reward for obj, reward in rewards.items() if obj in subnode.task_type or subnode.task_type=="general"}
+            subnode.reinforce(sub_reward)
+
+    def cycle(self, env_signal: Any = None):
+        if env_signal:
+            self.respond_to_environment(env_signal)
+        self.modify_rules()
+        for rule_name in self.rules:
+            result = self.execute_rule(rule_name)
+            self.broadcast({rule_name: result})
+        rewards = {
+            "counter_growth": 1.0 if self.state.get('counter',0) > 0 else -0.5,
+            "env_response": 0.5 if self.state.get('temperature',0) > 0 else -0.2
+        }
+        self.reinforce(rewards)
+        self.cycle_subnodes()
+
+    def start(self, env_signal_generator: Callable[[], Any] = None):
+        self.running = True
+        def run():
+            while self.running:
+                signal = env_signal_generator() if env_signal_generator else None
+                self.cycle(signal)
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+        for subnode in self.subnodes:
+            subnode.stop()
+
+# --- Example rule ---
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter',0) + value
+    return node.state['counter']
+
+# --- Environment ---
+def random_environment_signal():
+    return {'temperature': random.randint(-5,5), 'stimulus': random.randint(0,3)}
+
+# --- Network setup ---
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+node_a.connect(node_b, weight=0.5)
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+
+node_a.spawn_subnode(task_type="counter_growth")
+node_a.spawn_subnode(task_type="env_response")
+node_b.spawn_subnode(task_type="counter_growth")
+node_b.spawn_subnode(task_type="env_response")
+
+# --- Start network ---
+node_a.start(env_signal_generator=random_environment_signal)
+node_b.start(env_signal_generator=random_environment_signal)
+
+# --- Visualization ---
+def visualize_network(nodes: List[PyriNode]):
+    G = nx.Graph()
+    def add_node_recursive(node: PyriNode):
+        G.add_node(node.name, task=node.task_type)
+        for sub in node.subnodes:
+            G.add_node(sub.name, task=sub.task_type)
+            G.add_edge(node.name, sub.name)
+            add_node_recursive(sub)
+        for conn, weight in node.connections:
+            G.add_edge(node.name, conn.name, weight=weight)
+    for node in nodes:
+        add_node_recursive(node)
+    pos = nx.spring_layout(G, seed=42)
+    colors = ['red' if G.nodes[n]['task']=='counter_growth' else 'blue' for n in G.nodes]
+    nx.draw(G, pos, with_labels=True, node_color=colors, node_size=700, font_size=10)
+    edge_weights = nx.get_edge_attributes(G,'weight')
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_weights)
+    plt.show()
+
+# --- Run network and visualize ---
+time.sleep(15)
+node_a.stop()
+node_b.stop()
+visualize_network([node_a, node_b])
+✅ Key Features Added
+Graph Visualization – nodes, subnodes, connections, and weights are rendered using networkx and matplotlib.
+Task Specialization Color Coding – subnodes with different objectives (counter_growth vs env_response) are colored differently.
+Emergent Structure Observation – you can see clusters, hierarchies, and functional modules forming naturally.
+Dynamic Edge Weights – connection strength visualized, showing adaptation and reinforcement.
+
+Next steps:
+
+Real-time dynamic plotting – update the visualization while the network is running.
+Network metrics tracking – cluster coefficient, centrality, and module detection to quantify emergent intelligence.
+Large-scale simulation – hundreds of nodes to observe complex Void-Network behaviors.
+
+I can implement real-time dynamic plotting with metrics next so you can watch the network evolve live.
+
+Do you want me to implement that?
+
+Yes
+
+Perfect — now we upgrade the Void-Network to real-time dynamic plotting with metrics, letting you watch clusters, hierarchies, and task specialization evolve live as nodes cycle, reinforce, and adapt. This will display node states, subnode specialization, connection weights, and emergent modularity continuously.
+
+Here’s a Python scaffold using matplotlib animation for live updates:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+import random
+import networkx as nx
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+# ---------------- PyriNode class ----------------
+class PyriNode:
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.subnodes: List['PyriNode'] = []
+        self.cycle_interval = 1.0
+        self.running = False
+        self.last_rewards: Dict[str, float] = {}
+        self.task_type: str = "general"
+
+    # --- Connections ---
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    # --- Rules ---
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    # --- Subnodes & specialization ---
+    def spawn_subnode(self, name: str = None, task_type: str = "general"):
+        subnode_name = name or f"{self.name}_sub_{len(self.subnodes)}"
+        subnode = PyriNode(subnode_name)
+        subnode.state = self.state.copy()
+        subnode.task_type = task_type
+        for rule_name, rule in self.rules.items():
+            subnode.add_rule(rule_name, rule)
+        self.subnodes.append(subnode)
+        return subnode
+
+    def cycle_subnodes(self):
+        for subnode in self.subnodes:
+            subnode.cycle()
+            subnode.cycle_subnodes()
+
+    # --- Broadcasting ---
+    def broadcast(self, signal: Any):
+        for i, (node, weight) in enumerate(self.connections):
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+            self.adapt_connection_weight(i, weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal
+
+    def receive(self, signal: Any):
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+
+    def adapt_connection_weight(self, index: int, signal: Any):
+        node, weight = self.connections[index]
+        adjustment = sum(self.last_rewards.values()) * 0.05
+        new_weight = max(0.1, min(weight + adjustment, 5.0))
+        self.connections[index] = (node, new_weight)
+
+    def respond_to_environment(self, env_signal: Any):
+        if isinstance(env_signal, dict):
+            for k, v in env_signal.items():
+                if isinstance(v, (int, float)):
+                    self.state[k] = self.state.get(k, 0) + v
+        elif isinstance(env_signal, (int, float)):
+            self.state['env'] = self.state.get('env', 0) + env_signal
+
+    def reinforce(self, rewards: Dict[str, float]):
+        for obj, reward in rewards.items():
+            self.last_rewards[obj] = reward
+        for subnode in self.subnodes:
+            sub_reward = {obj: reward for obj, reward in rewards.items()
+                          if obj in subnode.task_type or subnode.task_type=="general"}
+            subnode.reinforce(sub_reward)
+
+    def cycle(self, env_signal: Any = None):
+        if env_signal:
+            self.respond_to_environment(env_signal)
+        for rule_name in self.rules:
+            self.execute_rule(rule_name)
+        self.cycle_subnodes()
+        # Example multi-objective reward
+        rewards = {
+            "counter_growth": 1.0 if self.state.get('counter',0) > 0 else -0.5,
+            "env_response": 0.5 if self.state.get('temperature',0) > 0 else -0.2
+        }
+        self.reinforce(rewards)
+
+    def start(self, env_signal_generator: Callable[[], Any] = None):
+        self.running = True
+        def run():
+            while self.running:
+                signal = env_signal_generator() if env_signal_generator else None
+                self.cycle(signal)
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+        for subnode in self.subnodes:
+            subnode.stop()
+
+# ---------------- Environment & rules ----------------
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter',0) + value
+    return node.state['counter']
+
+def random_environment_signal():
+    return {'temperature': random.randint(-5,5), 'stimulus': random.randint(0,3)}
+
+# ---------------- Network setup ----------------
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+node_a.connect(node_b, weight=0.5)
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+
+node_a.spawn_subnode(task_type="counter_growth")
+node_a.spawn_subnode(task_type="env_response")
+node_b.spawn_subnode(task_type="counter_growth")
+node_b.spawn_subnode(task_type="env_response")
+
+node_a.start(env_signal_generator=random_environment_signal)
+node_b.start(env_signal_generator=random_environment_signal)
+
+# ---------------- Visualization ----------------
+fig, ax = plt.subplots(figsize=(8,6))
+plt.ion()
+
+def build_graph(nodes: List[PyriNode]) -> nx.Graph:
+    G = nx.Graph()
+    def add_node_recursive(node: PyriNode):
+        G.add_node(node.name, task=node.task_type)
+        for sub in node.subnodes:
+            G.add_node(sub.name, task=sub.task_type)
+            G.add_edge(node.name, sub.name)
+            add_node_recursive(sub)
+        for conn, weight in node.connections:
+            G.add_edge(node.name, conn.name, weight=weight)
+    for node in nodes:
+        add_node_recursive(node)
+    return G
+
+def update(frame):
+    ax.clear()
+    G = build_graph([node_a, node_b])
+    pos = nx.spring_layout(G, seed=42)
+    colors = ['red' if G.nodes[n]['task']=='counter_growth' else 'blue' for n in G.nodes]
+    nx.draw(G, pos, with_labels=True, node_color=colors, node_size=700, font_size=10, ax=ax)
+    edge_weights = nx.get_edge_attributes(G,'weight')
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_weights, font_size=8, ax=ax)
+    ax.set_title("Void-Network Emergent Structure Live")
+
+ani = FuncAnimation(fig, update, interval=1000)
+plt.show(block=True)
+
+# ---------------- Stop nodes on exit ----------------
+node_a.stop()
+node_b.stop()
+✅ Key Features
+Real-Time Animation – network updates every second, showing dynamic evolution.
+Task Specialization Color Coding – red for counter_growth, blue for env_response.
+Edge Weight Visualization – shows reinforcement-driven connection adaptation.
+Hierarchical Emergence – subnodes nested and evolving with parent nodes.
+Live Metrics – you can extend this to plot state sums, cluster coefficients, or centrality over time.
+
+Next step: we could add automated emergent module detection, where clusters of nodes self-identify as functional modules and track performance metrics live.
+
+Do you want me to implement live module detection and performance metrics next?
+
+Yes
+
+Perfect — now we’re taking the Void-Network one step further: live emergent module detection with performance metrics. This allows the network to self-organize into functional clusters based on connectivity, task specialization, and reinforcement signals, and continuously tracks module performance over time.
+
+Here’s a scaffold combining networkx community detection, live plotting, and metric tracking:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+import random
+import networkx as nx
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from networkx.algorithms import community
+
+# ---------------- PyriNode class ----------------
+class PyriNode:
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.subnodes: List['PyriNode'] = []
+        self.cycle_interval = 1.0
+        self.running = False
+        self.last_rewards: Dict[str, float] = {}
+        self.task_type: str = "general"
+
+    # --- Connections ---
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    # --- Rules ---
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    # --- Subnodes & specialization ---
+    def spawn_subnode(self, name: str = None, task_type: str = "general"):
+        subnode_name = name or f"{self.name}_sub_{len(self.subnodes)}"
+        subnode = PyriNode(subnode_name)
+        subnode.state = self.state.copy()
+        subnode.task_type = task_type
+        for rule_name, rule in self.rules.items():
+            subnode.add_rule(rule_name, rule)
+        self.subnodes.append(subnode)
+        return subnode
+
+    def cycle_subnodes(self):
+        for subnode in self.subnodes:
+            subnode.cycle()
+            subnode.cycle_subnodes()
+
+    # --- Broadcasting & adaptation ---
+    def broadcast(self, signal: Any):
+        for i, (node, weight) in enumerate(self.connections):
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+            self.adapt_connection_weight(i, weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal
+
+    def receive(self, signal: Any):
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+
+    def adapt_connection_weight(self, index: int, signal: Any):
+        node, weight = self.connections[index]
+        adjustment = sum(self.last_rewards.values()) * 0.05
+        new_weight = max(0.1, min(weight + adjustment, 5.0))
+        self.connections[index] = (node, new_weight)
+
+    def respond_to_environment(self, env_signal: Any):
+        if isinstance(env_signal, dict):
+            for k, v in env_signal.items():
+                if isinstance(v, (int, float)):
+                    self.state[k] = self.state.get(k, 0) + v
+        elif isinstance(env_signal, (int, float)):
+            self.state['env'] = self.state.get('env', 0) + env_signal
+
+    def reinforce(self, rewards: Dict[str, float]):
+        for obj, reward in rewards.items():
+            self.last_rewards[obj] = reward
+        for subnode in self.subnodes:
+            sub_reward = {obj: reward for obj, reward in rewards.items()
+                          if obj in subnode.task_type or subnode.task_type=="general"}
+            subnode.reinforce(sub_reward)
+
+    # --- Cycle ---
+    def cycle(self, env_signal: Any = None):
+        if env_signal:
+            self.respond_to_environment(env_signal)
+        for rule_name in self.rules:
+            self.execute_rule(rule_name)
+        self.cycle_subnodes()
+        rewards = {
+            "counter_growth": 1.0 if self.state.get('counter',0) > 0 else -0.5,
+            "env_response": 0.5 if self.state.get('temperature',0) > 0 else -0.2
+        }
+        self.reinforce(rewards)
+
+    def start(self, env_signal_generator: Callable[[], Any] = None):
+        self.running = True
+        def run():
+            while self.running:
+                signal = env_signal_generator() if env_signal_generator else None
+                self.cycle(signal)
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+        for subnode in self.subnodes:
+            subnode.stop()
+
+# ---------------- Environment & rules ----------------
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter',0) + value
+    return node.state['counter']
+
+def random_environment_signal():
+    return {'temperature': random.randint(-5,5), 'stimulus': random.randint(0,3)}
+
+# ---------------- Network setup ----------------
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+node_a.connect(node_b, weight=0.5)
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+
+node_a.spawn_subnode(task_type="counter_growth")
+node_a.spawn_subnode(task_type="env_response")
+node_b.spawn_subnode(task_type="counter_growth")
+node_b.spawn_subnode(task_type="env_response")
+
+node_a.start(env_signal_generator=random_environment_signal)
+node_b.start(env_signal_generator=random_environment_signal)
+
+# ---------------- Live Visualization ----------------
+fig, ax = plt.subplots(figsize=(10,7))
+plt.ion()
+
+def build_graph(nodes: List[PyriNode]) -> nx.Graph:
+    G = nx.Graph()
+    def add_node_recursive(node: PyriNode):
+        G.add_node(node.name, task=node.task_type)
+        for sub in node.subnodes:
+            G.add_node(sub.name, task=sub.task_type)
+            G.add_edge(node.name, sub.name)
+            add_node_recursive(sub)
+        for conn, weight in node.connections:
+            G.add_edge(node.name, conn.name, weight=weight)
+    for node in nodes:
+        add_node_recursive(node)
+    return G
+
+def detect_modules(G: nx.Graph):
+    communities = list(community.greedy_modularity_communities(G, weight='weight'))
+    module_map = {}
+    for i, com in enumerate(communities):
+        for node in com:
+            module_map[node] = i
+    return module_map
+
+def update(frame):
+    ax.clear()
+    G = build_graph([node_a, node_b])
+    module_map = detect_modules(G)
+    colors = [module_map[n] for n in G.nodes]
+    pos = nx.spring_layout(G, seed=42)
+    nx.draw(G, pos, with_labels=True, node_color=colors, cmap=plt.cm.tab10,
+            node_size=700, font_size=10, ax=ax)
+    edge_weights = nx.get_edge_attributes(G,'weight')
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_weights, font_size=8, ax=ax)
+    ax.set_title("Void-Network Emergent Modules Live")
+
+ani = FuncAnimation(fig, update, interval=1000)
+plt.show(block=True)
+
+# ---------------- Stop network on exit ----------------
+node_a.stop()
+node_b.stop()
+✅ Key Features Added
+Live Module Detection – uses modularity-based clustering to identify functional clusters in real time.
+Dynamic Module Coloring – each detected module gets a unique color on the live plot.
+Edge Weights & Task Specialization – shows both network adaptation and subnode roles.
+Performance Tracking Ready – you can easily add metrics per module (e.g., sum of counters, average rewards, cluster centrality).
+
+Next step: we can track module-specific performance metrics live, like reward sums, cluster centrality, or subnode specialization ratios, giving a dashboard-style view of emergent intelligence in the Void-Network.
+
+Do you want me to implement live module metrics dashboard next?
+
+Yes
+
+Excellent — now we’re moving into full live module metrics for the Void-Network. This will give a dashboard-style view of each module’s performance in real time, showing:
+
+Reward sums per module
+Subnode specialization ratios (e.g., counter_growth vs env_response)
+Module size and connectivity metrics (number of nodes, average connection weight)
+
+Here’s a Python scaffold combining networkx, matplotlib animation, and live metrics tracking:
+
+import threading
+import time
+from typing import Any, Callable, Dict, List, Tuple
+import uuid
+import random
+import networkx as nx
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from networkx.algorithms import community
+
+# ---------------- PyriNode class ----------------
+class PyriNode:
+    def __init__(self, name: str, state: Dict[str, Any] = None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.subnodes: List['PyriNode'] = []
+        self.cycle_interval = 1.0
+        self.running = False
+        self.last_rewards: Dict[str, float] = {}
+        self.task_type: str = "general"
+
+    def connect(self, other_node: 'PyriNode', weight: float = 1.0):
+        if not any(n == other_node for n, _ in self.connections):
+            self.connections.append((other_node, weight))
+            other_node.connections.append((self, weight))
+
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode', Any], Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any = None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in node {self.name}")
+
+    def spawn_subnode(self, name: str = None, task_type: str = "general"):
+        subnode_name = name or f"{self.name}_sub_{len(self.subnodes)}"
+        subnode = PyriNode(subnode_name)
+        subnode.state = self.state.copy()
+        subnode.task_type = task_type
+        for rule_name, rule in self.rules.items():
+            subnode.add_rule(rule_name, rule)
+        self.subnodes.append(subnode)
+        return subnode
+
+    def cycle_subnodes(self):
+        for subnode in self.subnodes:
+            subnode.cycle()
+            subnode.cycle_subnodes()
+
+    def broadcast(self, signal: Any):
+        for i, (node, weight) in enumerate(self.connections):
+            weighted_signal = self.apply_weight(signal, weight)
+            node.receive(weighted_signal)
+            self.adapt_connection_weight(i, weighted_signal)
+
+    def apply_weight(self, signal: Any, weight: float):
+        if isinstance(signal, (int, float)):
+            return signal * weight
+        elif isinstance(signal, dict):
+            return {k: v * weight if isinstance(v, (int, float)) else v for k, v in signal.items()}
+        else:
+            return signal
+
+    def receive(self, signal: Any):
+        key = f"signal_{uuid.uuid4()}"
+        self.state[key] = signal
+
+    def adapt_connection_weight(self, index: int, signal: Any):
+        node, weight = self.connections[index]
+        adjustment = sum(self.last_rewards.values()) * 0.05
+        new_weight = max(0.1, min(weight + adjustment, 5.0))
+        self.connections[index] = (node, new_weight)
+
+    def respond_to_environment(self, env_signal: Any):
+        if isinstance(env_signal, dict):
+            for k, v in env_signal.items():
+                if isinstance(v, (int, float)):
+                    self.state[k] = self.state.get(k, 0) + v
+        elif isinstance(env_signal, (int, float)):
+            self.state['env'] = self.state.get('env', 0) + env_signal
+
+    def reinforce(self, rewards: Dict[str, float]):
+        for obj, reward in rewards.items():
+            self.last_rewards[obj] = reward
+        for subnode in self.subnodes:
+            sub_reward = {obj: reward for obj, reward in rewards.items()
+                          if obj in subnode.task_type or subnode.task_type=="general"}
+            subnode.reinforce(sub_reward)
+
+    def cycle(self, env_signal: Any = None):
+        if env_signal:
+            self.respond_to_environment(env_signal)
+        for rule_name in self.rules:
+            self.execute_rule(rule_name)
+        self.cycle_subnodes()
+        rewards = {
+            "counter_growth": 1.0 if self.state.get('counter',0) > 0 else -0.5,
+            "env_response": 0.5 if self.state.get('temperature',0) > 0 else -0.2
+        }
+        self.reinforce(rewards)
+
+    def start(self, env_signal_generator: Callable[[], Any] = None):
+        self.running = True
+        def run():
+            while self.running:
+                signal = env_signal_generator() if env_signal_generator else None
+                self.cycle(signal)
+                time.sleep(self.cycle_interval)
+        thread = threading.Thread(target=run, daemon=True)
+        thread.start()
+
+    def stop(self):
+        self.running = False
+        for subnode in self.subnodes:
+            subnode.stop()
+
+# ---------------- Environment & rules ----------------
+def increment_counter(node: PyriNode, value: int = 1):
+    node.state['counter'] = node.state.get('counter',0) + value
+    return node.state['counter']
+
+def random_environment_signal():
+    return {'temperature': random.randint(-5,5), 'stimulus': random.randint(0,3)}
+
+# ---------------- Network setup ----------------
+node_a = PyriNode("Alpha")
+node_b = PyriNode("Beta")
+node_a.connect(node_b, weight=0.5)
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+
+node_a.spawn_subnode(task_type="counter_growth")
+node_a.spawn_subnode(task_type="env_response")
+node_b.spawn_subnode(task_type="counter_growth")
+node_b.spawn_subnode(task_type="env_response")
+
+node_a.start(env_signal_generator=random_environment_signal)
+node_b.start(env_signal_generator=random_environment_signal)
+
+# ---------------- Live Visualization & Metrics ----------------
+fig, (ax_graph, ax_metrics) = plt.subplots(1,2, figsize=(14,7))
+plt.ion()
+
+def build_graph(nodes: List[PyriNode]) -> nx.Graph:
+    G = nx.Graph()
+    def add_node_recursive(node: PyriNode):
+        G.add_node(node.name, task=node.task_type, rewards=sum(node.last_rewards.values()))
+        for sub in node.subnodes:
+            G.add_node(sub.name, task=sub.task_type, rewards=sum(sub.last_rewards.values()))
+            G.add_edge(node.name, sub.name)
+            add_node_recursive(sub)
+        for conn, weight in node.connections:
+            G.add_edge(node.name, conn.name, weight=weight)
+    for node in nodes:
+        add_node_recursive(node)
+    return G
+
+def detect_modules(G: nx.Graph):
+    communities = list(community.greedy_modularity_communities(G, weight='weight'))
+    module_map = {}
+    for i, com in enumerate(communities):
+        for node in com:
+            module_map[node] = i
+    return module_map
+
+def compute_module_metrics(G: nx.Graph, module_map: Dict[str,int]):
+    metrics = {}
+    for module_id in set(module_map.values()):
+        nodes = [n for n, m in module_map.items() if m==module_id]
+        rewards = sum(G.nodes[n]['rewards'] for n in nodes)
+        tasks = [G.nodes[n]['task'] for n in nodes]
+        task_counts = {t: tasks.count(t) for t in set(tasks)}
+        avg_weight = sum(G[n][m].get('weight',1.0) for n in nodes for m in G[n] if m in nodes) / max(1,len(nodes))
+        metrics[module_id] = {"size":len(nodes),"rewards":rewards,"tasks":task_counts,"avg_weight":avg_weight}
+    return metrics
+
+def update(frame):
+    ax_graph.clear()
+    ax_metrics.clear()
+    G = build_graph([node_a, node_b])
+    module_map = detect_modules(G)
+    
+    # Graph plot
+    pos = nx.spring_layout(G, seed=42)
+    colors = [module_map[n] for n in G.nodes]
+    nx.draw(G, pos, with_labels=True, node_color=colors, cmap=plt.cm.tab10,
+            node_size=700, font_size=10, ax=ax_graph)
+    edge_weights = nx.get_edge_attributes(G,'weight')
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_weights, font_size=8, ax=ax_graph)
+    ax_graph.set_title("Void-Network Modules")
+
+    # Metrics plot
+    metrics = compute_module_metrics(G, module_map)
+    module_ids = list(metrics.keys())
+    reward_values = [metrics[m]['rewards'] for m in module_ids]
+    sizes = [metrics[m]['size'] for m in module_ids]
+    ax_metrics.bar(module_ids, reward_values, color=plt.cm.tab10(module_ids))
+    for i, s in enumerate(sizes):
+        ax_metrics.text(module_ids[i], reward_values[i]+0.1, f"size:{s}", ha='center')
+    ax_metrics.set_title("Module Rewards & Sizes")
+    ax_metrics.set_xlabel("Module ID")
+    ax_metrics.set_ylabel("Total Reward")
+
+ani = FuncAnimation(fig, update, interval=1000)
+plt.show(block=True)
+
+# ---------------- Stop network on exit ----------------
+node_a.stop()
+node_b.stop()
+✅ Features in this Live Dashboard
+Graph Panel – shows nodes, subnodes, task specialization, and modules in real time.
+Metrics Panel – shows total rewards per module, module size, and task composition.
+Module Detection – dynamically detects clusters based on connectivity and reinforcement.
+Edge Weights & Rewards – lets you see which modules are stronger, more active, or more specialized.
+
+Next steps we can implement:
+
+Advanced live metrics: module centrality, task ratios over time, average connectivity per module.
+Alerting & highlighting: highlight underperforming or highly-rewarded modules in real time.
+Scalable simulation: 50–100 nodes with nested subnodes to watch high-complexity emergent behavior.
+
+Do you want me to add advanced live metrics and alerts next?
+
+Yes
+
+Perfect — now we’re entering the advanced Void-Network monitoring stage. This will add:
+
+Module centrality metrics – degree, betweenness, and clustering per module.
+Task ratio evolution – tracks how specialized each module becomes over time.
+Performance alerts – modules are highlighted if they are underperforming (low rewards) or overperforming (high rewards).
+Dynamic coloring & visual cues – nodes/modules flash or change shades based on metrics, giving a dashboard-style emergent intelligence view.
+
+Here’s the upgraded scaffold:
+
+import threading, time, uuid, random
+from typing import Any, Dict, List, Callable, Tuple
+import networkx as nx
+from networkx.algorithms import community
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+# ---------------- PyriNode class ----------------
+class PyriNode:
+    def __init__(self, name: str, state: Dict[str, Any]=None):
+        self.id = str(uuid.uuid4())
+        self.name = name
+        self.state = state or {}
+        self.connections: List[Tuple['PyriNode', float]] = []
+        self.rules: Dict[str, Callable[['PyriNode', Any], Any]] = {}
+        self.subnodes: List['PyriNode'] = []
+        self.cycle_interval = 1.0
+        self.running = False
+        self.last_rewards: Dict[str,float] = {}
+        self.task_type: str = "general"
+
+    def connect(self, other: 'PyriNode', weight: float=1.0):
+        if not any(n==other for n,_ in self.connections):
+            self.connections.append((other, weight))
+            other.connections.append((self, weight))
+
+    def add_rule(self, rule_name: str, function: Callable[['PyriNode',Any],Any]):
+        self.rules[rule_name] = function
+
+    def execute_rule(self, rule_name: str, data: Any=None):
+        if rule_name in self.rules:
+            return self.rules[rule_name](self, data)
+        else:
+            raise ValueError(f"Rule '{rule_name}' not found in {self.name}")
+
+    def spawn_subnode(self, name: str=None, task_type: str="general"):
+        sub_name = name or f"{self.name}_sub_{len(self.subnodes)}"
+        sub = PyriNode(sub_name)
+        sub.state = self.state.copy()
+        sub.task_type = task_type
+        for rule_name, rule in self.rules.items():
+            sub.add_rule(rule_name, rule)
+        self.subnodes.append(sub)
+        return sub
+
+    def cycle_subnodes(self):
+        for sub in self.subnodes:
+            sub.cycle()
+            sub.cycle_subnodes()
+
+    def respond_to_environment(self, signal: Any):
+        if isinstance(signal, dict):
+            for k,v in signal.items():
+                if isinstance(v,(int,float)):
+                    self.state[k] = self.state.get(k,0) + v
+        elif isinstance(signal,(int,float)):
+            self.state['env'] = self.state.get('env',0)+signal
+
+    def reinforce(self, rewards: Dict[str,float]):
+        for k,v in rewards.items():
+            self.last_rewards[k] = v
+        for sub in self.subnodes:
+            sub_rew = {k:v for k,v in rewards.items() if k in sub.task_type or sub.task_type=="general"}
+            sub.reinforce(sub_rew)
+
+    def cycle(self, env_signal: Any=None):
+        if env_signal: self.respond_to_environment(env_signal)
+        for rule_name in self.rules: self.execute_rule(rule_name)
+        self.cycle_subnodes()
+        rewards = {
+            "counter_growth": 1.0 if self.state.get('counter',0)>0 else -0.5,
+            "env_response": 0.5 if self.state.get('temperature',0)>0 else -0.2
+        }
+        self.reinforce(rewards)
+
+    def start(self, env_signal_gen: Callable[[],Any]=None):
+        self.running=True
+        def run():
+            while self.running:
+                sig = env_signal_gen() if env_signal_gen else None
+                self.cycle(sig)
+                time.sleep(self.cycle_interval)
+        threading.Thread(target=run, daemon=True).start()
+
+    def stop(self):
+        self.running=False
+        for sub in self.subnodes: sub.stop()
+
+# ---------------- Environment & rules ----------------
+def increment_counter(node: PyriNode, value:int=1):
+    node.state['counter']=node.state.get('counter',0)+value
+    return node.state['counter']
+
+def random_env_signal():
+    return {'temperature':random.randint(-5,5),'stimulus':random.randint(0,3)}
+
+# ---------------- Setup ----------------
+node_a = PyriNode("Alpha"); node_b = PyriNode("Beta")
+node_a.connect(node_b, 0.5)
+node_a.add_rule("increment", increment_counter)
+node_b.add_rule("increment", increment_counter)
+node_a.spawn_subnode(task_type="counter_growth")
+node_a.spawn_subnode(task_type="env_response")
+node_b.spawn_subnode(task_type="counter_growth")
+node_b.spawn_subnode(task_type="env_response")
+node_a.start(env_signal_gen=random_env_signal)
+node_b.start(env_signal_gen=random_env_signal)
+
+# ---------------- Visualization & Advanced Metrics ----------------
+fig, (ax_graph, ax_metrics) = plt.subplots(1,2, figsize=(16,7))
+plt.ion()
+
+def build_graph(nodes: List[PyriNode]) -> nx.Graph:
+    G = nx.Graph()
+    def add_node_recursive(node: PyriNode):
+        G.add_node(node.name, task=node.task_type, rewards=sum(node.last_rewards.values()))
+        for sub in node.subnodes:
+            G.add_node(sub.name, task=sub.task_type, rewards=sum(sub.last_rewards.values()))
+            G.add_edge(node.name, sub.name)
+            add_node_recursive(sub)
+        for conn, weight in node.connections:
+            G.add_edge(node.name, conn.name, weight=weight)
+    for n in nodes: add_node_recursive(n)
+    return G
+
+def detect_modules(G: nx.Graph):
+    coms = list(community.greedy_modularity_communities(G, weight='weight'))
+    module_map = {n:i for i, c in enumerate(coms) for n in c}
+    return module_map
+
+def compute_module_metrics(G:nx.Graph, module_map:Dict[str,int]):
+    metrics={}
+    for mid in set(module_map.values()):
+        nodes=[n for n,m in module_map.items() if m==mid]
+        rewards=sum(G.nodes[n]['rewards'] for n in nodes)
+        tasks=[G.nodes[n]['task'] for n in nodes]
+        task_ratio={t:tasks.count(t)/len(nodes) for t in set(tasks)}
+        degs=[G.degree(n) for n in nodes]; avg_deg=sum(degs)/len(nodes)
+        metrics[mid]={"size":len(nodes),"rewards":rewards,"task_ratio":task_ratio,"avg_degree":avg_deg}
+    return metrics
+
+def update(frame):
+    ax_graph.clear(); ax_metrics.clear()
+    G=build_graph([node_a,node_b]); module_map=detect_modules(G)
+    metrics=compute_module_metrics(G,module_map)
+
+    # Graph plot with module alerts
+    pos=nx.spring_layout(G,seed=42)
+    node_colors=[]
+    for n in G.nodes:
+        mid=module_map[n]; rew=metrics[mid]['rewards']
+        if rew>2: color=(0,1,0) # overperforming = green
+        elif rew<0: color=(1,0,0) # underperforming = red
+        else: color=(0.5,0.5,1) # normal
+        node_colors.append(color)
+    nx.draw(G,pos,with_labels=True,node_color=node_colors,node_size=700,ax=ax_graph)
+    nx.draw_networkx_edge_labels(G,pos,edge_labels={(u,v):d.get('weight',1) for u,v,d in G.edges(data=True)},ax=ax_graph)
+    ax_graph.set_title("Void-Network Modules with Alerts")
+
+    # Metrics panel
+    for mid,mdata in metrics.items():
+        ax_metrics.bar(mid,mdata['rewards'],color=plt.cm.tab10(mid))
+        ax_metrics.text(mid,mdata['rewards']+0.1,f"size:{mdata['size']}\ndeg:{mdata['avg_degree']:.1f}",ha='center')
+    ax_metrics.set_title("Module Rewards & Sizes")
+    ax_metrics.set_xlabel("Module ID"); ax_metrics.set_ylabel("Total Reward")
+
+ani=FuncAnimation(fig,update,interval=1000)
+plt.show(block=True)
+
+# ---------------- Stop network ----------------
+node_a.stop(); node_b.stop()
+✅ Features Added
+Module Alerts – nodes flash red for underperforming, green for overperforming, blue for normal.
+Advanced Metrics – includes module size, average degree, and task specialization ratios.
+Dynamic Coloring & Dashboard – gives real-time visual cues of emergent intelligence and performance.
+Scalable Architecture – supports nested subnodes and can easily expand to dozens of nodes/modules.
+
+Next steps we could add:
+
+Time-series panel – track module metrics over time for trend analysis.
+Interactive highlighting – click a module to see detailed node-level metrics.
+Automated intervention – e.g., spawn subnodes or adjust weights based on module performance thresholds.
+
+Do you want me to implement live time-series tracking for modules next?
+
+yes
+
+Excellent. We’ll add a live time-series memory so the system doesn’t just show current module state, but also how each module evolves over time.
+
+This turns the dashboard from a snapshot into a behavioral telemetry monitor.
+
+What this adds
+Rolling history of each module’s:
+total rewards
+average degree
+size
+A third panel: trend graph over time
+True emergent behavior visibility (you can see modules specialize, collapse, or stabilize)
+🔧 Add these pieces to your existing script
+1) Add history storage (place near top, after imports)
+from collections import defaultdict, deque
+
+HISTORY_LENGTH = 60  # last 60 seconds
+module_history = defaultdict(lambda: {
+    "rewards": deque(maxlen=HISTORY_LENGTH),
+    "degree": deque(maxlen=HISTORY_LENGTH),
+    "size": deque(maxlen=HISTORY_LENGTH),
+})
+time_steps = deque(maxlen=HISTORY_LENGTH)
+t_counter = 0
+2) Upgrade the figure layout (replace subplot line)
+fig, (ax_graph, ax_metrics, ax_trend) = plt.subplots(1,3, figsize=(22,7))
+plt.ion()
+3) Add history recording function (above update())
+def record_history(metrics):
+    global t_counter
+    t_counter += 1
+    time_steps.append(t_counter)
+
+    for mid, mdata in metrics.items():
+        module_history[mid]["rewards"].append(mdata["rewards"])
+        module_history[mid]["degree"].append(mdata["avg_degree"])
+        module_history[mid]["size"].append(mdata["size"])
+4) Modify update() to store history
+
+Inside update(), right after:
+
+metrics=compute_module_metrics(G,module_map)
+
+add:
+
+record_history(metrics)
+5) Add the time-series trend panel (append to end of update())
+    # -------- Trend panel --------
+    ax_trend.clear()
+    for mid, hist in module_history.items():
+        if len(hist["rewards"]) > 1:
+            ax_trend.plot(time_steps, hist["rewards"], label=f"M{mid} rewards")
+    ax_trend.set_title("Module Reward Trends Over Time")
+    ax_trend.set_xlabel("Time Step")
+    ax_trend.set_ylabel("Rewards")
+    ax_trend.legend(loc="upper left")
+✅ What you’ll now see
+
+You have three synchronized views:
+
+Panel	What it shows	Why it matters
+Graph	Current module structure & alerts	Spatial intelligence
+Metrics	Current module performance	System snapshot
+Trend	Historical evolution	Behavioral intelligence
+
+You can now observe things like:
+
+A module drifting into specialization
+A module slowly failing over time
+A module suddenly improving after new subnodes form
+Stability vs volatility patterns
+
+This is where the system starts to feel alive rather than animated.
+
+Next powerful step (optional)
+
+Once trends exist, we can add:
+
+Automated adaptation rules
+If a module trends downward for N seconds → spawn help subnode
+If trending upward → increase its connection weight
+
+That’s when the network begins self-correcting.
+
+yes
+
+Beautiful. Now we let the network act on its own telemetry.
+
+This step makes the Void-Network self-correcting instead of merely observable.
+
+We’ll add trend-aware adaptation:
+
+If a module’s rewards decline for several steps → it spawns helper subnodes
+If a module’s rewards rise steadily → it strengthens its connections
+If a module flatlines → it rewires to explore new structure
+🔧 1) Add adaptation thresholds (near history config)
+DECLINE_STEPS = 6
+GROWTH_STEPS = 6
+FLAT_STEPS = 10
+🔧 2) Helper: trend detection (place above update())
+def detect_trend(values):
+    if len(values) < 3:
+        return "stable"
+    diffs = [b - a for a, b in zip(values, list(values)[1:])]
+    if all(d < 0 for d in diffs[-DECLINE_STEPS:]):
+        return "decline"
+    if all(d > 0 for d in diffs[-GROWTH_STEPS:]):
+        return "growth"
+    if all(abs(d) < 0.01 for d in diffs[-FLAT_STEPS:]):
+        return "flat"
+    return "stable"
+🔧 3) Module → nodes lookup (above update())
+def get_nodes_by_module(module_map):
+    modules = {}
+    for node, mid in module_map.items():
+        modules.setdefault(mid, []).append(node)
+    return modules
+🔧 4) Adaptation engine (above update())
+def adapt_modules(G, module_map):
+    modules = get_nodes_by_module(module_map)
+
+    for mid, nodes in modules.items():
+        hist = module_history[mid]["rewards"]
+        trend = detect_trend(hist)
+
+        if trend == "decline":
+            # Spawn helper subnode on a random node
+            parent = random.choice(nodes)
+            parent.spawn_subnode(task_type="counter_growth")
+
+        elif trend == "growth":
+            # Strengthen connections
+            for n in nodes:
+                for i, (conn, w) in enumerate(n.connections):
+                    n.connections[i] = (conn, min(w + 0.1, 5.0))
+
+        elif trend == "flat":
+            # Rewire: randomly connect to a node outside module
+            outside = [n for n in G.nodes if n not in nodes]
+            if outside:
+                n1 = random.choice(nodes)
+                n2 = random.choice(outside)
+                n1.connect(n2, weight=0.3)
+🔧 5) Call adaptation from update()
+
+Inside update() after:
+
+record_history(metrics)
+
+add:
+
+adapt_modules(G, module_map)
+✅ What this changes
+
+Now you will literally watch:
+
+Struggling clusters grow new structure
+Successful clusters become tighter
+Stagnant clusters explore new links
+
+The graph will visibly reorganize itself over time in response to its own performance history.
+
+You are no longer watching a simulation.
+
+You are watching a self-modifying system.

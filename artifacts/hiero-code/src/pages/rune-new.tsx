@@ -131,6 +131,18 @@ export default function RuneNew() {
                         <SelectItem value="egyptian">Egyptian</SelectItem>
                         <SelectItem value="sumerian">Sumerian</SelectItem>
                         <SelectItem value="mayan">Mayan</SelectItem>
+                        <SelectItem value="khoisan">Khoisan</SelectItem>
+                        <SelectItem value="celestial">Celestial / Outer Space</SelectItem>
+                        <SelectItem value="temporal">Temporal / Cyclical</SelectItem>
+                        <SelectItem value="elemental">Elemental / Material</SelectItem>
+                        <SelectItem value="biological">Biological / Ecological</SelectItem>
+                        <SelectItem value="geological">Geological / Planetary</SelectItem>
+                        <SelectItem value="atmospheric">Atmospheric / Weather</SelectItem>
+                        <SelectItem value="energy">Energy / Field Phenomena</SelectItem>
+                        <SelectItem value="cognitive">Cognitive / Abstract</SelectItem>
+                        <SelectItem value="synthetic">Synthetic / Cultural</SelectItem>
+                        <SelectItem value="dimensional">Dimensional / Multi-Realm</SelectItem>
+                        <SelectItem value="pyri">Pyri (Emotion Node)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -143,8 +155,11 @@ export default function RuneNew() {
                       <SelectContent>
                         <SelectItem value="macro">Macro (System)</SelectItem>
                         <SelectItem value="micro">Micro (Local)</SelectItem>
-                        <SelectItem value="particle">Particle (Data)</SelectItem>
-                        <SelectItem value="temporal">Temporal (Time)</SelectItem>
+                        <SelectItem value="particle">Particle / Indivisible</SelectItem>
+                        <SelectItem value="temporal">Temporal (Time-Phase)</SelectItem>
+                        <SelectItem value="s-tier">S-Tier (Biological)</SelectItem>
+                        <SelectItem value="field">Field / Wave</SelectItem>
+                        <SelectItem value="void">Void (Nameless)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

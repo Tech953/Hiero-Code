@@ -22,6 +22,8 @@ export default function Glyphs() {
       case "egyptian": return "text-amber-500";
       case "sumerian": return "text-blue-500";
       case "mayan": return "text-emerald-500";
+      case "khoisan": return "text-violet-400";
+      case "pyri": return "text-rose-400";
       default: return "text-primary";
     }
   };
@@ -54,6 +56,8 @@ export default function Glyphs() {
             <SelectItem value="egyptian">Egyptian</SelectItem>
             <SelectItem value="sumerian">Sumerian</SelectItem>
             <SelectItem value="mayan">Mayan</SelectItem>
+            <SelectItem value="khoisan">Khoisan (Click)</SelectItem>
+            <SelectItem value="pyri">Pyri (Emotion Nodes)</SelectItem>
           </SelectContent>
         </Select>
       </div>

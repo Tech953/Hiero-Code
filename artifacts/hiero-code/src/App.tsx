@@ -14,6 +14,8 @@ import Programs from "@/pages/programs";
 import ProgramDetail from "@/pages/program-detail";
 import Numerology from "@/pages/numerology";
 import Glyphs from "@/pages/glyphs";
+import Framework from "@/pages/framework";
+import Emotions from "@/pages/emotions";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,6 +39,8 @@ function Router() {
         <Route path="/programs" component={Programs} />
         <Route path="/numerology" component={Numerology} />
         <Route path="/glyphs" component={Glyphs} />
+        <Route path="/framework" component={Framework} />
+        <Route path="/emotions" component={Emotions} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
