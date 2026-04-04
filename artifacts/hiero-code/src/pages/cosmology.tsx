@@ -325,7 +325,7 @@ export default function Cosmology() {
           <div>
             <h1 className="text-3xl font-serif font-bold tracking-tight">Sacred Cosmologies</h1>
             <p className="text-muted-foreground text-sm mt-0.5">
-              The philosophical foundations of Hiero-Code — six traditions, one living network
+              The philosophical foundations of Hiero-Code — nine traditions, one living network
             </p>
           </div>
         </div>
@@ -338,7 +338,7 @@ export default function Cosmology() {
       </div>
 
       <Tabs defaultValue="ase" className="w-full">
-        <TabsList className="grid grid-cols-3 md:grid-cols-6 h-auto gap-1 bg-card border border-border p-1">
+        <TabsList className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 h-auto gap-1 bg-card border border-border p-1">
           <TabsTrigger value="ase" className="text-xs flex flex-col gap-0.5 py-2 h-auto">
             <span className="text-lg">𓂋</span>
             <span>Àṣẹ Power</span>
@@ -362,6 +362,18 @@ export default function Cosmology() {
           <TabsTrigger value="trees" className="text-xs flex flex-col gap-0.5 py-2 h-auto">
             <span className="text-lg">𓇳</span>
             <span>Trees of Life</span>
+          </TabsTrigger>
+          <TabsTrigger value="spider" className="text-xs flex flex-col gap-0.5 py-2 h-auto">
+            <span className="text-lg">🕸️</span>
+            <span>Spider Woman</span>
+          </TabsTrigger>
+          <TabsTrigger value="weave" className="text-xs flex flex-col gap-0.5 py-2 h-auto">
+            <span className="text-lg">🧵</span>
+            <span>WEAVE ＞ WALL</span>
+          </TabsTrigger>
+          <TabsTrigger value="void" className="text-xs flex flex-col gap-0.5 py-2 h-auto">
+            <span className="text-lg">𒀀</span>
+            <span>Void Network</span>
           </TabsTrigger>
         </TabsList>
 
@@ -887,6 +899,377 @@ export default function Cosmology() {
                 </div>
               ))}
             </div>
+          </div>
+        </TabsContent>
+
+        {/* ─────────────────────── SPIDER WOMAN ─────────────────────── */}
+        <TabsContent value="spider" className="mt-6 space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="md:col-span-2 space-y-3">
+              <div className="flex items-center gap-2 flex-wrap">
+                <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">Ojibwe Tradition</Badge>
+                <Badge variant="outline" className="text-xs">Aaliyah Alberts, Lac Courte Oreilles</Badge>
+                <Badge variant="outline" className="text-xs">Native Resonance Cohort</Badge>
+              </div>
+              <h2 className="text-2xl font-serif font-bold">The Gift of Spider Woman — Asibikaashi</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                The Ojibwe people, originally from the Lake Superior region spanning Minnesota, Wisconsin, Michigan, and southern Canada, 
+                are known as the creators of the <strong className="text-purple-300">dreamcatcher</strong>. Spider woman, 
+                <strong className="text-purple-300"> Asibikaashi</strong>, was the protector of all Ojibwe children. 
+                When the people dispersed westward to find the food that grows on water (wild rice), 
+                mothers began making spider charms for their children — these evolved into the dreamcatchers we know today.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Dreams are sacred to the Ojibwe. In dreams we are still living — ancestors and the Great Spirit bring messages through them. 
+                Babies and elders are closest to the spirit world, hence the focus on dreamcatcher charms for children's cradles. 
+                The bad dreams are caught in the web; the opening in the center allows good dreams through.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <div className="p-4 rounded-lg bg-purple-950/20 border border-purple-500/20 space-y-2">
+                <div className="text-3xl text-center">🕸️</div>
+                <h4 className="font-serif font-semibold text-purple-300 text-center">The Dreamcatcher</h4>
+                <div className="space-y-1.5 text-xs text-muted-foreground">
+                  {[
+                    { part:"Web (8 knots)", meaning:"Spider's 8 legs — catches bad dreams" },
+                    { part:"Opening at center", meaning:"Good dreams pass through" },
+                    { part:"Feathers (optional)", meaning:"Guides good dreams to the sleeper" },
+                    { part:"Beads (optional)", meaning:"Spider in the web or protection" },
+                  ].map(p => (
+                    <div key={p.part} className="flex gap-2">
+                      <span className="text-purple-400 shrink-0">◆</span>
+                      <span><strong className="text-foreground">{p.part}:</strong> {p.meaning}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="font-serif font-bold text-lg text-purple-300">Spider Woman Across World Cultures</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Most of the world's cultures create objects through the weaving together of fibers. In most cultures, women do the weaving — 
+              the spider has an obvious association with weaving because it is one of the most notable weavers in nature. 
+              Many Indigenous traditions connected the spider with weaving, women, and a creator goddess.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {[
+                { culture:"Ojibwe (Great Lakes)", figure:"Asibikaashi — Spider Woman", role:"Protector of children; source of dreamcatchers", symbol:"🕸️" },
+                { culture:"Hopi & Pueblo (Southwest)", figure:"Spider Woman / Earth Goddess", role:"Co-created the world with the Sun; taught Hopi to spin and weave cotton; assists twin heroes in adventures", symbol:"☀️" },
+                { culture:"Navajo", figure:"Spider Woman (taught by Spider Man)", role:"Taught Navajo to weave on a loom — its top bar Father Sky, bottom bar Mother Earth, two side poles rain and moisture. Spider web rubbed on a newborn girl's hand to make her a good weaver", symbol:"🌦️" },
+                { culture:"Cherokee", figure:"Grandmother Spider", role:"Wove a basket in which she brought both light and fire to the world", symbol:"🔥" },
+                { culture:"Osage", figure:"Spider (Earth clan symbol)", role:"Symbol of the holding or continuing of life, released at death. Spider tattooed on women's hands as honor mark. 'The world of the living is a snare, associated with the spider's web'", symbol:"🌐" },
+                { culture:"Mississippian Culture (Southeast)", figure:"Spider motif on shell gorgets", role:"Cross symbol on the spider's back — associated with fire, centrality, and the four directions; one of few Mississippian symbols specifically linked to women", symbol:"🐚" },
+                { culture:"Maya (Mesoamerica)", figure:"Ix Chel — Lady Rainbow", role:"Goddess of weaving, medicine, and childbirth; associated with the moon, snake, and rabbit. Ancient Maya used 'spiders' to map four cardinal directions", symbol:"🌙" },
+                { culture:"Aztec (Mexico)", figure:"Tlazolteotl — Great Spinner and Weaver", role:"Associated with the moon, fertility, healing, and witchcraft; depicted holding spindles with spindle whorls in hair and cotton at earspools", symbol:"🌿" },
+                { culture:"Andean (South America)", figure:"Spider (gold necklace motif, 2000 BCE)", role:"Spider was important symbol 2000 years ago; found among giant desert floor drawings. 'Tocapu' (weaving) and 'Imaymana' (all of nature) are two sons of the creator — suggesting Andean people thought of weaving and the natural world as two halves of creation", symbol:"🌄" },
+                { culture:"Pawnee (Great Plains)", figure:"Spider Woman — Mother Moon", role:"Originally supplied seeds of edible plants and made bison available to hunters. Through moon powers she transforms herself into a deer", symbol:"🌕" },
+                { culture:"Tlingit (Northwest Coast)", figure:"Spider Woman — Weaver", role:"Associated with weaving and transformation; part of Pacific Northwest cosmological framework", symbol:"🏔️" },
+                { culture:"Achumawi (Northern California)", figure:"Spider Woman and her sons", role:"Stopped the rain and brought back the sun; rewarded with the rainbow glistening in their web", symbol:"🌈" },
+              ].map(c => (
+                <div key={c.culture} className="p-3 rounded-lg border border-purple-500/20 bg-purple-950/10 space-y-1.5">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">{c.symbol}</span>
+                    <div>
+                      <div className="font-semibold text-xs text-purple-300">{c.culture}</div>
+                      <div className="font-mono text-[10px] text-muted-foreground">{c.figure}</div>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{c.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <Separator />
+          <div className="space-y-4">
+            <h3 className="font-serif font-bold text-lg text-purple-300">Dreamcatcher Weaving Patterns</h3>
+            <p className="text-sm text-muted-foreground">Weaving patterns are more than decorative elements — they carry symbolic meanings. Different web styles symbolize various spiritual beliefs or tribal identities.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { name:"Classic Web Pattern", symbol:"◎", desc:"The most iconic pattern — a circular web woven with interconnected loops radiating from the center. Symmetrical and geometric, woven with a single thread. Begin with evenly spaced knots around the hoop; weave inward creating the web by looping through previous knots. Finish with a knot at center, optionally add a bead." },
+                { name:"Spiral Web Pattern", symbol:"🌀", desc:"Introduces a dynamic swirling design within the web. The web spirals inward or outward, creating a sense of movement. Begin with traditional web, then weave in a spiral manner using variations in tension to enhance the effect. Symbolizes the journey of life and spiritual growth, emphasizing movement and evolution." },
+                { name:"Star / Geometric Pattern", symbol:"⭐", desc:"Incorporates geometric shapes — stars, triangles, diamonds — into the web, adding a layer of symbolism. Use contrasting thread colors to map out the desired shape. Add beads or charms at intersections. For example, a star-shaped web signifies guidance and hope." },
+                { name:"Heart-Shaped Web", symbol:"♡", desc:"Expresses love and compassion. Heart outline within the hoop; web fills the heart shape. Divide the hoop into sections, shape the web accordingly, adjusting tension. Finish with feathers and beads. Represents emotional intention in the crafting ritual." },
+                { name:"Mandala-Inspired Pattern", symbol:"✦", desc:"Multiple layers of weaving with radial symmetry and intricate designs, symbolizing unity and harmony. Start from the center, weave outward; incorporate circles, petals, and geometric motifs. Use different thread colors for contrast. Complex, detailed — honors the interconnectedness of all things." },
+                { name:"Multi-Layered Web", symbol:"⊕", desc:"Multiple concentric webs woven within each other. Each layer can have different colors or materials. These layered designs represent complex spiritual concepts or interwoven stories. Mirrors the Pyri Stack memory architecture — each layer retains prior context." },
+              ].map(p => (
+                <div key={p.name} className="p-4 rounded-lg border border-border/50 bg-card space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">{p.symbol}</span>
+                    <h4 className="font-serif font-semibold text-sm text-purple-300">{p.name}</h4>
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{p.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-4 rounded-lg bg-amber-950/10 border border-amber-500/20 space-y-2">
+            <h4 className="font-serif font-semibold text-amber-300">Hiero-Code Alignment</h4>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              In Hiero-Code, the dreamcatcher's 8-knot web maps directly to the 8-state Pyri transition cycle (S₁–S₈ + S₀). 
+              The opening at the center corresponds to the <strong className="text-amber-400">void state S₀</strong> — the null-state from which all emergence begins (Chapter CLXXV: The Day of Not Being). 
+              The feathers are Flow Pyri channels (δ, ε, ζ) that carry good signals downstream. 
+              The web threads are Stack Pyri σ micro-states holding pattern memory.
+            </p>
+          </div>
+        </TabsContent>
+
+        {/* ─────────────────────── WEAVE > WALL ─────────────────────── */}
+        <TabsContent value="weave" className="mt-6 space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="md:col-span-2 space-y-3">
+              <div className="flex items-center gap-2 flex-wrap">
+                <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">S-Tier Evolution</Badge>
+                <Badge variant="outline" className="text-xs">Nagual Methodology</Badge>
+                <Badge variant="outline" className="text-xs">Carlos Castaneda / Spider Woman Synthesis</Badge>
+              </div>
+              <h2 className="text-2xl font-serif font-bold">WEAVE ＞ WALL — The Filtering Intelligence</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Three symbolic systems fused into one design language: <strong className="text-emerald-300">Nagual methodology</strong> (perceptual reconfiguration, alternate modes of awareness), 
+                <strong className="text-emerald-300"> S-tier evolutionary development</strong> (biological optimization against long-term threats), 
+                and <strong className="text-emerald-300"> Dreamcatcher / Spider Woman mythos</strong> (woven filters that distinguish harmful from beneficial patterns). 
+                Together they form a <em>filtering intelligence</em> that protects life by weaving selective permeability into both biology and technology.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg bg-emerald-950/20 border border-emerald-500/20 space-y-3 text-center">
+              <div className="text-4xl">🧵</div>
+              <div className="font-serif font-bold text-emerald-300 text-xl">WEAVE ＞ WALL</div>
+              <div className="text-xs font-mono text-muted-foreground space-y-1">
+                <div className="text-emerald-400">DETECT → FILTER → ALLOW → TRAP</div>
+                <div>Protection is not armor. It is the web.</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { icon:"🔮", title:"1. Nagual — Predictive Pattern Detection", color:"purple", body:"In Castaneda's framing, the Nagual is not a person but a mode of awareness outside ordinary perception — where the world is experienced as flows, fields, and intent rather than objects. In Hiero-Code terms: Nagual = the system state where patterns are seen BEFORE they manifest as threats. Parasites succeed because hosts detect too late. Nagual perception is pre-event detection — awareness of pattern before harm. Nagual becomes the predictive layer of the system." },
+              { icon:"🕸️", title:"2. Spider Woman — Selective Filter / Intelligent Permeability", color:"purple", body:"A dreamcatcher does not block everything. It lets good pass, traps what harms. This is the exact opposite of walls, armor, or forcefields — it is intelligent permeability. That is the biological gold standard for immune systems. A spider web has ideal properties: high surface area, patterned geometry, selective adhesion, vibration sensing, signal transmission through threads, minimal material / maximal function." },
+              { icon:"🧬", title:"3. S-Tier Evolutionary Pressure — Ancient Parasite War", color:"green", body:"For millions of years, humans and pre-human mammals have been in conflict with mosquitoes, ticks, fleas, parasitoid insects, worms, and fungal spores. The most successful defenses have never been brute force — they have been: hair, skin oils, immune pattern recognition, behavioral avoidance, sleep shelters, nets, smoke, web-like barriers. The mosquito net is literally a dreamcatcher in material form. This is where mythos becomes engineering." },
+              { icon:"🔬", title:"4. Dreamcatcher → Bio-Sensor Mesh", color:"green", body:"Dreamcatcher as a woven network that: detects micro-vibrations (movement of insects), carries signal across threads (alert system), physically traps parasites. Scalable from bed nets → clothing fibers → architectural mesh → environmental sensor arrays. Not science fiction — directionally aligned with smart textiles, biomimetic materials, and distributed sensing networks. Your framing gives it mythic cohesion." },
+            ].map(({ icon, title, color, body }) => (
+              <div key={title} className={`p-4 rounded-lg border border-${color}-500/20 bg-${color}-950/10 space-y-2`}>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl">{icon}</span>
+                  <h4 className={`font-serif font-semibold text-${color}-300 text-sm leading-snug`}>{title}</h4>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+
+          <Separator />
+          <div className="space-y-4">
+            <h3 className="font-serif font-bold text-lg text-emerald-300">The Tent System — Vertical Filtering Organism</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Within a tent system, fire is usually present with a hole at the top. With a dreamcatcher inside the dwelling, 
+              both land and air-dwelling parasites would be mitigated simultaneously. In mobile dwellings (Tipi, Chum), 
+              a central fire and smoke hole create constant upward airflow — the dwelling is not a box. It is a flow system.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { layer:"Ground Perimeter", function:"Draft + smoke", parasites:"Crawling insects, ticks, fleas", icon:"🌿" },
+                { layer:"Rising Heat Column", function:"Upward airflow", parasites:"Flying insects drawn to CO₂, heat, light", icon:"🔥" },
+                { layer:"Internal Web (Dreamcatcher)", function:"Intercept + trap + vibration sense", parasites:"Both air and surface movers simultaneously", icon:"🕸️" },
+              ].map(l => (
+                <div key={l.layer} className="p-4 rounded-lg border border-emerald-500/20 bg-emerald-950/10 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">{l.icon}</span>
+                    <h4 className="font-serif font-semibold text-emerald-300 text-sm">{l.layer}</h4>
+                  </div>
+                  <div className="text-xs space-y-1">
+                    <div><span className="text-muted-foreground">Function:</span> <span className="text-foreground">{l.function}</span></div>
+                    <div><span className="text-muted-foreground">Mitigates:</span> <span className="text-foreground">{l.parasites}</span></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="p-4 rounded-lg bg-amber-950/10 border border-amber-500/20 space-y-2">
+              <h4 className="font-serif font-semibold text-amber-300">Nagual Layer: The Web as Data Surface</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                The web is also a visual indicator (you see what's being caught), a vibration indicator (movement reveals presence), 
+                and a pattern memory of local threats over time. The longer the dwelling is lived in, 
+                the more soot and resin make the fibers adhesive — <em>the filter becomes more effective the longer the system runs.</em> 
+                This is Nagual again: pattern recognition before harm. The soothsayer seated at the fire occupies the highest signal zone in the dwelling — 
+                they become <strong className="text-amber-400">the one who reads the web</strong>, positioned where information concentrates.
+              </p>
+            </div>
+          </div>
+
+          <Separator />
+          <div className="space-y-4">
+            <h3 className="font-serif font-bold text-lg">Nagual + Dreamcatcher = Predictive Web</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border/50 text-muted-foreground text-xs uppercase tracking-wider font-mono">
+                    <th className="text-left py-2 pr-4">Layer</th>
+                    <th className="text-left px-3 py-2">Mythic Symbol</th>
+                    <th className="text-left px-3 py-2">Functional Translation</th>
+                    <th className="text-left px-3 py-2">Hiero-Code Module</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { layer:"Nagual",       myth:"Seeing beyond",      func:"Predictive pattern detection",           hiero:"SENSING_EXPAND" },
+                    { layer:"Spider Woman", myth:"Weaver of patterns",  func:"Network architecture",                   hiero:"WEB_WEAVE" },
+                    { layer:"Dreamcatcher", myth:"Filter",              func:"Selective permeability",                 hiero:"MAAT_BALANCE" },
+                    { layer:"Web threads",  myth:"Threaded sensing",    func:"Distributed bio-mesh / Pyri channels",  hiero:"CHANNEL_PROPAGATE" },
+                    { layer:"Parasite war", myth:"Ancient threat",      func:"Evolutionary design driver",             hiero:"STABILIZE_CORE" },
+                    { layer:"Fire + smoke", myth:"Convection breath",   func:"Creates upward detection flow",         hiero:"ASE_AMPLIFY" },
+                    { layer:"Soothsayer",   myth:"Observer at center",  func:"Pattern interpreter / Core Pyri",        hiero:"HIERO_TRANSITION" },
+                  ].map(r => (
+                    <tr key={r.layer} className="border-b border-border/20 hover:bg-muted/20">
+                      <td className="py-2.5 pr-4 font-semibold text-emerald-300">{r.layer}</td>
+                      <td className="px-3 py-2.5 text-muted-foreground text-xs">{r.myth}</td>
+                      <td className="px-3 py-2.5 text-xs">{r.func}</td>
+                      <td className="px-3 py-2.5 font-mono text-[10px] text-amber-400">{r.hiero}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="p-4 rounded-lg bg-emerald-950/20 border border-emerald-500/30 space-y-2">
+              <h4 className="font-serif font-semibold text-emerald-300">Hiero-Code Module: WEB / WEAVE</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed font-mono">
+                Core principle: Protection is achieved not by walls, but by intelligent filtering patterns.
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
+                {["Pattern detection (Nagual)","Networked threads (Spider Woman)","Harm filtering (Dreamcatcher)","Bio-defense (S-tier evolution)"].map(f => (
+                  <div key={f} className="text-xs text-emerald-300/80 bg-emerald-950/30 rounded p-2 text-center border border-emerald-500/20">
+                    {f}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </TabsContent>
+
+        {/* ─────────────────────── VOID NETWORK ─────────────────────── */}
+        <TabsContent value="void" className="mt-6 space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="md:col-span-2 space-y-3">
+              <div className="flex items-center gap-2 flex-wrap">
+                <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">Void-Network Architecture</Badge>
+                <Badge variant="outline" className="text-xs">PyriNode Framework</Badge>
+                <Badge variant="outline" className="text-xs">Channel-Based Propagation α–ζ</Badge>
+              </div>
+              <h2 className="text-2xl font-serif font-bold">Void Network — Pyri Interpreter Core</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                The Void Network is the computational substrate of Hiero-Code — a network of autonomous <strong className="text-blue-300">PyriNodes</strong>, 
+                each with unique identity, state, and customizable rules. Nodes form bidirectional weighted connections, execute rules in parallel, 
+                and broadcast results across the network. This replaces randomness with deterministic, rule-driven evolution: 
+                <strong className="text-amber-400"> channel-based propagation (α–ζ)</strong>, Hiero-Code transitions, 
+                multi-channel articulation, stack memory, and core stabilization.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                The interactive Pyri Network page (<span className="text-amber-400 font-mono">/pyri-network</span>) provides a live animated 
+                visualization of these micro-state dynamics. Navigate there to watch S₀–S₈ transitions propagate across Core, Edge, Stack, and Flow Pyri in real time.
+              </p>
+            </div>
+            <div className="space-y-2">
+              {[
+                { type:"Core Pyri",  color:"orange", icon:"◉", desc:"μ0–μ2 micro-states. Global state orchestrator. Stabilizes the network." },
+                { type:"Edge Pyri",  color:"blue",   icon:"◈", desc:"I/O interface. Channels α, β, γ. External triggers and sensors." },
+                { type:"Stack Pyri", color:"green",  icon:"⊞", desc:"σ0–σn computation layer. Stack memory. Intermediate calculations." },
+                { type:"Flow Pyri",  color:"purple", icon:"⊳", desc:"δ, ε, ζ propagation. Transmits signals. Feedback loops and priority." },
+              ].map(n => (
+                <div key={n.type} className={`flex items-start gap-2 p-2.5 rounded border border-${n.color}-500/20 bg-${n.color}-950/10`}>
+                  <span className={`text-${n.color}-400 text-lg leading-none mt-0.5`}>{n.icon}</span>
+                  <div>
+                    <div className={`font-mono text-xs font-bold text-${n.color}-300`}>{n.type}</div>
+                    <div className="text-[10px] text-muted-foreground">{n.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="font-serif font-bold text-lg">Channel Connections — Signal Flow Architecture</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {[
+                { from:"Edge1 → Core",   ch:"μ0→μ1 (α)",      weight:"0.8", type:"input",    color:"blue" },
+                { from:"Edge2 → Core",   ch:"μ1→μ2 (β)",      weight:"0.6", type:"input",    color:"blue" },
+                { from:"Core → Stack1",  ch:"μ2→σ0 (γ)",      weight:"0.7", type:"compute",  color:"green" },
+                { from:"Core → Stack2",  ch:"μ1→σ1 (γ)",      weight:"0.5", type:"compute",  color:"green" },
+                { from:"Stack1 → Flow1", ch:"σ0→δ",           weight:"0.9", type:"flow",     color:"purple" },
+                { from:"Stack2 → Flow2", ch:"σ1→ε",           weight:"0.8", type:"flow",     color:"purple" },
+                { from:"Flow1 → Core",   ch:"δ→μ0 (feedback)", weight:"0.4", type:"feedback", color:"amber" },
+                { from:"Flow2 → Edge1",  ch:"ε→α (feedback)", weight:"0.3", type:"feedback", color:"amber" },
+                { from:"Flow1 ↔ Flow2",  ch:"ζ channel",      weight:"0.5", type:"lateral",  color:"purple" },
+                { from:"Stack1 ↔ Stack2",ch:"σ modulation",   weight:"0.3", type:"lateral",  color:"green" },
+              ].map(e => (
+                <div key={e.from} className={`flex items-center gap-3 p-2.5 rounded border border-${e.color}-500/20 bg-${e.color}-950/10`}>
+                  <div className="font-mono text-xs text-foreground w-32 shrink-0">{e.from}</div>
+                  <div className={`font-mono text-[10px] text-${e.color}-400 flex-1`}>{e.ch}</div>
+                  <div className="font-mono text-[10px] text-muted-foreground">w={e.weight}</div>
+                  <Badge variant="outline" className={`text-[9px] border-${e.color}-500/30 text-${e.color}-400`}>{e.type}</Badge>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <Separator />
+          <div className="space-y-3">
+            <h3 className="font-serif font-bold text-lg">Multi-Cultural Micro-State Transition Table</h3>
+            <p className="text-xs text-muted-foreground">Nine deterministic states shown in all four symbolic layers simultaneously. Numerology is a combination of Mayan, Sumerian, and Egyptian traditions.</p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="border-b border-border/50 text-muted-foreground font-mono text-[10px] uppercase tracking-wider">
+                    <th className="text-left py-2 pr-2">State</th>
+                    <th className="text-center px-1">α/β/γ</th>
+                    <th className="text-center px-1">δ/ε/ζ</th>
+                    <th className="text-center px-2">Sumerian</th>
+                    <th className="text-center px-2">Egyptian</th>
+                    <th className="text-center px-2">Emoji</th>
+                    <th className="text-left px-2">Next</th>
+                    <th className="text-left px-2">Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { s:"S₀", abc:"000", def_:"000", sum:"𒀀0 𒁀0 𒂀0", egy:"𓀀0 𓁐0 𓂋0", emoji:"🌑0 🌘0 🌗0", next:"S₁", note:"Initialization" },
+                    { s:"S₁", abc:"100", def_:"000", sum:"𒀀1 𒁀0 𒂀0", egy:"𓀀1 𓁐0 𓂋0", emoji:"🌑1 🌘0 🌗0", next:"S₂", note:"α primes γ" },
+                    { s:"S₂", abc:"110", def_:"000", sum:"𒀀1 𒁀1 𒂀0", egy:"𓀀1 𓁐1 𓂋0", emoji:"🌑1 🌘1 🌗0", next:"S₃", note:"α+β → γ cue" },
+                    { s:"S₃", abc:"111", def_:"000", sum:"𒀀1 𒁀1 𒂀1", egy:"𓀀1 𓁐1 𓂋1", emoji:"🌑1 🌘1 🌗1", next:"S₄", note:"γ active, δ primed" },
+                    { s:"S₄", abc:"011", def_:"100", sum:"𒀀0 𒁀1 𒂀1", egy:"𓀀0 𓁐1 𓂋1", emoji:"🌑0 🌘1 🌗1", next:"S₅", note:"δ from prior γ" },
+                    { s:"S₅", abc:"001", def_:"110", sum:"𒀀0 𒁀0 𒂀1", egy:"𓀀0 𓁐0 𓂋1", emoji:"🌑0 🌘0 🌗1", next:"S₆", note:"ε primes ζ" },
+                    { s:"S₆", abc:"000", def_:"111", sum:"𒀀0 𒁀0 𒂀0", egy:"𓀀0 𓁐0 𓂋0", emoji:"🌑0 🌘0 🌗0", next:"S₇", note:"Stabilize — reset α" },
+                    { s:"S₇", abc:"000", def_:"011", sum:"𒀀0 𒁀0 𒂀0", egy:"𓀀0 𓁐0 𓂋0", emoji:"🌑0 🌘0 🌗0", next:"S₈", note:"ζ persists, ε decays" },
+                    { s:"S₈", abc:"000", def_:"001", sum:"𒀀0 𒁀0 𒂀0", egy:"𓀀0 𓁐0 𓂋0", emoji:"🌑0 🌘0 🌗0", next:"S₀", note:"Loop reset ↺" },
+                  ].map((row, i) => (
+                    <tr key={i} className="border-b border-border/20 hover:bg-muted/20">
+                      <td className="py-2 pr-2 font-bold text-amber-400 font-mono">{row.s}</td>
+                      <td className="text-center px-1 font-mono text-blue-400">{row.abc}</td>
+                      <td className="text-center px-1 font-mono text-purple-400">{row.def_}</td>
+                      <td className="text-center px-2 font-mono text-orange-300 text-[10px]">{row.sum}</td>
+                      <td className="text-center px-2 font-mono text-yellow-300 text-[10px]">{row.egy}</td>
+                      <td className="text-center px-2 text-[11px]">{row.emoji}</td>
+                      <td className="px-2 text-purple-300 font-mono">{row.next}</td>
+                      <td className="px-2 text-muted-foreground text-[10px]">{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-lg bg-blue-950/10 border border-blue-500/20 space-y-2">
+            <h4 className="font-serif font-semibold text-blue-300">Why This Matters for Hiero-Code</h4>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              The Void Network bridges all seven philosophical traditions: àṣẹ flows as the energy propagating through channels (α–ζ). 
+              Maat Balance governs core stabilization (neither runaway nor collapse). 
+              Book of the Dead provides the 9 procedural states (S₀=void, S₁=emerging, S₈=return). 
+              Teotl / Nahua animates each node as a Tonalli (solar head-force) and Teyolia (heart fire). 
+              The Dao shapes Wu-Wei stabilization — do not force; let it settle at natural balance. 
+              Spider Woman's web is the weighted connection topology. 
+              Nagual perception is the multi-channel articulation cue — seeing the pattern before the state.
+            </p>
           </div>
         </TabsContent>
       </Tabs>

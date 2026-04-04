@@ -17,6 +17,7 @@ import Glyphs from "@/pages/glyphs";
 import Framework from "@/pages/framework";
 import Emotions from "@/pages/emotions";
 import Cosmology from "@/pages/cosmology";
+import PyriNetwork from "@/pages/pyri-network";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,6 +44,7 @@ function Router() {
         <Route path="/framework" component={Framework} />
         <Route path="/emotions" component={Emotions} />
         <Route path="/cosmology" component={Cosmology} />
+        <Route path="/pyri-network" component={PyriNetwork} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

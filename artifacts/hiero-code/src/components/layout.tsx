@@ -14,6 +14,7 @@ import {
   ChevronDown,
   ChevronRight,
   Orbit,
+  Network,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -51,6 +52,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/framework", label: "Framework", icon: ScrollText },
     { href: "/emotions", label: "Emotion Nodes", icon: Smile },
     { href: "/cosmology", label: "Cosmologies", icon: Orbit },
+    { href: "/pyri-network", label: "Pyri Network", icon: Network },
   ];
 
   const isActive = (href: string) =>
