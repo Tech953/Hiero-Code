@@ -1,0 +1,2487 @@
+Three thousand years of sexagesimal numbers in Mesopotamian
+mathematical texts
+Downloaded from: https://research.chalmers.se, 2026-03-27 22:58 UTC
+
+Citation for the original published paper (version of record):
+Friberg, J. (2019). Three thousand years of sexagesimal numbers in Mesopotamian mathematical
+texts. Archive for History of Exact Sciences, 73(2): 183-216.
+http://dx.doi.org/10.1007/s00407-019-00221-3
+
+N.B. When citing this work, cite the original published paper.
+
+research.chalmers.se offers the possibility of retrieving research publications produced at Chalmers University of Technology. It
+covers all kind of research output: articles, dissertations, conference papers, reports etc. since 2004. research.chalmers.se is
+administrated and maintained by Chalmers Library
+
+(article starts on next page)
+
+Archive for History of Exact Sciences (2019) 73:183–216
+https://doi.org/10.1007/s00407-019-00221-3
+
+Three thousand years of sexagesimal numbers
+in Mesopotamian mathematical texts
+Jöran Friberg1
+Received: 26 May 2018 / Published online: 9 February 2019
+© The Author(s) 2019
+
+Abstract
+The Mesopotamian system of sexagesimal counting numbers was based on the progressive series of units 1, 10, 1·60, 10·60, …. It may have been in use already before
+the invention of writing, with the mentioned units represented by various kinds of
+small clay tokens. After the invention of proto-cuneiform writing, c. 3300 BC, it
+continued to be used, with the successive units of the system represented by distinctive impressed cup- and disk-shaped number signs. Other kinds of “metrological”
+number systems in the proto-cuneiform script, with similar number signs, were used
+to denote area numbers, capacity numbers, etc. In a handful of known mathematical
+cuneiform texts from the latter half of the third millennium BC, the ancient systems
+of sexagesimal counting numbers and area numbers were still in use, alongside new
+kinds of systems of capacity numbers and weight numbers. Large area numbers,
+capacity numbers, and weight numbers were counted sexagesimally, while each
+metrological number system had its own kind of fractional units. In the system of
+counting numbers itself, fractions could be expressed as sixtieths, sixtieths of sixtieths, and so on, but also in terms of small units borrowed from the system of weight
+numbers. Among them were the “basic fractions” which we would understand as
+1/3, 1/2, and 2/3. In a very early series of metro-mathematical division exercises and
+an equally early metro-mathematical table of squares (Early Dynastic III, c. 2400
+BC), “quasi-integers” of the form “integer plus basic fraction” play a prominent
+role. Quasi-integers play an essential role also in a recently found atypical cuneiform
+table of reciprocals. The invention of sexagesimal numbers in place-value notation,
+in the Neo-Sumerian period c. 2000 BC, was based on a series of innovations. The
+range of the system of sexagesimal counting numbers was extended indefinitely
+both upward and downward, and the use of quasi-integers was abolished. Sexagesimal place-value numbers were used for all kinds of calculations in Old Babylonian
+mathematical cuneiform texts, c. 1700 BC, while traditional metrological numbers
+were retained in both questions and answers of the exercises. Examples of impressive computations of reciprocals of many-place regular sexagesimal place-value
+Communicated by Alexander Jones.
+Extended author information available on the last page of the article
+
+13
+
+Vol.:(0123456789)
+
+184
+
+J. Friberg
+
+numbers, with no practical applications whatsoever, are known from the Old Babylonian period. In the Late Babylonian period (the latter half of the first millennium
+BC), such computations were still popular, performed by the same persons who constructed the many-place sexagesimal tables that make up the corpus of Late Babylonian mathematical astronomy.
+
+1  Preliterate number tokens possibly representing sexagesimal
+numbers
+1
+
+It is now well known that people in Mesopotamia and neighboring regions were
+using small clay figurines, so-called tokens, for as much as 5 millennia before the
+invention of writing (around 3300 BC), almost certainly for some kind of communication and archiving.2 Also known is that, a relatively short time before the invention of writing, groups of such tokens started to be enclosed in hollow clay balls,
+known as bullae, sometimes with indications on the outside about the contents. Such
+bullae have been found not only in the ancient Mesopotamian city Uruk, but also
+much further east, in the ancient city Susa in what is now Iran.
+It seems to be a reasonable conjecture that some of the tokens enclosed in bullae
+were direct preliterate precursors of various types of proto-cuneiform number signs
+on inscribed clay tablets from Uruk, and “proto-Elamite” number signs on inscribed
+clay tablets from Susa. Actually, in some cases it is feasible to try to interpret the
+numerical meaning of groups of tokens enclosed in bullae through comparison with
+proto-cuneiform or proto-Elamite number signs.3 One clear example is Sb 1927, a
+bulla from proto-Elamite Susa, with the following contents and outside inscription.
+
+The inscription on the outside of Sb 1927 appears to be a description of the
+tokens inside the bulla, with the three round holes on the outside resulting from one
+of the smaller cones being pushed into the clay with the point first. Interestingly, the
+inscription on the outside seems to have been imprinted from right to left, just as the
+proto-Elamite script was inscribed from right to left.
+
+1
+
+An updated version of Friberg (2014).
+Schmandt-Besserat (1992).
+3
+See Friberg (2007), pp. 380–384.
+2
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+185
+
+Although the proto-Elamite script (still mostly undeciphered) was unrelated to
+the proto-cuneiform script, there were clear similarities between the various systems
+of number notations used in the two scripts. In particular, system S of sexagesimal
+counting numbers was shared by both. Now, assuming that the tokens inside the
+bulla Sb 1927 represented sexagesimal numbers, one can make a conjectural identification of the punched cone, the smaller cones and the lenses inside the bulla with
+the signs for the units 10 · 60, 60, and 10 of system S. As shown in the diagram
+below, the proto-cuneiform/proto-Elamite signs for those three units were a diskshaped d, a large cup-shaped C, and a punched large cup Cd.
+
+If this identification of the tokens inside Sb 1927 with sexagesimal number units
+is correct, then the meaning of the whole set of tokens inside Sb 1927 ought to be
+1(10 · 60) 3(60) 3(10), in other words 13 · 60 + 30.
+Interestingly, this number in its turn may be interpreted as an “almost round”
+sexagesimal number4 of the following form:
+13 1/2 · 60 = (1 – 1/10) · 15(60).
+
+2  Other tentatively identified preliterate systems of number
+notations
+In examples like the one above, rods, lenses, cones, and a punched cone which have
+been found together in bullae can be compared to the units 1, 10, 60, and 10 · 60 of
+the well-documented proto-cuneiform/proto-Elamite system S of sexagesimal counting numbers. Note the alternation of factors 10 and 6 in the factor diagram for system S.
+In another example, disks, balls, large balls, and high disks, which may be found
+together in other preliterate bullae, can be tentatively identified with the units c, d,
+
+4
+
+For the concept of “almost round numbers”, see Friberg (1997/98).
+
+13
+
+186
+
+J. Friberg
+
+D, and C of the well-known proto-cuneiform/proto-Elamite system C of capacity
+numbers, used to quantify volumes of barley and similar products.
+
+In the proto-Elamite script, the system S(pc/pE) of sexagesimal counting numbers was accompanied by an exclusively proto-Elamite system D(pE) of decimal
+counting numbers. Each system was used for its own specific purposes. Interestingly, the tokens contained in Sb 1967, a bulla from proto-Elamite Susa5 (see the
+diagram below), can tentatively be interpreted as a set of tetrahedral tokens standing for units of a decimal system D(pE) and a separate set of ball-shaped tokens
+standing for units of system C(pc/pE). If this interpretation is correct, then the two
+larger balls and four small balls can stand for the capacity number 2D 4d, equal to
+24 d, while the three large tetrahedrons, the two punched tetrahedrons, and the four
+small tetrahedrons can stand for the decimal number 3(100) 2(10) 4 = three hundred
+twenty-four.
+
+Here 3(100) 2(10) 4 can be explained as an “almost round” decimal number.
+Indeed,
+3(100) 2(10) 4 = 27 · 12 = (1 – 1/10) · 6(60).
+
+5
+
+See Friberg (2007) A Remarkable Collection, p. 382.
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+187
+
+Therefore, the meaning of the tokens inside the bulla Sb 1967 may have been
+that 2D 4d = 24 d of barley were accounted for as the wages in barley for (1 – 1/10)
+· 6(60) work days or (1 – 1/10) · 12 work months. This corresponds to the following
+wage rate:
+2d of barley for (1 – 1/10) month of work, which is the same as (1 + 1/9) · 2d of
+barley for 1 month’s work.
+
+3  Sexagesimal or bisexagesimal counting numbers and whole
+or fractional capacity units in a proto‑cuneiform school text
+
+MSVO 4, 66
+
+vi
+
+v
+
+iv
+
+iii
+
+ii
+
+i
+
+obv.
+a
+1
+b
+a
+2
+b
+
+ii
+
+i
+
+ii
+
+iii
+
+MSVO 4, 66
+
+i
+
+rev.
+
+2
+
+a
+1
+b
+iii
+
+ii
+
+i
+
+Just as two different systems of counting numbers were made use of in the protoElamite script, namely sexagesimal and decimal, there were two different systems of
+counting numbers in use in proto-cuneiform texts, namely sexagesimal and bisexagesimal. Bisexagesimal numbers seem to have been used exclusively for counting
+
+13
+
+188
+
+J. Friberg
+
+rations of bread and related products. They differ from sexagesimal numbers by having special notations for 2 · 60, for 10 · 2 · 60, and for 60 · 2 · 60.
+MSVO 4, 66, shown above, is a well-known proto-cuneiform “bread-and-beer
+text” from the so-called Jemdet Nasr period, about 3000 BC. It is remarkable
+because it makes use of several different proto-cuneiform systems of number notations. In addition, it contains quite sophisticated calculations.6
+The lack of names and titles of persons in charge of the account in the empty
+box 1:iv on the reverse of MSVO 4, 66 indicates that this is a school text rather than
+a normal administrative proto-cuneiform text. It is easy to see that the text lists
+expenses of barley for large and small rations of bread and beer, but the presence
+of both unusually large numbers and of rations of many different sizes confirms the
+expression that this is a rather advanced “metro-mathematical” exercise aiming to
+train students both in proper attention to metrological questions and in performing
+complicated mathematical operations.
+Below is shown a factor diagram for the system B(pc) of bisexagesimal numbers,
+followed by a factor diagram for the proto-cuneiform system C(pc) of capacity numbers, showing both multiples and fractions of the basic capacity unit here called c.
+Dd2
+
+M2d
+
+B(pc) :
+60 · 2 · 60
+
+C
+
+M2
+
+6?
+
+10
+
+10 · 2 · 60
+
+d
+
+2
+
+60
+
+2 · 60
+
+c
+10
+
+6
+
+10
+
+1
+
+m2
+C
+
+C(pc) :
+3D
+
+d
+
+D
+3
+
+10
+
+60 c
+
+c
+
+6c
+
+M
+
+2
+
+5
+
+6
+
+5M
+
+1/5 c
+
+6
+
+d×s
+
+1/2 M
+
+m6d
+
+m6
+
+1/10 M 1/20 M
+
+1/6 M
+
+The list of notations for fractions of the basic capacity unit c starts with the
+“minor” unit M, equal to 1/5 of c. Fractions of M in its turn, from m2 = 1/2M to
+m6 = 1/6M, have the form of wreaths of small marks, from 2 to 6. (There are also
+known special signs for 1/10 and 1/20 of M, although those two signs do not appear
+in MSVO 4, 66.) Knowing this, it is easy to understand the calculations taking place
+in the five text boxes 1:i to 1:vi on the obverse of MSVO 4, 66, making use of bisexagesimal counting numbers:
+1(60) · M = 12 c = 2d, 1(2 · 60) · m2 = 12 c = 2d, 1(2 · 60) · m3 = 8 c = 1d 2c,
+6
+
+Englund (1996) and Friberg (1999).
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+189
+
+2(2 · 60) 1(60) · m4 = 5(60) · m4 = 15 c = 2d 3c, 5(2 · 60) · m5 = 1(2 · 60) · M = 4d,
+5(10 · 2 · 60) · m6 (not explicitly indicated) = 5 · 40 c = 1C 3d 2c.
+In the three text boxes 2:i to 2:iii on the obverse of MSVO 4, 66, jars of beer
+of three different (presumably known but not explicitly mentioned) strengths are
+counted in terms of sexagesimal counting numbers, 2(60), 3(60), and 5(60).
+The grand totals inscribed on the reverse of the text are remarkably large and
+round numbers. Thus, the number of bread rations between M and m6 is
+1(60) + 1(2 · 60) + 1(2 · 60) + 2(2 · 60) 1(60) + 5(2 · 60) + 5(10 · 2 · 60) = 1(60 · 2 · 60).
+
+(rev. 1:ia-1:iia)
+
+The total number of jars of beer is
+2(60) + 3(60) + 5(60) = 1(10 · 60).
+
+(rev. 1:iiia)
+
+The grand total of all expenses of barley is an almost round number. Indeed
+2C = 6(60)d = 360 c = 1800M, 1c 4M = 9M, so that 1C 2D 9d 4c 1M = (1 – 1/200)
+· 2C.
+This can hardly be by accident, but why the grand total is of this kind is hard to
+explain.
+
+4  Counting with loan and interest in a proto‑cuneiform text
+Recently, a number of proto-cuneiform texts from the Uruk III period (c. 3200–3000
+BC) have been identified as being concerned with loan and interest.7 One of them is
+CUSAS 1, 143, shown below.
+
+Like all other known mathematical cuneiform texts from before the Neo-Sumerian period, this is really a metro-mathematical exercise: In text box i of this text, it
+
+7
+
+Monaco (2012). See also Friberg and Al-Rawi (2016), Ch. 13.7.
+
+13
+
+190
+
+J. Friberg
+
+is said that the daily ration of some non-fluid product is m4. In text box ii:a-b, it
+is stated that the corresponding monthly cost in barley is 1c 3M m5 dxs, which is
+explicitly explained as the sum of the “loan” 1c 2M m2 = 30 m4 and the “interest”
+m2 m5 dxs. It is easy to see that the interest is precisely 1/10 of the loan. Indeed,
+1c 2M m2 = 7M m2 = 15 m2, of which 1/10 is 15 dxs = (10 + 4 + 1) dxs = m2 m5
+dxs.
+In other words, the monthly expense of barley is computed here as
+(1 + 1/10) · 1c 2M m2 = (1 + 1/10) · 30 · m2.
+In text box iii, the expense for five months is computed (somewhat incorrectly) as
+12c 1M m2 (instead of 12c 1M m4).
+Note the use of proto-cuneiform number signs for time measures, here 1 and
+5 months. Note also that no cuneiform sign for “1/10” is used here, only the sign __
+for “interest.”
+
+5  The historical development of the system of sexagesimal numbers
+Above have been mentioned several known proto-cuneiform and/or proto-Elamite
+number systems, the systems S and C of sexagesimal counting numbers and capacity numbers, the system B of bisexagesimal counting numbers, and the system D
+of decimal counting numbers (proto-Elamite only). In addition, there was a protocuneiform system E of (probably) weight numbers, a system T of time numbers, and
+a system A of proto-cuneiform area numbers, the latter intimately related to length
+numbers (sexagesimal multiples of a certain basic length unit).8
+The decimal system D disappeared when the short-lived proto-Elamite script
+ceased to exist. As a matter of fact, in Sumerian and Akkadian texts from the Early
+Dynastic III period half a millennium after the time of the last proto-cuneiform
+texts, only systems S and A remained of the many early systems of numbers. The
+system A of area numbers was still in use in the Old Babylonian period in the first
+half of the second millennium BC, while sexagesimal numbers continued to be used
+until the end of the cuneiform script, at least in mathematical (and astronomical)
+cuneiform texts.
+The purpose of the four factor diagrams below is to show the development of
+notations for sexagesimal numbers through four different periods of the history of
+the cuneiform script in Mesopotamia.
+
+8
+
+See Nissen et al. (1993), Fig. 50.
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+191
+
+The first one of these factor diagrams shows number notations for units of sexagesimal numbers used in the proto-cuneiform and proto-Elamite scripts around 3300–2900
+BC. The second diagram shows that essentially the same number notations were used
+for sexagesimal numbers in (Old) Sumerian and Old Akkadian texts from the third millennium, possibly after rotation of the script. The third diagram shows the same set of
+number notations in (Neo-)Sumerian and Babylonian texts from the late third millennium and onward, when the “round” forms of number notations had been replaced by
+“sharp” forms. “Basic fractions” is a suitable name for the fractions which we would
+understand as 1/3, 1/2, 2/3, and 5/6, for which the following cuneiform notations existed:
+
+They were probably related to notations for fractions in an Old Sumerian and Old
+Akkadian system of weight numbers.
+The fourth factor diagram above, finally, refers to sexagesimal numbers in floating place-value notation, which were in use, almost exclusively, in Neo-Sumerian
+and Babylonian mathematical texts from about 2000 BC and onward (and Late Babylonian astronomical texts from the second half of the first millennium BC):
+
+6  An Old Sumerian (Early Dynastic III) division exercise, around 2600 BC
+
+13
+
+192
+
+J. Friberg
+
+Like all other known mathematical cuneiform texts from before the Neo-Sumerian
+period, TSS 50 (shown above) is really a metro-mathematical exercise:
+The barley in a full granary of (apparently) known capacity has to be divided into
+individual rations of 7 sìla each. (The sìla was a capacity unit equal to around
+1 L.) Find the number of rations.
+The answer given in the text of the exercise is that the number of rations was
+45(60 · 60) 42(60) 51, with a remainder of 3 sìla. The text does not tell how this
+result was achieved. Now, in an attempt to explain the needed computation, a reasonable starting point is to assume that the (presumably) known capacity of the granary was 40(60) gur.mah, where
+1 gur.mah = 8 barig, 1 barig = 6 bán, 1 bán = 10 sìla.
+In agreement with this assumption, the division of the presumed total 40(60) gur.
+mah by 7 sìla, without recourse to sexagesimal numbers in place-value notation, can
+be explained as follows. Note that this is a metro-mathematical algorithmic computation, where each step of the computation builds on the result obtained in the previous step.
+1 bán
+
+=
+
+1 barig
+
+=
+
+6 · 1 bán =
+
+1
+
+ration
+
+plus
+
+3 sìla
+
+8
+
+rations
+
+plus
+
+4 sìla
+
+1 gur.mah
+
+=
+
+8 · 1 barig =
+
+1(60) 8
+
+rations
+
+plus
+
+4 sìla
+
+10 gur.mah
+
+=
+
+10 · 1 gur.mah =
+
+11(60) 25
+
+rations
+
+plus
+
+5 sìla
+
+1(60) gur.mah
+
+=
+
+6 · 10 gur.mah =
+
+1(60 · 60) 8(60) 34
+
+rations
+
+plus
+
+2 sìla
+
+10(60) gur.mah
+
+=
+
+10 · 1(60) gur.mah =
+
+11(60 · 60) 25(60) 42
+
+rations
+
+plus
+
+6 sìla
+
+40(60) gur.mah
+
+=
+
+4 · 10(60) gur.mah =
+
+45(60 · 60) 42(60) 51
+
+rations
+
+plus
+
+3 sìla
+
+This presumed algorithmic computation is modeled after the explicitly performed
+metro-mathematical algorithmic division of 1 rí-ba (= 10,000) níg.sagshu by 24 níg.
+sagshu in the roughly contemporary text TM.75.G.2346 from the site Ebla in present-day Syria.9
+
+9
+
+See Friberg (2007) A Remarkable Collection, App. 6.6.
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+193
+
+7  The second oldest known metro‑mathematical theme text, c. 2300
+BC
+
+A metro-mathematical theme text is a text containing two or more intimately connected metro-mathematical exercises. The oldest known metro-mathematical theme
+text is from the Uruk IV period (c. 3200 BC), a school text listing the sides of two
+irregularly formed quadrilateral figures. The areas the two figures (computed by use
+of a certain “false” area rule) are both equal to the unrealistically large and round
+area number 20(60) · 15(60) square nindan = 5(60 · 60 · 60) square nindan = 10 areashár (1 nindan = c. 6 m).10
+The second oldest known metro-mathematical text, shown above, is from the
+Early Dynastic period III in Mesopotamia, c. 2300 BC.11 The theme of this text is
+multiplication or division by counting numbers of the type 1 2/3 5 (exercise # 1) or 1
+2
+/3 (exercises ## 2-8), where 2/3 is one of the basic fractions mentioned above. The
+number notation 1 2/3 5 is, clearly, an abbreviated form of the number notation 1 2/3
+5 gín, where gín is a Sumerian expression for “1/60,” borrowed from the Sumerian
+system of weight measures, where
+1 ma.na = 1(60) gín.
+The vaguely formulated exercise # 1 can be understood as meaning
+The selling price for beads is 1 2/3 5 (gín) times the buying price.
+
+10
+11
+
+W 19408, 76. See Nissen et al. (1993), Fig. 50.
+Published in Bartash (2011).
+
+13
+
+194
+
+J. Friberg
+
+Beads were sold for the price 1 (ma.na) – 1/2 gín. For how much were they
+bought?
+Answer: 1/2 ma.na 4 gín.
+In quasi-modern symbolic notations, the question can be expressed as an
+equation:
+1 2/3 5 gín · n = 1 ma.na – 1/2 gín, n = ?
+This is a metro-mathematical division problem, which can be solved in the following way: Let, for instance, n* = 4 gín be a tentative, “false solution.” Then
+1 2/3 5 gín · n* = 1 2/3 · 4 gín + 5 · 1/60 · 4 gín = 6 2/3 gín + 1/3 gín = 7 gín.
+However, the desired result of the multiplication was instead
+1 ma.na – 1/2 gín = 59 1/2 gín = 8 1/2 · 7 gín.
+Therefore, the true solution can be obtained through multiplication of n* = 4 gín
+by the “correction factor” 8 1/2, in the following way:
+n = n* · 8 1/2 = 8 1/2 · 4 gín = 34 gín = 1/2 ma.na 4 gin.
+An interesting, hidden meaning of this exercise is that it really, like the exercise
+discussed above in Sect. 6, may have been concerned with the problem of division
+by the sexagesimally non-regular number 7. The concept of sexagesimally regular
+numbers is well known and easy to understand in the case of sexagesimal numbers
+in place-value notation. Namely, a sexagesimal number n in place-value notation is
+said to be regular if there exists another number n´ of the same kind such that n ·
+n´ = some power of 60. (Otherwise it is non-regular.) Then n´ can be referred to as
+rec. n (the reciprocal of n).
+In the case of the present text, CUNES-52-18-035, where the author of the text
+had no recourse to numbers in place-value notation, the situation is more difficult.
+Anticipating what will be revealed in Sect. 10, it is motivated to call an integer-plusa-basic-fraction a “quasi-integer,” and to call a number n a “sexagesimally regular
+quasi-integer” if there exists another number rec. n of the same kind such that n ·
+rec. n = 1(60). An example of such a sexagesimally regular quasi-integer is 1 2/3, for
+which the reciprocal number is rec. 1 2/3 = 36. Indeed,
+1 2/3 · 36 = 36 + 24 = 60.
+An example of a sexagesimally non-regular (quasi-)integer, on the other hand,
+is 7, for which it is possible to find only an approximate reciprocal quasi-integer,
+namely 8 1/2. Indeed,
+7 · 8 1/2 = 56 + 3 1/2 = 59 1/2 = 1(60) – 1/2.
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+195
+
+Now, starting with an equation like this, it is easy to construct other similar
+equations by, for instance, the process of “halving and doubling” (or, more generally, “reciprocal compensation”). Halving, say, 7 and doubling 8 1/2, and then
+iterating the process, one gets
+3 1/2 · 17 = 1(60) – 1/2, 1 2/3 5 gín · 34 = 1(60) – 1/2, and so on
+It is likely that the author of CUNES 52-18-035 was aware of this technique,
+when he made use in exercise # 1 of the related equation.
+1 2/3 5 gín · 1/2 ma.na 4 gín = 1 ma.na – 1/2 gín.
+The theme for the remainder of the same text, in exercises ## 2–8, is multiplication or division by the sexagesimally regular quasi-integer 1 2/3. The questions
+in all these exercises are brief and cryptically formulated. In addition, the terminology is partly unknown, so the suggested interpretations can only be tentative.
+Anyway, in exercise # 2, for instance, the question appears to be a division problem of the following kind:
+Potash(?) can be bought at a market rate of 1 2/3 sìla of potash for 1 sìla of
+barley.
+The amount of potash bought was 2 barig. How much was paid for the potash?
+Here
+1 barig = 6 bán, 1 bán = 6 sìla, 1 sìla = 60 gín.
+In quasi-modern notations, the question can be reformulated as the linear
+equation
+1 2/3 · p = 2 barig, p = ?
+One way of solving this equation is to multiply both sides of the equation by 3.
+Result:
+5 p = 6 barig,
+so that
+p = 1/5 of 6 barig = 1 1/5 barig = 1 barig 1 1/5 bán = 1 barig 1 bán 1 1/5 sìla = 1 barig
+1 bán 1 sìla 12 gín.
+Unfortunately, the one who tried to solve the equation for p forgot to multiply the
+right side of the equation by 3. Therefore, he mistakenly found the incorrect solution
+
+13
+
+196
+
+J. Friberg
+
+p = 1/5 of 2 barig = 2 bán + 1/5 of 2 bán = 2 bán 2 sìla + 1/5 of 2 sìla = 2 bán 2 sìla 1/3
+(sìla) 4 gín of barley.
+This is the amount of barley recorded at the end of the first column on the obverse
+of the text.
+Exercise # 5 is a related multiplication problem:
+Someone borrowed or invested 2/3 ma.na of silver. The silver was returned at a rate
+of 1 2/3 gín of silver for each original gín. How much silver was returned?
+Evidently, the answer must be, as noted in the text,
+1 2/3 · 2/3 ma.na = 1 2/3 · 40 gín = 40 gín + 26 2/3 gín = 1 ma.na 6 2/3 gín.
+For a modern reader, it is surprising to see how complicated such seemingly simple
+division and multiplication exercises could be at a time when it was no trivial matter
+to divide by quasi-integers, and when it was important to take account of the units and
+conversion factors in the systems of measures in terms of which the metro-mathematical
+problem was stated.
+
+8  An Early Dynastic cuneiform text with several tables of areas
+of squares
+The basic Sumerian/Old Babylonian unit of length measure was the nindan (around 6
+meters). Its square was the basic unit of area measure, the sar. Larger units were the
+iku, the èshe, and the bùr, with
+100 sar = 1 iku, 6 iku = 1 èshe, and 3 èshe = 1 bùr.
+Other units were (fractions of the iku and) sexagesimal multiples of the bùr, as
+described concisely by the factor diagram below:
+A(EDIII) :
+
+6
+
+10
+
+6
+
+10
+
+6
+
+10
+
+3
+
+6
+
+The largest of these area units are just theoretical constructions, too big to be of
+any real use. Note, for instance, that
+1 shár.kid = 60 · 60 · 60 · 3 · 6 · 100 sar = c. 14,000 square kilometers.
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+197
+
+CUNES 50-08-001 (partial transliteration below) is a large Early Dynastic III
+cuneiform text (2500–2350 BC) with a sequence of what may be called “tables of
+areas of squares.”12 The first and longest of these tables of areas of squares (subtable A) is a table of squares of sexagesimal multiples of the nindan. It is too long to
+be reproduced here, but it contains, for instance, the following lines:
+1 nindan
+
+square (is)
+
+1 sar (of)
+
+area
+
+10
+
+square
+
+1(iku)
+
+area
+
+1(gésh)
+
+square
+
+2(bùr)
+
+area
+
+10(gésh)
+
+square
+
+3(shár) 20(bùr)
+
+area
+
+1(shár)
+
+square
+
+2(shár).gal
+
+area
+
+10(shár)
+
+square
+
+3(shár).kid 20(shár).gal
+
+area
+
+It is easy to check that, indeed,
+sq. 10(gésh) =
+
+10 · 10 · 2(bùr) =
+
+10 · 20(bùr) =
+
+3(shár) 20(bùr)
+
+sq. 1(shár) =
+
+6 · 6 · 3(shár) 20(bùr) =
+
+6 · 20(shár) =
+
+2(shár).gal
+
+sq. 10(shár) =
+
+10 · 10 · 2(shár).gal =
+
+10 · 20(shár).gal =
+
+3(shár).kid 20(shár).gal.
+
+Sub-table B is a table of squares of multiples of 1 nikkas (= 1/4 nindan).
+Sub-table C is a table of squares of multiples of 1 kùsh.numun (= 1/6 nindan).
+Sub-table D is a table of squares of multiples of 1 gish.bad = (1/12 nindan).
+Sub-table E is a table of squares of multiples of 1 shu.bad = (1/24 nindan).
+In the partial transliteration below is shown, as an example, 2 of the 10 columns
+on the clay tablet. (There are in all 7 columns on the obverse and 3 on the reverse.)
+The first lines of each of these four sub-tables can be explained as, respectively,
+B: sq. 1 nikkas = sq. (1/4 nindan) = 1/4 of 1/4 sar = 1/4 of 15 gín = 3 2/3 gín 5 (gín.
+bi)
+C: sq. kùsh.numun = sq. (1/6 nindan) = 1/6 of 1/6 sar = 1/6 of 10 gín = 1 2/3 gín
+D: sq. 1 gish.bad = sq. (1/12 nindan) = 1/12 of 1/12 sar = 1/12 of 5 gín = 1/3 gín
+5 gín.bi
+E: sq. 1 shu.bad = sq. (1/24 nindan) = 1/24 of 1/24 sar = 1/24 of 2 1/2 gín = 6 gín.
+bi 15 gín.ba.gín.
+Here
+1 gín = 1/60 of 1 sar, 1 gín.bi = 1/60 of 1 gín, and 1 gín.ba.gín = 1/60 of 1 gín.bi.
+Evidently, what we see here is an attempt to extend the system A of area numbers
+downward sexagesimally, so that it comes to include also a limited number of sexagesimal fractions!
+12
+
+See Friberg (2007) A Remarkable Collection, App. 7.
+
+13
+
+198
+
+J. Friberg
+
+It is interesting to note that all the area numbers in sub-table C are of the type a
+quasi-integer times 1 sar, followed by a quasi-integer times 1 gín, and that similarly
+all the area numbers in sub-table D are of the type a quasi-integer times 1 gín, followed by a quasi-integer times 1 gín.bi.
+CUNES 50-08-001, columns vi-vii
+
+sq. 8 nk
+sq. 8 kn
+sq. 9 nk
+
+B
+
+sq. 9 kn
+
+…………
+sq. 8 nk
+sq. 9 nk
+sq. 10 nk
+
+sq. 10 kn
+
+C
+
+sq. 10 nk
+
+4 sar
+5 sar 3 2/3 gín 5
+6 sar 15 gín
+
+sq. 1 kn
+sq. 2 kn
+
+sq. 3 kn
+
+sq. 4 kn
+
+sq. 5 kn
+
+sq. 6 kn
+
+sq. 7 kn
+
+sq. 1 gb
+
+sq. 2 gb
+
+sq. 3 gb
+
+sq. 4 gb
+
+sq. 5 gb
+
+sq. 6 gb
+
+sq. 1 kn
+sq. 2 kn
+sq. 3 kn
+sq. 4 kn
+sq. 5 kn
+sq. 6 kn
+sq. 7 kn
+sq. 8 kn
+sq. 9 kn
+sq. 10 kn
+D
+sq. 1 gb
+sq. 2 gb
+sq. 3 gb
+sq. 4 gb
+sq. 5 gb
+…………
+
+1/3 sar
+2/3 sar
+
+1 2/3 gín
+6 2/3 gín
+15 gín
+6 2/3 gín
+1 2/3 gín
+
+1 sar
+1 1/3 sar 1 2/3 gín
+1 2/3 sar 6 2/3 gín
+2 sar
+15 gín
+2 2/3 sar 6 2/3 gín
+1/3 gín
+5 gín.bi
+1 2/3 gín
+3 2/3 gín 5 gín.bi
+6 2/3 gín
+10 1/3 gín 5 gín.bi
+
+9  An old Akkadian geometric division exercise, c. 2250 BC
+HS 815, the cuneiform text shown below13, is one of a handful of known school
+texts of a similar kind from the Old Akkadian period in Mesopotamia (c.
+2350–2150 BC). In the first 2 lines of the text, it is stated that the long side of a
+rectangle is 1(60) 7 1/2 nindan, and it is asked about the length of the short side s
+13
+
+Westenholz (1975).
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+199
+
+(sag), if the area of the rectangle is 1(iku) (= 1(60) 40 sar). The answer is given in
+the last line:
+s = 1 nindan 5 kùsh 2 shu.dù.a 3 shu.si 1/3 shu.si.
+In quasi-modern symbolic notations, the question can be rephrased as the linear equation
+1(60) 7 1/2 nindan · s = 1(60) 40 sar (sq. nindan).
+For the modern reader, this question may seem to be overly simple, but that
+was certainly not so in the mind of an Old Akkadian school boy who knew nothing about sexagesimal numbers in place-value notation, and who had to remember the conversion rules of the period for the various units of length measure,
+namely
+1 nindan = 12 kùsh (cubits), 1 cubit = 3 shu.dù.a, 1 shu.dù.a = 10 shu.si (fingers).
+
+It is not indicated in the text how the answer to the question was computed. However, there are reasons to suspect that it was computed step by step, by use of
+some simple algorithmic method, necessarily based on the observation that the
+number 1(60) 7 1/2 is a sexagesimally regular quasi-integer. Indeed,
+1(60) 7 1/2 = 27 · 2 1/2, where 27 and 2 1/2 are sexagesimally regular integers or
+quasi-integers.
+One possible such algorithm starts with the observation that a rectangle with the
+area 1(iku) = 1(60) 40 sar can be one where the long side is 40 nindan and the short
+side 2 1/2 nindan. Or one where the long side is 3 times shorter and the short side 3
+times longer. And so on, in the same way. (This is the procedure of repeated “tripling
+and trisecting,” or, more generally, repeated “reciprocal compensation.”) Therefore,
+the answer given in the text can have been computed in the following way:
+
+13
+
+200
+
+1(60) 40 sq. nindan
+
+J. Friberg
+
+=
+=
+=
+=
+
+2 1/2 nindan ·
+
+40 nindan
+
+22 1/2 nindan ·
+
+4 nindan 5 1/3 cubits
+
+7 1/2 nindan ·
+1
+
+1(60) 7 /2 nindan ·
+
+13 nindan 4 cubits
+
+1 nindan 5 2/3 cubits 3 1/3 fingers
+
+Interestingly, it can be said that the problem in this exercise had a simple solution precisely because the given number 1(60) 7 1/2 was sexagesimally regular, and
+because so were the conversion factors 12, 3, and 10 in the Old Akkadian system of
+length measures.
+
+10  A table of reciprocals without sexagesimal place‑value numbers
+SM 2685 (shown below in conform transliteration) is a clay tablet from the Sulaymaniyah Museum in the Kurdistan region of Northern Iraq.14 The clay tablets in
+the Sulaymaniyah Museum were acquired in the antiquities market and are therefore
+unprovenanced, but in most cases they are probably from Old Babylonian Larsa.
+The writing on SM 2685 itself is such that the text can be either from the NeoSumerian Ur III period (c. 2150–2000 BC), or somewhat younger, from the Early
+Old Babylonian period. However, the content of the text has no known Old Babylonian parallels. Indeed, it is likely that the clay tablet is a copy of a much older
+text, certainly from before the invention around 2000 BC of sexagesimal numbers in
+place-value notation.
+The ubiquitous presence in the text of the phrase igi n gál.bi clearly shows that
+SM 2685 is some kind of table of reciprocals. The term igi n, or igi n gál, has the
+meaning “the reciprocal of n” or “the n-th part.” It is otherwise known, for instance,
+from the early curious table of areas of squares A 681 (Adab, Early Dynastic III),
+where igi 4 appears twice,15 and from an equally early and even more curious lexical text for weight measures with multiples and fractions of the ma.na (also ED III),
+which mentions igi 3 gál, igi 4 gál, and igi 6 gál.16 The Sumerian term igi n gál, literally meaning “it has n eyes,” may have been a surviving reminiscence of the protocuneiform number signs m2, m3, …, m6, for the fractions 1/2M, 1/3M, …. 1/6M (in
+system C(pc), see Sect. 3).
+Interestingly, in the mentioned lexical text, fractions of the weight unit ma.na
+are the gín = 1/60 ma.na, the s­ a10.ma.na (“exchange ma.na”) = 1/3 gín, and the s­ a10.
+gín = 1/60 ­sa10.ma.na. The reason for these strange weight units may have been that
+at the time (ED III) 1 exchange- ma.na of silver was worth as much as the 180 times
+heavier ma.na of copper.17 In the table of areas of squares from Adab, fractions of
+the area unit sar = sq. nindan are not counted by use of the sexagesimal fractions gín,
+gín.bi, gín.ba.gín, but by use of the weight fractions gín, ­sa10.ma.na, and ­sa10.gín!
+14
+Recently discovered by my co-worker professor Farouk Al-Rawi and published in Friberg and AlRawi (2016), Ch. 13.
+15
+See Friberg (2007) A Remarkable Collection, Apps. A.1.3 and A 7.2.
+16
+CUNES 47-12-176. See Friberg (2007) op. cit, App. A.7.4.
+17
+Op. cit., p. 427.
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+obv.
+
+201
+
+rev.
+
+Now back to SM 2685. In an effort to check that it really is a table of reciprocals, as suggested by the presence in each line of the table of the term igi n gál.bi,
+consider, for instance, the well-preserved first line on the reverse of the clay tablet
+igi 13 1/3 gál.bi 4 1/2 which can be understood as meaning rec. 13 1/3 = 4 1/2.
+Indeed,
+13 1/3 · 4 1/2 = 13 · 4 + 1/3 · 4 + 13 · 1/2 + 1/3 · 1/2 = 52 + 1 1/3 + 6 1/2 + 1/6 = 59 1/2
+/3 1/6 = 1(60).
+
+1
+
+Is this really how it was done? Even more doubtful is if this is really how it
+was shown that, as in the next line of the text
+igi 13 1/2 gál.bi 4 1/3 6 2/3 which can be understood as meaning rec. igi 13 1/2 = 4
+/3 6 2/3 gín.
+
+1
+
+13
+
+202
+
+J. Friberg
+
+Moreover, even if it can be shown, through a series of laborious multiplications,
+that the product of the pair of numbers in each line of the table is equal to 1(60)
+(which is the case), then it remains to be shown how each such pair of numbers had
+been found. It can hardly have been done through trial and error, testing all kinds of
+weird quasi-integers to see whether there existed a corresponding more or less complicated reciprocal number.
+Instead, it is likely that the pairs of numbers in the table of reciprocals SM 2685 were
+constructed in a systematic series of quite simple computations, in the following way:
+A first step was to find the reciprocals rec. n of all sexagesimally regular numbers n between 2 and 1(60), such that in each case n · rec. n = 1(60). The result
+was a table of the following kind, where the reciprocal numbers all are “extended
+quasi-integers,” meaning either a quasi-integer or a quasi-integer + a quasi-integer
+times 1 gín. The cuneiform sign gín can be omitted. Note how the verifications of
+the equation n · rec. n = 1(60) in several cases can be simplified by using a suitable
+factorization of the number n.
+n
+
+rec. n
+
+2
+3
+4
+5
+6
+8
+9
+10
+12
+15
+16
+18
+20
+24
+25
+27
+30
+32
+36
+40
+45
+48
+50
+54
+1(60)
+
+30
+20
+15
+12
+10
+7 1/2
+6 2/3
+6
+5
+4
+3 2/3 5
+3 1/3
+3
+2 1/2
+2 1/3 4
+2 13 1/3
+2
+1 5/6 2 1/2
+1 2/3
+1 1/2
+1 1/3
+1 15
+1 12
+1 6 2/3
+1
+
+/2 =
+/3 =
+
+56 + 4 =
+54 + 6 =
+
+1(60)
+1(60)
+
+2
+/3
+/3 =
+
+1
+/2 =
+54 + 6 =
+
+1(60)
+1(60)
+
+/2 =
+1
+/3
+
+48 + 12
+
+1(60)
+
+1
+2
+
+1
+
+1
+
+/3
+
+2
+
+/3 =
+
+1(60)
+
+/6 2 1/2
+/3
+
+1
+
+/3
+/3 =
+40 + 20 =
+45 + 15 =
+
+1(60)
+1(60)
+1(60)
+
+/3 =
+
+1(60)
+
+1
+
+5
+2
+
+/2 =
+1
+/3 =
+1
+
+/3
+
+2
+
+2
+
+1
+
+All these 25 pairs seem to have been present in the table of reciprocals SM 2685
+(before it was damaged so that some of the initial pairs were lost). On the other
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+203
+
+hand, these 25 pairs are only about one half of all the pairs in the table (before it was
+damaged).
+The remaining pairs in the table are such that n is a quasi-integer, but not an integer.
+Now, it is quite obvious how the pairs were constructed when the fraction in the quasiinteger for n is one of the basic fractions 2/3, 1/2, or 1/3, namely by the kind of reciprocal
+compensation mentioned above. Namely, if n, rec. n is one of the pairs in the brief table
+above such that n · rec. n = 1(60), and if n is multiplied by 2/3, 1/2, or 1/3, while rec. n is
+multiplied by 1 1/2, 2, or 3, respectively, then the new pair is still such that the product
+of the two numbers is 1(60).
+The new pairs that can be constructed in this way are shown in the table below:
+n
+
+rec. n
+
+2
+3
+4
+5
+6
+8
+9
+10
+12
+15
+16
+18
+20
+24
+25
+27
+30
+32
+36
+40
+45
+48
+50
+54
+
+30
+20
+15
+12
+10
+7 1/2
+6 2/3
+6
+5
+4
+3 2/3 5
+3 1/3
+3
+2 1/2
+2 1/3 4
+2 13 1/3
+2
+1 5/6 2 1/2
+1 2/3
+1 1/2
+1 1/3
+1 15
+1 12
+1 6 2/3
+
+/3
+
+/2
+
+2
+
+1
+
+1 1/3
+
+45
+
+2 2/3
+3 1/3
+
+22 1/2
+18
+
+5 1/3
+
+11 15
+
+(6 2/3
+
+9)
+
+10 2/3
+
+5 1/2 7 1/2
+
+13 1/3
+
+4 1/2
+
+16 2/3
+
+3 1/2 6
+
+26 2/3
+
+2 15
+
+(33 1/3
+
+/2
+
+/3
+
+1
+
+1
+
+1 1/2
+
+40
+
+2 1/2
+
+24
+
+4 1/2
+
+13 1/3
+
+7 1/2
+
+8
+
+12 1/2
+13 1/2
+
+4 2/3 8
+4 1/2 6 2/3
+
+22 1/2
+
+2 2/3
+
+1 2/3
+
+36
+
+8 1/3
+
+7 12
+
+1 2/3 8)
+
+Altogether, 10 + 7 + 2 = 19 new pairs can be constructed in this way, if duplicates
+are omitted. Of these 19 new pairs, 17 are present in the table on SM 2685. Only 2
+are missing, for one reason or another.
+There are still additional pairs in SM 2685, namely those where the fractional
+part of n is 12 (gín), 15 (gín), 1/2 6 (gín), or 2/3 5 (gín). These, too, can be constructed by use of reciprocal compensation, as shown below:
+
+13
+
+204
+
+J. Friberg
+
+n
+
+rec. n
+
+2
+3
+4
+5
+6
+8
+9
+10
+12
+15
+16
+18
+20
+24
+25
+27
+30
+32
+36
+40
+45
+48
+50
+54
+
+30
+20
+15
+12
+10
+7 1/2
+6 2/3
+6
+5
+4
+3 2/3 5
+3 1/3
+3
+2 1/2
+2 1/3 4
+2 13 1/3
+2
+1 5/6 2 1/2
+1 2/3
+1 1/2
+1 1/3
+1 15
+1 12
+1 6 2/3
+
+1 15
+
+2 15
+
+3 2/3 5
+
+(6 15
+(6 2/3 5
+
+11 15
+
+48
+
+26 2/3
+
+[1 12
+(1 1/2 6
+(1 2/3 8
+
+50]
+37 1/2)
+33 1/3)
+
+[2 1/3 4
+
+25]
+
+(3 12
+3 1/2 6
+
+18 2/3 5 )
+16 2/3
+
+4 2/3 8
+
+12 1/2
+
+(5 1/3 4
+
+11 6 2/3)
+
+(6 1/3 4
+7 12
+
+9 1/3 2 1/2)
+8 1/3
+
+9 1/2 6
+
+6 15
+
+(10 2/3 8
+
+5 1/2 3 1/3)
+
+16
+
+9 1/2 6)
+8 5/6 3 1/3)
+
+5 1/3
+
+4 new pairs (2 missing) 5 new pairs (7 missing)
+
+Starting with the table of reciprocals n, rec. n, where n is any sexagesimally
+regular integer between 2 and 1(60), and proceeding with reciprocal compensations in five instances, it is possible, as shown above, to explain the constructions
+of 25 + 17 + 9 = 51 of the pairs n, rec. n in SM 2685. Three additional pairs in SM
+2685, which cannot be explained in this way, are
+53 1/3
+56 15
+57 1/2 6
+
+1 7 1/2
+14
+1 2 1/2
+
+These three pairs occur toward the end of the table on SM 2685, which is probably not a coincidence, since the construction by use of reciprocal compensation
+cannot produce any new pairs n, rec. n with n greater than 33 1/3! How these three
+pairs can have been constructed by use of an alternative procedure is immediately
+obvious in view of the observation that
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+53 2/3 · 1 7 1/2 gín =
+
+56 15 gín · 1 4 gín =
+
+(8 · 6 2/3) · (7 1/2 · 9 gín) =
+
+(15 · 3 2/3 5 gín) · (4 · 16 gín) =
+
+57 1/2 6 gín · 1 2 1/2 gín = (24 · 2 1/3 4 gín) · (2 1/2 · 25 gín)
+=
+
+205
+
+(8 · rec. 9) · (rec. 8 · 9 gín) =
+
+1(60)
+
+(15 · rec. 16) · (rec. 15 · 16 gín) =
+
+1(60)
+
+(24 · rec. 25} · (rec. 24 · 25 gín) = 1(60)
+
+Here (8, 9), (15, 16), and (24, 25) are three examples of what may be called sexagesimally regular twins of the type (n, n – 1), where both n and n – 1 are sexagesimally regular. Other examples are (2, 3), (3, 4), (4, 5), (5, 6), (9, 10), but using them
+in a similar way would not produce new pairs of reciprocal numbers in SM 2685.
+The last pair n, rec. n on SM 2685 is
+1(60) 21, 2/3 [x x x].
+This pair is exceptional in two ways and was probably added to the table of reciprocals as a demonstration of what can happen in more complicated cases. It is the
+only pair where n is greater than 1(60), and it is the only pair where rec. n is not
+an extended quasi-integer of the kind a quasi-integer + a quasi-integer times 1 gín.
+Indeed, since 1(60) 21 = 3 · 27, the pair (which is damaged on SM 2685) can be
+shown to be
+1(60) 21
+
+/3 4 1/3 6 2/3
+
+rec. 1(60) 21 = 1/3
+
+2
+
+/3
+
+1
+
+1
+
+/3
+
+2
+
+/3 4 1/3
+
+2
+
+/3
+
+This is a twice extended quasi-integer!
+In addition to the 55 exact pairs n, rec. n explained above, there are also two pairs
+with approximate reciprocals on SM 2685! They are18
+5 1/2
+7
+
+10 2/3 15
+8 1/2 4
+
+5 1/2
+
+/3
+
+2
+
+/2
+
+1
+
+1
+1
+
+/3
+
+/3 7 1/2
+
+1
+
+/2
+
+1
+
+/2
+
+Also these two exceptional lines were probably added to the table for pedagogical
+reasons.
+As in several other known Old Babylonian tables of reciprocals, the first two lines
+of the table of reciprocals SM 257419 have the following form
+1(60).da 2/3.bi 40.àm
+shu.ri.a.bi 30.àm
+
+“of 1(60), its 2/3 is 40”
+“its half is 30”
+
+18
+Compare with the equation 1 2/3 5 gín · 1/2 ma.na 4 gín = 1 ma.na – 1/2 gín in CUNES 52-18-035,
+Sect. 7 above, where 1 2/3 5 gín was explained as 1/2 · 1/2 · 7 and 1/2 ma.na 4 gín as 2 · 2 · 8 1/2 gín.
+19
+This clay tablet was just like SM 2685 found by F. N. Al-Rawi in the Sulaymaniyah Museum.
+
+13
+
+206
+
+J. Friberg
+
+It is probably significant that in SM 2574 the first sign in line 1 is an oversize vertical wedge, a clear indication that it stands for “1(60),” and not for “1.” Therefore,
+the mentioned first lines of the table can be interpreted as saying that 2/3 of 1(60) is
+40, one half of 1(60) is 30. This is potentially important, in view of the observation
+above that n · rec. n = 1(60) in each line of the atypical table of reciprocals SM 2865.
+
+11  A New Explanation of the Set of Attested Head Numbers in Old
+Babylonian Multiplication Tables
+There are 40 documented head numbers in Old Babylonian (or Neo-Sumerian) single, multiple, or combined multiplication tables. They are, always in this order, but
+with occasional omissions,
+50, 48, 45, 44 26 40, 40, 36, 30, 25, 24, 22 30, 20, 18, 16 40, 16, 15, 12 30, 12,
+10, 9, 8 20, 8, 7 30, 7 12, 7, 6 40, 6, 5, 4 30, 4, 3 45, 3 20, 3, 2 30, 2 24, 2 15, 2, 1
+40, 1 30, 1 20, 1 15, 1 12.
+Several attempts have been made to explain this list of head numbers, all with
+very limited success.20 A basic assumption has usually been that this list of head
+numbers in some way was derived from the list of reciprocals in the Old Babylonian/Neo-Sumerian standard table of reciprocals. However, this assumption explains
+readily only the italicized head numbers in the list above. Now, with the discovery
+of the atypical table of reciprocals SM 2685, a simple and much more satisfactory
+explanation of the attested set of head numbers is available. Indeed, the mentioned
+list of head numbers can be explained as being derived from the list of reciprocal
+numbers in an atypical table of reciprocals very much like, but not identical with,
+SM 2685!21
+Interestingly, the need of a combined multiplication table derived from the list of
+reciprocal numbers in a table of reciprocals like SM 2685 may have been felt for the
+first time by the one who constructed the impressive Early Dynastic III combined
+table of areas of squares CUNES 50-08-001 (see Sec. 8 above). Take, for instance,
+sub-table C in CUNES 50-08-001, which was constructed, essentially, by first computing 1/6 · 1/6 · 1 sq. nindan = 1 2/3 gín and then multiplying this (area) number by
+the square numbers 4, 9, 16, etc. In the same way, sub-table B was constructed by
+first computing 1/4 · 1/4 · 1 sq. nindan = 3 2/3 gín 5 (gín.bi) and then multiplying by
+4, 9, 16, etc.
+It is not inconceivable that the earliest precursor of the atypical table of reciprocals SM 2685 was not just a hypothetical atypical Neo-Sumerian table of reciprocals, but even a table of reciprocals from the Early Dynastic III period, contemporary with CUNES 50-08-001. For that matter, it is not inconceivable even that
+the earliest precursor of the Neo-Sumerian/Old Babylonian combined multiplication
+20
+21
+
+See, for instance, Friberg (2007) A Remarkable Collection, Sec. 2.6 f.
+See Friberg and Al-Rawi (2016), Sec. 13.8.
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+207
+
+tables, preceded by a standard table of reciprocals, may have been an Early Dynastic
+III combined multiplication table for quasi-integers, preceded by an atypical table
+of reciprocals like SM 2685!
+Here is a hypothetical example of what an Early Dynastic multiplication table
+for a quasi-integer like 1 2/3 area-gín may have looked like. It is easily constructed by use of repeated additions. Note that all the products are area numbers. For comparison, the corresponding multiplication table of the Old Babylonian type with sexagesimal numbers in place-value notation, head number 1 40,
+is shown to the right.
+1 2/3
+times 2
+
+1 2/3
+3 1/3
+
+times 4
+times 5
+
+6 2/3
+8 1/3
+
+times 7
+times 8
+
+11 2/3
+13 1/3
+
+times 10
+times 11
+times 12
+times 13
+times 14
+times 15
+times 16
+times 17
+times 18
+times 19
+times 20
+times 30
+times 40
+times 50
+times 1(60)
+
+16 2/3
+18 1/3
+/3 sar
+/3 sar
+1
+/3 sar
+1
+/3 sar
+1
+/3 sar
+1
+/3 sar
+1
+/2 sar
+1
+/2 sar
+1
+/2 sar
+5
+/6 sar
+1 sar
+1 1/3 sar
+1 2/3 sar
+1
+1
+
+1 2/3
+3 1/3
+6 2/3
+8 1/3
+1 2/3
+3 1/3
+6 2/3
+3 1/3
+
+1 40 times 1 (is)
+times 2
+times 3
+times 4
+
+1 40
+3 20
+5
+6 40
+
+times 5
+
+8 20
+
+times 6
+
+10
+
+times 7
+
+11 40
+
+times 8
+
+13 20
+
+times 9
+
+15
+
+times 10
+
+16 40
+
+times 11
+
+18 20
+
+times 12
+
+20
+
+times 13
+
+21 40
+
+times 14
+
+23 20
+
+times 15
+
+25
+
+times 16
+
+26 40
+
+times 17
+
+28 20
+
+times 18
+
+30
+
+times 19
+
+31 40
+
+times 20
+
+33 20
+
+times 30
+
+50
+
+times 40
+
+1 06 40
+
+times 50
+
+1 23 20
+
+13
+
+208
+
+J. Friberg
+
+12  Counting with sexagesimal place‑value numbers in old
+Babylonian mathematical exercises
+It is now well known that the invention of place-value notation for sexagesimal
+numbers appears to have been Neo-Sumerian. On the other hand, it is not known at
+all if also so-called metrological tables were a Neo-Sumerian invention, or if such
+tables were introduced a hundred or a few hundred years later, in the Old Babylonian period. A metrological table is a table for conversion into sexagesimal placevalue numbers (multiples of some suitable “basic unit”) of a systematically arranged
+growing list of capacity numbers, weight numbers, area numbers, or length numbers.22 In the elementary first part of the education of students in Old Babylonian
+scribe schools, the learning of such metrological tables, alongside tables of reciprocals and multiplication tables, played a fundamental role.23
+The purpose of the metrological tables was that the students would be able to
+convert given numerical measures (metrological data) in mathematical exercises into
+floating sexagesimal place-value numbers, then perform the appropriate arithmetical
+operations with the sexagesimal place-value numbers, and finally convert the resulting numbers (the answer) back into numerical measures again. A good example of
+how this could be done is the small mathematical problem text MLS 1842.24 There
+the question is expressed in the following way (my translation into English):
+The market rate rose, and I bought 30 gur of barley, the market rate fell, and I
+bought 30 gur of barley.
+I added my market rates, it was 9.
+I added the silver for market rates, it was 1 ma.na 7 1/2 gín.
+What were my market rates?
+The solution procedure begins by saying
+Note that the silver was 1 07 30. Compute the reciprocal of 1 07 30, then 53 20
+comes up.
+Multiply 53 20 that came up with 9 for the market rates, then 8 comes up.
+Multiply by 2 30 for your market rates, then 20 comes up.
+……
+What all this means is that 1 ma.na 7 1/2 gín silently has been converted into the
+sexagesimal place-value number “1 07 30.” In the same way, without any explanation whatsoever, 30 gur of barley has been converted into “2 30.” The missing explanation is that
+1 gur = 5 barig = 5 · 6 bán = 5 · 6 · 10 sìla = 5(60) sìla, so that
+
+22
+
+See, for instance, Friberg (2007) A Remarkable Collection, Ch. 3 and App. 5.
+See, for instance, Proust (2007), Chs. 5 and 8.
+24
+See Neugebauer and Sachs (1945), text Sb, p. 106, and Friberg and George (2010).
+23
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+209
+
+30 gur = 30 · 5(60) sìla = 2 30 · 1(60) sìla = ”2 30.”
+Then, the computation starts with these converted data. Unfortunately, the last
+part of the text is lost, but it is clear that the result of the computation of the two
+market rates must have been “5” and “4” in floating sexagesimal numbers. In the
+final answer, this result would have been converted back into the numerical measures 5(60) sìla = 1 gur, and 4(60) sìla = 4 barig of barley, respectively, in exchange
+for 1 gín of silver.
+There are other types of known Old Babylonian mathematical texts containing
+no metrological data at all, but instead concerned exclusively with totally abstract
+sexagesimal place-value numbers. Typical examples are interesting computations of
+square roots of given “many-place” regular sexagesimal numbers as the products of
+the square roots of factors of the given numbers, or computations of reciprocals of
+given many-place regular sexagesimal numbers as the product of the reciprocals of
+factors of the given numbers. Both kinds of computations may be called “factorization algorithms.”
+Particularly interesting are algorithms for the construction of new pairs of mutually reciprocal regular sexagesimal place-value numbers with departure from already
+known such pairs. The method used in such algorithms is a further development of
+the method used for the construction of the table of reciprocals SM 2865 in Sec. 10
+above, a “reciprocal compensation algorithm.”
+One such algorithm is used in the text CBS 1215. See the transliteration below.25
+The algorithm takes it departure from the given pair of reciprocals (2 05, 28 48),
+where 2 05 (= 125) = 5 · 5 · 5 and 28 48 = 12 · 12 · 12. In the first text box of CBS
+1215, in column i, the mentioned factorization method is used in order to show that
+rec. 2 05 = 28 48, and that, conversely, rec. 28 48 = 2 05. In the next text box, the
+pair of reciprocals is (4 10, 14 24), obtained by use of a “doubling and halving algorithm,” a kind of reciprocal compensation. And so on, until in the last text box, in
+column vi, the final pair of reciprocals is (10 06 48 53 20, 5 55 57 25 18 45).
+It is clear that this kind of algorithm text is very far from any practically useful
+computations with numbers and measures.
+
+25
+
+Borrowed from Friberg (2007) A Remarkable Collection, App. 3.
+
+13
+
+210
+i
+2 05
+12
+25
+2 24
+28 48 1 15
+36
+1 40
+2 05
+4 10
+6
+25
+2 24
+14 24 2 30
+36
+1 40
+4 10
+8 20
+3
+25
+2 24
+7 12
+5
+36
+1 40
+8 20
+16 40
+9
+2 30
+24
+3 36
+1 40
+6
+10
+16 40
+33 20
+18
+10
+6
+1 48
+1 15
+2 15
+4
+9
+6 40
+26 40
+33 20
+1 06 40
+9
+10
+6
+54 1 06 40
+2 13 20 18
+40
+1 30
+27 2 13 20
+4 26 40
+9
+40
+1 30
+13 30
+2
+27 2 13 20
+4 26 40
+
+J. Friberg
+ii
+18
+8 53 20
+22 30
+2 40
+1 20
+6 45
+6 40
+9
+8 53 20
+9
+17 46 40
+22 30
+2 40
+2
+3 22 30
+1 20
+6 45
+6 40
+9
+8 53 20
+17 46 40
+18
+35 33 20
+1 30
+10 40
+3 45
+16
+5 37 30
+4
+1 41 15
+1 20
+6 45
+6 40
+9
+8 53 20
+35 33 20
+1 11 06 40 9
+1 30
+10 40
+3 45
+16
+5 37 30
+2
+50 37 30
+4
+1 41 15
+1 20
+6 45
+6 40
+9
+8 53 20
+35 33 20
+1 11 06 40
+2 22 13 20 18
+22 30
+42 40
+3 45
+16
+1 24 22 30
+16
+25 18 45
+
+iii
+1 20
+6 45
+6 40
+9
+8 53 20
+2 22 13 20
+9
+4 44 26 40
+22 30
+42 40
+3 45
+16
+1 24 22 30
+12 39 22 30 2
+16
+25 18 45
+1 20
+6 45
+6 40
+9
+8 53 20
+2 22 13 20
+4 44 26 40
+9 28 53 20 18
+1 30
+2 50 40
+3 45
+4 16
+3 45
+16
+14 03 45
+21 05 37 30
+4
+6 19 41 15
+16
+25 18 45
+1 20
+6 45
+6 40
+9
+8 53 20
+2 22 13 20
+9 28 53 20
+18 57 46 40 9
+1 30
+2 50 40
+3 45
+4 16
+3 45
+16
+14 03 45
+21 05 37 30
+3 09 50 37 30 2
+
+vi
+10 06 48 53 20 18
+22 30
+3 02 02 40
+3 45
+1 08 16
+3 45
+4 16
+3 45
+16
+14 03 45
+52 44 03 45
+19 46 31 24 22 30
+5 55 57 25 18 45 16
+16
+1 34 55 18 45
+16
+25 18 45
+1 20
+6 45
+6 40
+9
+8 53 20
+2 22 13 20
+37 55 33 20
+10 06 48 53 20
+
+v
+18
+2 31 42 13 20
+1 30
+45 30 40
+3 45
+1 08 16
+3 45
+4 16
+3 45
+16
+14 03 45
+52 44 03 45
+1 19 06 05 37 30
+4
+23 43 49 41 15
+16
+1 34 55 18 45
+16
+25 18 45
+1 20
+6 45
+6 40
+9
+8 53 20
+2 22 13 20
+37 55 33 20
+2 31 42 13 20
+9
+5 03 24 26 40
+1 30
+45 30 40
+3 45
+1 08 16
+3 45
+4 16
+3 45
+16
+14 03 45
+52 44 03 45
+1 19 06 05 37 30
+11 51 54 40 37 30 2
+4
+23 43 49 41 15
+16
+1 34 55 18 45
+16
+25 18 45
+1 20
+6 45
+6 40
+9
+8 53 20
+2 22 13 20
+37 55 33 20
+2 31 42 13 20
+5 03 24 26 40
+
+iv
+4
+6 19 41 15
+16
+25 18 45
+1 20
+6 45
+6 40
+9
+8 53 20
+2 22 13 20
+9 28 53 20
+18 57 46 40
+37 55 33 20
+18
+11 22 40
+22 30
+4 16
+3 45
+16
+3 45
+14 03 45
+5 16 24 22 30
+1 34 55 18 45 16
+25 18 45
+16
+6 45
+1 20
+9
+6 40
+8 53 20
+2 22 13 20
+37 55 33 20
+1 15 51 06 40 9
+11 22 40
+22 30
+4 16
+3 45
+16
+3 45
+14 03 45
+5 16 24 22 30
+47 27 39 22 30 2
+1 34 55 18 45 16
+16
+25 18 45
+1 20
+6 45
+6 40
+9
+8 53 20
+2 22 13 20
+37 55 37 55 33 20
+1 15 51 06 40
+
+13  Floating sexagesimal place‑value numbers in late Babylonian
+mathematical texts
+A number of Late Babylonian texts from the second half of first millennium BC
+reintroduced and developed further the mentioned Old Babylonian algorithmic
+methods for the computation of reciprocals of given regular sexagesimal place-value
+numbers or for the systematic construction of enormously comprehensive tables of
+reciprocals of many-place regular sexagesimal numbers.
+An interesting example is W 2302126 (see the conform transliteration below of
+the obverse of that clay tablet). It is a school text from the Achaemenid (Persian)
+period in Mesopotamia, c. 450 BC, and contains several algorithmic computations
+of reciprocals of given numbers as the product of the reciprocals of factors of that
+26
+
+Friberg and Al-Rawi (2016), Sec. 2.1.7.
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+211
+
+number. It is precisely the same method as in the Old Babylonian text CBS 1215 in
+the preceding section of this paper. The first of the computations on W 23021, for
+instance, shows that rec. 52 40 29 37 46 40 = 1 08 20 37 30. The computation begins
+in a left column by eliminating all the factors of the given number, one by one, and
+continues in a right column by multiplying together the reciprocals of the eliminated
+factors, one by one.
+
+Another interesting example is the extended table of reciprocals AO 645627 (see
+the photographs below), explicitly dated to the Seleucid (Hellenistic) period, c. 200
+BC. It can be shown that the table of reciprocals was constructed by use of reciprocal compensation, just like the Neo-Sumerian atypical table of reciprocals SM 2685
+in Sec. 10 above, although with sexagesimal place-value numbers.
+The construction began by computing all powers of 3 or 5 as sexagesimal placevalue numbers with at most 6 sexagesimal places (double digits), and their reciprocal numbers. With departure from these powers of 3 or 5, new reciprocal pairs
+n, rec. n were computed by repeated use of the doubling and halving algorithm,
+namely as (2 n, 1/2 rec. n), or (1/2 n, 2 rec. n), as long as at least one of the numbers
+in the computed reciprocal pairs contained no more than 6 sexagesimal places. On
+the other hand, the second number of the pair was allowed to contain many more
+sexagesimal places, as in the example
+rec. 1 29 40 50 24 27 = 40 08 32 44 57 28 29 55 20 09 52 35 33 20.
+27
+
+See Friberg and Al-Rawi (2016), Sec. 1.5.
+
+13
+
+212
+
+J. Friberg
+
+This reciprocal pair, where n is a 6-place and rec. n a 14-place regular sexagesimal number, is inscribed in the third row from the end of the second column on the
+obverse of the clay tablet. It can be shown that 1 29 40 50 24 27 is the 19th power of
+3.
+An even more spectacular example is the pair
+rec. 1 29 12 19 26 34 23 19 49 38 08 36 52 20 44 26 40 = 40 21 22 41 (00) 09.
+Here n is a 17-place and rec. n a 6-place regular sexagesimal number, even if the
+double-zero 00 between 41 and 09 is not explicitly indicated. This pair is inscribed
+on the obverse of AO 6456 in the two lines just preceding the line with the pair
+mentioned above. It can be shown that the 17-place number n is the 22nd power of
+20 = rec. 3.
+
+AO 6456 © Musée du Louvre, dist. RMN-GP/Raphaël Chipault
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+213
+
+Note that the construction of the extended table of reciprocals AO 6456 was a
+really awesome achievement. It began with the laborious computation, by use of the
+doubling-and-halving algorithms described above, of some 300 pairs (n, rec. n) of
+regular “many-place” sexagesimal numbers in floating place-value notation, probably recorded on quite a few small clay tablets. The numbers n constructed in this
+way then had to be interpreted as sexagesimal numbers between 1 and 1(60), and
+ordered by size, another extremely laborious operation. Finally, the corresponding
+pairs (n, rec. n) had to be copied onto (probably) two large clay tablets, of which AO
+6456 was the first. According to a badly understood endnote on AO 6456, the table
+of reciprocals goes from “1” to “2”. Indeed, the table of reciprocals begins with n =
+1, n = 1 00 16 53 53 20 and ends with n = 2 57 46 40, n = 3.
+It is no wonder that Late Babylonian priests/mathematicians who were able to
+construct such magnificent many-place sexagesimal tables of reciprocals in some
+cases were identical with the persons who constructed the various kinds of even
+more awe-inspiring many-place sexagesimal tables belonging to the genre of Late
+Babylonian mathematical astronomy.28
+
+14  Conclusion: The invention of sexagesimal place‑value numbers
+Various number systems in the form of series of small clay tokens representing number units appear to have been in use in the Middle East even before the invention of
+writing about 3300 BC. One of them was a system of sexagesimal counting numbers
+which appears to have been a precursor of the proto-cuneiform/proto-Elamite system of sexagesimal counting numbers with the factor diagram
+10
+
+S(pc/pE) :
+10 · 60
+
+6
+60
+
+10
+10
+
+1
+
+Interestingly, this factor diagram shows that two of the key features of the fullblown Sumerian system of sexagesimal counting numbers (see the factor diagrams
+in Sec. 5 above) were present from the beginning, namely the repeating alternation
+between the factors 10 and 6, and the fact that the sign for 60 was just a bigger version of the sign for 1.
+The form of the system of sexagesimal counting numbers stayed essentially the
+same until the end of the third millennium BC. However, it is worth noticing that the
+system apparently did not involve any specific signs for fractions. Take, for instance,
+a look at the text HS 815 in Sec. 9 above, which shows that although multiples of the
+length measure nindan were counted sexagesimally, the fractions of the nindan were
+expressed in terms of special notations for small length measures. Similarly, multiples of the Sumerian capacity gur were counted sexagesimally, but the fractions of
+28
+
+See Neugebauer (1955) and Ossendrijver (2012, 2019).
+
+13
+
+214
+
+J. Friberg
+
+the gur were expressed in terms of notations for small capacity measures. The situation was the same in the case of the Sumerian weight unit ma.na and (essentially) in
+the case of the Sumerian area unit bùr.
+The rather strange set of cuneiform signs for fractions of the Sumerian weight
+unit ma.na29 (see the factor diagram below for system M(ED III)) can be explained
+as a merger between two systems of weight numbers, one for copper with the units
+ma.na and gín, and another for silver (180 times more expensive) with the units
+“exchange ma.na” and she “barley-corn”(?).
+m.
+
+gn.
+20
+
+M(ED III): ma.na
+( 1/2 kg.) 2/3 ma.na
+60 gn.
+
+40 gn.
+
+1/2 ma.na 1/3 ma.na
+30 gn.
+
+20 gn.
+
+gín
+
+3
+
+sa10 .ma.na
+
+3
+
+sa10 .gín
+
+1/60 ma.na
+
+1/3 gín
+
+1/60 sm.
+
+1/60 m.
+
+1/180 m.
+
+1/180 gn.
+
+The Sumerian cuneiform signs for the weight numbers 1/3, 1/2, and 2/3 ma.na were
+borrowed into all other Sumerian/Old Babylonian systems of number notations as
+cuneiform signs for the “basic fractions” 1/3, 1/2, 2/3. An early example is the Early
+Dynastic III table of areas of squares A 681, where 1/3 sar, 1/2 sar, and 2/3 sar are
+notations for fractions of the area unit sar.30 In the Early Dynastic III metro-mathematical theme text CUNES 52-18-035 (see Sec. 7 above), the mentioned basic fractions are used to denote fractions of both the ma.na and the gín.
+In Old Babylonian metrological table texts, as well as in questions and answers
+in Old Babylonian mathematical exercises, the gín and the barley-corn (she), both
+borrowed from system M(S), were used as signs for the fractions 1/60 and 1/180 of
+1/60, respectively. This situation could have been the end for any smooth development of sexagesimal fractions.
+Luckily, there was another way open. This was demonstrated in Sec. 8 above, in
+the case of the large Early dynastic table of areas of squares CUNES 50-08-001, in
+which appeared two kinds of fractions of the area unit sar. On the one hand, there
+were the basic fractions 1/3, 1/2, 2/3, and on the other hand the fractions gín = 1/60
+and gín.bi = 1/60 gín (and even, in sub-table E, gín.ba.gín = 1/60 gín.bi)). More precisely, there appeared in this table of areas of squares quasi-integral multiples of the
+area units sar, gín, and gín.bi. (The notion of quasi-integers was introduced in Sec.
+10 above, in connection with an attempted explanation of the atypical table of reciprocals SM 2685.)
+In view of all the mentioned developments, it is now clear what it took in order to
+invent sexagesimal place-value numbers at the end of the third millennium BC, namely
+The accidental circumstance that the cuneiform sign for “1(60)” could not easily
+be distinguished from the similar sign for “1.”
+29
+See, in particular, the Old Akkadian lexical text CUNES 47-12-176, a decreasing list of weight measures, in Friberg (2007) A Remarkable Collection, App. A.7.4.
+30
+Friberg (2007) A Remarkable Collection, App. A.1.3.
+
+13
+
+Three thousand years of sexagesimal numbers in Mesopotamian…
+
+215
+
+The observation that if also the special cuneiform sign for “10 · 60” was replaced
+by the cuneiform sign for “10,” then the repeating alternation between the factors
+10 and 6 in the factor diagram for the first few units of the system of sexagesimal
+counting numbers could be continued forever.
+The abandonment of the use of quasi-integers, in favor of integral multiples of the
+gín, gín.bi, and gín.ba.gín.
+The observation that the repeating alternation between the factors 10 and 6 in the
+factor diagram for sexagesimal counting numbers could be imitated in a similar
+factor diagram for sexagesimal fractions.
+The invention of metrological tables, which securely linked the various traditional
+systems of measure units to abstract counting numbers in the form of sexagesimal
+“floating” place-value numbers.
+Even if the inventors of sexagesimal place-value numbers did not argue directly
+in terms of “factor diagrams,” they must reasonably have had in mind something
+similar.
+Compliance with ethical standards
+Conflict of interest On behalf of all authors, the corresponding author states that there is no conflict of
+interest.
+OpenAccess This article is distributed under the terms of the Creative Commons Attribution 4.0 International License (http://creat​iveco​mmons​.org/licen​ses/by/4.0/), which permits unrestricted use, distribution, and reproduction in any medium, provided you give appropriate credit to the original author(s) and
+the source, provide a link to the Creative Commons license, and indicate if changes were made.
+
+References
+Bartash, V. 2011. Miscellaneous Early Dynastic and Sargonic Texts in the Cornell University Collections.
+Englund, R.K. 1996. Proto-Cuneiform Texts from Diverse Collections.
+Friberg, J. 1997/98. Round and almost round numbers in proto-literate metro-mathematical field texts.
+Archiv für Orientforschung 44/45: 1–58.
+Friberg, J. 1999. Counting and accounting in the proto-literate Middle East. Journal of Cuneiform Studies
+51: 107–137.
+Friberg, J. 2007. A Remarkable Collection of Babylonian Mathematical Texts.
+Friberg, J., and A. George. 2010. Six more mathematical cuneiform texts in the Schøyen Collection. In:
+Papyri Graecae Schøyen, eds. Minutoli, D., and R. Pintaudi, (PSchøyen II), 155.
+Friberg, J. 2014. Tretusen år med sexagesimala tal. Aigis Suppl. III(FS Taisbak): 1–23.
+Friberg, J., and F.N. Al-Rawi. 2016. New Mathematical Cuneiform Texts.
+Monaco, W.F. 2012. Loan and interest in the archaic texts. Zeitschrift für Assyriologie 102: 165–178.
+Neugebauer, O., and A. Sachs. 1945. Mathematical Cuneiform Texts.
+Neugebauer, O. 1955. Astronomical Cuneiform Texts, I–III.
+Nissen, H.J., P. Damerow, and R.K. Englund. 1993. Archaic Bookkeeping.
+Ossendrijver, M. 2012. Babylonian Mathematical Astronomy: Procedure Texts.
+Ossendrijver, M. 2019. Scholarly Mathematics in the Rēš Temple. In: Scholars and Scholarship in Late
+Babylonian Uruk. Why the Sciences of the Ancient World Matter eds. Proust, C., and J. Steele
+2:187–217.
+Proust, C. 2007. Tablettes mathématiques de Nippur.
+Schmandt-Besserat, D. 1992. Before Writing, vol. 1: From Counting to Cuneiform.
+Westenholz, A. 1975. Early Cuneiform Texts in Jena.
+
+13
+
+216
+
+J. Friberg
+
+Affiliations
+Jöran Friberg1
+* Jöran Friberg
+joranfriberg@gmail.com
+1
+
+Chalmers University of Technology, Lillekärr Södra 206, Hisings Kärra, 42531 Gothenburg,
+Sweden
+
+13
+
+

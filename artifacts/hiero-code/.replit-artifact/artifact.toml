@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Hiero-Code"
+version = "1.0.0"
+id = "artifacts/hiero-code"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25465
+
+[services.development]
+run = "pnpm --filter @workspace/hiero-code run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hiero-code", "run", "build" ]
+publicDir = "artifacts/hiero-code/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25465"
+BASE_PATH = "/"

@@ -1,22 +1,29 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Hiero-Code symbolic language API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: runes
+    description: Rune node operations
+  - name: glyphs
+    description: Glyph symbol operations
+  - name: programs
+    description: Hiero-Code program operations
+  - name: numerology
+    description: Numerological system references
+
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +31,319 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /runes:
+    get:
+      operationId: listRunes
+      tags: [runes]
+      summary: List all rune nodes
+      responses:
+        "200":
+          description: List of rune nodes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RuneNode"
+    post:
+      operationId: createRune
+      tags: [runes]
+      summary: Create a new rune node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRuneBody"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RuneNode"
+
+  /runes/{id}:
+    get:
+      operationId: getRune
+      tags: [runes]
+      summary: Get a rune node by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Rune node
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RuneNode"
+        "404":
+          description: Not found
+    put:
+      operationId: updateRune
+      tags: [runes]
+      summary: Update a rune node
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateRuneBody"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RuneNode"
+    delete:
+      operationId: deleteRune
+      tags: [runes]
+      summary: Delete a rune node
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /runes/{id}/execute:
+    post:
+      operationId: executeRune
+      tags: [runes]
+      summary: Execute a rune node and propagate state
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExecuteRuneBody"
+      responses:
+        "200":
+          description: Execution result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExecutionResult"
+
+  /runes/graph:
+    get:
+      operationId: getRuneGraph
+      tags: [runes]
+      summary: Get full rune node graph with connections
+      responses:
+        "200":
+          description: Node graph
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RuneGraph"
+
+  /glyphs:
+    get:
+      operationId: listGlyphs
+      tags: [glyphs]
+      summary: List all available glyphs
+      parameters:
+        - name: system
+          in: query
+          schema:
+            type: string
+            enum: [egyptian, sumerian, mayan, all]
+      responses:
+        "200":
+          description: List of glyphs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Glyph"
+
+  /programs:
+    get:
+      operationId: listPrograms
+      tags: [programs]
+      summary: List all Hiero-Code programs
+      responses:
+        "200":
+          description: List of programs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Program"
+    post:
+      operationId: createProgram
+      tags: [programs]
+      summary: Create a new program
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProgramBody"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Program"
+
+  /programs/{id}:
+    get:
+      operationId: getProgram
+      tags: [programs]
+      summary: Get a program by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Program
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Program"
+    put:
+      operationId: updateProgram
+      tags: [programs]
+      summary: Update a program
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProgramBody"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Program"
+    delete:
+      operationId: deleteProgram
+      tags: [programs]
+      summary: Delete a program
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /programs/{id}/run:
+    post:
+      operationId: runProgram
+      tags: [programs]
+      summary: Parse and execute a Hiero-Code program
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Execution trace
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProgramExecutionTrace"
+
+  /numerology/egyptian:
+    get:
+      operationId: getEgyptianNumerology
+      tags: [numerology]
+      summary: Get Egyptian hieroglyphic numeral reference table
+      responses:
+        "200":
+          description: Egyptian numerology data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NumerologySystem"
+
+  /numerology/sumerian:
+    get:
+      operationId: getSumerianNumerology
+      tags: [numerology]
+      summary: Get Sumerian sexagesimal numeral reference table
+      responses:
+        "200":
+          description: Sumerian numerology data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NumerologySystem"
+
+  /numerology/convert:
+    post:
+      operationId: convertNumber
+      tags: [numerology]
+      summary: Convert a number between numeral systems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConvertNumberBody"
+      responses:
+        "200":
+          description: Conversion result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConversionResult"
+
+  /stats/overview:
+    get:
+      operationId: getStats
+      tags: [runes]
+      summary: Dashboard stats overview
+      responses:
+        "200":
+          description: Stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatsOverview"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +354,463 @@ components:
       required:
         - status
 
+    RuneNode:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        glyph:
+          type: string
+        glyphSymbol:
+          type: string
+        system:
+          type: string
+          enum: [egyptian, sumerian, mayan]
+        scale:
+          type: string
+          enum: [macro, micro, particle, temporal]
+        aseVitality:
+          type: number
+          description: Influence strength (ASE)
+        maatBalance:
+          type: number
+          description: Stability control (Maat)
+        sumerianResonance:
+          type: number
+          description: Base-60 resonance weight
+        procedureCode:
+          type: string
+          description: The symbolic procedure encoded in this rune
+        state:
+          type: object
+          description: Current internal state
+          additionalProperties: true
+        connections:
+          type: array
+          items:
+            type: integer
+          description: IDs of connected rune nodes
+        executionCount:
+          type: integer
+        lastOutput:
+          type: number
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - glyph
+        - glyphSymbol
+        - system
+        - scale
+        - aseVitality
+        - maatBalance
+        - sumerianResonance
+        - procedureCode
+        - state
+        - connections
+        - executionCount
+        - lastOutput
+        - createdAt
+        - updatedAt
+
+    CreateRuneBody:
+      type: object
+      properties:
+        name:
+          type: string
+        glyph:
+          type: string
+        glyphSymbol:
+          type: string
+        system:
+          type: string
+          enum: [egyptian, sumerian, mayan]
+        scale:
+          type: string
+          enum: [macro, micro, particle, temporal]
+        aseVitality:
+          type: number
+        maatBalance:
+          type: number
+        sumerianResonance:
+          type: number
+        procedureCode:
+          type: string
+        connections:
+          type: array
+          items:
+            type: integer
+      required:
+        - name
+        - glyph
+        - glyphSymbol
+        - system
+        - scale
+        - aseVitality
+        - maatBalance
+        - sumerianResonance
+        - procedureCode
+
+    UpdateRuneBody:
+      type: object
+      properties:
+        name:
+          type: string
+        glyph:
+          type: string
+        glyphSymbol:
+          type: string
+        aseVitality:
+          type: number
+        maatBalance:
+          type: number
+        sumerianResonance:
+          type: number
+        procedureCode:
+          type: string
+        connections:
+          type: array
+          items:
+            type: integer
+
+    ExecuteRuneBody:
+      type: object
+      properties:
+        inputValue:
+          type: number
+        context:
+          type: object
+          additionalProperties: true
+
+    ExecutionResult:
+      type: object
+      properties:
+        runeId:
+          type: integer
+        output:
+          type: number
+        propagatedTo:
+          type: array
+          items:
+            type: integer
+        stateAfter:
+          type: object
+          additionalProperties: true
+        maatDeviation:
+          type: number
+        aseApplied:
+          type: number
+        steps:
+          type: array
+          items:
+            type: string
+      required:
+        - runeId
+        - output
+        - propagatedTo
+        - stateAfter
+        - maatDeviation
+        - aseApplied
+        - steps
+
+    RuneGraph:
+      type: object
+      properties:
+        nodes:
+          type: array
+          items:
+            $ref: "#/components/schemas/RuneNode"
+        edges:
+          type: array
+          items:
+            $ref: "#/components/schemas/RuneEdge"
+      required:
+        - nodes
+        - edges
+
+    RuneEdge:
+      type: object
+      properties:
+        from:
+          type: integer
+        to:
+          type: integer
+        weight:
+          type: number
+      required:
+        - from
+        - to
+        - weight
+
+    Glyph:
+      type: object
+      properties:
+        id:
+          type: integer
+        symbol:
+          type: string
+        name:
+          type: string
+        system:
+          type: string
+          enum: [egyptian, sumerian, mayan]
+        numericValue:
+          type: number
+        meaning:
+          type: string
+        category:
+          type: string
+      required:
+        - id
+        - symbol
+        - name
+        - system
+        - numericValue
+        - meaning
+        - category
+
+    Program:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+          description: Hiero-Code source
+        runeIds:
+          type: array
+          items:
+            type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - title
+        - description
+        - code
+        - runeIds
+        - createdAt
+        - updatedAt
+
+    CreateProgramBody:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+        runeIds:
+          type: array
+          items:
+            type: integer
+      required:
+        - title
+        - code
+
+    UpdateProgramBody:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+        runeIds:
+          type: array
+          items:
+            type: integer
+
+    ProgramExecutionTrace:
+      type: object
+      properties:
+        programId:
+          type: integer
+        steps:
+          type: array
+          items:
+            type: object
+            properties:
+              stepIndex:
+                type: integer
+              runeId:
+                type: integer
+              runeName:
+                type: string
+              glyphSymbol:
+                type: string
+              input:
+                type: number
+              output:
+                type: number
+              description:
+                type: string
+            required:
+              - stepIndex
+              - runeName
+              - glyphSymbol
+              - input
+              - output
+              - description
+        finalOutput:
+          type: number
+        maatScore:
+          type: number
+        duration:
+          type: number
+      required:
+        - programId
+        - steps
+        - finalOutput
+        - maatScore
+        - duration
+
+    NumerologySystem:
+      type: object
+      properties:
+        name:
+          type: string
+        base:
+          type: integer
+        description:
+          type: string
+        symbols:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: number
+              symbol:
+                type: string
+              name:
+                type: string
+              unicode:
+                type: string
+            required:
+              - value
+              - symbol
+              - name
+        fractions:
+          type: array
+          items:
+            type: object
+            properties:
+              fraction:
+                type: string
+              symbol:
+                type: string
+              decimal:
+                type: number
+            required:
+              - fraction
+              - symbol
+              - decimal
+      required:
+        - name
+        - base
+        - description
+        - symbols
+
+    ConvertNumberBody:
+      type: object
+      properties:
+        value:
+          type: number
+        fromSystem:
+          type: string
+          enum: [decimal, egyptian, sumerian, mayan]
+        toSystem:
+          type: string
+          enum: [decimal, egyptian, sumerian, mayan]
+      required:
+        - value
+        - fromSystem
+        - toSystem
+
+    ConversionResult:
+      type: object
+      properties:
+        originalValue:
+          type: number
+        fromSystem:
+          type: string
+        toSystem:
+          type: string
+        result:
+          type: string
+        symbols:
+          type: array
+          items:
+            type: string
+        explanation:
+          type: string
+      required:
+        - originalValue
+        - fromSystem
+        - toSystem
+        - result
+        - symbols
+        - explanation
+
+    StatsOverview:
+      type: object
+      properties:
+        totalRunes:
+          type: integer
+        totalPrograms:
+          type: integer
+        runesByScale:
+          type: object
+          additionalProperties:
+            type: integer
+        runesBySystem:
+          type: object
+          additionalProperties:
+            type: integer
+        avgAseVitality:
+          type: number
+        avgMaatBalance:
+          type: number
+        recentActivity:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              description:
+                type: string
+              timestamp:
+                type: string
+                format: date-time
+            required:
+              - type
+              - description
+              - timestamp
+      required:
+        - totalRunes
+        - totalPrograms
+        - runesByScale
+        - runesBySystem
+        - avgAseVitality
+        - avgMaatBalance
+        - recentActivity

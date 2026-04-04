@@ -1,0 +1,602 @@
+Sexagesimal calculations in ancient Sumer
+arXiv:2207.12102v4 [math.HO] 9 Jun 2023
+
+Kazuo MUROI
+June 12, 2023
+Abstract
+This article discusses the reasons for the choice of the sexagesimal system
+by ancient Sumerians. It is shown that Sumerians chose this specific numeral
+system based on logical and practical reasons which enabled them to deal with
+big numbers easily and even perform the multiplications and divisions in this
+system. I shall also discuss how the Sumerians calculated the area of a large field
+and measured a large quantity of barley according to their seemingly complicated
+but really systematic methods.
+
+1
+
+The advent of the sexagesimal notation
+
+By the 26th century BCE when historic times began, the Sumerians had invented the
+sexagesimal system based on their decimal system. At the latest in the 20th century
+BCE, they had completed the sexagesimal place value notation, which may have been
+the forerunner of our decimal system now in use, though having lacked symbols both
+for a “sexagesimal point” and for the number zero. In the measurement of angles in
+degrees, minutes, and seconds and of time in hours, minutes, and seconds we still use
+the sexagesimal notation, which is a legacy of Sumer. This fact may show us not only
+that old habits die hard but also that the sexagesimal system has certain advantages
+over the decimal system which only resulted from the number of fingers of a person or
+was a result of chance in a sense.
+In Sumerian society it was necessary to count and record a large amount of farm and
+marine products and then to distribute the products to workers or soldiers according
+to some rule. This process necessitated the Sumerians developing a useful and efficient
+numeral system, that is, the sexagesimal numeral system. Thus, their system has two
+noticeable characteristics. First, it fits the expressing large numbers which occur in
+administrative documents. Generally speaking, a number of three figures composed of
+602 , 60 and 1 seems to have been sufficient for their task. Secondly, in this system
+division is easy to carry out as compared with the decimal system because the base
+60 is divisible by 2, 3, 4, 5, 6, 10, 12, 15, 20, and 30. Therefore, we can say that the
+sexagesimal numeral system was not a product of chance, but a deliberately devised
+system suited for economic activities in Sumer.
+Through the two tablets written in the 26th century BCE, we can assume that the
+Sumerian scribes were able to perform multiplication and division easily.
+1
+
+Figure 1: The obverse and reverse of WF No.2
+WF No.2 (administrative tablet)[1]
+4 yellow-donkeys for bundles of flax of Lumma (personal name). 5 yellow-donkeys for
+bundles of flax of Billum(?). 5 (yellow-donkeys for bundles of flax) of Lunumudae.
+2,41,0 (= 2 × 602 + 41 × 60 = 9660 = 14 × 690). (In total) 14 (yellow)-donkeys for
+bundles of flax. As a consequence of the transport of bundles of flax by breeding
+female yellow-donkeys (see Figure 1). The scribe of this tablet must have calculated
+14 ×(11, 30) = 2, 41, 0, which is the total number of bundles transported by 14 donkeys.
+
+Figure 2: The obverse of TSŠ No.50
+
+TSŠ No.50 (school tablet)[2]
+1 gur7 (=5,20,0,0 sı̀la, where 1 sı̀la ≈ 1 liter) of barley. 7 sı̀la (of barley each) one man
+received. (The number of) the men are 45,42,51 (= 45 × 602 + 42 × 60 + 51 = 164571). 3
+sı̀la of barley is repaid. It is evident that the Sumerian scribe of this tablet has carried
+out the following division: 5, 20, 0, 0 = 7 × (45, 42, 51) + 3 (see Figures 2 and 3).
+2
+
+45 , 42 , 51
+7
+
+5 , 20 , 0 , 0
+5 , 15
+5
+
+5,0
+4 , 54
+6
+
+6,0
+5 , 57
+3
+
+Figure 3: The assumed division process
+
+2
+
+Numerals
+
+The Sumerian word li-mu-um “one thousand” was borrowed from the Akkadian lı̄mu[3] ,
+and also the Sumerian word me-at “one hundred” is a loanword from the Akkadian
+me’atum[4] .Moreover, there was no single word in Sumer that designates a myriad “ten
+thousand” as well as in Babylonia proper. From these facts we may conclude that the
+Sumerians did not develop any elaborate decimal numeral system for large numbers
+and invented the sexagesimal system instead. The basic numerals of the Sumerian sexagesimal system, which must have been sufficient for their accounting, are as follows[5] :
+aš or diš = 1
+min = 2
+eš5 = 3
+limmu = 4
+iá = 5
+àš = 6 (< iá+aš)
+imin = 7 (< iá+min)
+ussu = 8
+ilimmu = 9 (< iá+limmu)
+u =10
+niš = 20
+ùšu = 30
+nimin = 40 (< niš+min)
+ninnu = 50 (< nimin+u)
+géš = 1,0 (= 60)
+šár = 1,0,0 (= 602 )
+šár-gal “big šár” or šár×géš “sixty šár” = 1,0,0,0 (= 603 )
+In combination with these numerals, the Sumerian scribes seem to have been able
+to pronounce any whole number smaller than 604 , for example:
+gešta-u (< géš-ta u) “ten after sixty” = 1,10 (= 70),
+géš-u “ten sixties” = 10,0 (= 600),
+3
+
+šár-min (2,0,0) géš-u-limmu (40,0) géš (1,0) = 2,41,0 (= 9660) (see Figure 1).
+Although the largest numeral attested so far is 604 , it is obvious that this number
+word was not used in everyday life:
+šár-gal šu-nu-tag-ga “big šár that is not touched”.[6]
+As to šár and šár×géš, they were borrowed into Akkadian as šār (602 ) and šuššār (603 )
+respectively.
+A few words about the origin of the Akkadian numeral nēr “10,0”, which was adopted
+by the Greeks as neros, should be given. It seems that the Babylonians did not use
+the Sumerian numeral géš-u “ten-sixty” as it was. Instead they coined the nēr because
+they had already used the Akkadian word giššu “hip”. Since giš-(giš) = nı̄rum “yoke”,
+they used the new word nēr for “10,0” and ignored its original meaning.
+
+3
+
+Number signs
+
+Although the number signs used in sexagesimal notation vary in shape depending on
+when and where they had been written down, we would recognize two basic types
+of them, that is, round-shaped number signs and wedge-shaped ones (see Figure 4).
+The former was used mainly in Early Dynastic Period III (EDIII 2600-2340 BCE) and
+the latter was used from the 24th century BCE onward. Naturally, there are many
+cuneiform tablets in which both signs occur side by side, and also some tablets of
+EDIII in which only wedge-shaped number signs occur.
+Third digits
+
+Second digits
+
+First digits
+
+or
+10,0,0
+
+1,0,0
+
+10,0
+
+1,0
+
+10
+
+1
+
+10
+
+1
+
+or
+10,0,0
+
+1,0,0
+
+10,0
+
+1,0
+
+For larger numbers, the sign gal “big” is appended:
+= 40,0,0,0
+
+Figure 4: Number signs
+With these number signs the Sumerian scribes recorded their results of sexagesimal
+calculations just as the Japanese who still sometimes write down the results of calculations, especially the sum of money, with Chinese numerals instead of Hindu-Arabic
+numerals.
+
+4
+
+Regular numbers
+
+It is most probable that the Sumerians already knew from experience that the numbers
+2,3, and 5 are regular to the base 60, because they especially called the numbers a-rá4
+
+gub-ba “regular factors”.[7] In other words, they knew that the reciprocal of a number
+of the form 2α × 3β × 5γ (α, β, γ: integers) can be obtained by a finite sexagesimal
+expansion.
+Compared with the decimal system, the existence of the regular number 3 in the
+sexagesimal system made it easier to calculate the result of a division whose divisor is
+a multiple of 3, which contributed to the development of mathematics after all. The
+most striking example would be ( 34 )7 ≈ 7; 30, which we can confirm in a passage of
+Enmetena’s foundation cone written around 2400 BCE.[8] The Sumerian scribe must
+have calculated as follows:
+ 7
+4
+= (1; 20)7
+3
+= (1; 20) × (1; 20) × (1; 20)5
+= (1; 46, 40) × (1; 20)5
+= ···
+= 7; 29, 29, 32, 50, 22, 13, 20
+≈ 7; 30.
+It is impossible to imagine that he obtained the result by using decimal system in his
+7
+calculations because it is difficult for him to round up 34 to 7.5:
+ 7
+4
+≈ (1.3)7 = 6.2748 · · · ,
+3
+ 7
+4
+≈ (1.33)7 = 7.3614 . . . ,
+3
+ 7
+4
+≈ (1.333)7 = 7.4784 . . . .
+3
+
+Neither did he use a fraction such as
+ 7
+4
+1075
+16384
+=7+
+= 7.491 · · · ,
+=
+3
+2187
+2187
+which is out of Sumerian numeral system.
+The Sumerian word a-rá-gub-ba had been passed on to Babylonian mathematics
+(2000-1600 BCE) as aragubbûm or a-rá-kayyamānum[9] with the same meaning.
+
+5
+
+Number signs for area
+
+Since the units of area and capacity vary in different places and at different historic
+periods, we had better confine ourselves in this discussion to those units appearing in
+the texts excavated from Fara, the ancient city Šuruppak in the 26th century BCE.
+It is a fact, however, that the metrology of Fara in this historical period provided a
+framework for the metrology of later periods.
+5
+
+The basic unit of length is ninda-DU (≈ 6m), in which the cuneiform sign DU is
+appended probably to distinguish it from the ninda “bread”. In later periods, the sign
+DU was almost omitted. The basic unit of area is squared ninda-DU, or sar, from
+which three larger units are derived:
+1 iku = 1, 40 sar (= 100 sar),
+1 bùr = 18 iku,
+1 šár = 1, 0 bùr (= 60 bùr).
+Although the number signs for area units are similar to those used in sexagesimal
+notation,[10] we hardly mix them up if we pay close attention to the cuneiform sign gán
+“a field”, which is usually written down at the first line of a tablet concerning the area
+calculations (see Figure 5).
+
+Figure 5: Number signs for area
+
+6
+
+The area of a large square field
+
+On the school tablet SF No. 82 published by A. Deimel in 1923,[11] the areas of squares
+whose sides decrease from 10,0 ninda (≈ 3600m) to 5 ninda (≈ 30m) are tabulated,
+6
+
+which may seem to be complicated at first sight. In order to analyze the calculation
+method, especially for large squares, ten lines on the obverse of this tablet are given in
+the following (see Figure 6). Line 1, which consists of three blocks, reads as follows:
+The side is 10,0 ninda. (The other side) is 10,0 ninda equally. 3 (šár) 20
+(bùr) is the area.
+
+Figure 6: Obverse of School tablet SF No. 82
+The calculation process would be as follows:
+10, 0 × 10, 0 (ninda2 = sar) = 1, 0 × 1, 0 (éš2 = iku), where 1 éš = 10 ninda
+1
+= 1, 0 × 1, 0 ×
+(bùr), where 1 bùr = 18 iku
+18
+1
+= 0; 3, 20
+= 3, 20 (bùr), where
+18
+= 3 (šár) 20 (bùr).
+7
+
+Systematically changing the area units, the Sumerian scribe has obtained the result
+correctly. Similarly, we can explain the following lines.
+Line 2:
+9, 0 × 9, 0 (sar) = 54 × 54 (iku)
+1
+(bùr)
+= 54 × 54 ×
+18
+= 2, 42 (bùr)
+= 2 (šár) 42 (bùr).
+Line 3:
+8, 0 × 8, 0 (sar) = 48 × 48 (iku)
+1
+(bùr)
+= 48 × 48 ×
+18
+= 2, 8 (bùr)
+= 2 (šár) 8 (bùr).
+Line 4:
+7, 0 × 7, 0 (sar) = 42 × 42 (iku)
+1
+(bùr)
+= 42 × 42 ×
+18
+= 1, 38 (bùr)
+= 1 (šár) 38 (bùr).
+Line 5:
+6, 0 × 6, 0 (sar) = 36 × 36 (iku)
+1
+(bùr)
+= 36 × 36 ×
+18
+= 1, 12 (bùr)
+= 1 (šár) 12 (bùr).
+Line 6:
+5, 0 × 5, 0 (sar) = 30 × 30 (iku)
+1
+(bùr)
+= 30 × 30 ×
+18
+= 50 (bùr).
+Line 7:
+4, 0 × 4, 0 (sar) = 24 × 24 (iku)
+1
+(bùr)
+= 24 × 24 ×
+18
+= 32 (bùr).
+8
+
+Line 8:
+3, 0 × 3, 0 (sar) = 18 × 18 (iku)
+1
+(bùr)
+= 18 × 18 ×
+18
+= 18 (bùr).
+Line 9:
+2, 0 × 2, 0 (sar) = 12 × 12 (iku)
+1
+(bùr)
+= 12 × 12 ×
+18
+= 8 (bùr).
+Line 10:
+1, 0 × 1, 0 (sar) = 6 × 6 (iku)
+1
+= 6×6×
+(bùr)
+18
+= 2 (bùr).
+For comparison, I take up another interpretation of the numbers listed in the table,
+which seems to have been supported by many Sumerologists:[12]
+(60 × 9)(60 × 9) = 1080 × 2 + 180 × 4 + 18 × 2
+= 2916 (iku).
+Also, see Line 2 above.
+We can immediately realize that this calculation is not the one performed by the
+Sumerians but a modern one forced by decimal calculations, because they had no means
+to record the result of (60 × 9)(60 × 9) decimally and their purpose was to represent
+the area of a large land not by unit iku but by unit bùr. In ancient times, Sumerian
+framers used to sow a field with barley, a certain unit of barley (≈ 240 liters) per 1 bùr.
+
+7
+
+Incorrect result
+
+Another school tablet TSŠ No. 188[13] also calculates the area of a vast square field,
+whose side is definitely an imaginary one, that is, 50,0 ninda (≈ 18km). Line 1 of the
+tablet consisting of two blocks simply reads (see Figure 7):
+The field. 50,0 (ninda). 50,0 (ninda) equally.
+
+9
+
+Figure 7: Obverse of School tablet TSŠ No. 188
+If we follow the Sumerian calculation method discussed above, we can obtain the
+area easily:
+50, 0 × 50, 0 (sar) = 5, 0 × 5, 0 (iku)
+1
+= 5, 0 × 5, 0 ×
+(bùr)
+18
+= 25, 0, 0 × 0; 3, 20 (bùr)
+= 1, 23, 20 (bùr)
+= 1 (šár-gal)23 (šár)20 (bùr)
+
+where 1 šár-gal is 1,0,0 bùr, and it was never used in everyday life. But the answer in
+lines 2 and 3 is a bit larger:
+1 (šár-gal) 27 (šár) 30 (bùr) = 1,27,30 (bùr).
+10
+
+In addition, the cuneiform sign éš and the area number 2 + 41 (iku) are inserted
+in line 3, which are seemingly unnecessary but may explain the cause of an error in
+calculation. The sign éš would emphasize that the length unit in the area unit of iku
+is not ninda but éš. As to 2 + 14 (iku), the scribe of this tablet must have used the
+relation
+1
+2 + (iku) = 225 (sar) = 152 (sar)
+4
+to change the unit sar to iku, but he has made a great mistake in changing iku to bùr:
+2
+
+1
+50, 0
+50, 0 × 50, 0 (sar) = 2 ×
+(iku)
+4
+15
+1
+= 2 × (3, 20)2 (iku)
+4
+1
+= 2 × (11, 6, 40) (iku)
+4
+1
+1
+= 2 × (11, 6, 40) ×
+(bùr)
+4
+18
+1
+= 2 × (11, 6, 40) × (0; 3, 30) (bùr)
+4
+1
+= 2 × (38, 53; 20) (bùr)
+4
+= 1, 17, 46; 40 + 9, 43; 20 (bùr)
+= 1, 27, 30 (bùr)
+= 1 (šár-gal)27 (šár)30 (bùr).
+In the division by 18, if the dividend is not a simple multiple of 18, the division
+must have been replaced by the multiplication by 0;3,20 as in later periods.
+After all, the scribe’s idea to use the relation
+2+
+
+1
+(iku) = 225 (sar) = 152 (sar)
+4
+
+for the conversion of units was a failure, although the idea itself was mathematically
+correct.
+
+8
+
+Capacity units
+
+The basic capacity unit in Fara was sı̀la (≈ 1 liter), from which larger units bán, nigida,
+and lı́d-ga were derived:
+1 bán = 10 sı̀la,
+1 nigida = 6 bán = 1, 0 sı̀la,
+1 lı́d-ga = 4 nigida = 24 bán = 4, 0 sı̀la.
+An administrative tablet of this period TSŠ No. 81 confirms the application of these
+units:
+11
+
+40 young bricklayers were hired. (Each of them) received 2 (bán) (of flour).
+(The total amount of) flour is 3 (lı́d-ga) 1 (nigida) 2 (bán).
+Since
+40 × 2 (bán) = 1, 20 (bán)
+= 3 × 24 + 6 + 2 (bán)
+= 3 (lı́d-ga)1 (nigida)2 (bán)
+hun “to
+the result given by the scribe is correct (see Figure 8). Note that two words <
+hire” and zı̀ “flour” are written with the same cuneiform sign éš “a unit of length”.
+
+Obverse
+
+Reverse
+
+Figure 8: Obverse and reverse of administrative tablet TSŠ No. 81
+There was another large unit next to the lı́d-ga, which, strangely enough, has been
+overlooked by scholars for almost one hundred years:
+1 gur (or the like) = 5,0 sı̀la (= 300 sı̀la).
+An evidence for the use of this large unit is given in the fragmentary administrative
+tablet TSŠ No. 882:
+2 (nigida) of barley and 2 (nigida) of emmer wheat have been received as
+a monthly food. 1 (nigida) of barley and 1 (nigida) of emmer wheat (as a
+food for a half of) the ... month. 3 + 21 months. In total, 1 (gur) 2 (nigida)
+of barley in (gur-mah
+<) unit. 1 (gur) 2 (nigida) of emmer wheat. The house
+of gods eats (these).
+12
+
+Thus, the total amount of barley or emmer wheat is
+(3 × 2 + 1) (nigida) = (5 + 2) (nigida) = 1 (gur) 2 (nigida),
+which clearly shows that
+1 (gur) = 5 (nigida) = 5, 0 (sı̀la).
+For more attestations of this capacity unit, see WF No. 1 and WF No. 7[14] in the
+following section.
+
+9
+
+Barley distributed to donkeys
+
+There exists a group of tablets excavated in Fara in which the total amount of barely
+distributed to anše-apin “plow-donkeys” is recorded with the number of donkeys and
+the names of their owners. It seems that 1 (nigida) of barely was assigned to one
+donkey probably for sowing a field, and therefore the formula for calculating the total
+amount of barley would be:
+the number of donkeys divided by 4 in the case of lı́d-ga (= 4 nigida), or
+the number of donkeys divided by 5 in the case of gur (= 5 nigida).
+In the following, several examples of these types from WF, TSŠ and NTSŠ[15] are
+given:
+WF No. 1:
+
+1
+(gur) = 17 (gur) 1 (nigida)
+5
+where the number in boldface represents the head of plow-donkeys, as above.
+1, 26 ÷ 5 = 17 +
+
+WF No. 7:
+6, 23 ÷ 5 = 1, 16 +
+WF No. 14:
+11 ÷ 4 = 2 +
+
+3
+(gur) = 1, 16 (gur) 3 (nigida).
+5
+
+3
+(lı́d-ga) = 2 (lı́d-ga) 3 (nigida).
+4
+
+TSŠ No. 115:
+1, 17 ÷ 4 = 20 −
+
+3
+(lı́d-ga) = 20 (lı́d-ga) − 3 (nigida).
+4
+
+NTSŠ No. 211:
+42 ÷ 4 = 10 +
+
+2
+(lı́d-ga) = 10 (lı́d-ga) 2 (nigida).
+4
+
+These formulas are very simple and practical, however it is really regrettable that
+most Sumerologists have not noticed their existence yet.
+13
+
+10
+
+Conclusion
+
+Up to the present, most Sumerologists have transcribed the Sumerian sexagesimal numbers to our decimal numbers, both in papers and in books,[16] misleading the general
+readers and perhaps themselves to the assumption that the Sumerians calculated decimally and wrote down only the results in the sexagesimal numeral notation. It is,
+however, against the facts as we have seen above. From the beginning they calculated
+in the sexagesimal numeral system and recorded the results according to their weights
+and measures which were rather complicated.
+Moreover, the Sumerians had established the reasonable and convenient systems of
+area and capacity measures based on their sexagesimal numeral system, which seem to
+have made it possible to manage farm work efficiently. By analyzing the data recorded
+by the Sumerians, we can clearly recognize how they had calculated a large area of a
+field and a large amount of barley necessary for sowing a field. However, we must be
+very cautious about transcribing the sexagesimal numbers occurred in their documents
+to our decimal numbers, because such a transcription tends to obscure the calculation
+process involved and may mislead us about the nature of Sumerians’ mathematics.
+I would like to admire the calculation ability of the Sumerian scribes that must have
+been acquired after long and strict education.
+
+Notes
+[1] A. Deimel, Wirtschaftstexte aus Fara (= WF), 1924, p.1. Deimel erroneously interprets the number 9660 as the number of donkeys. See p.10∗ . The translation is
+mine.
+[2] R. Jestin, Tablettes sumériennes de Šuruppak, 1937, no.50. For the transliteration
+and translation, see my paper:
+K. Muroi, The Origin of the Mystical Number Seven in Mesopotamian
+Culture: Division by Seven in the sexagesimal Number System, 2014,
+arXiv: 1407.6247 [math.HO].
+[3] The Assyrian Dictionary of the Oriental Institute of the University of Chicago (=
+CAD), vol.9, L, 1973, p.197.
+[4] CAD, vol.10, M part two, 1977, p.1.
+[5] M. L. Thomsen, The Sumerian Language, 1984, §139.
+[6] H. V. Hilprecht, Mathematical, Metrological and Chronological Tablets from the
+Temple Library of Nippur, 1906, text 29, obverse col.4, line 9.
+[7] K. Muroi, Studies in Babylonian Mathematics No.3, 2007, pp. 6-7.
+[8] K. Muroi, The oldest example of compound interest in Sumer: Seventh power of
+four-thirds, 2015, arXiv: 1510.00330 [math.HO].
+
+14
+
+[9] In the Susa mathematical texts. A new edition of the Susa mathematical texts in a
+new book (Elamite Mathematics) is being prepared for publication by the present
+author and N. Heydari who is a mathematician from modern Susa.
+[10] K. Muroi, Sexagesimal calculations in ancient Sumer, 2022, arXiv: 2207.12102
+[math.HO], 6 pages: https://arxiv.org/abs/2207.12102.
+[11] A. Deimel, Schultexte aus Fara (=SF), J. C. Hinrichs’ sche Buchhandlung, 1923.
+[12] S. N. Kramer, The Sumerians, University of Chicago Press, 1963, p. 94.
+[13] R. Jestin, Tablettes sumériennes de Šuruppak (=TSŠ), E. de Boccard, 1937,
+No. 188.
+[14] A. Deimel, Wirtshaftstexte aus Fara (=WF), J.C. Hinrichs, Leipzig, 1924.
+[15] R. Jestin, Nouvelles Tablettes sumériennes de Šuruppak (=NTSŠ), A. Maisonneuve, Paris, 1957.
+Further examples are given in WF No. 9, WF No. 16, WF No. 17, WF No. 19,
+WF No. 22, WF No. 25, WF No. 26, WF No. 28, TSŠ No. 106, TSŠ
+No. 107, and NTSŠ No. 244.
+[16] For example, S. N. Kramer, The Sumerians, 1963, p. 92.
+
+15
+
+
