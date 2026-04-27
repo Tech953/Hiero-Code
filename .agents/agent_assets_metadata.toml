@@ -5,16 +5,16 @@ generated = []
 id = "901002KLHZmq4W-QQFbCY"
 uri = "file://README.md"
 type = "text"
-title = "README — Hiero-Code"
+title = "README — updated with lossless transfer + Khoisan"
 
 [[outputs]]
 id = "07X4UzBeY1KC1MHCtuN3_"
 uri = "file://USER_MANUAL.md"
 type = "text"
-title = "User Manual — Hiero-Code"
+title = "User Manual — updated Framework section"
 
 [[outputs]]
 id = "0iguFwagcWXNBm3VfYzjU"
 uri = "file://PROPOSAL.md"
 type = "text"
-title = "Project Proposal — Hiero-Code"
+title = "Proposal — updated with Khoisan fidelity section"
