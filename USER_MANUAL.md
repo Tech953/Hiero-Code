@@ -195,6 +195,20 @@ The Framework page is the full technical specification of the Hiero-Code languag
 
 This page is the authoritative reference for anyone building programs or extending the rune set.
 
+### Khoisan Click Protocol — ML Inter-Component Communication
+
+The Framework page contains a dedicated section documenting Khoisan click phonology as an architectural blueprint for signaling between machine learning components. The core insight: current ML systems pass information between layers as dense floating-point tensors — high bandwidth but semantically opaque. The receiving component cannot tell from the tensor alone what kind of operation produced it. Khoisan clicks suggest a structured alternative where each inter-component transmission is simultaneously a data payload, a named operation code, a precision specification, and a distribution mode.
+
+**Click-to-operation mapping:** Six click types each own a computational domain — memory (dental C), arithmetic (alveolar-palatal Tc), logic/activation (palatal Q), control flow (lateral X), gradient/comparison (retroflex Kx), and synchronization (bilabial Pf). Companion modifiers (voiced, aspirated, nasalized, glottalized, voiced+nasal) specify scalar vs. vector vs. distributed mode within each domain.
+
+**Reading a click code:** `Tc_VHG` means — alveolar-palatal click (arithmetic domain), voiced (vector operation), aspirated (high-precision FP64), glottalized (gradient-tracked) — this is a high-precision gradient MATMUL; the receiving component knows immediately that it is receiving a matrix multiply result that needs to be retained for backpropagation.
+
+**Large-scale reference:** Attention over long contexts, embedding lookups in trillion-parameter models, gradient synchronization across thousands of GPUs — these are all reference problems where the click protocol's semantic clarity offers the greatest advantage. Every large-scale reference becomes a named, addressable operation rather than an anonymous tensor.
+
+**Coverage:** 6 click types × 6 companion modes = 36 base operation codes. Every function a computer can perform is expressible as a single click + modifier pair.
+
+The Framework page shows the complete transformer forward pass as a sequence of 12 click events, the full click → operation → ML function mapping table, and the component topology diagram showing which click fires at each inter-layer boundary.
+
 ### Khoisan Information Transfer Fidelity
 
 The Framework page now includes a dedicated section on the five fidelity mechanisms drawn from Khoisan click phonology:

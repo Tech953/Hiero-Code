@@ -5,16 +5,16 @@ generated = []
 id = "901002KLHZmq4W-QQFbCY"
 uri = "file://README.md"
 type = "text"
-title = "README — updated with lossless transfer + Khoisan"
+title = "README — Khoisan ML Protocol added"
 
 [[outputs]]
 id = "07X4UzBeY1KC1MHCtuN3_"
 uri = "file://USER_MANUAL.md"
 type = "text"
-title = "User Manual — updated Framework section"
+title = "User Manual — Click Protocol section added"
 
 [[outputs]]
 id = "0iguFwagcWXNBm3VfYzjU"
 uri = "file://PROPOSAL.md"
 type = "text"
-title = "Proposal — updated with Khoisan fidelity section"
+title = "Proposal — ML application section added"

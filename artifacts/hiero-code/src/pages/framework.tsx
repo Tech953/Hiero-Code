@@ -111,6 +111,113 @@ const ADAPTATION_TIERS = [
   },
 ];
 
+const ML_CLICK_OPS = [
+  {
+    click: "|",  roman: "C",  name: "Dental",         color: "blue",
+    domain: "Memory / Data Transfer",
+    cpuOps: ["LOAD", "STORE", "MOVE", "COPY", "GATHER", "SCATTER", "DMA"],
+    mlFunctions: ["Embedding lookup", "KV-cache read/write", "Token buffer", "Context window fetch", "Weight shard transfer"],
+    plainDesc: "Scalar load/store — single weight or activation value",
+    voicedDesc: "Vector load/store — full embedding row or attention head",
+    aspiratedDesc: "Streaming load — continuous sequential fetch (e.g. autoregressive generation)",
+    nasalizedDesc: "Broadcast fetch — same embedding distributed to all heads simultaneously",
+    glottalizedDesc: "Gradient-tracked load — activation retained in memory for backprop",
+    vnDesc: "Distributed gather — sharded embedding across devices, all-gather",
+  },
+  {
+    click: "‡",  roman: "Tc", name: "Alveolar-Palatal", color: "amber",
+    domain: "Arithmetic / Linear Algebra",
+    cpuOps: ["ADD", "SUB", "MUL", "DIV", "FMA", "DOT", "MATVEC", "MATMUL"],
+    mlFunctions: ["Linear projection (QKV)", "Feed-forward multiply-accumulate", "Weighted sum in attention", "Scale factor application", "Positional encoding add"],
+    plainDesc: "Scalar multiply-accumulate — one weight × one activation",
+    voicedDesc: "Vector dot product — full head-dim multiply-accumulate",
+    aspiratedDesc: "High-precision FP64 or BF16 accumulation — numerical stability mode",
+    nasalizedDesc: "Reduce-sum across batch — mean pooling, loss aggregation",
+    glottalizedDesc: "Gradient multiply — chain rule step in backpropagation",
+    vnDesc: "Distributed MATMUL — tensor parallel across devices with all-reduce",
+  },
+  {
+    click: "!",  roman: "Q",  name: "Palatal",          color: "emerald",
+    domain: "Logical / Activation",
+    cpuOps: ["AND", "OR", "XOR", "NOT", "MASK", "COMPARE", "THRESHOLD", "SELECT"],
+    mlFunctions: ["ReLU / GELU / SiLU activation", "Attention mask application", "Causal mask enforcement", "Gating (SwiGLU)", "Dropout mask", "Top-k selection"],
+    plainDesc: "Scalar threshold — apply activation function to single value",
+    voicedDesc: "Vector activation — apply nonlinearity across full hidden dimension",
+    aspiratedDesc: "Amplified gate — high-gain activation for sparse activation patterns",
+    nasalizedDesc: "Broadcast mask — apply same attention mask across all batch items",
+    glottalizedDesc: "Gradient through gate — activation derivative for backprop",
+    vnDesc: "Distributed mask-and-gate — sparse mixture-of-experts routing signal",
+  },
+  {
+    click: "||", roman: "X",  name: "Lateral",           color: "purple",
+    domain: "Control Flow / Routing",
+    cpuOps: ["BRANCH", "JUMP", "CALL", "RETURN", "LOOP", "YIELD", "FORK", "JOIN"],
+    mlFunctions: ["Residual (skip) connection", "Attention head routing", "MoE expert routing", "Layer skip (early exit)", "Beam search branch", "Autoregressive loop"],
+    plainDesc: "Unconditional branch — deterministic residual addition",
+    voicedDesc: "Conditional branch — route based on vector magnitude or confidence score",
+    aspiratedDesc: "Priority route — high-confidence path selection (top-p sampling)",
+    nasalizedDesc: "Fork-join — split computation across attention heads then merge",
+    glottalizedDesc: "Gradient checkpoint branch — conditional recomputation for memory efficiency",
+    vnDesc: "Distributed fork — expert routing across devices in MoE architecture",
+  },
+  {
+    click: "ǂ",  roman: "Kx", name: "Retroflex",         color: "orange",
+    domain: "Comparison / Gradient",
+    cpuOps: ["EQ", "NEQ", "LT", "GT", "LTE", "GTE", "MIN", "MAX", "DIFF", "GRAD"],
+    mlFunctions: ["Loss computation (cross-entropy, MSE)", "Softmax temperature comparison", "Gradient magnitude check", "Optimizer step (Adam momentum)", "Learning rate scheduling", "Convergence test"],
+    plainDesc: "Scalar compare — single loss value against threshold",
+    voicedDesc: "Vector gradient — full gradient tensor for one layer",
+    aspiratedDesc: "Amplified gradient — gradient scaling / gradient clipping",
+    nasalizedDesc: "Aggregate gradient — all-reduce gradient across data-parallel devices",
+    glottalizedDesc: "Second-order gradient — Hessian or momentum update",
+    vnDesc: "Distributed optimizer step — gradient sync + weight update across all devices",
+  },
+  {
+    click: "ʘ",  roman: "Pf", name: "Bilabial",          color: "rose",
+    domain: "Synchronization / System Control",
+    cpuOps: ["SYNC", "ACK", "NACK", "BARRIER", "FLUSH", "HALT", "RESET", "CHECKPOINT"],
+    mlFunctions: ["Layer normalization", "Batch normalization", "KV-cache flush", "Attention sink reset", "Device synchronization barrier", "Checkpoint save/load"],
+    plainDesc: "Sync pulse — layer boundary signal; triggers normalization and handshake",
+    voicedDesc: "Voiced sync — normalization with running statistics update",
+    aspiratedDesc: "Hard flush — full cache clear, used at sequence boundaries",
+    nasalizedDesc: "Broadcast barrier — all devices wait before proceeding (pipeline sync)",
+    glottalizedDesc: "Emergency halt — NaN/Inf detection; gradient explosion recovery",
+    vnDesc: "Distributed checkpoint — coordinated state save across all devices",
+  },
+];
+
+const ML_TOPOLOGY = [
+  { from:"Input Tokens",   to:"Embedding",    click:"|",  roman:"C",  modifier:"VG", color:"blue",   signal:"Vector load with gradient tracking — LOAD_VEC + GRAD_TRACK" },
+  { from:"Embedding",      to:"Layer Norm",   click:"ʘ",  roman:"Pf", modifier:"V",  color:"rose",   signal:"Normalize embedding distribution before attention" },
+  { from:"Layer Norm",     to:"Q Projection", click:"‡",  roman:"Tc", modifier:"VH", color:"amber",  signal:"High-precision vector MATMUL → Query matrix" },
+  { from:"Layer Norm",     to:"K Projection", click:"‡",  roman:"Tc", modifier:"VH", color:"amber",  signal:"High-precision vector MATMUL → Key matrix" },
+  { from:"Layer Norm",     to:"V Projection", click:"‡",  roman:"Tc", modifier:"VH", color:"amber",  signal:"High-precision vector MATMUL → Value matrix" },
+  { from:"Q × Kᵀ",         to:"Attention",    click:"ǂ",  roman:"Kx", modifier:"V",  color:"orange", signal:"Dot-product scores — gradient comparison + softmax temperature" },
+  { from:"Attention",      to:"Mask",         click:"!",  roman:"Q",  modifier:"VN", color:"emerald",signal:"Broadcast causal mask across all heads and batch items" },
+  { from:"Mask + Softmax", to:"A × V",        click:"‡",  roman:"Tc", modifier:"VN", color:"amber",  signal:"Reduce-sum weighted value — attended context vector" },
+  { from:"Multi-Head Attn",to:"Residual",     click:"||", roman:"X",  modifier:"V",  color:"purple", signal:"Vector residual add — fork-join across heads then skip connection" },
+  { from:"Residual",       to:"Layer Norm 2", click:"ʘ",  roman:"Pf", modifier:"V",  color:"rose",   signal:"Re-normalize before FFN" },
+  { from:"Layer Norm 2",   to:"FFN Gate",     click:"!",  roman:"Q",  modifier:"VG", color:"emerald",signal:"SwiGLU gating — vector activation with gradient tracking" },
+  { from:"FFN Gate",       to:"FFN Up",       click:"‡",  roman:"Tc", modifier:"VHG",color:"amber",  signal:"High-precision gradient-tracked MATMUL — expand to 4× dim" },
+  { from:"FFN Up",         to:"Residual 2",   click:"||", roman:"X",  modifier:"V",  color:"purple", signal:"Second residual skip connection" },
+  { from:"Loss",           to:"Backprop",     click:"ǂ",  roman:"Kx", modifier:"VNG",color:"orange", signal:"Distributed gradient aggregate — all-reduce + optimizer step" },
+];
+
+const ML_CLICK_SEQUENCE = [
+  { step:1,  click:"|",  roman:"C",  mod:"VG",  op:"EMBED",         desc:"Load token embedding vectors from vocabulary table, track for backprop" },
+  { step:2,  click:"ʘ",  roman:"Pf", mod:"V",   op:"LAYERNORM_1",   desc:"Normalize embedding distribution — sync pulse before attention" },
+  { step:3,  click:"‡",  roman:"Tc", mod:"VH",  op:"PROJ_QKV",      desc:"Three parallel high-precision MATMULs — compute Q, K, V matrices" },
+  { step:4,  click:"ǂ",  roman:"Kx", mod:"V",   op:"ATTN_SCORES",   desc:"Q·Kᵀ / √d — compute scaled dot-product attention scores" },
+  { step:5,  click:"!",  roman:"Q",  mod:"VN",  op:"MASK_SOFTMAX",  desc:"Apply causal mask, broadcast across heads, softmax normalize" },
+  { step:6,  click:"‡",  roman:"Tc", mod:"VN",  op:"ATTN_OUTPUT",   desc:"Weighted sum A·V — attended context, reduce across sequence" },
+  { step:7,  click:"||", roman:"X",  mod:"V",   op:"RESIDUAL_1",    desc:"Add residual: x = x + attn_output — skip connection" },
+  { step:8,  click:"ʘ",  roman:"Pf", mod:"V",   op:"LAYERNORM_2",   desc:"Re-normalize before feed-forward network" },
+  { step:9,  click:"!",  roman:"Q",  mod:"VG",  op:"FFN_GATE",      desc:"SwiGLU gate — gradient-tracked activation gating" },
+  { step:10, click:"‡",  roman:"Tc", mod:"VHG", op:"FFN_UP_DOWN",   desc:"FFN expand-to-4× then project back — gradient retained" },
+  { step:11, click:"||", roman:"X",  mod:"V",   op:"RESIDUAL_2",    desc:"Second residual add — add FFN output to stream" },
+  { step:12, click:"ǂ",  roman:"Kx", mod:"VNG", op:"LOSS_GRAD",     desc:"Compute loss, all-reduce gradient across devices, optimizer step" },
+];
+
 const LOSSLESS_LAYERS = [
   {
     layer: "Layer 1 — Positional Frame (Sumerian)",
@@ -427,6 +534,192 @@ export default function Framework() {
               </tbody>
             </table>
           </div>
+        </div>
+      </section>
+
+      <Separator />
+
+      {/* ───────────────── ML INTER-COMPONENT CLICK PROTOCOL ───────────────── */}
+      <section className="space-y-6">
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-1">Click Protocol — ML Inter-Component Communication</h2>
+          <p className="text-muted-foreground font-mono text-sm">
+            Khoisan click phonology as the architectural inspiration for a high-fidelity, high-speed signaling system between machine learning components — replacing float tensor passing with structured click sequences that natively encode every operation a computer can perform.
+          </p>
+        </div>
+
+        <div className="p-4 rounded-lg border border-violet-500/30 bg-violet-950/10 space-y-3">
+          <h3 className="font-serif font-bold text-violet-300">The Core Thesis</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Current ML systems pass information between components as dense floating-point tensors — billions of numbers that encode activations, weights, and gradients. This is high bandwidth but semantically opaque: the receiving component cannot tell, from the tensor alone, what <em>kind</em> of operation produced it or what <em>kind</em> of operation it expects next.
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Khoisan clicks suggest an alternative: a <strong className="text-violet-300">structured signaling language</strong> where each inter-component transmission is not just a data payload but a <strong className="text-violet-300">named operation code</strong> with a <strong className="text-violet-300">precision modifier</strong> and a <strong className="text-violet-300">distribution mode</strong> — all encoded in a single click utterance. The receiving component knows immediately: <em>what</em> data is arriving, <em>how precise</em> it needs to be, and <em>how</em> to distribute it across parallel processing units.
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Large-scale reference problems — attention over long contexts, embedding lookups in trillion-parameter models, gradient synchronization across thousands of devices — are exactly the scenarios where this click protocol architecture offers the greatest advantage: <strong className="text-violet-300">acoustic-level speed, lossless fidelity, and zero semantic ambiguity</strong> between components.
+          </p>
+        </div>
+
+        {/* Operation mapping table */}
+        <div className="space-y-3">
+          <h3 className="font-serif font-bold text-lg">Click → Operation Domain Mapping</h3>
+          <p className="text-xs text-muted-foreground">Each click type maps to a specific computational domain. Companion modifiers (∅ / V / H / N / G / VN) specify the mode within that domain — from scalar operations to distributed tensor operations across device clusters.</p>
+
+          <div className="space-y-4">
+            {ML_CLICK_OPS.map(op => (
+              <div key={op.roman} className={`rounded-lg border border-${op.color}-500/20 bg-${op.color}-950/10 overflow-hidden`}>
+                <div className={`flex items-center gap-3 px-4 py-3 border-b border-${op.color}-500/15`}>
+                  <span className={`font-mono text-2xl text-${op.color}-400 w-10 text-center`}>{op.click}</span>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className={`font-serif font-bold text-${op.color}-300`}>{op.roman} — {op.name} Click</span>
+                      <Badge variant="outline" className={`text-[10px] border-${op.color}-500/30 text-${op.color}-400`}>{op.domain}</Badge>
+                    </div>
+                    <div className="flex flex-wrap gap-1 mt-1">
+                      {op.cpuOps.map(o => <Badge key={o} variant="outline" className="text-[9px] border-border text-muted-foreground font-mono">{o}</Badge>)}
+                    </div>
+                  </div>
+                  <div className="hidden md:flex flex-wrap gap-1 max-w-xs">
+                    {op.mlFunctions.map(f => <Badge key={f} className={`text-[9px] bg-${op.color}-500/10 text-${op.color}-300 border-${op.color}-500/20`}>{f}</Badge>)}
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-border/20">
+                  {[
+                    { mod:"∅ (plain)",    desc: op.plainDesc },
+                    { mod:"V (voiced)",   desc: op.voicedDesc },
+                    { mod:"H (aspirated)",desc: op.aspiratedDesc },
+                    { mod:"N (nasal)",    desc: op.nasalizedDesc },
+                    { mod:"G (glottal)", desc: op.glottalizedDesc },
+                    { mod:"VN (dist.)",  desc: op.vnDesc },
+                  ].map(m => (
+                    <div key={m.mod} className="p-3 bg-background/50 space-y-1">
+                      <div className={`font-mono text-[10px] font-bold text-${op.color}-400 uppercase tracking-wider`}>{m.mod}</div>
+                      <div className="text-[10px] text-muted-foreground leading-relaxed">{m.desc}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ML Topology */}
+        <div className="space-y-3">
+          <h3 className="font-serif font-bold text-lg">Transformer Forward Pass — Click Signal Topology</h3>
+          <p className="text-xs text-muted-foreground">
+            Every inter-component signal in a standard transformer is expressed as a click type + companion modifier pair. This is not a description of what the tensor contains — it is a specification of what operation produced it and what operation should process it next.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-border/50 text-muted-foreground font-mono text-[10px] uppercase tracking-wider">
+                  <th className="text-left py-2 pr-3">From</th>
+                  <th className="text-left px-2 py-2">To</th>
+                  <th className="text-center px-2 py-2">Click</th>
+                  <th className="text-center px-2 py-2">Mode</th>
+                  <th className="text-left px-3 py-2">Signal Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ML_TOPOLOGY.map((row, i) => (
+                  <tr key={i} className="border-b border-border/20 hover:bg-muted/20">
+                    <td className="py-2 pr-3 font-semibold text-foreground text-[10px]">{row.from}</td>
+                    <td className="px-2 py-2 text-muted-foreground text-[10px]">{row.to}</td>
+                    <td className="text-center px-2 py-2">
+                      <span className={`font-mono text-base text-${row.color}-400`}>{row.click}</span>
+                    </td>
+                    <td className="text-center px-2 py-2">
+                      <Badge variant="outline" className={`font-mono text-[9px] border-${row.color}-500/30 text-${row.color}-400`}>{row.roman}_{row.modifier}</Badge>
+                    </td>
+                    <td className="px-3 py-2 text-muted-foreground text-[10px] leading-relaxed">{row.signal}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Forward pass click sequence */}
+        <div className="space-y-3">
+          <h3 className="font-serif font-bold text-lg">Transformer Inference — Click Sequence</h3>
+          <p className="text-xs text-muted-foreground">Twelve click events constitute a single transformer layer forward pass. Each click fires in sequence (some in parallel where noted) and carries the full operation specification in a single utterance.</p>
+          <div className="space-y-1.5">
+            {ML_CLICK_SEQUENCE.map(s => (
+              <div key={s.step} className="flex items-start gap-3 p-2.5 rounded border border-border/30 bg-card hover:bg-muted/20 transition-colors">
+                <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center shrink-0">
+                  <span className="text-[10px] font-mono text-muted-foreground">{s.step}</span>
+                </div>
+                <div className="flex items-center gap-2 w-20 shrink-0">
+                  <span className="font-mono text-xl leading-none">{s.click}</span>
+                  <Badge variant="outline" className="font-mono text-[9px]">{s.roman}_{s.mod}</Badge>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="font-mono text-[10px] text-amber-400 uppercase tracking-wider">{s.op}</div>
+                  <div className="text-[10px] text-muted-foreground leading-relaxed mt-0.5">{s.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Why clicks over tensors */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 rounded-lg border border-emerald-500/20 bg-emerald-950/10 space-y-3">
+            <h4 className="font-serif font-semibold text-emerald-300">Why Clicks Instead of Float Tensors</h4>
+            <div className="space-y-2 text-xs text-muted-foreground">
+              {[
+                { icon:"◉", point:"Semantic clarity", body:"A click sequence tells the receiving component exactly what operation class and precision mode to expect. A float tensor carries no such metadata — the receiver must infer type from shape alone." },
+                { icon:"⊕", point:"Parallel channel encoding", body:"One click transmits operation class (click type) + precision (companion modifier) + distribution mode (VN, VG, etc.) simultaneously. A tensor header carries the same data in separate sequential fields." },
+                { icon:"⊞", point:"Acoustic speed", body:"Khoisan clicks are among the fastest-produced phonemes in human language — produced in ~50–100ms. At the signal level, click-based inter-component messages have near-zero encoding overhead: the opcode and data arrive simultaneously." },
+                { icon:"⊳", point:"Lossless at the protocol layer", body:"Click distinctiveness (< 0.3% confusion rate) means the operation code is received correctly even when the data payload has noise — the receiver can request retransmit of data without losing the operation type." },
+              ].map(p => (
+                <div key={p.point} className="flex gap-2">
+                  <span className="text-emerald-400 shrink-0">{p.icon}</span>
+                  <div><strong className="text-emerald-300">{p.point}:</strong> {p.body}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-4 rounded-lg border border-amber-500/20 bg-amber-950/10 space-y-3">
+            <h4 className="font-serif font-semibold text-amber-300">Large-Scale Reference Coordination</h4>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              The hardest problem in large-scale ML is coordinating reference: attention over million-token contexts, embedding lookups in trillion-parameter models, gradient synchronization across thousands of devices. Each of these is a <em>reference problem</em> — one component needs to precisely address and retrieve data held by another.
+            </p>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              In the click protocol, every reference is a <strong className="text-amber-400">named operation</strong>. Embedding lookup is not "send tensor from layer 0 to layer 1" — it is <strong className="text-amber-400">C_VG</strong> (Dental click, voiced, glottalized: vector load with gradient tracking). Any component in the network that receives a C_VG signal immediately knows: vector data is arriving, it requires gradient retention, it came from a memory-load operation.
+            </p>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              This transforms large-scale reference from an opaque routing problem into a <strong className="text-amber-400">structured naming problem</strong> — one that Khoisan communities solved for high-noise, high-distance oral communication environments long before distributed computing existed.
+            </p>
+          </div>
+        </div>
+
+        <div className="p-4 rounded-lg bg-background/40 border border-border/50 space-y-2">
+          <h4 className="font-serif font-semibold text-sm">Complete Operation Coverage</h4>
+          <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+            Six click types × six companion modes = 36 base operation codes, covering the complete functional surface of a computing system:
+          </p>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-2 text-center text-xs font-mono">
+            {[
+              { code:"C", domain:"Memory",   color:"blue" },
+              { code:"Tc",domain:"Arithmetic",color:"amber" },
+              { code:"Q", domain:"Logic",    color:"emerald" },
+              { code:"X", domain:"Control",  color:"purple" },
+              { code:"Kx",domain:"Gradient", color:"orange" },
+              { code:"Pf",domain:"Sync",     color:"rose" },
+            ].map(c => (
+              <div key={c.code} className={`p-2 rounded border border-${c.color}-500/20 bg-${c.color}-950/15`}>
+                <div className={`text-${c.color}-400 font-bold text-sm`}>{c.code}</div>
+                <div className="text-muted-foreground text-[9px] mt-0.5">{c.domain}</div>
+                <div className="text-muted-foreground/60 text-[9px]">× 6 modes</div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-muted-foreground mt-3 italic">
+            Every function a computer can perform — from a scalar integer add to a distributed all-reduce gradient update across 8,192 GPUs — is expressible as a single click + modifier pair. This is what "emulate every specific function that a computer could hope to utilize" means in practice.
+          </p>
         </div>
       </section>
 

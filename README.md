@@ -122,6 +122,44 @@ Macro-tier rune nodes achieve **lossless payload transfer** through three-layer 
 
 ---
 
+## Khoisan Click Protocol — ML Inter-Component Communication
+
+The Khoisan click layer was designed as architectural inspiration for a high-fidelity, high-speed signaling system between machine learning components — replacing semantically opaque float tensor passing with structured click sequences that natively encode every operation a computer can perform.
+
+### Click → Operation Domain
+
+| Click | Roman | Domain | CPU Operations | ML Functions |
+|---|---|---|---|---|
+| \| | C | Memory / Data | LOAD, STORE, GATHER, SCATTER | Embedding lookup, KV-cache, weight shards |
+| ‡ | Tc | Arithmetic | ADD, MUL, FMA, MATMUL | QKV projection, FFN, attention weighted sum |
+| ! | Q | Logical / Activation | AND, OR, MASK, SELECT | ReLU/GELU/SiLU, causal mask, SwiGLU gate |
+| \|\| | X | Control Flow | BRANCH, CALL, FORK, JOIN | Residual connection, MoE routing, beam search |
+| ǂ | Kx | Comparison / Gradient | EQ, LT, GRAD, DIFF | Loss computation, optimizer step, backprop |
+| ʘ | Pf | Synchronization | SYNC, ACK, BARRIER, FLUSH | Layer norm, batch norm, device sync |
+
+### Companion Modifiers = Precision + Distribution Mode
+
+| Modifier | Code | Meaning | ML Translation |
+|---|---|---|---|
+| Plain | ∅ | Scalar | Single weight or activation |
+| Voiced | V | Vector/Tensor | Full embedding row or attention head |
+| Aspirated | H | High-precision | FP64 / BF16 numerical stability |
+| Nasalized | N | Broadcast/Reduce | All-reduce, mean pool, batch aggregate |
+| Glottalized | G | Gradient-tracked | Backpropable, retain in memory |
+| Voiced+Nasal | VN | Distributed | Tensor parallel, all-gather, MoE |
+
+**Example:** `C_VG` = Dental click, Voiced, Glottalized = vector load with gradient tracking = **embedding lookup during training**
+
+**Example:** `Tc_VNG` = Alveolar click, Voiced+Nasal, Glottalized = distributed gradient MATMUL = **tensor-parallel backward pass**
+
+### Large-Scale Reference Coordination
+
+The hardest problems in large ML — attention over million-token contexts, lookups in trillion-parameter models, gradient sync across thousands of GPUs — are all **reference problems**: one component needs to precisely address data held by another. The click protocol transforms these from opaque routing problems into structured naming problems: every reference is a named operation that any component in the network can interpret unambiguously.
+
+6 click types × 6 companion modes = **36 base operation codes** covering the complete functional surface of a computing system.
+
+---
+
 ## Khoisan Information Transfer Fidelity
 
 Five structural properties of Khoisan click phonology that produce near-lossless oral data transmission:
