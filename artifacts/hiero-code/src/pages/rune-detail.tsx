@@ -83,14 +83,14 @@ export default function RuneDetail() {
         <Link href="/runes" className="inline-flex items-center text-sm font-mono text-muted-foreground hover:text-primary mb-4 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to Runes
         </Link>
-        <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-serif font-bold text-foreground tracking-tight flex items-center gap-4">
-            <div className="w-12 h-12 rounded-lg bg-background border border-border flex items-center justify-center text-2xl text-primary shadow-inner">
+        <div className="flex items-center justify-between gap-4 flex-wrap">
+          <h1 className="text-3xl font-serif font-bold text-foreground tracking-tight flex items-center gap-4 min-w-0 flex-1">
+            <div className="w-12 h-12 rounded-lg bg-background border border-border flex items-center justify-center text-2xl text-primary shadow-inner shrink-0">
               {rune.glyphSymbol}
             </div>
-            {rune.name}
+            <span className="min-w-0 break-words leading-tight">{rune.name}</span>
           </h1>
-          <Button onClick={handleExecute} disabled={executing} className="gap-2 font-mono uppercase tracking-wider bg-primary hover:bg-primary/90 text-primary-foreground">
+          <Button onClick={handleExecute} disabled={executing} className="gap-2 font-mono uppercase tracking-wider bg-primary hover:bg-primary/90 text-primary-foreground shrink-0">
             {executing ? <Activity className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
             {executing ? "Channeling..." : "Execute Ritual"}
           </Button>
@@ -197,7 +197,7 @@ export default function RuneDetail() {
               <CardDescription className="font-mono text-xs">The symbolic logic executed when this rune is invoked.</CardDescription>
             </CardHeader>
             <CardContent className="flex-1">
-              <div className="w-full h-full min-h-[300px] rounded-md bg-[#1a1b1e] border border-[#2c2d31] p-4 overflow-auto font-mono text-sm leading-relaxed text-[#c9d1d9] whitespace-pre-wrap relative group">
+              <div className="w-full h-full min-h-[300px] rounded-md bg-[#1a1b1e] border border-[#2c2d31] p-4 overflow-auto font-mono text-sm leading-relaxed text-[#c9d1d9] whitespace-pre-wrap break-all relative group">
                 <div className="absolute top-2 right-2 text-[10px] text-muted-foreground/30 pointer-events-none font-sans uppercase tracking-widest">Read-Only</div>
                 {rune.procedureCode}
               </div>

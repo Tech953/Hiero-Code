@@ -402,12 +402,12 @@ export default function Cosmology() {
             <div className="bg-amber-950/20 border border-amber-500/20 rounded-lg p-4 space-y-2">
               <div className="text-xs uppercase tracking-widest text-amber-400/60 font-semibold">Hiero-Code Mapping</div>
               <div className="space-y-2 text-xs">
-                <div className="flex justify-between"><span className="text-muted-foreground">àṣẹ</span><span className="text-amber-400">ASE Vitality (rune property)</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">órun</span><span className="text-amber-400">Formless / Nameless tier</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">ayé</span><span className="text-amber-400">Manifest / Procedure layer</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">aláàse</span><span className="text-amber-400">Rune operator / executor</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">onà</span><span className="text-amber-400">Each rune node as evocative form</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">ASE_AMPLIFY</span><span className="text-amber-400">Chapter XXVII — Words of Power</span></div>
+                <div className="flex justify-between gap-3 items-baseline"><span className="text-muted-foreground shrink-0 font-mono">àṣẹ</span><span className="text-amber-400 text-right break-words min-w-0">ASE Vitality (rune property)</span></div>
+                <div className="flex justify-between gap-3 items-baseline"><span className="text-muted-foreground shrink-0 font-mono">órun</span><span className="text-amber-400 text-right break-words min-w-0">Formless / Nameless tier</span></div>
+                <div className="flex justify-between gap-3 items-baseline"><span className="text-muted-foreground shrink-0 font-mono">ayé</span><span className="text-amber-400 text-right break-words min-w-0">Manifest / Procedure layer</span></div>
+                <div className="flex justify-between gap-3 items-baseline"><span className="text-muted-foreground shrink-0 font-mono">aláàse</span><span className="text-amber-400 text-right break-words min-w-0">Rune operator / executor</span></div>
+                <div className="flex justify-between gap-3 items-baseline"><span className="text-muted-foreground shrink-0 font-mono">onà</span><span className="text-amber-400 text-right break-words min-w-0">Each rune node as evocative form</span></div>
+                <div className="flex justify-between gap-3 items-baseline"><span className="text-muted-foreground shrink-0 font-mono">ASE_AMPLIFY</span><span className="text-amber-400 text-right break-words min-w-0">Chapter XXVII — Words of Power</span></div>
               </div>
             </div>
           </div>

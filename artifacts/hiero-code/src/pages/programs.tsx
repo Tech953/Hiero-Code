@@ -68,16 +68,16 @@ export default function Programs() {
           {programs?.map(program => (
             <Card key={program.id} className="border-border bg-card hover:border-primary/40 transition-colors flex flex-col">
               <CardHeader className="pb-2">
-                <CardTitle className="text-xl font-serif text-primary flex items-center justify-between">
-                  {program.title}
-                  <span className="text-[10px] uppercase font-mono text-muted-foreground bg-muted px-2 py-1 rounded">
+                <CardTitle className="text-xl font-serif text-primary flex items-start justify-between gap-3">
+                  <span className="min-w-0 break-words flex-1">{program.title}</span>
+                  <span className="text-[10px] uppercase font-mono text-muted-foreground bg-muted px-2 py-1 rounded shrink-0 whitespace-nowrap">
                     {program.runeIds.length} Nodes
                   </span>
                 </CardTitle>
-                <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{program.description}</p>
+                <p className="text-sm text-muted-foreground mt-1 line-clamp-2 break-words">{program.description}</p>
               </CardHeader>
               <CardContent className="flex-1">
-                <div className="w-full h-24 rounded bg-[#1a1b1e] border border-[#2c2d31] p-3 overflow-hidden font-mono text-[10px] text-[#c9d1d9] opacity-70">
+                <div className="w-full h-24 rounded bg-[#1a1b1e] border border-[#2c2d31] p-3 overflow-y-auto font-mono text-[10px] text-[#c9d1d9] opacity-70 whitespace-pre-wrap break-all">
                   {program.code}
                 </div>
               </CardContent>

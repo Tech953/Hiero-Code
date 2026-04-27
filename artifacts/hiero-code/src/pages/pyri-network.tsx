@@ -268,10 +268,10 @@ export default function PyriNetwork() {
         ].map(({ type, color, desc }) => (
           <Card key={type} className={`border-${color}-500/30 bg-card`}>
             <CardHeader className="pb-2">
-              <CardTitle className={`text-sm font-mono text-${color}-400`}>{type} Pyri</CardTitle>
+              <CardTitle className={`text-sm font-mono text-${color}-400 truncate`}>{type} Pyri</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed break-words">{desc}</p>
             </CardContent>
           </Card>
         ))}

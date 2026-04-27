@@ -52,14 +52,14 @@ export default function ProgramDetail() {
         <Link href="/programs" className="inline-flex items-center text-sm font-mono text-muted-foreground hover:text-primary mb-4 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to Incantations
         </Link>
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-serif font-bold text-foreground tracking-tight flex items-center gap-3">
-              📜 {program.title}
+        <div className="flex items-center justify-between gap-4 flex-wrap">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-3xl font-serif font-bold text-foreground tracking-tight flex items-center gap-3 break-words leading-tight">
+              <span className="shrink-0">📜</span> <span className="min-w-0 break-words">{program.title}</span>
             </h1>
-            <p className="text-muted-foreground mt-2 font-mono text-sm">{program.description}</p>
+            <p className="text-muted-foreground mt-2 font-mono text-sm break-words">{program.description}</p>
           </div>
-          <Button onClick={handleExecute} disabled={executing} className="gap-2 font-mono uppercase tracking-wider bg-primary hover:bg-primary/90 text-primary-foreground">
+          <Button onClick={handleExecute} disabled={executing} className="gap-2 font-mono uppercase tracking-wider bg-primary hover:bg-primary/90 text-primary-foreground shrink-0">
             {executing ? <Activity className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
             {executing ? "Processing Sequence..." : "Run Sequence"}
           </Button>
@@ -72,7 +72,7 @@ export default function ProgramDetail() {
             <CardTitle className="text-lg font-serif">Hiero-Code Source</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="w-full h-[400px] rounded bg-[#1a1b1e] border border-[#2c2d31] p-4 overflow-auto font-mono text-sm text-[#c9d1d9] whitespace-pre-wrap">
+            <div className="w-full h-[400px] rounded bg-[#1a1b1e] border border-[#2c2d31] p-4 overflow-auto font-mono text-sm text-[#c9d1d9] whitespace-pre-wrap break-all">
               {program.code}
             </div>
           </CardContent>

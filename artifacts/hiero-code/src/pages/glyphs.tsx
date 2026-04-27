@@ -70,17 +70,17 @@ export default function Glyphs() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {filteredGlyphs?.map(glyph => (
             <Card key={glyph.id} className="border-border bg-card/50 hover:bg-card transition-colors overflow-hidden group">
-              <CardContent className="p-4 flex flex-col items-center text-center h-full">
+              <CardContent className="p-4 flex flex-col items-center text-center h-full w-full">
                 <div className={`text-4xl mb-3 drop-shadow-md transition-transform group-hover:scale-110 ${getSystemColor(glyph.system)}`}>
                   {glyph.symbol}
                 </div>
-                <div className="font-serif text-sm font-medium leading-tight mb-1">{glyph.name}</div>
-                <div className="text-[10px] text-muted-foreground uppercase font-mono tracking-widest mt-auto pt-2 border-t border-border/50 w-full">
+                <div className="font-serif text-sm font-medium leading-tight mb-1 break-words w-full" title={glyph.name}>{glyph.name}</div>
+                <div className="text-[10px] text-muted-foreground uppercase font-mono tracking-widest mt-auto pt-2 border-t border-border/50 w-full truncate">
                   {glyph.system}
                 </div>
                 {glyph.numericValue > 0 && (
-                  <div className="text-[10px] font-mono text-foreground mt-1">
-                    Value: {glyph.numericValue}
+                  <div className="text-[10px] font-mono text-foreground mt-1 w-full truncate">
+                    Value: {glyph.numericValue.toLocaleString()}
                   </div>
                 )}
               </CardContent>

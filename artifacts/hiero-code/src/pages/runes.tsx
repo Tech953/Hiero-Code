@@ -100,17 +100,17 @@ export default function Runes() {
               }`} />
               
               <CardHeader className="pb-2 relative z-10">
-                <div className="flex justify-between items-start mb-2">
-                  <div className="w-16 h-16 rounded-md bg-background border border-border flex items-center justify-center text-4xl text-primary shadow-inner">
+                <div className="flex justify-between items-start mb-2 gap-2">
+                  <div className="w-16 h-16 rounded-md bg-background border border-border flex items-center justify-center text-4xl text-primary shadow-inner shrink-0">
                     {rune.glyphSymbol}
                   </div>
-                  <div className={`px-2 py-1 rounded text-[10px] font-mono uppercase tracking-widest border flex items-center gap-1 ${getSystemColor(rune.system)}`}>
+                  <div className={`px-2 py-1 rounded text-[10px] font-mono uppercase tracking-widest border flex items-center gap-1 shrink-0 max-w-[120px] truncate ${getSystemColor(rune.system)}`}>
                     {rune.system}
                   </div>
                 </div>
-                <CardTitle className="text-xl font-serif mt-2">{rune.name}</CardTitle>
-                <CardDescription className="font-mono text-xs flex items-center gap-1">
-                  {getScaleIcon(rune.scale)} <span className="uppercase tracking-wider">{rune.scale} scale</span>
+                <CardTitle className="text-xl font-serif mt-2 break-words leading-tight">{rune.name}</CardTitle>
+                <CardDescription className="font-mono text-xs flex items-center gap-1 truncate">
+                  {getScaleIcon(rune.scale)} <span className="uppercase tracking-wider truncate">{rune.scale} scale</span>
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4 relative z-10">
