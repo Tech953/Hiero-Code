@@ -47,15 +47,15 @@ export default function Runes() {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="flex justify-between items-end">
-        <div>
+      <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end">
+        <div className="min-w-0">
           <h1 className="text-3xl font-serif font-bold text-foreground tracking-tight flex items-center gap-3">
-            <span className="text-primary text-4xl">𓏞</span> Runes
+            <span className="text-primary text-4xl shrink-0">𓏞</span> Runes
           </h1>
           <p className="text-muted-foreground mt-2 font-mono text-sm">The inscribed nodes of the symbolic compute engine.</p>
         </div>
-        <Link href="/runes/new">
-          <Button className="gap-2 font-mono uppercase tracking-wider text-xs">
+        <Link href="/runes/new" className="self-start sm:self-auto">
+          <Button className="gap-2 font-mono uppercase tracking-wider text-xs shrink-0">
             <Plus className="w-4 h-4" /> Inscribe Rune
           </Button>
         </Link>

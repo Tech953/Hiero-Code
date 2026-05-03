@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const { id } = GetProgramParams.parse({ id: Number(req.params.id) });
   const [program] = await db.select().from(programsTable).where(eq(programsTable.id, id));
-  if (!program) return res.status(404).json({ error: "Not found" });
+  if (!program) { res.status(404).json({ error: "Not found" }); return; }
   res.json(programToApi(program));
 });
 
@@ -53,7 +53,7 @@ router.put("/:id", async (req, res) => {
     .set(updates)
     .where(eq(programsTable.id, id))
     .returning();
-  if (!updated) return res.status(404).json({ error: "Not found" });
+  if (!updated) { res.status(404).json({ error: "Not found" }); return; }
   res.json(programToApi(updated));
 });
 
@@ -66,7 +66,7 @@ router.delete("/:id", async (req, res) => {
 router.post("/:id/run", async (req, res) => {
   const { id } = RunProgramParams.parse({ id: Number(req.params.id) });
   const [program] = await db.select().from(programsTable).where(eq(programsTable.id, id));
-  if (!program) return res.status(404).json({ error: "Not found" });
+  if (!program) { res.status(404).json({ error: "Not found" }); return; }
 
   const runeIds = (program.runeIds as number[]) ?? [];
 

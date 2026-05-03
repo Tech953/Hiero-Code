@@ -55,7 +55,7 @@ router.get("/graph", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const { id } = GetRuneParams.parse({ id: Number(req.params.id) });
   const [rune] = await db.select().from(runesTable).where(eq(runesTable.id, id));
-  if (!rune) return res.status(404).json({ error: "Not found" });
+  if (!rune) { res.status(404).json({ error: "Not found" }); return; }
   res.json(runeToApi(rune));
 });
 
@@ -77,7 +77,7 @@ router.put("/:id", async (req, res) => {
     .set(updates)
     .where(eq(runesTable.id, id))
     .returning();
-  if (!updated) return res.status(404).json({ error: "Not found" });
+  if (!updated) { res.status(404).json({ error: "Not found" }); return; }
   res.json(runeToApi(updated));
 });
 
@@ -94,7 +94,7 @@ router.post("/:id/execute", async (req, res) => {
     : { inputValue: 0, context: {} };
 
   const [rune] = await db.select().from(runesTable).where(eq(runesTable.id, id));
-  if (!rune) return res.status(404).json({ error: "Not found" });
+  if (!rune) { res.status(404).json({ error: "Not found" }); return; }
 
   const inputValue = body.inputValue ?? (rune.lastOutput ?? 1);
 

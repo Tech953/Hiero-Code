@@ -3,8 +3,7 @@ import { useParams, Link } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft, Play, Activity, Clock, Shield, Box, Zap, Globe, Cpu } from "lucide-react";
-import { useState } from "lucide-react";
+import { ArrowLeft, Play, Activity, Zap, Cpu } from "lucide-react";
 import React from "react";
 import { useToast } from "@/hooks/use-toast";
 import { getGetRuneQueryKey } from "@workspace/api-client-react";
@@ -14,7 +13,7 @@ export default function RuneDetail() {
   const params = useParams();
   const id = parseInt(params.id || "0");
   
-  const { data: rune, isLoading, error } = useGetRune(id, { query: { enabled: !!id } });
+  const { data: rune, isLoading, error } = useGetRune(id);
   const executeRune = useExecuteRune();
   const { toast } = useToast();
   const queryClient = useQueryClient();

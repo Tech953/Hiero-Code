@@ -287,7 +287,8 @@ router.post("/cosmology", async (req, res) => {
     const toInsert = COSMOLOGY_RUNES.filter(r => !existingNames.has(r.name));
     
     if (toInsert.length === 0) {
-      return res.json({ message: "Cosmology runes already seeded", count: 0 });
+      res.json({ message: "Cosmology runes already seeded", count: 0 });
+      return;
     }
 
     const inserted = await db.insert(runesTable).values(toInsert).returning();

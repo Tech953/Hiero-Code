@@ -27,14 +27,14 @@ export default function Programs() {
 
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
-      <div className="flex justify-between items-end">
-        <div>
+      <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end">
+        <div className="min-w-0">
           <h1 className="text-3xl font-serif font-bold text-foreground tracking-tight flex items-center gap-3">
-            <Code2 className="w-8 h-8 text-primary" /> Incantations
+            <Code2 className="w-8 h-8 text-primary shrink-0" /> Incantations
           </h1>
           <p className="text-muted-foreground mt-2 font-mono text-sm">Sequences of symbolic logic and procedure execution.</p>
         </div>
-        <Button className="gap-2 font-mono uppercase tracking-wider text-xs" variant="outline" disabled>
+        <Button className="gap-2 font-mono uppercase tracking-wider text-xs self-start sm:self-auto shrink-0" variant="outline" disabled>
           <Plus className="w-4 h-4" /> Draft Scroll (Soon)
         </Button>
       </div>

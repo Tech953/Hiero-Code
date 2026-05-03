@@ -11,7 +11,7 @@ export default function ProgramDetail() {
   const params = useParams();
   const id = parseInt(params.id || "0");
   
-  const { data: program, isLoading, error } = useGetProgram(id, { query: { enabled: !!id } });
+  const { data: program, isLoading, error } = useGetProgram(id);
   const runProgram = useRunProgram();
   const { toast } = useToast();
 
