@@ -18,3 +18,9 @@ id = "0iguFwagcWXNBm3VfYzjU"
 uri = "file://PROPOSAL.md"
 type = "text"
 title = "Proposal — ML application section added"
+
+[[outputs]]
+id = "XElKYUlzEcXXXO1fxPahB"
+uri = "file://exports/Hiero-Code_Reference_Codex.pdf"
+type = "pdf"
+title = "Hiero-Code Reference Codex (PDF)"
