@@ -28,6 +28,7 @@ A symbolic computing language and visual explorer inspired by ancient Egyptian h
 - `/programs` — Hiero-Code programs list (symbolic procedure sequences)
 - `/programs/:id` — Program editor with execution trace viewer
 - `/numerology` — 5-tab reference: Egyptian (Base-10), Sumerian (Base-60), Mayan (Base-20), Khoisan Click Phonemes, Language Alignment + number converter
+- `/native-american-art` — Native American Art reference: 34 entries (Artwork 13, Foreword 10, Artist 8, Exhibition 2, Bibliography 1) from UCO "Evolution of Native American Art: Traditional to Contemporary" (2016) exhibition catalog; filterable/searchable/paginated
 - `/maya-glyphs` — Maya Hieroglyphs catalog: 322 entries (210 Logogram, 97 Syllabogram, 7 Compound Sign, 7 Introduction, 1 Undeciphered) from Tokovinine's visual catalog; filterable/searchable/paginated
 - `/glyphs` — Glyph library: 54 glyphs across Egyptian, Sumerian, Mayan, Khoisan, and Pyri systems
 - `/framework` — Hieroglyphic Code Framework reference: two annotated images + Pyri Set, Three Language Systems, adaptation tiers, information density table
@@ -71,6 +72,7 @@ A symbolic computing language and visual explorer inspired by ancient Egyptian h
 - `runes` — rune node definitions with procedure code, ASE, Maat, Sumerian resonance
 - `programs` — Hiero-Code symbolic programs composed of ordered rune sequences
 - `maya_glyph_entries` — Maya hieroglyphs catalog entries (title, category, summary, body)
+- `native_american_art_entries` — Native American art reference entries (title, category, summary, body)
 
 ## Artifact Routing
 - `/` → hiero-code frontend (React + Vite)

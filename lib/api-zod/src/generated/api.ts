@@ -902,6 +902,60 @@ export const GetMayaGlyphEntryResponse = zod.object({
 });
 
 /**
+ * @summary Search and browse the Native American Art catalog (paginated)
+ */
+export const ListNativeAmericanArtQueryParams = zod.object({
+  category: zod.coerce.string().optional(),
+  search: zod.coerce.string().optional(),
+  page: zod.coerce.number().optional(),
+  pageSize: zod.coerce.number().optional(),
+});
+
+export const ListNativeAmericanArtResponse = zod.object({
+  entries: zod.array(
+    zod.object({
+      id: zod.number(),
+      title: zod.string(),
+      category: zod.string(),
+      summary: zod.string(),
+      body: zod.string(),
+    }),
+  ),
+  total: zod.number(),
+  page: zod.number(),
+  pageSize: zod.number(),
+  totalPages: zod.number(),
+});
+
+/**
+ * @summary Faceted counts (by category) for the Native American Art catalog
+ */
+export const GetNativeAmericanArtFacetsResponse = zod.object({
+  total: zod.number(),
+  categories: zod.array(
+    zod.object({
+      value: zod.string(),
+      count: zod.number(),
+    }),
+  ),
+});
+
+/**
+ * @summary Get a single Native American Art entry by id
+ */
+export const GetNativeAmericanArtEntryParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const GetNativeAmericanArtEntryResponse = zod.object({
+  id: zod.number(),
+  title: zod.string(),
+  category: zod.string(),
+  summary: zod.string(),
+  body: zod.string(),
+});
+
+/**
  * @summary Get a single Northwest Coast art entry by id
  */
 export const GetPnwArtEntryParams = zod.object({

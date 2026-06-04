@@ -6,3 +6,4 @@ export * from "./iconography";
 export * from "./pnwart";
 export * from "./inuit";
 export * from "./maya";
+export * from "./native-american-art";

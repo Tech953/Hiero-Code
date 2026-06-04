@@ -41,11 +41,15 @@ import type {
   ListIconographyParams,
   ListInuitSymbologyParams,
   ListMayaGlyphsParams,
+  ListNativeAmericanArtParams,
   ListPnwArtParams,
   ListStelaeParams,
   MayaGlyphEntry,
   MayaGlyphFacets,
   MayaGlyphListResponse,
+  NativeAmericanArtEntry,
+  NativeAmericanArtFacets,
+  NativeAmericanArtListResponse,
   NumerologySystem,
   PnwArtEntry,
   PnwArtFacets,
@@ -3078,6 +3082,280 @@ export function useGetMayaGlyphEntry<
   },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetMayaGlyphEntryQueryOptions(id, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Search and browse the Native American Art catalog (paginated)
+ */
+export const getListNativeAmericanArtUrl = (
+  params?: ListNativeAmericanArtParams,
+) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : value.toString());
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/native-american-art?${stringifiedParams}`
+    : `/api/native-american-art`;
+};
+
+export const listNativeAmericanArt = async (
+  params?: ListNativeAmericanArtParams,
+  options?: RequestInit,
+): Promise<NativeAmericanArtListResponse> => {
+  return customFetch<NativeAmericanArtListResponse>(
+    getListNativeAmericanArtUrl(params),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export const getListNativeAmericanArtQueryKey = (
+  params?: ListNativeAmericanArtParams,
+) => {
+  return [`/api/native-american-art`, ...(params ? [params] : [])] as const;
+};
+
+export const getListNativeAmericanArtQueryOptions = <
+  TData = Awaited<ReturnType<typeof listNativeAmericanArt>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListNativeAmericanArtParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listNativeAmericanArt>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getListNativeAmericanArtQueryKey(params);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof listNativeAmericanArt>>
+  > = ({ signal }) =>
+    listNativeAmericanArt(params, { signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listNativeAmericanArt>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListNativeAmericanArtQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listNativeAmericanArt>>
+>;
+export type ListNativeAmericanArtQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Search and browse the Native American Art catalog (paginated)
+ */
+
+export function useListNativeAmericanArt<
+  TData = Awaited<ReturnType<typeof listNativeAmericanArt>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListNativeAmericanArtParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listNativeAmericanArt>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListNativeAmericanArtQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Faceted counts (by category) for the Native American Art catalog
+ */
+export const getGetNativeAmericanArtFacetsUrl = () => {
+  return `/api/native-american-art/facets`;
+};
+
+export const getNativeAmericanArtFacets = async (
+  options?: RequestInit,
+): Promise<NativeAmericanArtFacets> => {
+  return customFetch<NativeAmericanArtFacets>(
+    getGetNativeAmericanArtFacetsUrl(),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export const getGetNativeAmericanArtFacetsQueryKey = () => {
+  return [`/api/native-american-art/facets`] as const;
+};
+
+export const getGetNativeAmericanArtFacetsQueryOptions = <
+  TData = Awaited<ReturnType<typeof getNativeAmericanArtFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getNativeAmericanArtFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getGetNativeAmericanArtFacetsQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getNativeAmericanArtFacets>>
+  > = ({ signal }) => getNativeAmericanArtFacets({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getNativeAmericanArtFacets>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetNativeAmericanArtFacetsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getNativeAmericanArtFacets>>
+>;
+export type GetNativeAmericanArtFacetsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Faceted counts (by category) for the Native American Art catalog
+ */
+
+export function useGetNativeAmericanArtFacets<
+  TData = Awaited<ReturnType<typeof getNativeAmericanArtFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getNativeAmericanArtFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetNativeAmericanArtFacetsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Get a single Native American Art entry by id
+ */
+export const getGetNativeAmericanArtEntryUrl = (id: number) => {
+  return `/api/native-american-art/${id}`;
+};
+
+export const getNativeAmericanArtEntry = async (
+  id: number,
+  options?: RequestInit,
+): Promise<NativeAmericanArtEntry> => {
+  return customFetch<NativeAmericanArtEntry>(
+    getGetNativeAmericanArtEntryUrl(id),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export const getGetNativeAmericanArtEntryQueryKey = (id: number) => {
+  return [`/api/native-american-art/${id}`] as const;
+};
+
+export const getGetNativeAmericanArtEntryQueryOptions = <
+  TData = Awaited<ReturnType<typeof getNativeAmericanArtEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getNativeAmericanArtEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getGetNativeAmericanArtEntryQueryKey(id);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getNativeAmericanArtEntry>>
+  > = ({ signal }) =>
+    getNativeAmericanArtEntry(id, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof getNativeAmericanArtEntry>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetNativeAmericanArtEntryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getNativeAmericanArtEntry>>
+>;
+export type GetNativeAmericanArtEntryQueryError = ErrorType<void>;
+
+/**
+ * @summary Get a single Native American Art entry by id
+ */
+
+export function useGetNativeAmericanArtEntry<
+  TData = Awaited<ReturnType<typeof getNativeAmericanArtEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getNativeAmericanArtEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetNativeAmericanArtEntryQueryOptions(id, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;

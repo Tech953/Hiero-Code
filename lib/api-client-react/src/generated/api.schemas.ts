@@ -451,6 +451,32 @@ export interface MayaGlyphFacets {
   categories: MayaGlyphFacet[];
 }
 
+export interface NativeAmericanArtEntry {
+  id: number;
+  title: string;
+  category: string;
+  summary: string;
+  body: string;
+}
+
+export interface NativeAmericanArtListResponse {
+  entries: NativeAmericanArtEntry[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+export interface NativeAmericanArtFacet {
+  value: string;
+  count: number;
+}
+
+export interface NativeAmericanArtFacets {
+  total: number;
+  categories: NativeAmericanArtFacet[];
+}
+
 export type InupiatReferenceNumbersItem = {
   value: number;
   word: string;
@@ -597,6 +623,13 @@ export type ListInuitSymbologyParams = {
 };
 
 export type ListMayaGlyphsParams = {
+  category?: string;
+  search?: string;
+  page?: number;
+  pageSize?: number;
+};
+
+export type ListNativeAmericanArtParams = {
   category?: string;
   search?: string;
   page?: number;

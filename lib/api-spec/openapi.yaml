@@ -29,6 +29,8 @@ tags:
     description: Canadian Inuit symbology (nalunaikutanga) reference operations
   - name: maya-glyphs
     description: Maya hieroglyphs visual catalog reference operations
+  - name: native-american-art
+    description: Native American Art exhibition catalog reference operations
 
 paths:
   /healthz:
@@ -723,6 +725,70 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MayaGlyphEntry"
+        "404":
+          description: Not found
+
+  /native-american-art:
+    get:
+      operationId: listNativeAmericanArt
+      tags: [native-american-art]
+      summary: Search and browse the Native American Art catalog (paginated)
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Paginated Native American Art entries
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAmericanArtListResponse"
+
+  /native-american-art/facets:
+    get:
+      operationId: getNativeAmericanArtFacets
+      tags: [native-american-art]
+      summary: Faceted counts (by category) for the Native American Art catalog
+      responses:
+        "200":
+          description: Facet counts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAmericanArtFacets"
+
+  /native-american-art/{id}:
+    get:
+      operationId: getNativeAmericanArtEntry
+      tags: [native-american-art]
+      summary: Get a single Native American Art entry by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Native American Art entry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NativeAmericanArtEntry"
         "404":
           description: Not found
 
@@ -1653,6 +1719,72 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/MayaGlyphFacet"
+      required:
+        - total
+        - categories
+
+    NativeAmericanArtEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        category:
+          type: string
+        summary:
+          type: string
+        body:
+          type: string
+      required:
+        - id
+        - title
+        - category
+        - summary
+        - body
+
+    NativeAmericanArtListResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: "#/components/schemas/NativeAmericanArtEntry"
+        total:
+          type: integer
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        totalPages:
+          type: integer
+      required:
+        - entries
+        - total
+        - page
+        - pageSize
+        - totalPages
+
+    NativeAmericanArtFacet:
+      type: object
+      properties:
+        value:
+          type: string
+        count:
+          type: integer
+      required:
+        - value
+        - count
+
+    NativeAmericanArtFacets:
+      type: object
+      properties:
+        total:
+          type: integer
+        categories:
+          type: array
+          items:
+            $ref: "#/components/schemas/NativeAmericanArtFacet"
       required:
         - total
         - categories
