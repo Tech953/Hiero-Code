@@ -373,6 +373,32 @@ export interface IconFacets {
   categories: IconFacet[];
 }
 
+export interface PnwArtEntry {
+  id: number;
+  title: string;
+  category: string;
+  summary: string;
+  body: string;
+}
+
+export interface PnwArtListResponse {
+  entries: PnwArtEntry[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+export interface PnwArtFacet {
+  value: string;
+  count: number;
+}
+
+export interface PnwArtFacets {
+  total: number;
+  categories: PnwArtFacet[];
+}
+
 export type InupiatReferenceNumbersItem = {
   value: number;
   word: string;
@@ -498,6 +524,13 @@ export type ListStelaeParams = {
 };
 
 export type ListIconographyParams = {
+  category?: string;
+  search?: string;
+  page?: number;
+  pageSize?: number;
+};
+
+export type ListPnwArtParams = {
   category?: string;
   search?: string;
   page?: number;

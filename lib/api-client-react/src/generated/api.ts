@@ -36,8 +36,12 @@ import type {
   ListDictionaryParams,
   ListGlyphsParams,
   ListIconographyParams,
+  ListPnwArtParams,
   ListStelaeParams,
   NumerologySystem,
+  PnwArtEntry,
+  PnwArtFacets,
+  PnwArtListResponse,
   Program,
   ProgramExecutionTrace,
   RuneGraph,
@@ -2377,6 +2381,262 @@ export function useGetIconographyEntry<
   },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetIconographyEntryQueryOptions(id, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Search and browse the Pacific Northwest Coast art reference (paginated)
+ */
+export const getListPnwArtUrl = (params?: ListPnwArtParams) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : value.toString());
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/pnw-art?${stringifiedParams}`
+    : `/api/pnw-art`;
+};
+
+export const listPnwArt = async (
+  params?: ListPnwArtParams,
+  options?: RequestInit,
+): Promise<PnwArtListResponse> => {
+  return customFetch<PnwArtListResponse>(getListPnwArtUrl(params), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getListPnwArtQueryKey = (params?: ListPnwArtParams) => {
+  return [`/api/pnw-art`, ...(params ? [params] : [])] as const;
+};
+
+export const getListPnwArtQueryOptions = <
+  TData = Awaited<ReturnType<typeof listPnwArt>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListPnwArtParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listPnwArt>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getListPnwArtQueryKey(params);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof listPnwArt>>> = ({
+    signal,
+  }) => listPnwArt(params, { signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listPnwArt>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListPnwArtQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listPnwArt>>
+>;
+export type ListPnwArtQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Search and browse the Pacific Northwest Coast art reference (paginated)
+ */
+
+export function useListPnwArt<
+  TData = Awaited<ReturnType<typeof listPnwArt>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListPnwArtParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listPnwArt>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListPnwArtQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Faceted counts (by category) for the Northwest Coast art reference
+ */
+export const getGetPnwArtFacetsUrl = () => {
+  return `/api/pnw-art/facets`;
+};
+
+export const getPnwArtFacets = async (
+  options?: RequestInit,
+): Promise<PnwArtFacets> => {
+  return customFetch<PnwArtFacets>(getGetPnwArtFacetsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetPnwArtFacetsQueryKey = () => {
+  return [`/api/pnw-art/facets`] as const;
+};
+
+export const getGetPnwArtFacetsQueryOptions = <
+  TData = Awaited<ReturnType<typeof getPnwArtFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getPnwArtFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetPnwArtFacetsQueryKey();
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getPnwArtFacets>>> = ({
+    signal,
+  }) => getPnwArtFacets({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getPnwArtFacets>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetPnwArtFacetsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getPnwArtFacets>>
+>;
+export type GetPnwArtFacetsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Faceted counts (by category) for the Northwest Coast art reference
+ */
+
+export function useGetPnwArtFacets<
+  TData = Awaited<ReturnType<typeof getPnwArtFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getPnwArtFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetPnwArtFacetsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Get a single Northwest Coast art entry by id
+ */
+export const getGetPnwArtEntryUrl = (id: number) => {
+  return `/api/pnw-art/${id}`;
+};
+
+export const getPnwArtEntry = async (
+  id: number,
+  options?: RequestInit,
+): Promise<PnwArtEntry> => {
+  return customFetch<PnwArtEntry>(getGetPnwArtEntryUrl(id), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetPnwArtEntryQueryKey = (id: number) => {
+  return [`/api/pnw-art/${id}`] as const;
+};
+
+export const getGetPnwArtEntryQueryOptions = <
+  TData = Awaited<ReturnType<typeof getPnwArtEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getPnwArtEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetPnwArtEntryQueryKey(id);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getPnwArtEntry>>> = ({
+    signal,
+  }) => getPnwArtEntry(id, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof getPnwArtEntry>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetPnwArtEntryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getPnwArtEntry>>
+>;
+export type GetPnwArtEntryQueryError = ErrorType<void>;
+
+/**
+ * @summary Get a single Northwest Coast art entry by id
+ */
+
+export function useGetPnwArtEntry<
+  TData = Awaited<ReturnType<typeof getPnwArtEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getPnwArtEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetPnwArtEntryQueryOptions(id, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;

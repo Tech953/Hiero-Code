@@ -19,3 +19,9 @@ When importing OCR-scanned reference dumps as a browsable corpus, two recurring 
   an explicit curated 1-indexed source line range instead of run-zip. Auto-parsing by header
   markers still works for theory/feature/mudra sections.
   **How to apply:** any new OCR reference import that mirrors the Stelae/Iconography pattern.
+
+- **Form-feed (\x0c) is a page-break, not a heading delimiter.** OCR'd PDF prose prefixes chapter
+  headings with a form-feed, but the same char also appears at mid-chapter page continuations, so
+  splitting on it over-segments. Prefer curated SECTION_SPECS (start-line + title + category) over
+  auto-detecting headings by \x0c.
+  **Why:** treating every form-feed as a chapter start fractures single chapters into noise fragments.

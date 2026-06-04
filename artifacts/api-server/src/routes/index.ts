@@ -7,6 +7,7 @@ import numerologyRouter from "./numerology";
 import dictionaryRouter from "./dictionary";
 import corpusRouter from "./corpus";
 import iconographyRouter from "./iconography";
+import pnwArtRouter from "./pnwart";
 import statsRouter from "./stats";
 import seedRouter from "./seed";
 
@@ -20,6 +21,7 @@ router.use("/numerology", numerologyRouter);
 router.use("/dictionary", dictionaryRouter);
 router.use("/corpus", corpusRouter);
 router.use("/iconography", iconographyRouter);
+router.use("/pnw-art", pnwArtRouter);
 router.use("/stats", statsRouter);
 router.use("/seed", seedRouter);
 

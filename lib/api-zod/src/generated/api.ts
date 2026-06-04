@@ -755,6 +755,60 @@ export const GetIconographyEntryResponse = zod.object({
 });
 
 /**
+ * @summary Search and browse the Pacific Northwest Coast art reference (paginated)
+ */
+export const ListPnwArtQueryParams = zod.object({
+  category: zod.coerce.string().optional(),
+  search: zod.coerce.string().optional(),
+  page: zod.coerce.number().optional(),
+  pageSize: zod.coerce.number().optional(),
+});
+
+export const ListPnwArtResponse = zod.object({
+  entries: zod.array(
+    zod.object({
+      id: zod.number(),
+      title: zod.string(),
+      category: zod.string(),
+      summary: zod.string(),
+      body: zod.string(),
+    }),
+  ),
+  total: zod.number(),
+  page: zod.number(),
+  pageSize: zod.number(),
+  totalPages: zod.number(),
+});
+
+/**
+ * @summary Faceted counts (by category) for the Northwest Coast art reference
+ */
+export const GetPnwArtFacetsResponse = zod.object({
+  total: zod.number(),
+  categories: zod.array(
+    zod.object({
+      value: zod.string(),
+      count: zod.number(),
+    }),
+  ),
+});
+
+/**
+ * @summary Get a single Northwest Coast art entry by id
+ */
+export const GetPnwArtEntryParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const GetPnwArtEntryResponse = zod.object({
+  id: zod.number(),
+  title: zod.string(),
+  category: zod.string(),
+  summary: zod.string(),
+  body: zod.string(),
+});
+
+/**
  * @summary Dashboard stats overview
  */
 export const GetStatsResponse = zod.object({

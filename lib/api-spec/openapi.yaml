@@ -23,6 +23,8 @@ tags:
     description: British Museum hieroglyphic stelae corpus operations
   - name: iconography
     description: Hindu iconography reference operations
+  - name: pnw-art
+    description: Pacific Northwest Coast Native art reference operations
 
 paths:
   /healthz:
@@ -546,6 +548,70 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IconEntry"
+        "404":
+          description: Not found
+
+  /pnw-art:
+    get:
+      operationId: listPnwArt
+      tags: [pnw-art]
+      summary: Search and browse the Pacific Northwest Coast art reference (paginated)
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Paginated Northwest Coast art entries
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PnwArtListResponse"
+
+  /pnw-art/facets:
+    get:
+      operationId: getPnwArtFacets
+      tags: [pnw-art]
+      summary: Faceted counts (by category) for the Northwest Coast art reference
+      responses:
+        "200":
+          description: Facet counts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PnwArtFacets"
+
+  /pnw-art/{id}:
+    get:
+      operationId: getPnwArtEntry
+      tags: [pnw-art]
+      summary: Get a single Northwest Coast art entry by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Northwest Coast art entry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PnwArtEntry"
         "404":
           description: Not found
 
@@ -1257,6 +1323,72 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/IconFacet"
+      required:
+        - total
+        - categories
+
+    PnwArtEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        category:
+          type: string
+        summary:
+          type: string
+        body:
+          type: string
+      required:
+        - id
+        - title
+        - category
+        - summary
+        - body
+
+    PnwArtListResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: "#/components/schemas/PnwArtEntry"
+        total:
+          type: integer
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        totalPages:
+          type: integer
+      required:
+        - entries
+        - total
+        - page
+        - pageSize
+        - totalPages
+
+    PnwArtFacet:
+      type: object
+      properties:
+        value:
+          type: string
+        count:
+          type: integer
+      required:
+        - value
+        - count
+
+    PnwArtFacets:
+      type: object
+      properties:
+        total:
+          type: integer
+        categories:
+          type: array
+          items:
+            $ref: "#/components/schemas/PnwArtFacet"
       required:
         - total
         - categories
