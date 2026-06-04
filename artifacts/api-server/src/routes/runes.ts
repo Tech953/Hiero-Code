@@ -124,6 +124,31 @@ router.post("/:id/execute", async (req, res) => {
   } else if (rune.procedureCode.includes("MAAT_BALANCE")) {
     output = inputValue * rune.maatBalance;
     steps.push(`MAAT_BALANCE(${rune.maatBalance.toFixed(3)}) → ${output}`);
+  } else if (rune.procedureCode.includes("SCALE_20")) {
+    // Iñupiaq / Mesoamerican vigesimal scaling (base-20)
+    output = inputValue * 20;
+    steps.push(`SCALE_20 (vigesimal) → ${output}`);
+  } else if (rune.procedureCode.includes("SUB_BASE_5")) {
+    // Iñupiaq quinary sub-base: quantize to nearest multiple of 5
+    output = Math.round(inputValue / 5) * 5;
+    steps.push(`SUB_BASE_5 (quinary quantize) → ${output}`);
+  } else if (rune.procedureCode.includes("TONALPOHUALLI_CYCLE")) {
+    // Aztec 260-day sacred count: wrap value into the tonalpohualli ring
+    output = ((Math.round(inputValue) % 260) + 260) % 260;
+    steps.push(`TONALPOHUALLI_CYCLE (mod 260) → ${output}`);
+  } else if (rune.procedureCode.includes("NAHUI_OLLIN")) {
+    // Fifth Sun movement: oscillating earthquake transform
+    const phase = Math.sin(inputValue) ;
+    output = inputValue * (1 + phase * rune.aseVitality);
+    steps.push(`NAHUI_OLLIN (movement phase=${phase.toFixed(3)}) → ${output}`);
+  } else if (rune.procedureCode.includes("IGLU_INSULATE")) {
+    // Iñupiaq snow-shelter: dampen volatility toward the running mean
+    output = inputValue * (1 - rune.maatBalance) + rune.maatBalance;
+    steps.push(`IGLU_INSULATE (dampen toward equilibrium) → ${output}`);
+  } else if (rune.procedureCode.includes("SINIK_DORMANT")) {
+    // Iñupiaq dormancy: hold value, accrue latent resonance
+    output = inputValue;
+    steps.push(`SINIK_DORMANT (hold, resonance=${rune.sumerianResonance}) → ${output}`);
   } else {
     output = inputValue * rune.aseVitality;
     steps.push(`DEFAULT_PROPAGATE(ase=${rune.aseVitality}) → ${output}`);

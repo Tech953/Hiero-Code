@@ -14,6 +14,7 @@ import Programs from "@/pages/programs";
 import ProgramDetail from "@/pages/program-detail";
 import Numerology from "@/pages/numerology";
 import Glyphs from "@/pages/glyphs";
+import Dictionary from "@/pages/dictionary";
 import Framework from "@/pages/framework";
 import Emotions from "@/pages/emotions";
 import Cosmology from "@/pages/cosmology";
@@ -41,6 +42,7 @@ function Router() {
         <Route path="/programs" component={Programs} />
         <Route path="/numerology" component={Numerology} />
         <Route path="/glyphs" component={Glyphs} />
+        <Route path="/dictionary" component={Dictionary} />
         <Route path="/framework" component={Framework} />
         <Route path="/emotions" component={Emotions} />
         <Route path="/cosmology" component={Cosmology} />

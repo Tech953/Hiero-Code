@@ -17,14 +17,20 @@ import type {
 } from "@tanstack/react-query";
 
 import type {
+  AztecCalendar,
   ConversionResult,
   ConvertNumberBody,
   CreateProgramBody,
   CreateRuneBody,
+  DictionaryCategory,
+  DictionaryListResponse,
   ExecuteRuneBody,
   ExecutionResult,
+  GetDictionaryCategoriesParams,
   Glyph,
   HealthStatus,
+  InupiatReference,
+  ListDictionaryParams,
   ListGlyphsParams,
   NumerologySystem,
   Program,
@@ -1513,6 +1519,353 @@ export const useConvertNumber = <
 > => {
   return useMutation(getConvertNumberMutationOptions(options));
 };
+
+/**
+ * @summary Get Iñupiaq vigesimal numeral and reference data
+ */
+export const getGetInupiatNumeralsUrl = () => {
+  return `/api/numerology/inupiat`;
+};
+
+export const getInupiatNumerals = async (
+  options?: RequestInit,
+): Promise<InupiatReference> => {
+  return customFetch<InupiatReference>(getGetInupiatNumeralsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetInupiatNumeralsQueryKey = () => {
+  return [`/api/numerology/inupiat`] as const;
+};
+
+export const getGetInupiatNumeralsQueryOptions = <
+  TData = Awaited<ReturnType<typeof getInupiatNumerals>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getInupiatNumerals>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetInupiatNumeralsQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getInupiatNumerals>>
+  > = ({ signal }) => getInupiatNumerals({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getInupiatNumerals>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetInupiatNumeralsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getInupiatNumerals>>
+>;
+export type GetInupiatNumeralsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Get Iñupiaq vigesimal numeral and reference data
+ */
+
+export function useGetInupiatNumerals<
+  TData = Awaited<ReturnType<typeof getInupiatNumerals>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getInupiatNumerals>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetInupiatNumeralsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Get Aztec (Mexica) calendar symbology
+ */
+export const getGetAztecCalendarUrl = () => {
+  return `/api/numerology/aztec`;
+};
+
+export const getAztecCalendar = async (
+  options?: RequestInit,
+): Promise<AztecCalendar> => {
+  return customFetch<AztecCalendar>(getGetAztecCalendarUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetAztecCalendarQueryKey = () => {
+  return [`/api/numerology/aztec`] as const;
+};
+
+export const getGetAztecCalendarQueryOptions = <
+  TData = Awaited<ReturnType<typeof getAztecCalendar>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getAztecCalendar>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetAztecCalendarQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getAztecCalendar>>
+  > = ({ signal }) => getAztecCalendar({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getAztecCalendar>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetAztecCalendarQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getAztecCalendar>>
+>;
+export type GetAztecCalendarQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Get Aztec (Mexica) calendar symbology
+ */
+
+export function useGetAztecCalendar<
+  TData = Awaited<ReturnType<typeof getAztecCalendar>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getAztecCalendar>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetAztecCalendarQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Search and browse dictionary entries (paginated)
+ */
+export const getListDictionaryUrl = (params?: ListDictionaryParams) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : value.toString());
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/dictionary?${stringifiedParams}`
+    : `/api/dictionary`;
+};
+
+export const listDictionary = async (
+  params?: ListDictionaryParams,
+  options?: RequestInit,
+): Promise<DictionaryListResponse> => {
+  return customFetch<DictionaryListResponse>(getListDictionaryUrl(params), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getListDictionaryQueryKey = (params?: ListDictionaryParams) => {
+  return [`/api/dictionary`, ...(params ? [params] : [])] as const;
+};
+
+export const getListDictionaryQueryOptions = <
+  TData = Awaited<ReturnType<typeof listDictionary>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListDictionaryParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listDictionary>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getListDictionaryQueryKey(params);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof listDictionary>>> = ({
+    signal,
+  }) => listDictionary(params, { signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listDictionary>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListDictionaryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listDictionary>>
+>;
+export type ListDictionaryQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Search and browse dictionary entries (paginated)
+ */
+
+export function useListDictionary<
+  TData = Awaited<ReturnType<typeof listDictionary>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListDictionaryParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listDictionary>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListDictionaryQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary List dictionary categories with entry counts
+ */
+export const getGetDictionaryCategoriesUrl = (
+  params?: GetDictionaryCategoriesParams,
+) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : value.toString());
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/dictionary/categories?${stringifiedParams}`
+    : `/api/dictionary/categories`;
+};
+
+export const getDictionaryCategories = async (
+  params?: GetDictionaryCategoriesParams,
+  options?: RequestInit,
+): Promise<DictionaryCategory[]> => {
+  return customFetch<DictionaryCategory[]>(
+    getGetDictionaryCategoriesUrl(params),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export const getGetDictionaryCategoriesQueryKey = (
+  params?: GetDictionaryCategoriesParams,
+) => {
+  return [`/api/dictionary/categories`, ...(params ? [params] : [])] as const;
+};
+
+export const getGetDictionaryCategoriesQueryOptions = <
+  TData = Awaited<ReturnType<typeof getDictionaryCategories>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: GetDictionaryCategoriesParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getDictionaryCategories>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getGetDictionaryCategoriesQueryKey(params);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getDictionaryCategories>>
+  > = ({ signal }) =>
+    getDictionaryCategories(params, { signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getDictionaryCategories>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetDictionaryCategoriesQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getDictionaryCategories>>
+>;
+export type GetDictionaryCategoriesQueryError = ErrorType<unknown>;
+
+/**
+ * @summary List dictionary categories with entry counts
+ */
+
+export function useGetDictionaryCategories<
+  TData = Awaited<ReturnType<typeof getDictionaryCategories>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: GetDictionaryCategoriesParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getDictionaryCategories>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetDictionaryCategoriesQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
 
 /**
  * @summary Dashboard stats overview

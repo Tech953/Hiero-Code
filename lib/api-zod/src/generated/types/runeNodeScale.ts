@@ -13,4 +13,8 @@ export const RuneNodeScale = {
   micro: "micro",
   particle: "particle",
   temporal: "temporal",
+  "s-tier": "s-tier",
+  field: "field",
+  void: "void",
+  geological: "geological",
 } as const;

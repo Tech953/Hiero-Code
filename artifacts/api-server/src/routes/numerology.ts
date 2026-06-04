@@ -1,5 +1,19 @@
 import { Router } from "express";
 import { ConvertNumberBody } from "@workspace/api-zod";
+import {
+  INUPIAT_NUMBERS,
+  INUPIAT_COLORS,
+  INUPIAT_PHONEMES,
+} from "../data/inupiat-reference";
+import {
+  AZTEC_DAY_SIGNS,
+  AZTEC_NUMBERS,
+  AZTEC_PLACE_VALUES,
+  AZTEC_SUNS,
+  AZTEC_YEAR_BEARERS,
+  AZTEC_VEINTENAS,
+  AZTEC_NEMONTEMI,
+} from "../data/aztec-calendar";
 
 const router = Router();
 
@@ -74,6 +88,36 @@ router.get("/egyptian", async (req, res) => {
 
 router.get("/sumerian", async (req, res) => {
   res.json(SUMERIAN_SYSTEM);
+});
+
+router.get("/inupiat", async (req, res) => {
+  res.json({
+    name: "Iñupiaq Vigesimal",
+    base: 20,
+    subBase: 5,
+    description:
+      "Iñupiaq (Arctic Inupiat) counting is vigesimal (base-20) with a quinary (base-5) sub-structure rooted in the body's twenty digits. Six is 'five-one', seven 'five-two', and twenty is iñuiññaq — 'a whole person'. Higher numbers stack whole persons: forty is 'two persons', one hundred 'five persons'.",
+    numbers: INUPIAT_NUMBERS,
+    colors: INUPIAT_COLORS,
+    phonemes: INUPIAT_PHONEMES,
+  });
+});
+
+router.get("/aztec", async (req, res) => {
+  res.json({
+    name: "Aztec (Mexica) Calendar",
+    description:
+      "The Mexica interlocked two counts: the 260-day tonalpohualli (20 day-signs × 13 numbers) and the 365-day xiuhpohualli (18 veintena months of 20 days + 5 nameless nemontemi). Arithmetic was vigesimal. Cosmic time unfolds across Five Suns; the present is Nahui Ollin, the Fifth Sun of movement.",
+    tonalpohualli: 260,
+    xiuhpohualli: 365,
+    daySigns: AZTEC_DAY_SIGNS,
+    numbers: AZTEC_NUMBERS,
+    placeValues: AZTEC_PLACE_VALUES,
+    suns: AZTEC_SUNS,
+    yearBearers: AZTEC_YEAR_BEARERS,
+    veintenas: AZTEC_VEINTENAS,
+    nemontemi: AZTEC_NEMONTEMI,
+  });
 });
 
 router.post("/convert", async (req, res) => {

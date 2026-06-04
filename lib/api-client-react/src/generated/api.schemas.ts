@@ -16,6 +16,10 @@ export const RuneNodeSystem = {
   egyptian: "egyptian",
   sumerian: "sumerian",
   mayan: "mayan",
+  khoisan: "khoisan",
+  pyri: "pyri",
+  inupiat: "inupiat",
+  aztec: "aztec",
 } as const;
 
 export type RuneNodeScale = (typeof RuneNodeScale)[keyof typeof RuneNodeScale];
@@ -25,6 +29,10 @@ export const RuneNodeScale = {
   micro: "micro",
   particle: "particle",
   temporal: "temporal",
+  "s-tier": "s-tier",
+  field: "field",
+  void: "void",
+  geological: "geological",
 } as const;
 
 /**
@@ -64,6 +72,10 @@ export const CreateRuneBodySystem = {
   egyptian: "egyptian",
   sumerian: "sumerian",
   mayan: "mayan",
+  khoisan: "khoisan",
+  pyri: "pyri",
+  inupiat: "inupiat",
+  aztec: "aztec",
 } as const;
 
 export type CreateRuneBodyScale =
@@ -74,6 +86,10 @@ export const CreateRuneBodyScale = {
   micro: "micro",
   particle: "particle",
   temporal: "temporal",
+  "s-tier": "s-tier",
+  field: "field",
+  void: "void",
+  geological: "geological",
 } as const;
 
 export interface CreateRuneBody {
@@ -136,6 +152,10 @@ export const GlyphSystem = {
   egyptian: "egyptian",
   sumerian: "sumerian",
   mayan: "mayan",
+  khoisan: "khoisan",
+  pyri: "pyri",
+  inupiat: "inupiat",
+  aztec: "aztec",
 } as const;
 
 export interface Glyph {
@@ -267,6 +287,115 @@ export interface StatsOverview {
   recentActivity: StatsOverviewRecentActivityItem[];
 }
 
+export interface DictionaryEntry {
+  id: number;
+  language: string;
+  headword: string;
+  gloss: string;
+  dialects: string[];
+  category: string;
+  subcategory: string;
+}
+
+export interface DictionaryListResponse {
+  entries: DictionaryEntry[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+export interface DictionaryCategory {
+  category: string;
+  count: number;
+}
+
+export type InupiatReferenceNumbersItem = {
+  value: number;
+  word: string;
+  literal?: string;
+};
+
+export type InupiatReferenceColorsItem = {
+  word: string;
+  english: string;
+};
+
+export type InupiatReferencePhonemesItem = {
+  symbol: string;
+  name: string;
+  description: string;
+};
+
+export interface InupiatReference {
+  name: string;
+  base: number;
+  subBase: number;
+  description: string;
+  numbers: InupiatReferenceNumbersItem[];
+  colors: InupiatReferenceColorsItem[];
+  phonemes: InupiatReferencePhonemesItem[];
+}
+
+export type AztecCalendarDaySignsItem = {
+  position: number;
+  nahuatl: string;
+  english: string;
+  glyph: string;
+  meaning: string;
+};
+
+export type AztecCalendarNumbersItem = {
+  value: number;
+  nahuatl: string;
+};
+
+export type AztecCalendarPlaceValuesItem = {
+  value: number;
+  nahuatl: string;
+  glyph: string;
+  name: string;
+};
+
+export type AztecCalendarSunsItem = {
+  order: number;
+  name: string;
+  english: string;
+  destruction: string;
+};
+
+export type AztecCalendarYearBearersItem = {
+  nahuatl: string;
+  english: string;
+  direction: string;
+};
+
+export type AztecCalendarVeintenasItem = {
+  position: number;
+  name: string;
+  english: string;
+};
+
+export type AztecCalendarNemontemi = {
+  count: number;
+  name: string;
+  english: string;
+};
+
+export interface AztecCalendar {
+  name: string;
+  description: string;
+  tonalpohualli: number;
+  xiuhpohualli: number;
+  daySigns: AztecCalendarDaySignsItem[];
+  numbers: AztecCalendarNumbersItem[];
+  placeValues: AztecCalendarPlaceValuesItem[];
+  suns: AztecCalendarSunsItem[];
+  yearBearers: AztecCalendarYearBearersItem[];
+  veintenas: AztecCalendarVeintenasItem[];
+  nemontemi: AztecCalendarNemontemi;
+}
+
 export type ListGlyphsParams = {
   system?: ListGlyphsSystem;
 };
@@ -278,5 +407,21 @@ export const ListGlyphsSystem = {
   egyptian: "egyptian",
   sumerian: "sumerian",
   mayan: "mayan",
+  khoisan: "khoisan",
+  pyri: "pyri",
+  inupiat: "inupiat",
+  aztec: "aztec",
   all: "all",
 } as const;
+
+export type ListDictionaryParams = {
+  language?: string;
+  category?: string;
+  search?: string;
+  page?: number;
+  pageSize?: number;
+};
+
+export type GetDictionaryCategoriesParams = {
+  language?: string;
+};

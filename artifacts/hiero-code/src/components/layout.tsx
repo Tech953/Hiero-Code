@@ -16,6 +16,7 @@ import {
   Orbit,
   Network,
   Menu,
+  Languages,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -54,6 +55,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/programs", label: "Programs", icon: Code },
     { href: "/numerology", label: "Numerology", icon: Compass },
     { href: "/glyphs", label: "Glyphs", icon: Book },
+    { href: "/dictionary", label: "Dictionary", icon: Languages },
   ];
 
   const refNav = [

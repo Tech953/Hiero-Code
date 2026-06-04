@@ -1,8 +1,18 @@
 import { Router } from "express";
 import { db } from "@workspace/db";
-import { runesTable } from "@workspace/db";
+import { runesTable, dictionaryEntriesTable } from "@workspace/db";
+import { eq, sql } from "drizzle-orm";
+import inupiatDictionary from "../data/inupiat-dictionary.json";
 
 const router = Router();
+
+type DictRow = {
+  headword: string;
+  gloss: string;
+  dialects: string[];
+  category: string;
+  subcategory: string;
+};
 
 const COSMOLOGY_RUNES = [
   // ─── 42 Laws of Maat nodes ───
@@ -276,6 +286,114 @@ const COSMOLOGY_RUNES = [
     connections: [],
     state: {},
   },
+
+  // ─── Iñupiaq (Arctic) nodes ───
+  {
+    name: "Iñuiññaq — The Whole Person (Base-20)",
+    glyph: "Iñuiññaq (20)",
+    glyphSymbol: "iñuiññaq",
+    system: "inupiat" as const,
+    scale: "macro" as const,
+    aseVitality: 0.80,
+    maatBalance: 0.82,
+    sumerianResonance: 20,
+    procedureCode: `SCALE_20\ndef WHOLE_PERSON(state, context):\n  # Iñupiaq vigesimal: twenty = iñuiññaq, "a whole person" (all 20 digits)\n  # Counting scales by whole persons: 40 = two persons, 100 = five persons\n  value = state.get("value", 1)\n  return {"value": value * 20, "whole_persons": value, "base": 20}`,
+    connections: [],
+    state: {},
+  },
+  {
+    name: "Tallimat — The Hand (Quinary Sub-Base)",
+    glyph: "Tallimat (5)",
+    glyphSymbol: "tallimat",
+    system: "inupiat" as const,
+    scale: "micro" as const,
+    aseVitality: 0.68,
+    maatBalance: 0.75,
+    sumerianResonance: 5,
+    procedureCode: `SUB_BASE_5\ndef HAND_QUANTIZE(state, context):\n  # Iñupiaq quinary sub-base: the hand of five fingers structures 6-19\n  # Six is "five-one", seven "five-two" — quantize toward the nearest five\n  value = state.get("value", 1)\n  return {"value": round(value / 5) * 5, "sub_base": 5, "hand": True}`,
+    connections: [],
+    state: {},
+  },
+  {
+    name: "Iglu — The Insulating Shelter",
+    glyph: "Iglu Shelter",
+    glyphSymbol: "❄️",
+    system: "inupiat" as const,
+    scale: "geological" as const,
+    aseVitality: 0.55,
+    maatBalance: 0.93,
+    sumerianResonance: 12,
+    procedureCode: `IGLU_INSULATE\ndef IGLU_DAMPEN(state, context):\n  # Iglu: the snow-house holds warmth against Arctic volatility\n  # Dampen incoming signal toward the equilibrium (maat) point\n  value = state.get("value", 1)\n  balance = context.get("maatBalance", 0.93)\n  return {"value": value * (1 - balance) + balance, "insulated": True}`,
+    connections: [],
+    state: {},
+  },
+  {
+    name: "Siniktuq — The Dormant Sleeper",
+    glyph: "Barred-L",
+    glyphSymbol: "ł",
+    system: "inupiat" as const,
+    scale: "temporal" as const,
+    aseVitality: 0.30,
+    maatBalance: 0.88,
+    sumerianResonance: 60,
+    procedureCode: `SINIK_DORMANT\ndef DORMANCY_HOLD(state, context):\n  # Sinik (sleep): the long polar night — hold value, accrue latent resonance\n  # The node sleeps until invoked, conserving its charge\n  value = state.get("value", 1)\n  return {"value": value, "dormant": True, "resonance": context.get("sumerianResonance", 60)}`,
+    connections: [],
+    state: {},
+  },
+
+  // ─── Aztec (Mexica) Calendar nodes ───
+  {
+    name: "Nahui Ollin — The Fifth Sun of Movement",
+    glyph: "Ollin (Movement)",
+    glyphSymbol: "🌀",
+    system: "aztec" as const,
+    scale: "s-tier" as const,
+    aseVitality: 0.95,
+    maatBalance: 0.62,
+    sumerianResonance: 5,
+    procedureCode: `NAHUI_OLLIN\ndef FIFTH_SUN(state, context):\n  # Nahui Ollin: 4-Movement, the present Fifth Sun, born at Teotihuacan\n  # Destined to end in earthquakes — an oscillating movement transform\n  import math\n  value = state.get("value", 1)\n  phase = math.sin(value)\n  vitality = context.get("aseVitality", 0.95)\n  return {"value": value * (1 + phase * vitality), "sun": 5, "movement": phase}`,
+    connections: [],
+    state: {},
+  },
+  {
+    name: "Tonalpohualli — The 260-Day Sacred Count",
+    glyph: "Cipactli (Crocodile)",
+    glyphSymbol: "🐊",
+    system: "aztec" as const,
+    scale: "temporal" as const,
+    aseVitality: 0.78,
+    maatBalance: 0.84,
+    sumerianResonance: 13,
+    procedureCode: `TONALPOHUALLI_CYCLE\ndef SACRED_COUNT(state, context):\n  # Tonalpohualli: 20 day-signs interlock with 13 numbers = 260 days\n  # Each value wraps into the sacred ring; the day-sign governs fate\n  value = round(state.get("value", 1))\n  day = ((value % 260) + 260) % 260\n  return {"value": day, "day_sign": day % 20, "number": (day % 13) + 1, "cycle": 260}`,
+    connections: [],
+    state: {},
+  },
+  {
+    name: "Xiuhpohualli — The 365-Day Year Count",
+    glyph: "Pantli (20)",
+    glyphSymbol: "🚩",
+    system: "aztec" as const,
+    scale: "macro" as const,
+    aseVitality: 0.70,
+    maatBalance: 0.90,
+    sumerianResonance: 20,
+    procedureCode: `SCALE_20\ndef YEAR_COUNT(state, context):\n  # Xiuhpohualli: 18 veintenas of 20 days + 5 nameless nemontemi = 365\n  # Vigesimal solar accounting; the year-bearer names the turning\n  value = state.get("value", 1)\n  return {"value": value * 20, "veintenas": 18, "nemontemi": 5, "year": 365}`,
+    connections: [],
+    state: {},
+  },
+  {
+    name: "Cuauhtli — The Eagle Ascent",
+    glyph: "Cuauhtli (Eagle)",
+    glyphSymbol: "🦅",
+    system: "aztec" as const,
+    scale: "macro" as const,
+    aseVitality: 0.88,
+    maatBalance: 0.66,
+    sumerianResonance: 15,
+    procedureCode: `ASE_AMPLIFY\ndef EAGLE_ASCENT(state, context):\n  # Cuauhtli (day 15): the eagle, solar warrior climbing the sky\n  # Amplifies vitality as the sun rises toward zenith\n  value = state.get("value", 1)\n  vitality = context.get("aseVitality", 0.88)\n  return {"value": value * (1 + vitality), "ascent": True, "day_sign": "cuauhtli"}`,
+    connections: [],
+    state: {},
+  },
 ];
 
 router.post("/cosmology", async (req, res) => {
@@ -294,7 +412,47 @@ router.post("/cosmology", async (req, res) => {
     const inserted = await db.insert(runesTable).values(toInsert).returning();
     res.json({ message: `Seeded ${inserted.length} cosmological rune nodes`, count: inserted.length, runes: inserted.map(r => ({ id: r.id, name: r.name })) });
   } catch (error) {
-    console.error("Seed error:", error);
+    req.log.error({ err: error }, "Cosmology seed error");
+    res.status(500).json({ error: String(error) });
+  }
+});
+
+router.post("/dictionary", async (req, res) => {
+  try {
+    const [{ count }] = await db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(dictionaryEntriesTable)
+      .where(eq(dictionaryEntriesTable.language, "inupiat"));
+
+    if (count > 0) {
+      res.json({ message: "Inupiat dictionary already seeded", count });
+      return;
+    }
+
+    const rows = inupiatDictionary as DictRow[];
+    const values = rows.map((r) => ({
+      language: "inupiat",
+      headword: r.headword,
+      gloss: r.gloss,
+      dialects: r.dialects ?? [],
+      category: r.category || "General",
+      subcategory: r.subcategory ?? "",
+    }));
+
+    let total = 0;
+    const chunkSize = 500;
+    for (let i = 0; i < values.length; i += chunkSize) {
+      const chunk = values.slice(i, i + chunkSize);
+      const inserted = await db
+        .insert(dictionaryEntriesTable)
+        .values(chunk)
+        .returning({ id: dictionaryEntriesTable.id });
+      total += inserted.length;
+    }
+
+    res.json({ message: `Seeded ${total} Inupiat dictionary entries`, count: total });
+  } catch (error) {
+    req.log.error({ err: error }, "Dictionary seed error");
     res.status(500).json({ error: String(error) });
   }
 });

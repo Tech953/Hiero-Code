@@ -24,6 +24,8 @@ export default function Glyphs() {
       case "mayan": return "text-emerald-500";
       case "khoisan": return "text-violet-400";
       case "pyri": return "text-rose-400";
+      case "inupiat": return "text-cyan-400";
+      case "aztec": return "text-orange-500";
       default: return "text-primary";
     }
   };
@@ -58,6 +60,8 @@ export default function Glyphs() {
             <SelectItem value="mayan">Mayan</SelectItem>
             <SelectItem value="khoisan">Khoisan (Click)</SelectItem>
             <SelectItem value="pyri">Pyri (Emotion Nodes)</SelectItem>
+            <SelectItem value="inupiat">Iñupiaq (Arctic)</SelectItem>
+            <SelectItem value="aztec">Aztec (Calendar)</SelectItem>
           </SelectContent>
         </Select>
       </div>

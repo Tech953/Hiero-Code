@@ -17,6 +17,8 @@ tags:
     description: Hiero-Code program operations
   - name: numerology
     description: Numerological system references
+  - name: dictionary
+    description: Indigenous-language dictionary operations
 
 paths:
   /healthz:
@@ -169,7 +171,7 @@ paths:
           in: query
           schema:
             type: string
-            enum: [egyptian, sumerian, mayan, all]
+            enum: [egyptian, sumerian, mayan, khoisan, pyri, inupiat, aztec, all]
       responses:
         "200":
           description: List of glyphs
@@ -331,6 +333,86 @@ paths:
               schema:
                 $ref: "#/components/schemas/ConversionResult"
 
+  /numerology/inupiat:
+    get:
+      operationId: getInupiatNumerals
+      tags: [numerology]
+      summary: Get Iñupiaq vigesimal numeral and reference data
+      responses:
+        "200":
+          description: Iñupiaq reference data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InupiatReference"
+
+  /numerology/aztec:
+    get:
+      operationId: getAztecCalendar
+      tags: [numerology]
+      summary: Get Aztec (Mexica) calendar symbology
+      responses:
+        "200":
+          description: Aztec calendar data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AztecCalendar"
+
+  /dictionary:
+    get:
+      operationId: listDictionary
+      tags: [dictionary]
+      summary: Search and browse dictionary entries (paginated)
+      parameters:
+        - name: language
+          in: query
+          schema:
+            type: string
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Paginated dictionary entries
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DictionaryListResponse"
+
+  /dictionary/categories:
+    get:
+      operationId: getDictionaryCategories
+      tags: [dictionary]
+      summary: List dictionary categories with entry counts
+      parameters:
+        - name: language
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Categories with counts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DictionaryCategory"
+
   /stats/overview:
     get:
       operationId: getStats
@@ -367,10 +449,10 @@ components:
           type: string
         system:
           type: string
-          enum: [egyptian, sumerian, mayan]
+          enum: [egyptian, sumerian, mayan, khoisan, pyri, inupiat, aztec]
         scale:
           type: string
-          enum: [macro, micro, particle, temporal]
+          enum: [macro, micro, particle, temporal, s-tier, field, void, geological]
         aseVitality:
           type: number
           description: Influence strength (ASE)
@@ -432,10 +514,10 @@ components:
           type: string
         system:
           type: string
-          enum: [egyptian, sumerian, mayan]
+          enum: [egyptian, sumerian, mayan, khoisan, pyri, inupiat, aztec]
         scale:
           type: string
-          enum: [macro, micro, particle, temporal]
+          enum: [macro, micro, particle, temporal, s-tier, field, void, geological]
         aseVitality:
           type: number
         maatBalance:
@@ -561,7 +643,7 @@ components:
           type: string
         system:
           type: string
-          enum: [egyptian, sumerian, mayan]
+          enum: [egyptian, sumerian, mayan, khoisan, pyri, inupiat, aztec]
         numericValue:
           type: number
         meaning:
@@ -814,3 +896,261 @@ components:
         - avgAseVitality
         - avgMaatBalance
         - recentActivity
+
+    DictionaryEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+        language:
+          type: string
+        headword:
+          type: string
+        gloss:
+          type: string
+        dialects:
+          type: array
+          items:
+            type: string
+        category:
+          type: string
+        subcategory:
+          type: string
+      required:
+        - id
+        - language
+        - headword
+        - gloss
+        - dialects
+        - category
+        - subcategory
+
+    DictionaryListResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: "#/components/schemas/DictionaryEntry"
+        total:
+          type: integer
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        totalPages:
+          type: integer
+      required:
+        - entries
+        - total
+        - page
+        - pageSize
+        - totalPages
+
+    DictionaryCategory:
+      type: object
+      properties:
+        category:
+          type: string
+        count:
+          type: integer
+      required:
+        - category
+        - count
+
+    InupiatReference:
+      type: object
+      properties:
+        name:
+          type: string
+        base:
+          type: integer
+        subBase:
+          type: integer
+        description:
+          type: string
+        numbers:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: integer
+              word:
+                type: string
+              literal:
+                type: string
+            required:
+              - value
+              - word
+        colors:
+          type: array
+          items:
+            type: object
+            properties:
+              word:
+                type: string
+              english:
+                type: string
+            required:
+              - word
+              - english
+        phonemes:
+          type: array
+          items:
+            type: object
+            properties:
+              symbol:
+                type: string
+              name:
+                type: string
+              description:
+                type: string
+            required:
+              - symbol
+              - name
+              - description
+      required:
+        - name
+        - base
+        - subBase
+        - description
+        - numbers
+        - colors
+        - phonemes
+
+    AztecCalendar:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        tonalpohualli:
+          type: integer
+        xiuhpohualli:
+          type: integer
+        daySigns:
+          type: array
+          items:
+            type: object
+            properties:
+              position:
+                type: integer
+              nahuatl:
+                type: string
+              english:
+                type: string
+              glyph:
+                type: string
+              meaning:
+                type: string
+            required:
+              - position
+              - nahuatl
+              - english
+              - glyph
+              - meaning
+        numbers:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: integer
+              nahuatl:
+                type: string
+            required:
+              - value
+              - nahuatl
+        placeValues:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: integer
+              nahuatl:
+                type: string
+              glyph:
+                type: string
+              name:
+                type: string
+            required:
+              - value
+              - nahuatl
+              - glyph
+              - name
+        suns:
+          type: array
+          items:
+            type: object
+            properties:
+              order:
+                type: integer
+              name:
+                type: string
+              english:
+                type: string
+              destruction:
+                type: string
+            required:
+              - order
+              - name
+              - english
+              - destruction
+        yearBearers:
+          type: array
+          items:
+            type: object
+            properties:
+              nahuatl:
+                type: string
+              english:
+                type: string
+              direction:
+                type: string
+            required:
+              - nahuatl
+              - english
+              - direction
+        veintenas:
+          type: array
+          items:
+            type: object
+            properties:
+              position:
+                type: integer
+              name:
+                type: string
+              english:
+                type: string
+            required:
+              - position
+              - name
+              - english
+        nemontemi:
+          type: object
+          properties:
+            count:
+              type: integer
+            name:
+              type: string
+            english:
+              type: string
+          required:
+            - count
+            - name
+            - english
+      required:
+        - name
+        - description
+        - tonalpohualli
+        - xiuhpohualli
+        - daySigns
+        - numbers
+        - placeValues
+        - suns
+        - yearBearers
+        - veintenas
+        - nemontemi

@@ -6,6 +6,14 @@
  * OpenAPI spec version: 0.1.0
  */
 
+export * from "./aztecCalendar";
+export * from "./aztecCalendarDaySignsItem";
+export * from "./aztecCalendarNemontemi";
+export * from "./aztecCalendarNumbersItem";
+export * from "./aztecCalendarPlaceValuesItem";
+export * from "./aztecCalendarSunsItem";
+export * from "./aztecCalendarVeintenasItem";
+export * from "./aztecCalendarYearBearersItem";
 export * from "./conversionResult";
 export * from "./convertNumberBody";
 export * from "./convertNumberBodyFromSystem";
@@ -14,13 +22,22 @@ export * from "./createProgramBody";
 export * from "./createRuneBody";
 export * from "./createRuneBodyScale";
 export * from "./createRuneBodySystem";
+export * from "./dictionaryCategory";
+export * from "./dictionaryEntry";
+export * from "./dictionaryListResponse";
 export * from "./executeRuneBody";
 export * from "./executeRuneBodyContext";
 export * from "./executionResult";
 export * from "./executionResultStateAfter";
+export * from "./getDictionaryCategoriesParams";
 export * from "./glyph";
 export * from "./glyphSystem";
 export * from "./healthStatus";
+export * from "./inupiatReference";
+export * from "./inupiatReferenceColorsItem";
+export * from "./inupiatReferenceNumbersItem";
+export * from "./inupiatReferencePhonemesItem";
+export * from "./listDictionaryParams";
 export * from "./listGlyphsParams";
 export * from "./listGlyphsSystem";
 export * from "./numerologySystem";

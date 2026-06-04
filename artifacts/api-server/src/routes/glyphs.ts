@@ -72,6 +72,38 @@ const GLYPHS = [
   { id: 52, symbol: "$.$", name: "Motivation Node", system: "pyri", numericValue: 1, meaning: "Medium arousal, positive. Incentive / goal-seeking drive. Valence: +1, Arousal: 0, Gesture: 1", category: "emotion" },
   { id: 53, symbol: "U.U", name: "Defeat Node", system: "pyri", numericValue: -1, meaning: "Low arousal, negative. Resignation / passive state. Valence: -1, Arousal: -1, Gesture: 0", category: "emotion" },
   { id: 54, symbol: "\\(-.-)/", name: "Surrender Node", system: "pyri", numericValue: -1, meaning: "Medium arousal, negative gesture. Motor-expression mapping. Valence: -1, Arousal: 0, Gesture: 3", category: "emotion" },
+
+  // === Iñupiaq Vigesimal Numerals (base-20, quinary sub-base) ===
+  { id: 55, symbol: "atausiq", name: "Atausiq (1)", system: "inupiat", numericValue: 1, meaning: "One — the single unit", category: "numeral" },
+  { id: 56, symbol: "tallimat", name: "Tallimat (5)", system: "inupiat", numericValue: 5, meaning: "Five — the hand, the quinary sub-base", category: "numeral" },
+  { id: 57, symbol: "qulit", name: "Qulit (10)", system: "inupiat", numericValue: 10, meaning: "Ten — both hands", category: "numeral" },
+  { id: 58, symbol: "akimiaq", name: "Akimiaq (15)", system: "inupiat", numericValue: 15, meaning: "Fifteen — three fives", category: "numeral" },
+  { id: 59, symbol: "iñuiññaq", name: "Iñuiññaq (20)", system: "inupiat", numericValue: 20, meaning: "Twenty — 'a whole person', all twenty digits; the vigesimal base", category: "numeral" },
+  { id: 60, symbol: "malġukipiaq", name: "Malġukipiaq (40)", system: "inupiat", numericValue: 40, meaning: "Forty — 'two whole persons'", category: "numeral" },
+
+  // === Iñupiaq Writing-Key Phonemes ===
+  { id: 61, symbol: "ŋ", name: "Eng", system: "inupiat", numericValue: 1, meaning: "Velar nasal phoneme (as in 'sing') — a single sound-channel", category: "phoneme" },
+  { id: 62, symbol: "ġ", name: "Gamma", system: "inupiat", numericValue: 1, meaning: "Voiced velar fricative — the back 'g' of Iñupiaq", category: "phoneme" },
+  { id: 63, symbol: "ł", name: "Barred-L", system: "inupiat", numericValue: 1, meaning: "Voiceless lateral fricative", category: "phoneme" },
+  { id: 64, symbol: "ñ", name: "Enye", system: "inupiat", numericValue: 1, meaning: "Palatal nasal (as in 'canyon')", category: "phoneme" },
+
+  // === Aztec Tonalpohualli Day-Signs (20-day cycle) ===
+  { id: 65, symbol: "🐊", name: "Cipactli (Crocodile)", system: "aztec", numericValue: 1, meaning: "Day 1 — primordial earth-monster; genesis", category: "day-sign" },
+  { id: 66, symbol: "🌬️", name: "Ehecatl (Wind)", system: "aztec", numericValue: 2, meaning: "Day 2 — breath of Quetzalcoatl; spirit", category: "day-sign" },
+  { id: 67, symbol: "🏠", name: "Calli (House)", system: "aztec", numericValue: 3, meaning: "Day 3 — shelter, the western quarter; a year-bearer", category: "day-sign" },
+  { id: 68, symbol: "🐇", name: "Tochtli (Rabbit)", system: "aztec", numericValue: 8, meaning: "Day 8 — fertility, pulque; a year-bearer of the south", category: "day-sign" },
+  { id: 69, symbol: "💧", name: "Atl (Water)", system: "aztec", numericValue: 9, meaning: "Day 9 — flow; the flood that ended the Fourth Sun", category: "day-sign" },
+  { id: 70, symbol: "🎋", name: "Acatl (Reed)", system: "aztec", numericValue: 13, meaning: "Day 13 — authority; year-bearer of the east", category: "day-sign" },
+  { id: 71, symbol: "🐆", name: "Ocelotl (Jaguar)", system: "aztec", numericValue: 14, meaning: "Day 14 — night, earth; devourers of the First Sun", category: "day-sign" },
+  { id: 72, symbol: "🦅", name: "Cuauhtli (Eagle)", system: "aztec", numericValue: 15, meaning: "Day 15 — sky, the solar warrior's ascent", category: "day-sign" },
+  { id: 73, symbol: "🌀", name: "Ollin (Movement)", system: "aztec", numericValue: 17, meaning: "Day 17 — earthquake; the sign of the present Fifth Sun", category: "day-sign" },
+  { id: 74, symbol: "🔪", name: "Tecpatl (Flint)", system: "aztec", numericValue: 18, meaning: "Day 18 — sacrifice, the obsidian blade; year-bearer north", category: "day-sign" },
+  { id: 75, symbol: "🌸", name: "Xochitl (Flower)", system: "aztec", numericValue: 20, meaning: "Day 20 — beauty, song; completion of the count", category: "day-sign" },
+
+  // === Aztec Vigesimal Numerals ===
+  { id: 76, symbol: "🚩", name: "Pantli (20)", system: "aztec", numericValue: 20, meaning: "Flag — twenty (cempohualli), first vigesimal place", category: "numeral" },
+  { id: 77, symbol: "🪶", name: "Tzontli (400)", system: "aztec", numericValue: 400, meaning: "Feather/hair — four hundred (centzontli), 20²", category: "numeral" },
+  { id: 78, symbol: "👝", name: "Xiquipilli (8000)", system: "aztec", numericValue: 8000, meaning: "Incense bag — eight thousand (cenxiquipilli), 20³", category: "numeral" },
 ];
 
 router.get("/", async (req, res) => {

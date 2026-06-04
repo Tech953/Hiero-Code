@@ -1,4 +1,4 @@
-import { useGetEgyptianNumerology, useGetSumerianNumerology, useConvertNumber } from "@workspace/api-client-react";
+import { useGetEgyptianNumerology, useGetSumerianNumerology, useConvertNumber, useGetInupiatNumerals, useGetAztecCalendar } from "@workspace/api-client-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
@@ -11,6 +11,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function Numerology() {
   const { data: egyptian, isLoading: loadingEg } = useGetEgyptianNumerology();
   const { data: sumerian, isLoading: loadingSu } = useGetSumerianNumerology();
+  const { data: inupiat, isLoading: loadingIn } = useGetInupiatNumerals();
+  const { data: aztec, isLoading: loadingAz } = useGetAztecCalendar();
   const convertNumber = useConvertNumber();
 
   const [convVal, setConvVal] = useState("10");
@@ -96,6 +98,8 @@ export default function Numerology() {
           <TabsTrigger value="sumerian" className="font-mono uppercase tracking-wider text-xs">Sumerian (Base-60)</TabsTrigger>
           <TabsTrigger value="mayan" className="font-mono uppercase tracking-wider text-xs">Mayan (Base-20)</TabsTrigger>
           <TabsTrigger value="khoisan" className="font-mono uppercase tracking-wider text-xs">Khoisan (Click)</TabsTrigger>
+          <TabsTrigger value="inupiat" className="font-mono uppercase tracking-wider text-xs">Iñupiaq (Base-20)</TabsTrigger>
+          <TabsTrigger value="aztec" className="font-mono uppercase tracking-wider text-xs">Aztec (Calendar)</TabsTrigger>
           <TabsTrigger value="alignment" className="font-mono uppercase tracking-wider text-xs">Language Alignment</TabsTrigger>
         </TabsList>
         
@@ -276,6 +280,121 @@ export default function Numerology() {
               </div>
             </CardContent>
           </Card>
+        </TabsContent>
+
+        <TabsContent value="inupiat" className="mt-6">
+          {loadingIn ? <Skeleton className="h-96 w-full" /> : inupiat && (
+            <Card className="border-border bg-card">
+              <CardHeader>
+                <CardTitle className="font-serif text-cyan-400">{inupiat.name} (Base-{inupiat.base}, sub-base {inupiat.subBase})</CardTitle>
+                <CardDescription className="font-mono">{inupiat.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <div className="font-mono text-xs uppercase text-muted-foreground mb-3">Vigesimal Numbers</div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {inupiat.numbers.map((n, i) => (
+                      <div key={i} className="flex flex-col items-center p-4 rounded bg-background border border-border/50 hover:border-cyan-400/50 transition-colors text-center">
+                        <span className="font-mono text-2xl text-cyan-400 mb-1">{n.value}</span>
+                        <span className="text-sm text-foreground break-words w-full">{n.word}</span>
+                        {n.literal && <span className="text-[10px] text-muted-foreground italic mt-1">"{n.literal}"</span>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono text-xs uppercase text-muted-foreground mb-3">Colors</div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {inupiat.colors.map((c, i) => (
+                      <div key={i} className="p-3 rounded bg-background border border-border/50">
+                        <div className="font-mono text-sm text-cyan-400">{c.word}</div>
+                        <div className="text-xs text-muted-foreground">{c.english}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono text-xs uppercase text-muted-foreground mb-3">Writing-Key Phonemes</div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {inupiat.phonemes.map((p, i) => (
+                      <div key={i} className="flex items-center gap-3 p-3 rounded bg-background border border-border/50">
+                        <span className="text-2xl text-cyan-400 w-8 text-center">{p.symbol}</span>
+                        <div>
+                          <div className="font-mono text-xs text-foreground">{p.name}</div>
+                          <div className="text-[10px] text-muted-foreground">{p.description}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </TabsContent>
+
+        <TabsContent value="aztec" className="mt-6">
+          {loadingAz ? <Skeleton className="h-96 w-full" /> : aztec && (
+            <Card className="border-border bg-card">
+              <CardHeader>
+                <CardTitle className="font-serif text-orange-500">{aztec.name}</CardTitle>
+                <CardDescription className="font-mono">{aztec.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <div className="font-mono text-xs uppercase text-muted-foreground mb-3">Tonalpohualli — 20 Day-Signs ({aztec.tonalpohualli}-day count)</div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                    {aztec.daySigns.map((d) => (
+                      <div key={d.position} className="flex flex-col items-center p-3 rounded bg-background border border-border/50 hover:border-orange-500/50 transition-colors text-center">
+                        <span className="text-3xl mb-1">{d.glyph}</span>
+                        <span className="font-serif text-sm text-orange-400">{d.nahuatl}</span>
+                        <span className="text-[10px] text-muted-foreground uppercase">{d.position}. {d.english}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono text-xs uppercase text-muted-foreground mb-3">Vigesimal Place-Values</div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {aztec.placeValues.map((p, i) => (
+                      <div key={i} className="flex flex-col items-center p-4 rounded bg-background border border-border/50 text-center">
+                        <span className="text-3xl mb-1">{p.glyph}</span>
+                        <span className="font-mono text-lg text-orange-400">{p.value.toLocaleString()}</span>
+                        <span className="text-[10px] text-muted-foreground">{p.name} · {p.nahuatl}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <div className="font-mono text-xs uppercase text-muted-foreground mb-3">The Five Suns</div>
+                    <div className="space-y-2">
+                      {aztec.suns.map((s) => (
+                        <div key={s.order} className={`p-3 rounded bg-background border ${s.order === 5 ? "border-orange-500/50" : "border-border/50"}`}>
+                          <div className="font-serif text-sm text-orange-400">{s.order}. {s.name} ({s.english})</div>
+                          <div className="text-[11px] text-muted-foreground">{s.destruction}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-mono text-xs uppercase text-muted-foreground mb-3">Year-Bearers</div>
+                    <div className="grid grid-cols-2 gap-2 mb-4">
+                      {aztec.yearBearers.map((y, i) => (
+                        <div key={i} className="p-3 rounded bg-background border border-border/50">
+                          <div className="font-serif text-sm text-orange-400">{y.nahuatl}</div>
+                          <div className="text-[11px] text-muted-foreground">{y.english} · {y.direction}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="font-mono text-xs uppercase text-muted-foreground mb-2">Xiuhpohualli ({aztec.xiuhpohualli}-day year)</div>
+                    <div className="p-3 rounded bg-orange-500/5 border border-orange-500/20 text-xs text-foreground/80">
+                      18 veintenas × 20 days + {aztec.nemontemi.count} {aztec.nemontemi.name}: {aztec.nemontemi.english}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </TabsContent>
 
         <TabsContent value="alignment" className="mt-6">

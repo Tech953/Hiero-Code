@@ -22,8 +22,25 @@ export const ListRunesResponseItem = zod.object({
   name: zod.string(),
   glyph: zod.string(),
   glyphSymbol: zod.string(),
-  system: zod.enum(["egyptian", "sumerian", "mayan"]),
-  scale: zod.enum(["macro", "micro", "particle", "temporal"]),
+  system: zod.enum([
+    "egyptian",
+    "sumerian",
+    "mayan",
+    "khoisan",
+    "pyri",
+    "inupiat",
+    "aztec",
+  ]),
+  scale: zod.enum([
+    "macro",
+    "micro",
+    "particle",
+    "temporal",
+    "s-tier",
+    "field",
+    "void",
+    "geological",
+  ]),
   aseVitality: zod.number().describe("Influence strength (ASE)"),
   maatBalance: zod.number().describe("Stability control (Maat)"),
   sumerianResonance: zod.number().describe("Base-60 resonance weight"),
@@ -48,8 +65,25 @@ export const CreateRuneBody = zod.object({
   name: zod.string(),
   glyph: zod.string(),
   glyphSymbol: zod.string(),
-  system: zod.enum(["egyptian", "sumerian", "mayan"]),
-  scale: zod.enum(["macro", "micro", "particle", "temporal"]),
+  system: zod.enum([
+    "egyptian",
+    "sumerian",
+    "mayan",
+    "khoisan",
+    "pyri",
+    "inupiat",
+    "aztec",
+  ]),
+  scale: zod.enum([
+    "macro",
+    "micro",
+    "particle",
+    "temporal",
+    "s-tier",
+    "field",
+    "void",
+    "geological",
+  ]),
   aseVitality: zod.number(),
   maatBalance: zod.number(),
   sumerianResonance: zod.number(),
@@ -69,8 +103,25 @@ export const GetRuneResponse = zod.object({
   name: zod.string(),
   glyph: zod.string(),
   glyphSymbol: zod.string(),
-  system: zod.enum(["egyptian", "sumerian", "mayan"]),
-  scale: zod.enum(["macro", "micro", "particle", "temporal"]),
+  system: zod.enum([
+    "egyptian",
+    "sumerian",
+    "mayan",
+    "khoisan",
+    "pyri",
+    "inupiat",
+    "aztec",
+  ]),
+  scale: zod.enum([
+    "macro",
+    "micro",
+    "particle",
+    "temporal",
+    "s-tier",
+    "field",
+    "void",
+    "geological",
+  ]),
   aseVitality: zod.number().describe("Influence strength (ASE)"),
   maatBalance: zod.number().describe("Stability control (Maat)"),
   sumerianResonance: zod.number().describe("Base-60 resonance weight"),
@@ -110,8 +161,25 @@ export const UpdateRuneResponse = zod.object({
   name: zod.string(),
   glyph: zod.string(),
   glyphSymbol: zod.string(),
-  system: zod.enum(["egyptian", "sumerian", "mayan"]),
-  scale: zod.enum(["macro", "micro", "particle", "temporal"]),
+  system: zod.enum([
+    "egyptian",
+    "sumerian",
+    "mayan",
+    "khoisan",
+    "pyri",
+    "inupiat",
+    "aztec",
+  ]),
+  scale: zod.enum([
+    "macro",
+    "micro",
+    "particle",
+    "temporal",
+    "s-tier",
+    "field",
+    "void",
+    "geological",
+  ]),
   aseVitality: zod.number().describe("Influence strength (ASE)"),
   maatBalance: zod.number().describe("Stability control (Maat)"),
   sumerianResonance: zod.number().describe("Base-60 resonance weight"),
@@ -167,8 +235,25 @@ export const GetRuneGraphResponse = zod.object({
       name: zod.string(),
       glyph: zod.string(),
       glyphSymbol: zod.string(),
-      system: zod.enum(["egyptian", "sumerian", "mayan"]),
-      scale: zod.enum(["macro", "micro", "particle", "temporal"]),
+      system: zod.enum([
+        "egyptian",
+        "sumerian",
+        "mayan",
+        "khoisan",
+        "pyri",
+        "inupiat",
+        "aztec",
+      ]),
+      scale: zod.enum([
+        "macro",
+        "micro",
+        "particle",
+        "temporal",
+        "s-tier",
+        "field",
+        "void",
+        "geological",
+      ]),
       aseVitality: zod.number().describe("Influence strength (ASE)"),
       maatBalance: zod.number().describe("Stability control (Maat)"),
       sumerianResonance: zod.number().describe("Base-60 resonance weight"),
@@ -200,14 +285,33 @@ export const GetRuneGraphResponse = zod.object({
  * @summary List all available glyphs
  */
 export const ListGlyphsQueryParams = zod.object({
-  system: zod.enum(["egyptian", "sumerian", "mayan", "all"]).optional(),
+  system: zod
+    .enum([
+      "egyptian",
+      "sumerian",
+      "mayan",
+      "khoisan",
+      "pyri",
+      "inupiat",
+      "aztec",
+      "all",
+    ])
+    .optional(),
 });
 
 export const ListGlyphsResponseItem = zod.object({
   id: zod.number(),
   symbol: zod.string(),
   name: zod.string(),
-  system: zod.enum(["egyptian", "sumerian", "mayan"]),
+  system: zod.enum([
+    "egyptian",
+    "sumerian",
+    "mayan",
+    "khoisan",
+    "pyri",
+    "inupiat",
+    "aztec",
+  ]),
   numericValue: zod.number(),
   meaning: zod.string(),
   category: zod.string(),
@@ -380,6 +484,140 @@ export const ConvertNumberResponse = zod.object({
   symbols: zod.array(zod.string()),
   explanation: zod.string(),
 });
+
+/**
+ * @summary Get Iñupiaq vigesimal numeral and reference data
+ */
+export const GetInupiatNumeralsResponse = zod.object({
+  name: zod.string(),
+  base: zod.number(),
+  subBase: zod.number(),
+  description: zod.string(),
+  numbers: zod.array(
+    zod.object({
+      value: zod.number(),
+      word: zod.string(),
+      literal: zod.string().optional(),
+    }),
+  ),
+  colors: zod.array(
+    zod.object({
+      word: zod.string(),
+      english: zod.string(),
+    }),
+  ),
+  phonemes: zod.array(
+    zod.object({
+      symbol: zod.string(),
+      name: zod.string(),
+      description: zod.string(),
+    }),
+  ),
+});
+
+/**
+ * @summary Get Aztec (Mexica) calendar symbology
+ */
+export const GetAztecCalendarResponse = zod.object({
+  name: zod.string(),
+  description: zod.string(),
+  tonalpohualli: zod.number(),
+  xiuhpohualli: zod.number(),
+  daySigns: zod.array(
+    zod.object({
+      position: zod.number(),
+      nahuatl: zod.string(),
+      english: zod.string(),
+      glyph: zod.string(),
+      meaning: zod.string(),
+    }),
+  ),
+  numbers: zod.array(
+    zod.object({
+      value: zod.number(),
+      nahuatl: zod.string(),
+    }),
+  ),
+  placeValues: zod.array(
+    zod.object({
+      value: zod.number(),
+      nahuatl: zod.string(),
+      glyph: zod.string(),
+      name: zod.string(),
+    }),
+  ),
+  suns: zod.array(
+    zod.object({
+      order: zod.number(),
+      name: zod.string(),
+      english: zod.string(),
+      destruction: zod.string(),
+    }),
+  ),
+  yearBearers: zod.array(
+    zod.object({
+      nahuatl: zod.string(),
+      english: zod.string(),
+      direction: zod.string(),
+    }),
+  ),
+  veintenas: zod.array(
+    zod.object({
+      position: zod.number(),
+      name: zod.string(),
+      english: zod.string(),
+    }),
+  ),
+  nemontemi: zod.object({
+    count: zod.number(),
+    name: zod.string(),
+    english: zod.string(),
+  }),
+});
+
+/**
+ * @summary Search and browse dictionary entries (paginated)
+ */
+export const ListDictionaryQueryParams = zod.object({
+  language: zod.coerce.string().optional(),
+  category: zod.coerce.string().optional(),
+  search: zod.coerce.string().optional(),
+  page: zod.coerce.number().optional(),
+  pageSize: zod.coerce.number().optional(),
+});
+
+export const ListDictionaryResponse = zod.object({
+  entries: zod.array(
+    zod.object({
+      id: zod.number(),
+      language: zod.string(),
+      headword: zod.string(),
+      gloss: zod.string(),
+      dialects: zod.array(zod.string()),
+      category: zod.string(),
+      subcategory: zod.string(),
+    }),
+  ),
+  total: zod.number(),
+  page: zod.number(),
+  pageSize: zod.number(),
+  totalPages: zod.number(),
+});
+
+/**
+ * @summary List dictionary categories with entry counts
+ */
+export const GetDictionaryCategoriesQueryParams = zod.object({
+  language: zod.coerce.string().optional(),
+});
+
+export const GetDictionaryCategoriesResponseItem = zod.object({
+  category: zod.string(),
+  count: zod.number(),
+});
+export const GetDictionaryCategoriesResponse = zod.array(
+  GetDictionaryCategoriesResponseItem,
+);
 
 /**
  * @summary Dashboard stats overview

@@ -13,4 +13,8 @@ export const CreateRuneBodySystem = {
   egyptian: "egyptian",
   sumerian: "sumerian",
   mayan: "mayan",
+  khoisan: "khoisan",
+  pyri: "pyri",
+  inupiat: "inupiat",
+  aztec: "aztec",
 } as const;

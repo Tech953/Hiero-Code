@@ -4,6 +4,7 @@ import runesRouter from "./runes";
 import programsRouter from "./programs";
 import glyphsRouter from "./glyphs";
 import numerologyRouter from "./numerology";
+import dictionaryRouter from "./dictionary";
 import statsRouter from "./stats";
 import seedRouter from "./seed";
 
@@ -14,6 +15,7 @@ router.use("/runes", runesRouter);
 router.use("/programs", programsRouter);
 router.use("/glyphs", glyphsRouter);
 router.use("/numerology", numerologyRouter);
+router.use("/dictionary", dictionaryRouter);
 router.use("/stats", statsRouter);
 router.use("/seed", seedRouter);
 

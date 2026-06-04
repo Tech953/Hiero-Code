@@ -13,5 +13,9 @@ export const ListGlyphsSystem = {
   egyptian: "egyptian",
   sumerian: "sumerian",
   mayan: "mayan",
+  khoisan: "khoisan",
+  pyri: "pyri",
+  inupiat: "inupiat",
+  aztec: "aztec",
   all: "all",
 } as const;
