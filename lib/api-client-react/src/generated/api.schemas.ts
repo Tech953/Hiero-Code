@@ -399,6 +399,32 @@ export interface PnwArtFacets {
   categories: PnwArtFacet[];
 }
 
+export interface InuitSymbologyEntry {
+  id: number;
+  title: string;
+  category: string;
+  summary: string;
+  body: string;
+}
+
+export interface InuitSymbologyListResponse {
+  entries: InuitSymbologyEntry[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+export interface InuitSymbologyFacet {
+  value: string;
+  count: number;
+}
+
+export interface InuitSymbologyFacets {
+  total: number;
+  categories: InuitSymbologyFacet[];
+}
+
 export type InupiatReferenceNumbersItem = {
   value: number;
   word: string;
@@ -531,6 +557,13 @@ export type ListIconographyParams = {
 };
 
 export type ListPnwArtParams = {
+  category?: string;
+  search?: string;
+  page?: number;
+  pageSize?: number;
+};
+
+export type ListInuitSymbologyParams = {
   category?: string;
   search?: string;
   page?: number;

@@ -4,3 +4,4 @@ export * from "./dictionary";
 export * from "./stelae";
 export * from "./iconography";
 export * from "./pnwart";
+export * from "./inuit";

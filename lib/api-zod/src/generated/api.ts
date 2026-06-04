@@ -794,6 +794,60 @@ export const GetPnwArtFacetsResponse = zod.object({
 });
 
 /**
+ * @summary Search and browse the Canadian Inuit symbology reference (paginated)
+ */
+export const ListInuitSymbologyQueryParams = zod.object({
+  category: zod.coerce.string().optional(),
+  search: zod.coerce.string().optional(),
+  page: zod.coerce.number().optional(),
+  pageSize: zod.coerce.number().optional(),
+});
+
+export const ListInuitSymbologyResponse = zod.object({
+  entries: zod.array(
+    zod.object({
+      id: zod.number(),
+      title: zod.string(),
+      category: zod.string(),
+      summary: zod.string(),
+      body: zod.string(),
+    }),
+  ),
+  total: zod.number(),
+  page: zod.number(),
+  pageSize: zod.number(),
+  totalPages: zod.number(),
+});
+
+/**
+ * @summary Faceted counts (by category) for the Inuit symbology reference
+ */
+export const GetInuitSymbologyFacetsResponse = zod.object({
+  total: zod.number(),
+  categories: zod.array(
+    zod.object({
+      value: zod.string(),
+      count: zod.number(),
+    }),
+  ),
+});
+
+/**
+ * @summary Get a single Inuit symbology entry by id
+ */
+export const GetInuitSymbologyEntryParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const GetInuitSymbologyEntryResponse = zod.object({
+  id: zod.number(),
+  title: zod.string(),
+  category: zod.string(),
+  summary: zod.string(),
+  body: zod.string(),
+});
+
+/**
  * @summary Get a single Northwest Coast art entry by id
  */
 export const GetPnwArtEntryParams = zod.object({

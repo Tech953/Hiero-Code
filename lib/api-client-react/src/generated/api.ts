@@ -32,10 +32,14 @@ import type {
   IconEntry,
   IconFacets,
   IconListResponse,
+  InuitSymbologyEntry,
+  InuitSymbologyFacets,
+  InuitSymbologyListResponse,
   InupiatReference,
   ListDictionaryParams,
   ListGlyphsParams,
   ListIconographyParams,
+  ListInuitSymbologyParams,
   ListPnwArtParams,
   ListStelaeParams,
   NumerologySystem,
@@ -2550,6 +2554,270 @@ export function useGetPnwArtFacets<
   request?: SecondParameter<typeof customFetch>;
 }): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetPnwArtFacetsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Search and browse the Canadian Inuit symbology reference (paginated)
+ */
+export const getListInuitSymbologyUrl = (params?: ListInuitSymbologyParams) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : value.toString());
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/inuit-symbology?${stringifiedParams}`
+    : `/api/inuit-symbology`;
+};
+
+export const listInuitSymbology = async (
+  params?: ListInuitSymbologyParams,
+  options?: RequestInit,
+): Promise<InuitSymbologyListResponse> => {
+  return customFetch<InuitSymbologyListResponse>(
+    getListInuitSymbologyUrl(params),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export const getListInuitSymbologyQueryKey = (
+  params?: ListInuitSymbologyParams,
+) => {
+  return [`/api/inuit-symbology`, ...(params ? [params] : [])] as const;
+};
+
+export const getListInuitSymbologyQueryOptions = <
+  TData = Awaited<ReturnType<typeof listInuitSymbology>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListInuitSymbologyParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listInuitSymbology>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getListInuitSymbologyQueryKey(params);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof listInuitSymbology>>
+  > = ({ signal }) => listInuitSymbology(params, { signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listInuitSymbology>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListInuitSymbologyQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listInuitSymbology>>
+>;
+export type ListInuitSymbologyQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Search and browse the Canadian Inuit symbology reference (paginated)
+ */
+
+export function useListInuitSymbology<
+  TData = Awaited<ReturnType<typeof listInuitSymbology>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListInuitSymbologyParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listInuitSymbology>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListInuitSymbologyQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Faceted counts (by category) for the Inuit symbology reference
+ */
+export const getGetInuitSymbologyFacetsUrl = () => {
+  return `/api/inuit-symbology/facets`;
+};
+
+export const getInuitSymbologyFacets = async (
+  options?: RequestInit,
+): Promise<InuitSymbologyFacets> => {
+  return customFetch<InuitSymbologyFacets>(getGetInuitSymbologyFacetsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetInuitSymbologyFacetsQueryKey = () => {
+  return [`/api/inuit-symbology/facets`] as const;
+};
+
+export const getGetInuitSymbologyFacetsQueryOptions = <
+  TData = Awaited<ReturnType<typeof getInuitSymbologyFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getInuitSymbologyFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getGetInuitSymbologyFacetsQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getInuitSymbologyFacets>>
+  > = ({ signal }) => getInuitSymbologyFacets({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getInuitSymbologyFacets>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetInuitSymbologyFacetsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getInuitSymbologyFacets>>
+>;
+export type GetInuitSymbologyFacetsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Faceted counts (by category) for the Inuit symbology reference
+ */
+
+export function useGetInuitSymbologyFacets<
+  TData = Awaited<ReturnType<typeof getInuitSymbologyFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getInuitSymbologyFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetInuitSymbologyFacetsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Get a single Inuit symbology entry by id
+ */
+export const getGetInuitSymbologyEntryUrl = (id: number) => {
+  return `/api/inuit-symbology/${id}`;
+};
+
+export const getInuitSymbologyEntry = async (
+  id: number,
+  options?: RequestInit,
+): Promise<InuitSymbologyEntry> => {
+  return customFetch<InuitSymbologyEntry>(getGetInuitSymbologyEntryUrl(id), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetInuitSymbologyEntryQueryKey = (id: number) => {
+  return [`/api/inuit-symbology/${id}`] as const;
+};
+
+export const getGetInuitSymbologyEntryQueryOptions = <
+  TData = Awaited<ReturnType<typeof getInuitSymbologyEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getInuitSymbologyEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getGetInuitSymbologyEntryQueryKey(id);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getInuitSymbologyEntry>>
+  > = ({ signal }) => getInuitSymbologyEntry(id, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof getInuitSymbologyEntry>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetInuitSymbologyEntryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getInuitSymbologyEntry>>
+>;
+export type GetInuitSymbologyEntryQueryError = ErrorType<void>;
+
+/**
+ * @summary Get a single Inuit symbology entry by id
+ */
+
+export function useGetInuitSymbologyEntry<
+  TData = Awaited<ReturnType<typeof getInuitSymbologyEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getInuitSymbologyEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetInuitSymbologyEntryQueryOptions(id, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;

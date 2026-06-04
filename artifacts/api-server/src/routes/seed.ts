@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { db } from "@workspace/db";
-import { runesTable, dictionaryEntriesTable, stelaeEntriesTable, iconographyEntriesTable, pnwArtEntriesTable } from "@workspace/db";
+import { runesTable, dictionaryEntriesTable, stelaeEntriesTable, iconographyEntriesTable, pnwArtEntriesTable, inuitSymbologyEntriesTable } from "@workspace/db";
 import { eq, sql } from "drizzle-orm";
 import inupiatDictionary from "../data/inupiat-dictionary.json";
 import egyptianStelae from "../data/egyptian-stelae.json";
 import hinduIconography from "../data/hindu-iconography.json";
 import northwestArt from "../data/northwest-art.json";
+import inuitSymbology from "../data/inuit-symbology.json";
 
 const router = Router();
 
@@ -599,6 +600,40 @@ router.post("/pnw-art", async (req, res) => {
     });
   } catch (error) {
     req.log.error({ err: error }, "Northwest Coast art seed error");
+    res.status(500).json({ error: String(error) });
+  }
+});
+
+router.post("/inuit-symbology", async (req, res) => {
+  try {
+    const [{ count }] = await db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(inuitSymbologyEntriesTable);
+
+    if (count > 0) {
+      res.json({ message: "Inuit symbology already seeded", count });
+      return;
+    }
+
+    const rows = inuitSymbology as PnwArtRow[];
+    const values = rows.map((r) => ({
+      title: r.title || "(untitled section)",
+      category: r.category || "Section",
+      summary: r.summary ?? "",
+      body: r.body ?? "",
+    }));
+
+    const inserted = await db
+      .insert(inuitSymbologyEntriesTable)
+      .values(values)
+      .returning({ id: inuitSymbologyEntriesTable.id });
+
+    res.json({
+      message: `Seeded ${inserted.length} Inuit symbology entries`,
+      count: inserted.length,
+    });
+  } catch (error) {
+    req.log.error({ err: error }, "Inuit symbology seed error");
     res.status(500).json({ error: String(error) });
   }
 });
