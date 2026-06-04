@@ -3,12 +3,28 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { build as esbuild } from "esbuild";
 import esbuildPluginPino from "esbuild-plugin-pino";
-import { rm } from "node:fs/promises";
+import { rm, mkdir, copyFile, access } from "node:fs/promises";
 
 // Plugins (e.g. 'esbuild-plugin-pino') may use `require` to resolve dependencies
 globalThis.require = createRequire(import.meta.url);
 
 const artifactDir = path.dirname(fileURLToPath(import.meta.url));
+
+const PDF_NAME = "Hiero-Code_Reference_Codex.pdf";
+
+async function copyReferenceCodex(distDir) {
+  const source = path.resolve(artifactDir, "..", "..", "exports", PDF_NAME);
+  try {
+    await access(source);
+  } catch {
+    console.warn(`[build] reference codex PDF not found at ${source}; download route will 404 until it is generated.`);
+    return;
+  }
+  const assetsDir = path.resolve(distDir, "assets");
+  await mkdir(assetsDir, { recursive: true });
+  await copyFile(source, path.resolve(assetsDir, PDF_NAME));
+  console.log(`[build] copied reference codex PDF into dist/assets/${PDF_NAME}`);
+}
 
 async function buildAll() {
   const distDir = path.resolve(artifactDir, "dist");
@@ -118,6 +134,8 @@ globalThis.__dirname = __bannerPath.dirname(globalThis.__filename);
     `,
     },
   });
+
+  await copyReferenceCodex(distDir);
 }
 
 buildAll().catch((err) => {

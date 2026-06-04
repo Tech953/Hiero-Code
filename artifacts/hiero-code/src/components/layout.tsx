@@ -24,6 +24,7 @@ import {
   Palette,
   PawPrint,
   Aperture,
+  Download,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -134,7 +135,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </nav>
 
-      <div className="p-4 border-t border-border mt-auto">
+      <div className="p-4 border-t border-border mt-auto space-y-2">
+        <Button
+          asChild
+          variant="outline"
+          className="w-full justify-start gap-2 border-primary/30 text-primary hover:bg-primary/10 hover:text-primary"
+        >
+          <a href="/api/reference-codex.pdf" download>
+            <Download className="w-4 h-4" />
+            Download Codex (PDF)
+          </a>
+        </Button>
         <Button
           variant="outline"
           className="w-full justify-start gap-2 border-border/50 hover:bg-muted"
