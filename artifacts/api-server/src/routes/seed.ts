@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { db } from "@workspace/db";
-import { runesTable, dictionaryEntriesTable, stelaeEntriesTable, iconographyEntriesTable, pnwArtEntriesTable, inuitSymbologyEntriesTable, mayaGlyphEntriesTable, nativeAmericanArtEntriesTable, polarBearEntriesTable } from "@workspace/db";
+import { runesTable, dictionaryEntriesTable, stelaeEntriesTable, iconographyEntriesTable, pnwArtEntriesTable, inuitSymbologyEntriesTable, mayaGlyphEntriesTable, nativeAmericanArtEntriesTable, polarBearEntriesTable, tibetanSymbolEntriesTable } from "@workspace/db";
 import { eq, sql } from "drizzle-orm";
 import inupiatDictionary from "../data/inupiat-dictionary.json";
 import egyptianStelae from "../data/egyptian-stelae.json";
@@ -10,6 +10,7 @@ import inuitSymbology from "../data/inuit-symbology.json";
 import mayaGlyphs from "../data/maya-glyphs.json";
 import nativeAmericanArt from "../data/native-american-art.json";
 import polarBear from "../data/polar-bear.json";
+import tibetanSymbols from "../data/tibetan-symbols.json";
 
 const router = Router();
 
@@ -745,6 +746,46 @@ router.post("/polar-bear", async (req, res) => {
     });
   } catch (error) {
     req.log.error({ err: error }, "Polar bear seed error");
+    res.status(500).json({ error: String(error) });
+  }
+});
+
+router.post("/tibetan-symbols", async (req, res) => {
+  try {
+    const [{ count }] = await db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(tibetanSymbolEntriesTable);
+
+    if (count > 0) {
+      res.json({ message: "Tibetan symbols reference already seeded", count });
+      return;
+    }
+
+    const rows = tibetanSymbols as PnwArtRow[];
+    const values = rows.map((r) => ({
+      title: r.title || "(untitled entry)",
+      category: r.category || "Overview",
+      summary: r.summary ?? "",
+      body: r.body ?? "",
+    }));
+
+    let total = 0;
+    const chunkSize = 500;
+    for (let i = 0; i < values.length; i += chunkSize) {
+      const chunk = values.slice(i, i + chunkSize);
+      const inserted = await db
+        .insert(tibetanSymbolEntriesTable)
+        .values(chunk)
+        .returning({ id: tibetanSymbolEntriesTable.id });
+      total += inserted.length;
+    }
+
+    res.json({
+      message: `Seeded ${total} Tibetan symbols reference entries`,
+      count: total,
+    });
+  } catch (error) {
+    req.log.error({ err: error }, "Tibetan symbols seed error");
     res.status(500).json({ error: String(error) });
   }
 });

@@ -503,6 +503,32 @@ export interface PolarBearFacets {
   categories: PolarBearFacet[];
 }
 
+export interface TibetanSymbolEntry {
+  id: number;
+  title: string;
+  category: string;
+  summary: string;
+  body: string;
+}
+
+export interface TibetanSymbolListResponse {
+  entries: TibetanSymbolEntry[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+export interface TibetanSymbolFacet {
+  value: string;
+  count: number;
+}
+
+export interface TibetanSymbolFacets {
+  total: number;
+  categories: TibetanSymbolFacet[];
+}
+
 export type InupiatReferenceNumbersItem = {
   value: number;
   word: string;
@@ -663,6 +689,13 @@ export type ListNativeAmericanArtParams = {
 };
 
 export type ListPolarBearParams = {
+  category?: string;
+  search?: string;
+  page?: number;
+  pageSize?: number;
+};
+
+export type ListTibetanSymbolsParams = {
   category?: string;
   search?: string;
   page?: number;

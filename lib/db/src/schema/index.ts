@@ -8,3 +8,4 @@ export * from "./inuit";
 export * from "./maya";
 export * from "./native-american-art";
 export * from "./polar-bear";
+export * from "./tibetan-symbols";

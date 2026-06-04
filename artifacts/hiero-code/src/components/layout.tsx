@@ -23,6 +23,7 @@ import {
   Pyramid,
   Palette,
   PawPrint,
+  Aperture,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -69,6 +70,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/maya-glyphs", label: "Maya Hieroglyphs", icon: Pyramid },
     { href: "/native-american-art", label: "Native American Art", icon: Palette },
     { href: "/polar-bear", label: "Polar Bear", icon: PawPrint },
+    { href: "/tibetan-symbols", label: "Tibetan Symbolism", icon: Aperture },
   ];
 
   const refNav = [

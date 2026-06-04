@@ -31,6 +31,7 @@ A symbolic computing language and visual explorer inspired by ancient Egyptian h
 - `/native-american-art` — Native American Art reference: 34 entries (Artwork 13, Foreword 10, Artist 8, Exhibition 2, Bibliography 1) from UCO "Evolution of Native American Art: Traditional to Contemporary" (2016) exhibition catalog; filterable/searchable/paginated
 - `/maya-glyphs` — Maya Hieroglyphs catalog: 322 entries (210 Logogram, 97 Syllabogram, 7 Compound Sign, 7 Introduction, 1 Undeciphered) from Tokovinine's visual catalog; filterable/searchable/paginated
 - `/polar-bear` — Polar Bear reference: 405 entries (391 Bibliography, 9 Part Essay, 3 Overview, 1 Combined List, 1 Typological Key) from Kochneva's "The Polar Bear in the Material and Spiritual Culture of the Native Peoples of Chukotka" (2007; tr. 2008); filterable/searchable/paginated
+- `/tibetan-symbols` — Tibetan Symbolism reference: 68 originally-authored entries across 8 categories (Ritual Implements 12, Animals and Mythical Creatures 10, Cosmological Symbols 9, Eight Auspicious Symbols 8, Hand Gestures 8, Eight Auspicious Substances 8, Seven Jewels of the Chakravartin 7, Symbolic Colors 6); authored from general iconographic knowledge (NOT from any copyrighted book); filterable/searchable/paginated
 - `/glyphs` — Glyph library: 54 glyphs across Egyptian, Sumerian, Mayan, Khoisan, and Pyri systems
 - `/framework` — Hieroglyphic Code Framework reference: two annotated images + Pyri Set, Three Language Systems, adaptation tiers, information density table
 - `/emotions` — Pyri Emotion Nodes: 768 QUERTY emoji micro-expressions with Valence × Arousal × Gesture vectors, Khoisan click phoneme cards, core emotion vectors, full filterable/paginated matrix
@@ -75,6 +76,7 @@ A symbolic computing language and visual explorer inspired by ancient Egyptian h
 - `maya_glyph_entries` — Maya hieroglyphs catalog entries (title, category, summary, body)
 - `native_american_art_entries` — Native American art reference entries (title, category, summary, body)
 - `polar_bear_entries` — Polar bear (Chukotka) reference entries (title, category, summary, body)
+- `tibetan_symbol_entries` — Tibetan Buddhist symbolism reference entries (title, category, summary, body)
 
 ## Artifact Routing
 - `/` → hiero-code frontend (React + Vite)

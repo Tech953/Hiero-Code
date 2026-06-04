@@ -45,6 +45,7 @@ import type {
   ListPnwArtParams,
   ListPolarBearParams,
   ListStelaeParams,
+  ListTibetanSymbolsParams,
   MayaGlyphEntry,
   MayaGlyphFacets,
   MayaGlyphListResponse,
@@ -66,6 +67,9 @@ import type {
   StelaEntry,
   StelaFacets,
   StelaListResponse,
+  TibetanSymbolEntry,
+  TibetanSymbolFacets,
+  TibetanSymbolListResponse,
   UpdateProgramBody,
   UpdateRuneBody,
 } from "./api.schemas";
@@ -3616,6 +3620,270 @@ export function useGetPolarBearEntry<
   },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetPolarBearEntryQueryOptions(id, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Search and browse the Tibetan Buddhist symbolism reference (paginated)
+ */
+export const getListTibetanSymbolsUrl = (params?: ListTibetanSymbolsParams) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : value.toString());
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/tibetan-symbols?${stringifiedParams}`
+    : `/api/tibetan-symbols`;
+};
+
+export const listTibetanSymbols = async (
+  params?: ListTibetanSymbolsParams,
+  options?: RequestInit,
+): Promise<TibetanSymbolListResponse> => {
+  return customFetch<TibetanSymbolListResponse>(
+    getListTibetanSymbolsUrl(params),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export const getListTibetanSymbolsQueryKey = (
+  params?: ListTibetanSymbolsParams,
+) => {
+  return [`/api/tibetan-symbols`, ...(params ? [params] : [])] as const;
+};
+
+export const getListTibetanSymbolsQueryOptions = <
+  TData = Awaited<ReturnType<typeof listTibetanSymbols>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListTibetanSymbolsParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listTibetanSymbols>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getListTibetanSymbolsQueryKey(params);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof listTibetanSymbols>>
+  > = ({ signal }) => listTibetanSymbols(params, { signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listTibetanSymbols>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListTibetanSymbolsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listTibetanSymbols>>
+>;
+export type ListTibetanSymbolsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Search and browse the Tibetan Buddhist symbolism reference (paginated)
+ */
+
+export function useListTibetanSymbols<
+  TData = Awaited<ReturnType<typeof listTibetanSymbols>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListTibetanSymbolsParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listTibetanSymbols>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListTibetanSymbolsQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Faceted counts (by category) for the Tibetan symbolism reference
+ */
+export const getGetTibetanSymbolsFacetsUrl = () => {
+  return `/api/tibetan-symbols/facets`;
+};
+
+export const getTibetanSymbolsFacets = async (
+  options?: RequestInit,
+): Promise<TibetanSymbolFacets> => {
+  return customFetch<TibetanSymbolFacets>(getGetTibetanSymbolsFacetsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetTibetanSymbolsFacetsQueryKey = () => {
+  return [`/api/tibetan-symbols/facets`] as const;
+};
+
+export const getGetTibetanSymbolsFacetsQueryOptions = <
+  TData = Awaited<ReturnType<typeof getTibetanSymbolsFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getTibetanSymbolsFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getGetTibetanSymbolsFacetsQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getTibetanSymbolsFacets>>
+  > = ({ signal }) => getTibetanSymbolsFacets({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getTibetanSymbolsFacets>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetTibetanSymbolsFacetsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getTibetanSymbolsFacets>>
+>;
+export type GetTibetanSymbolsFacetsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Faceted counts (by category) for the Tibetan symbolism reference
+ */
+
+export function useGetTibetanSymbolsFacets<
+  TData = Awaited<ReturnType<typeof getTibetanSymbolsFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getTibetanSymbolsFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetTibetanSymbolsFacetsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Get a single Tibetan symbolism reference entry by id
+ */
+export const getGetTibetanSymbolEntryUrl = (id: number) => {
+  return `/api/tibetan-symbols/${id}`;
+};
+
+export const getTibetanSymbolEntry = async (
+  id: number,
+  options?: RequestInit,
+): Promise<TibetanSymbolEntry> => {
+  return customFetch<TibetanSymbolEntry>(getGetTibetanSymbolEntryUrl(id), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetTibetanSymbolEntryQueryKey = (id: number) => {
+  return [`/api/tibetan-symbols/${id}`] as const;
+};
+
+export const getGetTibetanSymbolEntryQueryOptions = <
+  TData = Awaited<ReturnType<typeof getTibetanSymbolEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getTibetanSymbolEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getGetTibetanSymbolEntryQueryKey(id);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getTibetanSymbolEntry>>
+  > = ({ signal }) => getTibetanSymbolEntry(id, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof getTibetanSymbolEntry>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetTibetanSymbolEntryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getTibetanSymbolEntry>>
+>;
+export type GetTibetanSymbolEntryQueryError = ErrorType<void>;
+
+/**
+ * @summary Get a single Tibetan symbolism reference entry by id
+ */
+
+export function useGetTibetanSymbolEntry<
+  TData = Awaited<ReturnType<typeof getTibetanSymbolEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getTibetanSymbolEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetTibetanSymbolEntryQueryOptions(id, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;
