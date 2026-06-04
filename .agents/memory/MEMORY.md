@@ -1,2 +1,3 @@
 - [WeasyPrint emoji fonts](weasyprint-emoji-fonts.md) — PDF codex needs bundled NotoEmoji TTF (from Google Fonts, not github raw) for emoji/pictographs; else tofu.
 - [Rune scale enum](rune-scale-enum.md) — rune `scale` is free-text in DB; OpenAPI enum must list every value the seed/create-form use or POST /runes Zod-rejects them.
+- [OCR corpus parsing](ocr-corpus-parsing.md) — OCR dumps: use split("\n") not splitlines() (Unicode separators inflate counts); pair glossary by curated line ranges, not run-zip.

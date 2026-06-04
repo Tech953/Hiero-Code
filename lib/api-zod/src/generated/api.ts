@@ -701,6 +701,60 @@ export const GetStelaResponse = zod.object({
 });
 
 /**
+ * @summary Search and browse the Hindu iconography reference (paginated)
+ */
+export const ListIconographyQueryParams = zod.object({
+  category: zod.coerce.string().optional(),
+  search: zod.coerce.string().optional(),
+  page: zod.coerce.number().optional(),
+  pageSize: zod.coerce.number().optional(),
+});
+
+export const ListIconographyResponse = zod.object({
+  entries: zod.array(
+    zod.object({
+      id: zod.number(),
+      name: zod.string(),
+      english: zod.string(),
+      category: zod.string(),
+      meaning: zod.string(),
+    }),
+  ),
+  total: zod.number(),
+  page: zod.number(),
+  pageSize: zod.number(),
+  totalPages: zod.number(),
+});
+
+/**
+ * @summary Faceted counts (by category) for the iconography reference
+ */
+export const GetIconographyFacetsResponse = zod.object({
+  total: zod.number(),
+  categories: zod.array(
+    zod.object({
+      value: zod.string(),
+      count: zod.number(),
+    }),
+  ),
+});
+
+/**
+ * @summary Get a single iconography entry by id
+ */
+export const GetIconographyEntryParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const GetIconographyEntryResponse = zod.object({
+  id: zod.number(),
+  name: zod.string(),
+  english: zod.string(),
+  category: zod.string(),
+  meaning: zod.string(),
+});
+
+/**
  * @summary Dashboard stats overview
  */
 export const GetStatsResponse = zod.object({

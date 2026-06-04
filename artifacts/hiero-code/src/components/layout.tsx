@@ -17,6 +17,7 @@ import {
   Network,
   Menu,
   Languages,
+  Flower2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -57,6 +58,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/glyphs", label: "Glyphs", icon: Book },
     { href: "/dictionary", label: "Dictionary", icon: Languages },
     { href: "/corpus", label: "Stelae Corpus", icon: ScrollText },
+    { href: "/iconography", label: "Hindu Iconography", icon: Flower2 },
   ];
 
   const refNav = [

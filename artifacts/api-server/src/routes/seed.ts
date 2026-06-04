@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { db } from "@workspace/db";
-import { runesTable, dictionaryEntriesTable, stelaeEntriesTable } from "@workspace/db";
+import { runesTable, dictionaryEntriesTable, stelaeEntriesTable, iconographyEntriesTable } from "@workspace/db";
 import { eq, sql } from "drizzle-orm";
 import inupiatDictionary from "../data/inupiat-dictionary.json";
 import egyptianStelae from "../data/egyptian-stelae.json";
+import hinduIconography from "../data/hindu-iconography.json";
 
 const router = Router();
 
@@ -515,6 +516,47 @@ router.post("/corpus", async (req, res) => {
     });
   } catch (error) {
     req.log.error({ err: error }, "Corpus seed error");
+    res.status(500).json({ error: String(error) });
+  }
+});
+
+type IconRow = {
+  name?: string;
+  english?: string;
+  category?: string;
+  meaning?: string;
+};
+
+router.post("/iconography", async (req, res) => {
+  try {
+    const [{ count }] = await db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(iconographyEntriesTable);
+
+    if (count > 0) {
+      res.json({ message: "Hindu iconography already seeded", count });
+      return;
+    }
+
+    const rows = hinduIconography as IconRow[];
+    const values = rows.map((r) => ({
+      name: r.name || "(unnamed)",
+      english: r.english ?? "",
+      category: r.category || "Iconic Symbol",
+      meaning: r.meaning ?? "",
+    }));
+
+    const inserted = await db
+      .insert(iconographyEntriesTable)
+      .values(values)
+      .returning({ id: iconographyEntriesTable.id });
+
+    res.json({
+      message: `Seeded ${inserted.length} Hindu iconography entries`,
+      count: inserted.length,
+    });
+  } catch (error) {
+    req.log.error({ err: error }, "Iconography seed error");
     res.status(500).json({ error: String(error) });
   }
 });

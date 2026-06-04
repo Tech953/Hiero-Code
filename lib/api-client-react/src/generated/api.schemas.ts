@@ -347,6 +347,32 @@ export interface StelaFacets {
   objectTypes: StelaFacet[];
 }
 
+export interface IconEntry {
+  id: number;
+  name: string;
+  english: string;
+  category: string;
+  meaning: string;
+}
+
+export interface IconListResponse {
+  entries: IconEntry[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+export interface IconFacet {
+  value: string;
+  count: number;
+}
+
+export interface IconFacets {
+  total: number;
+  categories: IconFacet[];
+}
+
 export type InupiatReferenceNumbersItem = {
   value: number;
   word: string;
@@ -466,6 +492,13 @@ export type GetDictionaryCategoriesParams = {
 export type ListStelaeParams = {
   dynasty?: string;
   objectType?: string;
+  search?: string;
+  page?: number;
+  pageSize?: number;
+};
+
+export type ListIconographyParams = {
+  category?: string;
   search?: string;
   page?: number;
   pageSize?: number;

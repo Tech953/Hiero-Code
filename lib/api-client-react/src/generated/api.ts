@@ -29,9 +29,13 @@ import type {
   GetDictionaryCategoriesParams,
   Glyph,
   HealthStatus,
+  IconEntry,
+  IconFacets,
+  IconListResponse,
   InupiatReference,
   ListDictionaryParams,
   ListGlyphsParams,
+  ListIconographyParams,
   ListStelaeParams,
   NumerologySystem,
   Program,
@@ -2117,6 +2121,262 @@ export function useGetStela<
   },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetStelaQueryOptions(id, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Search and browse the Hindu iconography reference (paginated)
+ */
+export const getListIconographyUrl = (params?: ListIconographyParams) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : value.toString());
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/iconography?${stringifiedParams}`
+    : `/api/iconography`;
+};
+
+export const listIconography = async (
+  params?: ListIconographyParams,
+  options?: RequestInit,
+): Promise<IconListResponse> => {
+  return customFetch<IconListResponse>(getListIconographyUrl(params), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getListIconographyQueryKey = (params?: ListIconographyParams) => {
+  return [`/api/iconography`, ...(params ? [params] : [])] as const;
+};
+
+export const getListIconographyQueryOptions = <
+  TData = Awaited<ReturnType<typeof listIconography>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListIconographyParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listIconography>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getListIconographyQueryKey(params);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof listIconography>>> = ({
+    signal,
+  }) => listIconography(params, { signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listIconography>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListIconographyQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listIconography>>
+>;
+export type ListIconographyQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Search and browse the Hindu iconography reference (paginated)
+ */
+
+export function useListIconography<
+  TData = Awaited<ReturnType<typeof listIconography>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListIconographyParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listIconography>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListIconographyQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Faceted counts (by category) for the iconography reference
+ */
+export const getGetIconographyFacetsUrl = () => {
+  return `/api/iconography/facets`;
+};
+
+export const getIconographyFacets = async (
+  options?: RequestInit,
+): Promise<IconFacets> => {
+  return customFetch<IconFacets>(getGetIconographyFacetsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetIconographyFacetsQueryKey = () => {
+  return [`/api/iconography/facets`] as const;
+};
+
+export const getGetIconographyFacetsQueryOptions = <
+  TData = Awaited<ReturnType<typeof getIconographyFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getIconographyFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetIconographyFacetsQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getIconographyFacets>>
+  > = ({ signal }) => getIconographyFacets({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getIconographyFacets>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetIconographyFacetsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getIconographyFacets>>
+>;
+export type GetIconographyFacetsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Faceted counts (by category) for the iconography reference
+ */
+
+export function useGetIconographyFacets<
+  TData = Awaited<ReturnType<typeof getIconographyFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getIconographyFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetIconographyFacetsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Get a single iconography entry by id
+ */
+export const getGetIconographyEntryUrl = (id: number) => {
+  return `/api/iconography/${id}`;
+};
+
+export const getIconographyEntry = async (
+  id: number,
+  options?: RequestInit,
+): Promise<IconEntry> => {
+  return customFetch<IconEntry>(getGetIconographyEntryUrl(id), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetIconographyEntryQueryKey = (id: number) => {
+  return [`/api/iconography/${id}`] as const;
+};
+
+export const getGetIconographyEntryQueryOptions = <
+  TData = Awaited<ReturnType<typeof getIconographyEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getIconographyEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetIconographyEntryQueryKey(id);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getIconographyEntry>>
+  > = ({ signal }) => getIconographyEntry(id, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof getIconographyEntry>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetIconographyEntryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getIconographyEntry>>
+>;
+export type GetIconographyEntryQueryError = ErrorType<void>;
+
+/**
+ * @summary Get a single iconography entry by id
+ */
+
+export function useGetIconographyEntry<
+  TData = Awaited<ReturnType<typeof getIconographyEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getIconographyEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetIconographyEntryQueryOptions(id, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;
