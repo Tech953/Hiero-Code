@@ -43,6 +43,7 @@ import type {
   ListMayaGlyphsParams,
   ListNativeAmericanArtParams,
   ListPnwArtParams,
+  ListPolarBearParams,
   ListStelaeParams,
   MayaGlyphEntry,
   MayaGlyphFacets,
@@ -54,6 +55,9 @@ import type {
   PnwArtEntry,
   PnwArtFacets,
   PnwArtListResponse,
+  PolarBearEntry,
+  PolarBearFacets,
+  PolarBearListResponse,
   Program,
   ProgramExecutionTrace,
   RuneGraph,
@@ -3356,6 +3360,262 @@ export function useGetNativeAmericanArtEntry<
   },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetNativeAmericanArtEntryQueryOptions(id, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Search and browse the Polar Bear reference (paginated)
+ */
+export const getListPolarBearUrl = (params?: ListPolarBearParams) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : value.toString());
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/polar-bear?${stringifiedParams}`
+    : `/api/polar-bear`;
+};
+
+export const listPolarBear = async (
+  params?: ListPolarBearParams,
+  options?: RequestInit,
+): Promise<PolarBearListResponse> => {
+  return customFetch<PolarBearListResponse>(getListPolarBearUrl(params), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getListPolarBearQueryKey = (params?: ListPolarBearParams) => {
+  return [`/api/polar-bear`, ...(params ? [params] : [])] as const;
+};
+
+export const getListPolarBearQueryOptions = <
+  TData = Awaited<ReturnType<typeof listPolarBear>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListPolarBearParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listPolarBear>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getListPolarBearQueryKey(params);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof listPolarBear>>> = ({
+    signal,
+  }) => listPolarBear(params, { signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listPolarBear>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListPolarBearQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listPolarBear>>
+>;
+export type ListPolarBearQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Search and browse the Polar Bear reference (paginated)
+ */
+
+export function useListPolarBear<
+  TData = Awaited<ReturnType<typeof listPolarBear>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListPolarBearParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listPolarBear>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListPolarBearQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Faceted counts (by category) for the Polar Bear reference
+ */
+export const getGetPolarBearFacetsUrl = () => {
+  return `/api/polar-bear/facets`;
+};
+
+export const getPolarBearFacets = async (
+  options?: RequestInit,
+): Promise<PolarBearFacets> => {
+  return customFetch<PolarBearFacets>(getGetPolarBearFacetsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetPolarBearFacetsQueryKey = () => {
+  return [`/api/polar-bear/facets`] as const;
+};
+
+export const getGetPolarBearFacetsQueryOptions = <
+  TData = Awaited<ReturnType<typeof getPolarBearFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getPolarBearFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetPolarBearFacetsQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getPolarBearFacets>>
+  > = ({ signal }) => getPolarBearFacets({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getPolarBearFacets>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetPolarBearFacetsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getPolarBearFacets>>
+>;
+export type GetPolarBearFacetsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Faceted counts (by category) for the Polar Bear reference
+ */
+
+export function useGetPolarBearFacets<
+  TData = Awaited<ReturnType<typeof getPolarBearFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getPolarBearFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetPolarBearFacetsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Get a single Polar Bear reference entry by id
+ */
+export const getGetPolarBearEntryUrl = (id: number) => {
+  return `/api/polar-bear/${id}`;
+};
+
+export const getPolarBearEntry = async (
+  id: number,
+  options?: RequestInit,
+): Promise<PolarBearEntry> => {
+  return customFetch<PolarBearEntry>(getGetPolarBearEntryUrl(id), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetPolarBearEntryQueryKey = (id: number) => {
+  return [`/api/polar-bear/${id}`] as const;
+};
+
+export const getGetPolarBearEntryQueryOptions = <
+  TData = Awaited<ReturnType<typeof getPolarBearEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getPolarBearEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetPolarBearEntryQueryKey(id);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getPolarBearEntry>>
+  > = ({ signal }) => getPolarBearEntry(id, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof getPolarBearEntry>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetPolarBearEntryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getPolarBearEntry>>
+>;
+export type GetPolarBearEntryQueryError = ErrorType<void>;
+
+/**
+ * @summary Get a single Polar Bear reference entry by id
+ */
+
+export function useGetPolarBearEntry<
+  TData = Awaited<ReturnType<typeof getPolarBearEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getPolarBearEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetPolarBearEntryQueryOptions(id, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;

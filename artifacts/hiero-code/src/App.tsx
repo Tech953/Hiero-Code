@@ -21,6 +21,7 @@ import NorthwestArt from "@/pages/northwest-art";
 import InuitSymbology from "@/pages/inuit-symbology";
 import MayaGlyphs from "@/pages/maya-glyphs";
 import NativeAmericanArt from "@/pages/native-american-art";
+import PolarBear from "@/pages/polar-bear";
 import Framework from "@/pages/framework";
 import Emotions from "@/pages/emotions";
 import Cosmology from "@/pages/cosmology";
@@ -55,6 +56,7 @@ function Router() {
         <Route path="/inuit-symbology" component={InuitSymbology} />
         <Route path="/maya-glyphs" component={MayaGlyphs} />
         <Route path="/native-american-art" component={NativeAmericanArt} />
+        <Route path="/polar-bear" component={PolarBear} />
         <Route path="/framework" component={Framework} />
         <Route path="/emotions" component={Emotions} />
         <Route path="/cosmology" component={Cosmology} />

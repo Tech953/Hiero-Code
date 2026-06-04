@@ -477,6 +477,32 @@ export interface NativeAmericanArtFacets {
   categories: NativeAmericanArtFacet[];
 }
 
+export interface PolarBearEntry {
+  id: number;
+  title: string;
+  category: string;
+  summary: string;
+  body: string;
+}
+
+export interface PolarBearListResponse {
+  entries: PolarBearEntry[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+export interface PolarBearFacet {
+  value: string;
+  count: number;
+}
+
+export interface PolarBearFacets {
+  total: number;
+  categories: PolarBearFacet[];
+}
+
 export type InupiatReferenceNumbersItem = {
   value: number;
   word: string;
@@ -630,6 +656,13 @@ export type ListMayaGlyphsParams = {
 };
 
 export type ListNativeAmericanArtParams = {
+  category?: string;
+  search?: string;
+  page?: number;
+  pageSize?: number;
+};
+
+export type ListPolarBearParams = {
   category?: string;
   search?: string;
   page?: number;

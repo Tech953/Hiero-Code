@@ -11,6 +11,7 @@ import pnwArtRouter from "./pnwart";
 import inuitRouter from "./inuit";
 import mayaRouter from "./maya";
 import nativeAmericanArtRouter from "./native-american-art";
+import polarBearRouter from "./polar-bear";
 import statsRouter from "./stats";
 import seedRouter from "./seed";
 
@@ -28,6 +29,7 @@ router.use("/pnw-art", pnwArtRouter);
 router.use("/inuit-symbology", inuitRouter);
 router.use("/maya-glyphs", mayaRouter);
 router.use("/native-american-art", nativeAmericanArtRouter);
+router.use("/polar-bear", polarBearRouter);
 router.use("/stats", statsRouter);
 router.use("/seed", seedRouter);
 

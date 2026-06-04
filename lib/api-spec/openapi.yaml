@@ -31,6 +31,8 @@ tags:
     description: Maya hieroglyphs visual catalog reference operations
   - name: native-american-art
     description: Native American Art exhibition catalog reference operations
+  - name: polar-bear
+    description: Polar bear in the material and spiritual culture of Chukotka reference operations
 
 paths:
   /healthz:
@@ -789,6 +791,70 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NativeAmericanArtEntry"
+        "404":
+          description: Not found
+
+  /polar-bear:
+    get:
+      operationId: listPolarBear
+      tags: [polar-bear]
+      summary: Search and browse the Polar Bear reference (paginated)
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Paginated Polar Bear reference entries
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PolarBearListResponse"
+
+  /polar-bear/facets:
+    get:
+      operationId: getPolarBearFacets
+      tags: [polar-bear]
+      summary: Faceted counts (by category) for the Polar Bear reference
+      responses:
+        "200":
+          description: Facet counts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PolarBearFacets"
+
+  /polar-bear/{id}:
+    get:
+      operationId: getPolarBearEntry
+      tags: [polar-bear]
+      summary: Get a single Polar Bear reference entry by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Polar Bear reference entry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PolarBearEntry"
         "404":
           description: Not found
 
@@ -1785,6 +1851,72 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/NativeAmericanArtFacet"
+      required:
+        - total
+        - categories
+
+    PolarBearEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        category:
+          type: string
+        summary:
+          type: string
+        body:
+          type: string
+      required:
+        - id
+        - title
+        - category
+        - summary
+        - body
+
+    PolarBearListResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: "#/components/schemas/PolarBearEntry"
+        total:
+          type: integer
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        totalPages:
+          type: integer
+      required:
+        - entries
+        - total
+        - page
+        - pageSize
+        - totalPages
+
+    PolarBearFacet:
+      type: object
+      properties:
+        value:
+          type: string
+        count:
+          type: integer
+      required:
+        - value
+        - count
+
+    PolarBearFacets:
+      type: object
+      properties:
+        total:
+          type: integer
+        categories:
+          type: array
+          items:
+            $ref: "#/components/schemas/PolarBearFacet"
       required:
         - total
         - categories

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { db } from "@workspace/db";
-import { runesTable, dictionaryEntriesTable, stelaeEntriesTable, iconographyEntriesTable, pnwArtEntriesTable, inuitSymbologyEntriesTable, mayaGlyphEntriesTable, nativeAmericanArtEntriesTable } from "@workspace/db";
+import { runesTable, dictionaryEntriesTable, stelaeEntriesTable, iconographyEntriesTable, pnwArtEntriesTable, inuitSymbologyEntriesTable, mayaGlyphEntriesTable, nativeAmericanArtEntriesTable, polarBearEntriesTable } from "@workspace/db";
 import { eq, sql } from "drizzle-orm";
 import inupiatDictionary from "../data/inupiat-dictionary.json";
 import egyptianStelae from "../data/egyptian-stelae.json";
@@ -9,6 +9,7 @@ import northwestArt from "../data/northwest-art.json";
 import inuitSymbology from "../data/inuit-symbology.json";
 import mayaGlyphs from "../data/maya-glyphs.json";
 import nativeAmericanArt from "../data/native-american-art.json";
+import polarBear from "../data/polar-bear.json";
 
 const router = Router();
 
@@ -704,6 +705,46 @@ router.post("/native-american-art", async (req, res) => {
     });
   } catch (error) {
     req.log.error({ err: error }, "Native American art seed error");
+    res.status(500).json({ error: String(error) });
+  }
+});
+
+router.post("/polar-bear", async (req, res) => {
+  try {
+    const [{ count }] = await db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(polarBearEntriesTable);
+
+    if (count > 0) {
+      res.json({ message: "Polar bear reference already seeded", count });
+      return;
+    }
+
+    const rows = polarBear as PnwArtRow[];
+    const values = rows.map((r) => ({
+      title: r.title || "(untitled entry)",
+      category: r.category || "Overview",
+      summary: r.summary ?? "",
+      body: r.body ?? "",
+    }));
+
+    let total = 0;
+    const chunkSize = 500;
+    for (let i = 0; i < values.length; i += chunkSize) {
+      const chunk = values.slice(i, i + chunkSize);
+      const inserted = await db
+        .insert(polarBearEntriesTable)
+        .values(chunk)
+        .returning({ id: polarBearEntriesTable.id });
+      total += inserted.length;
+    }
+
+    res.json({
+      message: `Seeded ${total} polar bear reference entries`,
+      count: total,
+    });
+  } catch (error) {
+    req.log.error({ err: error }, "Polar bear seed error");
     res.status(500).json({ error: String(error) });
   }
 });
