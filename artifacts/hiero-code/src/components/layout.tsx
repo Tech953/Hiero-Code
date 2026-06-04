@@ -20,6 +20,7 @@ import {
   Flower2,
   Feather,
   Snowflake,
+  Pyramid,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -63,6 +64,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/iconography", label: "Hindu Iconography", icon: Flower2 },
     { href: "/northwest-art", label: "Northwest Coast Art", icon: Feather },
     { href: "/inuit-symbology", label: "Inuit Symbology", icon: Snowflake },
+    { href: "/maya-glyphs", label: "Maya Hieroglyphs", icon: Pyramid },
   ];
 
   const refNav = [

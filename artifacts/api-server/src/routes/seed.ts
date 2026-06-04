@@ -1,12 +1,13 @@
 import { Router } from "express";
 import { db } from "@workspace/db";
-import { runesTable, dictionaryEntriesTable, stelaeEntriesTable, iconographyEntriesTable, pnwArtEntriesTable, inuitSymbologyEntriesTable } from "@workspace/db";
+import { runesTable, dictionaryEntriesTable, stelaeEntriesTable, iconographyEntriesTable, pnwArtEntriesTable, inuitSymbologyEntriesTable, mayaGlyphEntriesTable } from "@workspace/db";
 import { eq, sql } from "drizzle-orm";
 import inupiatDictionary from "../data/inupiat-dictionary.json";
 import egyptianStelae from "../data/egyptian-stelae.json";
 import hinduIconography from "../data/hindu-iconography.json";
 import northwestArt from "../data/northwest-art.json";
 import inuitSymbology from "../data/inuit-symbology.json";
+import mayaGlyphs from "../data/maya-glyphs.json";
 
 const router = Router();
 
@@ -634,6 +635,40 @@ router.post("/inuit-symbology", async (req, res) => {
     });
   } catch (error) {
     req.log.error({ err: error }, "Inuit symbology seed error");
+    res.status(500).json({ error: String(error) });
+  }
+});
+
+router.post("/maya-glyphs", async (req, res) => {
+  try {
+    const [{ count }] = await db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(mayaGlyphEntriesTable);
+
+    if (count > 0) {
+      res.json({ message: "Maya glyphs already seeded", count });
+      return;
+    }
+
+    const rows = mayaGlyphs as PnwArtRow[];
+    const values = rows.map((r) => ({
+      title: r.title || "(untitled)",
+      category: r.category || "Introduction",
+      summary: r.summary ?? "",
+      body: r.body ?? "",
+    }));
+
+    const inserted = await db
+      .insert(mayaGlyphEntriesTable)
+      .values(values)
+      .returning({ id: mayaGlyphEntriesTable.id });
+
+    res.json({
+      message: `Seeded ${inserted.length} Maya glyph entries`,
+      count: inserted.length,
+    });
+  } catch (error) {
+    req.log.error({ err: error }, "Maya glyphs seed error");
     res.status(500).json({ error: String(error) });
   }
 });

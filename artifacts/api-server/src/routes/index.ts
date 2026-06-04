@@ -9,6 +9,7 @@ import corpusRouter from "./corpus";
 import iconographyRouter from "./iconography";
 import pnwArtRouter from "./pnwart";
 import inuitRouter from "./inuit";
+import mayaRouter from "./maya";
 import statsRouter from "./stats";
 import seedRouter from "./seed";
 
@@ -24,6 +25,7 @@ router.use("/corpus", corpusRouter);
 router.use("/iconography", iconographyRouter);
 router.use("/pnw-art", pnwArtRouter);
 router.use("/inuit-symbology", inuitRouter);
+router.use("/maya-glyphs", mayaRouter);
 router.use("/stats", statsRouter);
 router.use("/seed", seedRouter);
 

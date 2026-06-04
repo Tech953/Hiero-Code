@@ -40,8 +40,12 @@ import type {
   ListGlyphsParams,
   ListIconographyParams,
   ListInuitSymbologyParams,
+  ListMayaGlyphsParams,
   ListPnwArtParams,
   ListStelaeParams,
+  MayaGlyphEntry,
+  MayaGlyphFacets,
+  MayaGlyphListResponse,
   NumerologySystem,
   PnwArtEntry,
   PnwArtFacets,
@@ -2818,6 +2822,262 @@ export function useGetInuitSymbologyEntry<
   },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetInuitSymbologyEntryQueryOptions(id, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Search and browse the Maya hieroglyphs catalog (paginated)
+ */
+export const getListMayaGlyphsUrl = (params?: ListMayaGlyphsParams) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : value.toString());
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/maya-glyphs?${stringifiedParams}`
+    : `/api/maya-glyphs`;
+};
+
+export const listMayaGlyphs = async (
+  params?: ListMayaGlyphsParams,
+  options?: RequestInit,
+): Promise<MayaGlyphListResponse> => {
+  return customFetch<MayaGlyphListResponse>(getListMayaGlyphsUrl(params), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getListMayaGlyphsQueryKey = (params?: ListMayaGlyphsParams) => {
+  return [`/api/maya-glyphs`, ...(params ? [params] : [])] as const;
+};
+
+export const getListMayaGlyphsQueryOptions = <
+  TData = Awaited<ReturnType<typeof listMayaGlyphs>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListMayaGlyphsParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listMayaGlyphs>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getListMayaGlyphsQueryKey(params);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof listMayaGlyphs>>> = ({
+    signal,
+  }) => listMayaGlyphs(params, { signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listMayaGlyphs>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListMayaGlyphsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listMayaGlyphs>>
+>;
+export type ListMayaGlyphsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Search and browse the Maya hieroglyphs catalog (paginated)
+ */
+
+export function useListMayaGlyphs<
+  TData = Awaited<ReturnType<typeof listMayaGlyphs>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListMayaGlyphsParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listMayaGlyphs>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListMayaGlyphsQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Faceted counts (by category) for the Maya hieroglyphs catalog
+ */
+export const getGetMayaGlyphFacetsUrl = () => {
+  return `/api/maya-glyphs/facets`;
+};
+
+export const getMayaGlyphFacets = async (
+  options?: RequestInit,
+): Promise<MayaGlyphFacets> => {
+  return customFetch<MayaGlyphFacets>(getGetMayaGlyphFacetsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetMayaGlyphFacetsQueryKey = () => {
+  return [`/api/maya-glyphs/facets`] as const;
+};
+
+export const getGetMayaGlyphFacetsQueryOptions = <
+  TData = Awaited<ReturnType<typeof getMayaGlyphFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getMayaGlyphFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetMayaGlyphFacetsQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getMayaGlyphFacets>>
+  > = ({ signal }) => getMayaGlyphFacets({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getMayaGlyphFacets>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetMayaGlyphFacetsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getMayaGlyphFacets>>
+>;
+export type GetMayaGlyphFacetsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Faceted counts (by category) for the Maya hieroglyphs catalog
+ */
+
+export function useGetMayaGlyphFacets<
+  TData = Awaited<ReturnType<typeof getMayaGlyphFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getMayaGlyphFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetMayaGlyphFacetsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Get a single Maya glyph entry by id
+ */
+export const getGetMayaGlyphEntryUrl = (id: number) => {
+  return `/api/maya-glyphs/${id}`;
+};
+
+export const getMayaGlyphEntry = async (
+  id: number,
+  options?: RequestInit,
+): Promise<MayaGlyphEntry> => {
+  return customFetch<MayaGlyphEntry>(getGetMayaGlyphEntryUrl(id), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetMayaGlyphEntryQueryKey = (id: number) => {
+  return [`/api/maya-glyphs/${id}`] as const;
+};
+
+export const getGetMayaGlyphEntryQueryOptions = <
+  TData = Awaited<ReturnType<typeof getMayaGlyphEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getMayaGlyphEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetMayaGlyphEntryQueryKey(id);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getMayaGlyphEntry>>
+  > = ({ signal }) => getMayaGlyphEntry(id, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof getMayaGlyphEntry>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetMayaGlyphEntryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getMayaGlyphEntry>>
+>;
+export type GetMayaGlyphEntryQueryError = ErrorType<void>;
+
+/**
+ * @summary Get a single Maya glyph entry by id
+ */
+
+export function useGetMayaGlyphEntry<
+  TData = Awaited<ReturnType<typeof getMayaGlyphEntry>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getMayaGlyphEntry>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetMayaGlyphEntryQueryOptions(id, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;

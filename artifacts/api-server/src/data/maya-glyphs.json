@@ -1,0 +1,1934 @@
+[
+  {
+    "title": "About This Catalog",
+    "category": "Introduction",
+    "summary": "This catalog of Ancient Maya writing characters is intended as an aid for beginners and intermediate-level students of the script. Most known Ancient Maya inscriptions date to the Late Classic Period…",
+    "body": "This catalog of Ancient Maya writing characters is intended as an aid for beginners and intermediate-level students of the script. Most known Ancient Maya inscriptions date to the Late Classic Period (600-800 C.E.), so the characters in the catalog roughly reproduce a generic Late Classic graphic style from the cities in the Southern Lowlands or the area of the present-day department of Petén in Guatemala and the states of Chiapas and Campeche in Mexico. The goal of the catalog is not to demonstrate possible variation in the appearance of individual characters, but to highlight similarities and differences between distinct glyphs."
+  },
+  {
+    "title": "Phonetic Writing: Syllabograms & Logograms",
+    "category": "Introduction",
+    "summary": "Although all Maya glyphs look like representations of animate and inanimate objects, they are all strictly phonetic: characters called syllabograms encode syllables, whereas other signs known as…",
+    "body": "Although all Maya glyphs look like representations of animate and inanimate objects, they are all strictly phonetic: characters called syllabograms encode syllables, whereas other signs known as logograms stand for entire words. The readings of logograms in the catalog are recorded in bold upper case letters and syllabograms with bold lower case letters. Some characters have multiple readings and some readings are less certain than others. This catalog may show several possible readings of a glyph. Uncertain readings are followed by question marks. The sign that looks like a head of a bat, for instance, has two confirmed readings in distinct contexts: a logogram SUUTZ' \"bat\" and a syllabogram tz'i. The third reading - a syllabogram xu - is plausible, but less well-proven. The corresponding catalog entry will show all these readings underneath the character: SUUTZ'/tz'i/xu?"
+  },
+  {
+    "title": "Undeciphered Glyphs",
+    "category": "Introduction",
+    "summary": "Undeciphered glyphs have also been included in this catalog. Their presence highlights differences and similarities between some signs. Three highly similar glyphs, for example, may be distinguished…",
+    "body": "Undeciphered glyphs have also been included in this catalog. Their presence highlights differences and similarities between some signs. Three highly similar glyphs, for example, may be distinguished by elements in their upper-left corners. Only two glyphs - k'e and chu - have been deciphered, but it makes sense to show the third character with a question mark underneath: k'e chu ?"
+  },
+  {
+    "title": "Multiple Spellings of a Word",
+    "category": "Introduction",
+    "summary": "Many words in Ancient Maya writing may be recorded with a single logogram or with several syllabograms. For example, the word otoot \"home\" may be written with a logogram OTOOT or with three…",
+    "body": "Many words in Ancient Maya writing may be recorded with a single logogram or with several syllabograms. For example, the word otoot \"home\" may be written with a logogram OTOOT or with three syllabograms - o, to, and ti - as o-to-ti: OTOOT o to ti"
+  },
+  {
+    "title": "Glyph Blocks & Reading Order",
+    "category": "Introduction",
+    "summary": "In some Ancient Maya inscriptions, individual characters are arranged in a linear way topto-bottom and left-to-right as in the example above. Most Ancient Maya scribes, however, preferred to group…",
+    "body": "In some Ancient Maya inscriptions, individual characters are arranged in a linear way topto-bottom and left-to-right as in the example above. Most Ancient Maya scribes, however, preferred to group signs into 'blocks'. The overall reading order in a 'block' follows the same top-to-bottom and left-to-right convention, but one or two characters are placed in the center and all other signs are arranged around them. Many characters have two distinct variants - one for a central position and the other for a peripheral location. Scholars called the centrally-placed variants \"main signs\" and the peripheral characters were known as \"affixes\", but these labels are misleading, because arrangements of characters within 'blocks' often have nothing to do with their reading. For example, the syllabograms o and ti in the oto-ti spelling shown above have large central variants which look like bird heads and small peripheral variants which look like feathers on the birds' beaks. Consequently, the three signs may be re-grouped as different 'blocks' with one central and two peripheral characters depending on the aesthetic preferences of a scribe: o-to-ti The smaller peripheral variants may be rotated as they are positioned next to the central character. The to syllabogram does not have a peripheral variant, but its lower section may be covered by another sign, so that the remaining part (two scrolls with dotted circles) always stays on top regardless of the reading order."
+  },
+  {
+    "title": "Compound Glyphs",
+    "category": "Introduction",
+    "summary": "There are many signs with sections which may be covered by other characters as we have seen with to in the example above. Such compound glyphs have two or more elements arranged vertically or…",
+    "body": "There are many signs with sections which may be covered by other characters as we have seen with to in the example above. Such compound glyphs have two or more elements arranged vertically or horizontally. They were often created by combining elements from other signs and may be similar to each other or to the characters from which they borrowed their constituent parts. For example, the KAL logogram looks like a combination of TUUN \"stone\" and CHAM/10 \"death/ten\" glyphs and is very similar to some compound ba syllabograms. When KAL and TE' are written together, TE' covers half of KAL and the only way to distinguish between KAL-TE' and potentially identical spellings such as ku-TE' and TUUN-TE' is from the context: CHAM/10 TUUN/ku KAL ba KAL-TE' Fortunately, Ancient Maya scribes preferred to avoid potentially ambiguous contexts. Nearly all compound variants of the ba syllabogram, for example (see page 36 of the catalog), occur in the spellings of the word utz'ihbaal (\"his/her decoration\") in tags on drinking cups where there can be no doubt about the intended reading of the signs."
+  },
+  {
+    "title": "How the Catalog Is Organized",
+    "category": "Introduction",
+    "summary": "The catalog begins with rotatable peripheral variants of characters. Only one variant of each character is included, so it is important to keep in mind that these signs may be turned ninety degrees…",
+    "body": "The catalog begins with rotatable peripheral variants of characters. Only one variant of each character is included, so it is important to keep in mind that these signs may be turned ninety degrees or even 'flipped' horizontally or vertically depending on their position in relation to the central glyph in a 'block'. The next section of the catalog shows peripheral glyphs, which may not be rotated because they are conflated with other characters or because they belong to partially covered compound signs. Non rotatable peripheral glyphs are succeeded in the catalog by non-rotatable central sign variants representing objects which are grouped based on visual similarities between characters. Representations of hands, bones, and miscellaneous body parts follow. The next section consists of glyphs which look like skulls. It is followed by representations of human heads, bird heads, and heads of animals. Compound characters (including digraphs) conclude the catalog. There is no overall numbering, but signs on each page are numbered so that it would be possible to refer to a glyph by its number and the page number. The glyphs are not numbered in accordance with any previous catalog and no concordance table is included. The arrangement of glyphs does not replicate earlier catalogs."
+  },
+  {
+    "title": "ji",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ji",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ta",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ta",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "nu",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: nu",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "CH’OK",
+    "category": "Logogram",
+    "summary": "Logogram: CH’OK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "LEM?",
+    "category": "Logogram",
+    "summary": "Logogram: LEM?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "li",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: li",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ki",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ki",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ne",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ne",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "wa",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: wa",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "yi",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: yi",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "la",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: la",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "le",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: le",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "me",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: me",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "na",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: na",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "o",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: o",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ko",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ko",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "xa",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: xa",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "u",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: u",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "TOOK’",
+    "category": "Logogram",
+    "summary": "Logogram: TOOK’",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "we",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: we",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "HUL",
+    "category": "Logogram",
+    "summary": "Logogram: HUL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "K’A’",
+    "category": "Logogram",
+    "summary": "Logogram: K’A’",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TAL",
+    "category": "Logogram",
+    "summary": "Logogram: TAL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "yu",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: yu",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "CHAK",
+    "category": "Logogram",
+    "summary": "Logogram: CHAK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "k’i",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: k’i",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "tz’i",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tz’i",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "NAAH",
+    "category": "Logogram",
+    "summary": "Logogram: NAAH",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "EHB",
+    "category": "Logogram",
+    "summary": "Logogram: EHB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "YAX",
+    "category": "Logogram",
+    "summary": "Logogram: YAX",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "ka",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ka",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "BAJ",
+    "category": "Logogram",
+    "summary": "Logogram: BAJ",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "che",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: che",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ju",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ju",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "K’AHK’",
+    "category": "Logogram",
+    "summary": "Logogram: K’AHK’",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "HUUN",
+    "category": "Logogram",
+    "summary": "Logogram: HUUN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "ya",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ya",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ni",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ni",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "wi",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: wi",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "pi/PIK",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: pi/PIK",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. This glyph has more than one attested reading: pi, PIK."
+  },
+  {
+    "title": "a",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: a",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "mu",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: mu",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "AJ",
+    "category": "Logogram",
+    "summary": "Logogram: AJ",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "BAAX",
+    "category": "Logogram",
+    "summary": "Logogram: BAAX",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "bu",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: bu",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "tz’u",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tz’u",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ch’a",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ch’a",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "OCH",
+    "category": "Logogram",
+    "summary": "Logogram: OCH",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "sa",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: sa",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "K’IN",
+    "category": "Logogram",
+    "summary": "Logogram: K’IN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "yo/YOP",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: yo/YOP",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. This glyph has more than one attested reading: yo, YOP."
+  },
+  {
+    "title": "K'UH",
+    "category": "Logogram",
+    "summary": "Logogram: K'UH",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "ti",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ti",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "tu",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tu",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "si",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: si",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "TE'",
+    "category": "Logogram",
+    "summary": "Logogram: TE'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "SAK",
+    "category": "Logogram",
+    "summary": "Logogram: SAK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "tz'a",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tz'a",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "TAJ",
+    "category": "Logogram",
+    "summary": "Logogram: TAJ",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "NUUN/WAYIS",
+    "category": "Logogram",
+    "summary": "Logogram: NUUN/WAYIS",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: NUUN, WAYIS."
+  },
+  {
+    "title": "mi",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: mi",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "KOKAN",
+    "category": "Logogram",
+    "summary": "Logogram: KOKAN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "XUKUB",
+    "category": "Logogram",
+    "summary": "Logogram: XUKUB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "ja",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ja",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "JATZ'OOM",
+    "category": "Logogram",
+    "summary": "Logogram: JATZ'OOM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "EK'",
+    "category": "Logogram",
+    "summary": "Logogram: EK'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "K’AY?",
+    "category": "Logogram",
+    "summary": "Logogram: K’AY?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "CH'AK-ka",
+    "category": "Compound Sign",
+    "summary": "Compound Sign: CH'AK-ka",
+    "body": "A compound spelling: two or more signs written together (often one partly covering the other), read in order to spell a word."
+  },
+  {
+    "title": "cha",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: cha",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ma",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ma",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ma-a",
+    "category": "Compound Sign",
+    "summary": "Compound Sign: ma-a",
+    "body": "A compound spelling: two or more signs written together (often one partly covering the other), read in order to spell a word."
+  },
+  {
+    "title": "ji-ya",
+    "category": "Compound Sign",
+    "summary": "Compound Sign: ji-ya",
+    "body": "A compound spelling: two or more signs written together (often one partly covering the other), read in order to spell a word."
+  },
+  {
+    "title": "je",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: je",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "TI'",
+    "category": "Logogram",
+    "summary": "Logogram: TI'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "ba",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ba",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "tzi",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tzi",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ITZAM",
+    "category": "Logogram",
+    "summary": "Logogram: ITZAM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "no",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: no",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "AT",
+    "category": "Logogram",
+    "summary": "Logogram: AT",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "pa",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: pa",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "MUYAL",
+    "category": "Logogram",
+    "summary": "Logogram: MUYAL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "JUL",
+    "category": "Logogram",
+    "summary": "Logogram: JUL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "PET",
+    "category": "Logogram",
+    "summary": "Logogram: PET",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "JAN",
+    "category": "Logogram",
+    "summary": "Logogram: JAN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "KAAJ?",
+    "category": "Logogram",
+    "summary": "Logogram: KAAJ?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "mo",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: mo",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "k'a",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: k'a",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "IK'",
+    "category": "Logogram",
+    "summary": "Logogram: IK'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "K'AN",
+    "category": "Logogram",
+    "summary": "Logogram: K'AN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "bi",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: bi",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "JAN?",
+    "category": "Logogram",
+    "summary": "Logogram: JAN?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "NIK",
+    "category": "Logogram",
+    "summary": "Logogram: NIK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "K'IN",
+    "category": "Logogram",
+    "summary": "Logogram: K'IN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "HIX",
+    "category": "Logogram",
+    "summary": "Logogram: HIX",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "po",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: po",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "HAAB",
+    "category": "Logogram",
+    "summary": "Logogram: HAAB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "ki?",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ki?",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "CHAN",
+    "category": "Logogram",
+    "summary": "Logogram: CHAN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TZ'AM?",
+    "category": "Logogram",
+    "summary": "Logogram: TZ'AM?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "pu",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: pu",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "e",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: e",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "TZ'AM",
+    "category": "Logogram",
+    "summary": "Logogram: TZ'AM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "IHK'-K'IN",
+    "category": "Compound Sign",
+    "summary": "Compound Sign: IHK'-K'IN",
+    "body": "A compound spelling: two or more signs written together (often one partly covering the other), read in order to spell a word."
+  },
+  {
+    "title": "PAAX",
+    "category": "Logogram",
+    "summary": "Logogram: PAAX",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "KAB",
+    "category": "Logogram",
+    "summary": "Logogram: KAB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TUUN/ku",
+    "category": "Logogram",
+    "summary": "Logogram: TUUN/ku",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: TUUN, ku."
+  },
+  {
+    "title": "KAJ?-yi",
+    "category": "Compound Sign",
+    "summary": "Compound Sign: KAJ?-yi",
+    "body": "A compound spelling: two or more signs written together (often one partly covering the other), read in order to spell a word."
+  },
+  {
+    "title": "WITZ",
+    "category": "Logogram",
+    "summary": "Logogram: WITZ",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TAHN",
+    "category": "Logogram",
+    "summary": "Logogram: TAHN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "jo",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: jo",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "AK'",
+    "category": "Logogram",
+    "summary": "Logogram: AK'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CH'EEN",
+    "category": "Logogram",
+    "summary": "Logogram: CH'EEN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "su",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: su",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "he",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: he",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "BIX",
+    "category": "Logogram",
+    "summary": "Logogram: BIX",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CHAM",
+    "category": "Logogram",
+    "summary": "Logogram: CHAM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "WI'",
+    "category": "Logogram",
+    "summary": "Logogram: WI'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "IB?",
+    "category": "Logogram",
+    "summary": "Logogram: IB?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "tz'i",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tz'i",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "OHL",
+    "category": "Logogram",
+    "summary": "Logogram: OHL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "to",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: to",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "i",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: i",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "NAHB",
+    "category": "Logogram",
+    "summary": "Logogram: NAHB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "HA'",
+    "category": "Logogram",
+    "summary": "Logogram: HA'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TZ'AK",
+    "category": "Logogram",
+    "summary": "Logogram: TZ'AK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "t'u",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: t'u",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "bo",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: bo",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "se/cha/CHUWEN",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: se/cha/CHUWEN",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. This glyph has more than one attested reading: se, cha, CHUWEN."
+  },
+  {
+    "title": "WINIK",
+    "category": "Logogram",
+    "summary": "Logogram: WINIK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "PALAW?",
+    "category": "Logogram",
+    "summary": "Logogram: PALAW?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "lo/CHIIT",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: lo/CHIIT",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. This glyph has more than one attested reading: lo, CHIIT."
+  },
+  {
+    "title": "te",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: te",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "SIH",
+    "category": "Logogram",
+    "summary": "Logogram: SIH",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "AL",
+    "category": "Logogram",
+    "summary": "Logogram: AL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "AK'AB",
+    "category": "Logogram",
+    "summary": "Logogram: AK'AB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "WAY",
+    "category": "Logogram",
+    "summary": "Logogram: WAY",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "LAK/EL",
+    "category": "Logogram",
+    "summary": "Logogram: LAK/EL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: LAK, EL."
+  },
+  {
+    "title": "IHK'",
+    "category": "Logogram",
+    "summary": "Logogram: IHK'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "xo",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: xo",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "SAAK?",
+    "category": "Logogram",
+    "summary": "Logogram: SAAK?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "PA'",
+    "category": "Logogram",
+    "summary": "Logogram: PA'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CH'AAJ",
+    "category": "Logogram",
+    "summary": "Logogram: CH'AAJ",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "MAN",
+    "category": "Logogram",
+    "summary": "Logogram: MAN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "MUT?",
+    "category": "Logogram",
+    "summary": "Logogram: MUT?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "UUN",
+    "category": "Logogram",
+    "summary": "Logogram: UUN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "chu",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: chu",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "CH'AB",
+    "category": "Logogram",
+    "summary": "Logogram: CH'AB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TAAK",
+    "category": "Logogram",
+    "summary": "Logogram: TAAK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "k'e",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: k'e",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "YOOTZ",
+    "category": "Logogram",
+    "summary": "Logogram: YOOTZ",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "tzu/JOP",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tzu/JOP",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. This glyph has more than one attested reading: tzu, JOP."
+  },
+  {
+    "title": "AT?",
+    "category": "Logogram",
+    "summary": "Logogram: AT?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "ha",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ha",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ye",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ye",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "so?",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: so?",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "T'AB",
+    "category": "Logogram",
+    "summary": "Logogram: T'AB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "OTOOT",
+    "category": "Logogram",
+    "summary": "Logogram: OTOOT",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "OOM?",
+    "category": "Logogram",
+    "summary": "Logogram: OOM?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "NOH",
+    "category": "Logogram",
+    "summary": "Logogram: NOH",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "PAKAL",
+    "category": "Logogram",
+    "summary": "Logogram: PAKAL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "MUK",
+    "category": "Logogram",
+    "summary": "Logogram: MUK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CH'OK",
+    "category": "Logogram",
+    "summary": "Logogram: CH'OK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "ch'a",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ch'a",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "WIIN",
+    "category": "Logogram",
+    "summary": "Logogram: WIIN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "LAKAM",
+    "category": "Logogram",
+    "summary": "Logogram: LAKAM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "k'u",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: k'u",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "JUKUB",
+    "category": "Logogram",
+    "summary": "Logogram: JUKUB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "JU'?",
+    "category": "Logogram",
+    "summary": "Logogram: JU'?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "KO'OHAW",
+    "category": "Logogram",
+    "summary": "Logogram: KO'OHAW",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "AAN",
+    "category": "Logogram",
+    "summary": "Logogram: AAN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "WAL?",
+    "category": "Logogram",
+    "summary": "Logogram: WAL?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "JAL/TZ’AK",
+    "category": "Logogram",
+    "summary": "Logogram: JAL/TZ’AK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: JAL, TZ’AK."
+  },
+  {
+    "title": "chi",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: chi",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "yo",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: yo",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "K'AL",
+    "category": "Logogram",
+    "summary": "Logogram: K'AL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CH'AM",
+    "category": "Logogram",
+    "summary": "Logogram: CH'AM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TZAK",
+    "category": "Logogram",
+    "summary": "Logogram: TZAK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TZUTZ",
+    "category": "Logogram",
+    "summary": "Logogram: TZUTZ",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "k'o",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: k'o",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "ke",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ke",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "CHOK",
+    "category": "Logogram",
+    "summary": "Logogram: CHOK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "K'AB",
+    "category": "Logogram",
+    "summary": "Logogram: K'AB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TAY?",
+    "category": "Logogram",
+    "summary": "Logogram: TAY?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "JATZ'",
+    "category": "Logogram",
+    "summary": "Logogram: JATZ'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "YUK?",
+    "category": "Logogram",
+    "summary": "Logogram: YUK?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "PUUK?",
+    "category": "Logogram",
+    "summary": "Logogram: PUUK?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "ho",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ho",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "AAT",
+    "category": "Logogram",
+    "summary": "Logogram: AAT",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "BAAK",
+    "category": "Logogram",
+    "summary": "Logogram: BAAK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "cho",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: cho",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "lu",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: lu",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "WE'",
+    "category": "Logogram",
+    "summary": "Logogram: WE'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "PAAT",
+    "category": "Logogram",
+    "summary": "Logogram: PAAT",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "ICH",
+    "category": "Logogram",
+    "summary": "Logogram: ICH",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "UK'",
+    "category": "Logogram",
+    "summary": "Logogram: UK'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "AHN",
+    "category": "Logogram",
+    "summary": "Logogram: AHN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "IL",
+    "category": "Logogram",
+    "summary": "Logogram: IL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CH'ICH'",
+    "category": "Logogram",
+    "summary": "Logogram: CH'ICH'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "UNEN",
+    "category": "Logogram",
+    "summary": "Logogram: UNEN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CHUM",
+    "category": "Logogram",
+    "summary": "Logogram: CHUM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CHAM/10",
+    "category": "Logogram",
+    "summary": "Logogram: CHAM/10",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: CHAM, 10."
+  },
+  {
+    "title": "UH",
+    "category": "Logogram",
+    "summary": "Logogram: UH",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CHAPAHT",
+    "category": "Logogram",
+    "summary": "Logogram: CHAPAHT",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "se",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: se",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "TOOK'",
+    "category": "Logogram",
+    "summary": "Logogram: TOOK'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "KUHKAY?",
+    "category": "Logogram",
+    "summary": "Logogram: KUHKAY?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "MAAS",
+    "category": "Logogram",
+    "summary": "Logogram: MAAS",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "xi",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: xi",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "JOL",
+    "category": "Logogram",
+    "summary": "Logogram: JOL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "WA'",
+    "category": "Logogram",
+    "summary": "Logogram: WA'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "XIB",
+    "category": "Logogram",
+    "summary": "Logogram: XIB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "AJAW",
+    "category": "Logogram",
+    "summary": "Logogram: AJAW",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "AKAN",
+    "category": "Logogram",
+    "summary": "Logogram: AKAN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "AJAN",
+    "category": "Logogram",
+    "summary": "Logogram: AJAN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "IXIIM/na",
+    "category": "Logogram",
+    "summary": "Logogram: IXIIM/na",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: IXIIM, na."
+  },
+  {
+    "title": "IX",
+    "category": "Logogram",
+    "summary": "Logogram: IX",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CH'AHOOM",
+    "category": "Logogram",
+    "summary": "Logogram: CH'AHOOM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TIWO'",
+    "category": "Logogram",
+    "summary": "Logogram: TIWO'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "K'AY",
+    "category": "Logogram",
+    "summary": "Logogram: K'AY",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "ch'o",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ch'o",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "K'IN/4",
+    "category": "Logogram",
+    "summary": "Logogram: K'IN/4",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: K'IN, 4."
+  },
+  {
+    "title": "G1/AL",
+    "category": "Logogram",
+    "summary": "Logogram: G1/AL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: G1, AL."
+  },
+  {
+    "title": "MAM",
+    "category": "Logogram",
+    "summary": "Logogram: MAM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "SIIP?",
+    "category": "Logogram",
+    "summary": "Logogram: SIIP?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "JGU/ni",
+    "category": "Logogram",
+    "summary": "Logogram: JGU/ni",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: JGU, ni."
+  },
+  {
+    "title": "ITZAM-KOKAAJ",
+    "category": "Compound Sign",
+    "summary": "Compound Sign: ITZAM-KOKAAJ",
+    "body": "A compound spelling: two or more signs written together (often one partly covering the other), read in order to spell a word."
+  },
+  {
+    "title": "USIIJ",
+    "category": "Logogram",
+    "summary": "Logogram: USIIJ",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "MUWAAN",
+    "category": "Logogram",
+    "summary": "Logogram: MUWAAN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "be",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: be",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "MAT",
+    "category": "Logogram",
+    "summary": "Logogram: MAT",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "K'UK'",
+    "category": "Logogram",
+    "summary": "Logogram: K'UK'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TZ'IKIIN",
+    "category": "Logogram",
+    "summary": "Logogram: TZ'IKIIN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "AK'AACH",
+    "category": "Logogram",
+    "summary": "Logogram: AK'AACH",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CHAN/WINIK.HAAB",
+    "category": "Logogram",
+    "summary": "Logogram: CHAN/WINIK.HAAB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: CHAN, WINIK.HAAB."
+  },
+  {
+    "title": "MUUT",
+    "category": "Logogram",
+    "summary": "Logogram: MUUT",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "KOKAAJ",
+    "category": "Logogram",
+    "summary": "Logogram: KOKAAJ",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "KUY",
+    "category": "Logogram",
+    "summary": "Logogram: KUY",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TZ'UNUUN",
+    "category": "Logogram",
+    "summary": "Logogram: TZ'UNUUN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "YAXUUN",
+    "category": "Logogram",
+    "summary": "Logogram: YAXUUN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "u/XOOK",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: u/XOOK",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. This glyph has more than one attested reading: u, XOOK."
+  },
+  {
+    "title": "CHAN/KAN",
+    "category": "Logogram",
+    "summary": "Logogram: CHAN/KAN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: CHAN, KAN."
+  },
+  {
+    "title": "HA'/WITZ'",
+    "category": "Logogram",
+    "summary": "Logogram: HA'/WITZ'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: HA', WITZ'."
+  },
+  {
+    "title": "CHA'N",
+    "category": "Logogram",
+    "summary": "Logogram: CHA'N",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "WITZ'?",
+    "category": "Logogram",
+    "summary": "Logogram: WITZ'?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "e/WINIK",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: e/WINIK",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. This glyph has more than one attested reading: e, WINIK."
+  },
+  {
+    "title": "hu",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: hu",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "K'AHK'",
+    "category": "Logogram",
+    "summary": "Logogram: K'AHK'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "WAW",
+    "category": "Logogram",
+    "summary": "Logogram: WAW",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "AHIIN",
+    "category": "Logogram",
+    "summary": "Logogram: AHIIN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "K'AWIIL",
+    "category": "Logogram",
+    "summary": "Logogram: K'AWIIL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CHAHK",
+    "category": "Logogram",
+    "summary": "Logogram: CHAHK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "KAL",
+    "category": "Logogram",
+    "summary": "Logogram: KAL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TOLOK?",
+    "category": "Logogram",
+    "summary": "Logogram: TOLOK?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "NUM?",
+    "category": "Logogram",
+    "summary": "Logogram: NUM?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "AHK",
+    "category": "Logogram",
+    "summary": "Logogram: AHK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "YOPAAT",
+    "category": "Logogram",
+    "summary": "Logogram: YOPAAT",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "LOK'",
+    "category": "Logogram",
+    "summary": "Logogram: LOK'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "ICH'AAK",
+    "category": "Logogram",
+    "summary": "Logogram: ICH'AAK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TELES",
+    "category": "Logogram",
+    "summary": "Logogram: TELES",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "MAK",
+    "category": "Logogram",
+    "summary": "Logogram: MAK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "K’EW",
+    "category": "Logogram",
+    "summary": "Logogram: K’EW",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "OOX",
+    "category": "Logogram",
+    "summary": "Logogram: OOX",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "YOON?",
+    "category": "Logogram",
+    "summary": "Logogram: YOON?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "CHUWEN",
+    "category": "Logogram",
+    "summary": "Logogram: CHUWEN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "SUUTZ'/tz'i/xu?",
+    "category": "Logogram",
+    "summary": "Logogram: SUUTZ'/tz'i/xu?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: SUUTZ', tz'i, xu. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "MAY",
+    "category": "Logogram",
+    "summary": "Logogram: MAY",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "MAAX",
+    "category": "Logogram",
+    "summary": "Logogram: MAAX",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "TIL",
+    "category": "Logogram",
+    "summary": "Logogram: TIL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CHITAM",
+    "category": "Logogram",
+    "summary": "Logogram: CHITAM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "K'EK'EN?",
+    "category": "Logogram",
+    "summary": "Logogram: K'EK'EN?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "ch'o/si",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: ch'o/si",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. This glyph has more than one attested reading: ch'o, si."
+  },
+  {
+    "title": "BAAH",
+    "category": "Logogram",
+    "summary": "Logogram: BAAH",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "EHM",
+    "category": "Logogram",
+    "summary": "Logogram: EHM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "OOK/TZ'I'",
+    "category": "Logogram",
+    "summary": "Logogram: OOK/TZ'I'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: OOK, TZ'I'."
+  },
+  {
+    "title": "TZ'UTZ'IH",
+    "category": "Logogram",
+    "summary": "Logogram: TZ'UTZ'IH",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "BAHLAM",
+    "category": "Logogram",
+    "summary": "Logogram: BAHLAM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CHIIK",
+    "category": "Logogram",
+    "summary": "Logogram: CHIIK",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "KABKOH?",
+    "category": "Logogram",
+    "summary": "Logogram: KABKOH?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "pe/T'UL/CHIIT",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: pe/T'UL/CHIIT",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. This glyph has more than one attested reading: pe, T'UL, CHIIT."
+  },
+  {
+    "title": "UN",
+    "category": "Logogram",
+    "summary": "Logogram: UN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CH'AMAK?",
+    "category": "Logogram",
+    "summary": "Logogram: CH'AMAK?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "KOOJ",
+    "category": "Logogram",
+    "summary": "Logogram: KOOJ",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "NAL",
+    "category": "Logogram",
+    "summary": "Logogram: NAL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "UT/HUT",
+    "category": "Logogram",
+    "summary": "Logogram: UT/HUT",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: UT, HUT."
+  },
+  {
+    "title": "EL",
+    "category": "Logogram",
+    "summary": "Logogram: EL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "PUL",
+    "category": "Logogram",
+    "summary": "Logogram: PUL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "PAT",
+    "category": "Logogram",
+    "summary": "Logogram: PAT",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "SA'",
+    "category": "Logogram",
+    "summary": "Logogram: SA'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "MIHIIN?",
+    "category": "Logogram",
+    "summary": "Logogram: MIHIIN?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "JUB?",
+    "category": "Logogram",
+    "summary": "Logogram: JUB?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "TZ'AP",
+    "category": "Logogram",
+    "summary": "Logogram: TZ'AP",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "IP?",
+    "category": "Logogram",
+    "summary": "Logogram: IP?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "tzi?",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tzi?",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "hi",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: hi",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "PIIT?",
+    "category": "Logogram",
+    "summary": "Logogram: PIIT?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "PAS",
+    "category": "Logogram",
+    "summary": "Logogram: PAS",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "XAMAN/NAAH",
+    "category": "Logogram",
+    "summary": "Logogram: XAMAN/NAAH",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. This glyph has more than one attested reading: XAMAN, NAAH."
+  },
+  {
+    "title": "JOY",
+    "category": "Logogram",
+    "summary": "Logogram: JOY",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "tz'e",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tz'e",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "tzo?",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tzo?",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "LAM",
+    "category": "Logogram",
+    "summary": "Logogram: LAM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "tza",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tza",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram."
+  },
+  {
+    "title": "AKAN?",
+    "category": "Logogram",
+    "summary": "Logogram: AKAN?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "SIBIK?",
+    "category": "Logogram",
+    "summary": "Logogram: SIBIK?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "HUL?",
+    "category": "Logogram",
+    "summary": "Logogram: HUL?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "WINIK.HAAB",
+    "category": "Logogram",
+    "summary": "Logogram: WINIK.HAAB",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "tz'o?",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: tz'o?",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "t'o?",
+    "category": "Syllabogram",
+    "summary": "Syllabogram: t'o?",
+    "body": "A syllabogram — a phonetic sign that encodes a single syllable, written in lower case by Maya epigraphic convention. Syllabograms combine to spell words that may also be written with a single logogram. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "K'ABA'",
+    "category": "Logogram",
+    "summary": "Logogram: K'ABA'",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "HA'AL",
+    "category": "Logogram",
+    "summary": "Logogram: HA'AL",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CHWEN",
+    "category": "Logogram",
+    "summary": "Logogram: CHWEN",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "CHAM?",
+    "category": "Logogram",
+    "summary": "Logogram: CHAM?",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention. The reading marked with a question mark is plausible but not firmly proven."
+  },
+  {
+    "title": "NAM",
+    "category": "Logogram",
+    "summary": "Logogram: NAM",
+    "body": "A logogram — a sign that stands for a whole word, written in UPPER CASE by Maya epigraphic convention."
+  },
+  {
+    "title": "KAL-TE'",
+    "category": "Compound Sign",
+    "summary": "Compound Sign: KAL-TE'",
+    "body": "A compound spelling: two or more signs written together (often one partly covering the other), read in order to spell a word."
+  },
+  {
+    "title": "Undeciphered Signs",
+    "category": "Undeciphered",
+    "summary": "93 glyphs in the catalog remain undeciphered, marked with a question mark.",
+    "body": "The catalog includes 93 occurrences of glyphs whose readings are not yet known, each shown with a question mark (?) beneath it. They are kept in the catalog to highlight differences and similarities with deciphered signs — for instance, three highly similar glyphs may be told apart only by a small element in the upper-left corner, even when only one or two of them can be read."
+  }
+]
