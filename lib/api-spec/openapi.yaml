@@ -19,6 +19,8 @@ tags:
     description: Numerological system references
   - name: dictionary
     description: Indigenous-language dictionary operations
+  - name: corpus
+    description: British Museum hieroglyphic stelae corpus operations
 
 paths:
   /healthz:
@@ -412,6 +414,74 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/DictionaryCategory"
+
+  /corpus:
+    get:
+      operationId: listStelae
+      tags: [corpus]
+      summary: Search and browse British Museum stelae corpus (paginated)
+      parameters:
+        - name: dynasty
+          in: query
+          schema:
+            type: string
+        - name: objectType
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Paginated stelae entries
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StelaListResponse"
+
+  /corpus/facets:
+    get:
+      operationId: getStelaeFacets
+      tags: [corpus]
+      summary: Faceted counts (by dynasty and object type) for the stelae corpus
+      responses:
+        "200":
+          description: Facet counts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StelaFacets"
+
+  /corpus/{id}:
+    get:
+      operationId: getStela
+      tags: [corpus]
+      summary: Get a single stela entry by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Stela entry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StelaEntry"
+        "404":
+          description: Not found
 
   /stats/overview:
     get:
@@ -957,6 +1027,107 @@ components:
       required:
         - category
         - count
+
+    StelaEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+        plate:
+          type: string
+        title:
+          type: string
+        bmNumber:
+          type: string
+        objectType:
+          type: string
+        material:
+          type: string
+        provenance:
+          type: string
+        dimensions:
+          type: string
+        date:
+          type: string
+        dynasty:
+          type: string
+        acquisition:
+          type: string
+        description:
+          type: string
+        preservation:
+          type: string
+        bibliography:
+          type: string
+        rawText:
+          type: string
+      required:
+        - id
+        - plate
+        - title
+        - bmNumber
+        - objectType
+        - material
+        - provenance
+        - dimensions
+        - date
+        - dynasty
+        - acquisition
+        - description
+        - preservation
+        - bibliography
+        - rawText
+
+    StelaListResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: "#/components/schemas/StelaEntry"
+        total:
+          type: integer
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        totalPages:
+          type: integer
+      required:
+        - entries
+        - total
+        - page
+        - pageSize
+        - totalPages
+
+    StelaFacet:
+      type: object
+      properties:
+        value:
+          type: string
+        count:
+          type: integer
+      required:
+        - value
+        - count
+
+    StelaFacets:
+      type: object
+      properties:
+        total:
+          type: integer
+        dynasties:
+          type: array
+          items:
+            $ref: "#/components/schemas/StelaFacet"
+        objectTypes:
+          type: array
+          items:
+            $ref: "#/components/schemas/StelaFacet"
+      required:
+        - total
+        - dynasties
+        - objectTypes
 
     InupiatReference:
       type: object

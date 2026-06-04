@@ -56,6 +56,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/numerology", label: "Numerology", icon: Compass },
     { href: "/glyphs", label: "Glyphs", icon: Book },
     { href: "/dictionary", label: "Dictionary", icon: Languages },
+    { href: "/corpus", label: "Stelae Corpus", icon: ScrollText },
   ];
 
   const refNav = [

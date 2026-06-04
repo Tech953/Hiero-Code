@@ -310,6 +310,43 @@ export interface DictionaryCategory {
   count: number;
 }
 
+export interface StelaEntry {
+  id: number;
+  plate: string;
+  title: string;
+  bmNumber: string;
+  objectType: string;
+  material: string;
+  provenance: string;
+  dimensions: string;
+  date: string;
+  dynasty: string;
+  acquisition: string;
+  description: string;
+  preservation: string;
+  bibliography: string;
+  rawText: string;
+}
+
+export interface StelaListResponse {
+  entries: StelaEntry[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+export interface StelaFacet {
+  value: string;
+  count: number;
+}
+
+export interface StelaFacets {
+  total: number;
+  dynasties: StelaFacet[];
+  objectTypes: StelaFacet[];
+}
+
 export type InupiatReferenceNumbersItem = {
   value: number;
   word: string;
@@ -424,4 +461,12 @@ export type ListDictionaryParams = {
 
 export type GetDictionaryCategoriesParams = {
   language?: string;
+};
+
+export type ListStelaeParams = {
+  dynasty?: string;
+  objectType?: string;
+  search?: string;
+  page?: number;
+  pageSize?: number;
 };

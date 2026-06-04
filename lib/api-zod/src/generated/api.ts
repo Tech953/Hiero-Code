@@ -620,6 +620,87 @@ export const GetDictionaryCategoriesResponse = zod.array(
 );
 
 /**
+ * @summary Search and browse British Museum stelae corpus (paginated)
+ */
+export const ListStelaeQueryParams = zod.object({
+  dynasty: zod.coerce.string().optional(),
+  objectType: zod.coerce.string().optional(),
+  search: zod.coerce.string().optional(),
+  page: zod.coerce.number().optional(),
+  pageSize: zod.coerce.number().optional(),
+});
+
+export const ListStelaeResponse = zod.object({
+  entries: zod.array(
+    zod.object({
+      id: zod.number(),
+      plate: zod.string(),
+      title: zod.string(),
+      bmNumber: zod.string(),
+      objectType: zod.string(),
+      material: zod.string(),
+      provenance: zod.string(),
+      dimensions: zod.string(),
+      date: zod.string(),
+      dynasty: zod.string(),
+      acquisition: zod.string(),
+      description: zod.string(),
+      preservation: zod.string(),
+      bibliography: zod.string(),
+      rawText: zod.string(),
+    }),
+  ),
+  total: zod.number(),
+  page: zod.number(),
+  pageSize: zod.number(),
+  totalPages: zod.number(),
+});
+
+/**
+ * @summary Faceted counts (by dynasty and object type) for the stelae corpus
+ */
+export const GetStelaeFacetsResponse = zod.object({
+  total: zod.number(),
+  dynasties: zod.array(
+    zod.object({
+      value: zod.string(),
+      count: zod.number(),
+    }),
+  ),
+  objectTypes: zod.array(
+    zod.object({
+      value: zod.string(),
+      count: zod.number(),
+    }),
+  ),
+});
+
+/**
+ * @summary Get a single stela entry by id
+ */
+export const GetStelaParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const GetStelaResponse = zod.object({
+  id: zod.number(),
+  plate: zod.string(),
+  title: zod.string(),
+  bmNumber: zod.string(),
+  objectType: zod.string(),
+  material: zod.string(),
+  provenance: zod.string(),
+  dimensions: zod.string(),
+  date: zod.string(),
+  dynasty: zod.string(),
+  acquisition: zod.string(),
+  description: zod.string(),
+  preservation: zod.string(),
+  bibliography: zod.string(),
+  rawText: zod.string(),
+});
+
+/**
  * @summary Dashboard stats overview
  */
 export const GetStatsResponse = zod.object({

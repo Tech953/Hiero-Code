@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { db } from "@workspace/db";
-import { runesTable, dictionaryEntriesTable } from "@workspace/db";
+import { runesTable, dictionaryEntriesTable, stelaeEntriesTable } from "@workspace/db";
 import { eq, sql } from "drizzle-orm";
 import inupiatDictionary from "../data/inupiat-dictionary.json";
+import egyptianStelae from "../data/egyptian-stelae.json";
 
 const router = Router();
 
@@ -453,6 +454,67 @@ router.post("/dictionary", async (req, res) => {
     res.json({ message: `Seeded ${total} Inupiat dictionary entries`, count: total });
   } catch (error) {
     req.log.error({ err: error }, "Dictionary seed error");
+    res.status(500).json({ error: String(error) });
+  }
+});
+
+type StelaRow = {
+  plate?: string;
+  title?: string;
+  bmNumber?: string;
+  objectType?: string;
+  material?: string;
+  provenance?: string;
+  dimensions?: string;
+  date?: string;
+  dynasty?: string;
+  acquisition?: string;
+  description?: string;
+  preservation?: string;
+  bibliography?: string;
+  rawText?: string;
+};
+
+router.post("/corpus", async (req, res) => {
+  try {
+    const [{ count }] = await db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(stelaeEntriesTable);
+
+    if (count > 0) {
+      res.json({ message: "Stelae corpus already seeded", count });
+      return;
+    }
+
+    const rows = egyptianStelae as StelaRow[];
+    const values = rows.map((r) => ({
+      plate: r.plate ?? "",
+      title: r.title || "(untitled object)",
+      bmNumber: r.bmNumber ?? "",
+      objectType: r.objectType || "Object",
+      material: r.material ?? "",
+      provenance: r.provenance ?? "",
+      dimensions: r.dimensions ?? "",
+      date: r.date ?? "",
+      dynasty: r.dynasty ?? "",
+      acquisition: r.acquisition ?? "",
+      description: r.description ?? "",
+      preservation: r.preservation ?? "",
+      bibliography: r.bibliography ?? "",
+      rawText: r.rawText ?? "",
+    }));
+
+    const inserted = await db
+      .insert(stelaeEntriesTable)
+      .values(values)
+      .returning({ id: stelaeEntriesTable.id });
+
+    res.json({
+      message: `Seeded ${inserted.length} British Museum stelae entries`,
+      count: inserted.length,
+    });
+  } catch (error) {
+    req.log.error({ err: error }, "Corpus seed error");
     res.status(500).json({ error: String(error) });
   }
 });

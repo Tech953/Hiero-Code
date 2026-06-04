@@ -32,12 +32,16 @@ import type {
   InupiatReference,
   ListDictionaryParams,
   ListGlyphsParams,
+  ListStelaeParams,
   NumerologySystem,
   Program,
   ProgramExecutionTrace,
   RuneGraph,
   RuneNode,
   StatsOverview,
+  StelaEntry,
+  StelaFacets,
+  StelaListResponse,
   UpdateProgramBody,
   UpdateRuneBody,
 } from "./api.schemas";
@@ -1859,6 +1863,260 @@ export function useGetDictionaryCategories<
   },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetDictionaryCategoriesQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Search and browse British Museum stelae corpus (paginated)
+ */
+export const getListStelaeUrl = (params?: ListStelaeParams) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : value.toString());
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/corpus?${stringifiedParams}`
+    : `/api/corpus`;
+};
+
+export const listStelae = async (
+  params?: ListStelaeParams,
+  options?: RequestInit,
+): Promise<StelaListResponse> => {
+  return customFetch<StelaListResponse>(getListStelaeUrl(params), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getListStelaeQueryKey = (params?: ListStelaeParams) => {
+  return [`/api/corpus`, ...(params ? [params] : [])] as const;
+};
+
+export const getListStelaeQueryOptions = <
+  TData = Awaited<ReturnType<typeof listStelae>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListStelaeParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listStelae>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getListStelaeQueryKey(params);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof listStelae>>> = ({
+    signal,
+  }) => listStelae(params, { signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listStelae>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ListStelaeQueryResult = NonNullable<
+  Awaited<ReturnType<typeof listStelae>>
+>;
+export type ListStelaeQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Search and browse British Museum stelae corpus (paginated)
+ */
+
+export function useListStelae<
+  TData = Awaited<ReturnType<typeof listStelae>>,
+  TError = ErrorType<unknown>,
+>(
+  params?: ListStelaeParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof listStelae>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListStelaeQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Faceted counts (by dynasty and object type) for the stelae corpus
+ */
+export const getGetStelaeFacetsUrl = () => {
+  return `/api/corpus/facets`;
+};
+
+export const getStelaeFacets = async (
+  options?: RequestInit,
+): Promise<StelaFacets> => {
+  return customFetch<StelaFacets>(getGetStelaeFacetsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetStelaeFacetsQueryKey = () => {
+  return [`/api/corpus/facets`] as const;
+};
+
+export const getGetStelaeFacetsQueryOptions = <
+  TData = Awaited<ReturnType<typeof getStelaeFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getStelaeFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetStelaeFacetsQueryKey();
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getStelaeFacets>>> = ({
+    signal,
+  }) => getStelaeFacets({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getStelaeFacets>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetStelaeFacetsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getStelaeFacets>>
+>;
+export type GetStelaeFacetsQueryError = ErrorType<unknown>;
+
+/**
+ * @summary Faceted counts (by dynasty and object type) for the stelae corpus
+ */
+
+export function useGetStelaeFacets<
+  TData = Awaited<ReturnType<typeof getStelaeFacets>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof getStelaeFacets>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetStelaeFacetsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Get a single stela entry by id
+ */
+export const getGetStelaUrl = (id: number) => {
+  return `/api/corpus/${id}`;
+};
+
+export const getStela = async (
+  id: number,
+  options?: RequestInit,
+): Promise<StelaEntry> => {
+  return customFetch<StelaEntry>(getGetStelaUrl(id), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetStelaQueryKey = (id: number) => {
+  return [`/api/corpus/${id}`] as const;
+};
+
+export const getGetStelaQueryOptions = <
+  TData = Awaited<ReturnType<typeof getStela>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getStela>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetStelaQueryKey(id);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getStela>>> = ({
+    signal,
+  }) => getStela(id, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<Awaited<ReturnType<typeof getStela>>, TError, TData> & {
+    queryKey: QueryKey;
+  };
+};
+
+export type GetStelaQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getStela>>
+>;
+export type GetStelaQueryError = ErrorType<void>;
+
+/**
+ * @summary Get a single stela entry by id
+ */
+
+export function useGetStela<
+  TData = Awaited<ReturnType<typeof getStela>>,
+  TError = ErrorType<void>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getStela>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetStelaQueryOptions(id, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;
