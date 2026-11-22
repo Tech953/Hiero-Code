@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Play, Pause, RotateCcw, Zap } from "lucide-react";
+import type { PyriNode } from "../lib/pyri-state";
 
 const CHANNELS = ["α", "β", "γ", "δ", "ε", "ζ"] as const;
 type Channel = typeof CHANNELS[number];
@@ -13,19 +14,6 @@ const EGYPTIAN_MAP: Record<Channel, string>  = { α: "𓀀", β: "𓁐", γ: "�
 const EMOJI_MAP: Record<Channel, string>     = { α: "🌑", β: "🌘", γ: "🌗", δ: "🌖", ε: "🌕", ζ: "🌔" };
 
 type NodeType = "Core" | "Edge" | "Stack" | "Flow";
-interface PyriNode {
-  id: string;
-  label: string;
-  type: NodeType;
-  x: number;
-  y: number;
-  channels: Record<Channel, number>;
-  hiero: number;
-  energy: number;
-  state: number;
-  stack: number[];
-  articulators: Channel[];
-}
 
 interface PyriEdge {
   from: string;
